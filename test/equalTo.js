@@ -33,4 +33,20 @@ module.exports = {
       assert.that(actual, is.equalTo(expected));
     }, assert.AssertionError);
   },
+  'equalTo succeeds when comparing two objects with the same values.': function() {
+    var actual = { foo: 'foo', bar: 'bar' },
+        expected = { foo: 'foo', bar: 'bar' };
+
+    assert.doesNotThrow(function() {
+      assert.that(actual, is.equalTo(expected));
+    });
+  },
+  'equalTo fails when comparing two objects with different values.': function() {
+    var actual = { foo: 'foo', bar: 'bar' },
+        expected = { foo: 'foo', bar: 'baz' };
+
+    assert.throws(function() {
+      assert.that(actual, is.equalTo(expected));
+    }, assert.AssertionError);
+  },
 };
