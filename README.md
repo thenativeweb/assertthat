@@ -61,6 +61,14 @@ Asserts that *actual* is true.
 assert.that(actual, is.true);
 ```
 
+### throws.a / throws.an
+
+Asserts that *f* throws an error of type *err*.
+
+```javascript
+assert.that(f, throws.an(err));
+```
+
 ## Unit tests
 
 node-assertthat is covered by unit tests that are based on Expresso. To run these tests, simply run
