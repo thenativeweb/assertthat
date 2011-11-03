@@ -13,8 +13,12 @@ Using node-assertthat is easy. All you need to do is to require it, and then use
 ```javascript
 var assert = require('node-assertthat');
 
-var actual = 
-    expected = ...;
+var add = function(first, second) {
+  return first + second;
+};
+
+var actual = add(23, 42),
+    expected = 65;
 
 assert.that(actual, is.equalTo(expected));
 ```
