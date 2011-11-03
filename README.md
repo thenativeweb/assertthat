@@ -11,10 +11,15 @@ node-assertthat provides a fluent TDD style for Node.js: assert.that(actual, is.
 Using node-assertthat is easy. All you need to do is to require it, and then use it:
 
 ```javascript
-require('node-assertthat');
+var assert = require('node-assertthat');
+
+var actual = 
+    expected = ...;
+
+assert.that(actual, is.equalTo(expected));
 ```
 
-Please note that ...
+Please note that node-assertthat extends Node's assert module, i.e. all the code you have been used to will work with node-assertthat as well.
 
 That's it :-)!
 
