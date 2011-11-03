@@ -6,7 +6,7 @@ module.exports = {
         expected = 23;
 
     assert.doesNotThrow(function() {
-      assert.that(actual, is.equalTo(expected));
+      assert.that(actual, is.sameAs(expected));
     });
   },
   'equalTo fails when comparing two numbers with different values.': function() {
@@ -14,7 +14,7 @@ module.exports = {
         expected = 42;
 
     assert.throws(function() {
-      assert.that(actual, is.equalTo(expected));
+      assert.that(actual, is.sameAs(expected));
     }, assert.AssertionError);
   },
   'equalTo succeeds when comparing two strings with the same values.': function() {
@@ -22,7 +22,7 @@ module.exports = {
         expected = 'foo';
 
     assert.doesNotThrow(function() {
-      assert.that(actual, is.equalTo(expected));
+      assert.that(actual, is.sameAs(expected));
     });
   },
   'equalTo fails when comparing two strings with different values.': function() {
@@ -30,30 +30,30 @@ module.exports = {
         expected = 'bar';
 
     assert.throws(function() {
-      assert.that(actual, is.equalTo(expected));
+      assert.that(actual, is.sameAs(expected));
     }, assert.AssertionError);
   },
-  'equalTo succeeds when comparing two objects with the same values, but differend identities.': function() {
+  'equalTo fails when comparing two objects with the same values, but different identities.': function() {
     var actual = { foo: 'foo', bar: 'bar' },
         expected = { foo: 'foo', bar: 'bar' };
 
-    assert.doesNotThrow(function() {
-      assert.that(actual, is.equalTo(expected));
-    });
+    assert.throws(function() {
+      assert.that(actual, is.sameAs(expected));
+    }, assert.AssertionError);
   },
   'equalTo fails when comparing two objects with different values.': function() {
     var actual = { foo: 'foo', bar: 'bar' },
         expected = { foo: 'foo', bar: 'baz' };
 
     assert.throws(function() {
-      assert.that(actual, is.equalTo(expected));
+      assert.that(actual, is.sameAs(expected));
     }, assert.AssertionError);
   },
   'equalTo succeeds when comparing two objects with the same identity.': function() {
     var actual = expected = { foo: 'foo', bar: 'bar' };
 
     assert.doesNotThrow(function() {
-      assert.that(actual, is.equalTo(expected));
+      assert.that(actual, is.sameAs(expected));
     });
   }
 };
