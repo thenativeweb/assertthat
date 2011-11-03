@@ -1,0 +1,36 @@
+var assert = require('../lib/assert.js');
+
+module.exports = {
+  'equalTo succeeds when comparing two numbers with the same values.': function() {
+    var actual = 23,
+        expected = 23;
+
+    assert.doesNotThrow(function() {
+      assert.that(actual, is.equalTo(expected));
+    });
+  },
+  'equalTo fails when comparing two numbers with different values.': function() {
+    var actual = 23,
+        expected = 42;
+
+    assert.throws(function() {
+      assert.that(actual, is.equalTo(expected));
+    }, assert.AssertionError);
+  },
+  'equalTo succeeds when comparing two strings with the same values.': function() {
+    var actual = 'foo',
+        expected = 'foo';
+
+    assert.doesNotThrow(function() {
+      assert.that(actual, is.equalTo(expected));
+    });
+  },
+  'equalTo fails when comparing two strings with different values.': function() {
+    var actual = 'foo',
+        expected = 'bar';
+
+    assert.throws(function() {
+      assert.that(actual, is.equalTo(expected));
+    }, assert.AssertionError);
+  },
+};
