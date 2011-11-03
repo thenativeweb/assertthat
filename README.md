@@ -27,6 +27,24 @@ Please note that node-assertthat extends Node's assert module, i.e. all the code
 
 That's it :-)!
 
+## Available constraints
+
+### equalTo
+
+Asserts that *actual* and *expected* have the same values.
+
+```javascript
+assert.that(actual, is.equalTo(expected));
+```
+
+### sameAs
+
+Asserts that *actual* and *expected* have the same reference, i.e. the same identity.
+
+```javascript
+assert.that(actual, is.sameAs(expected));
+```
+
 ## Copyright
 
 (c) Copyright 2011 [Golo Roden](http://www.goloroden.de), contact using webmaster@goloroden.de
