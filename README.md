@@ -45,6 +45,14 @@ Asserts that *actual* and *expected* share the same reference, i.e. both refer t
 assert.that(actual, is.sameAs(expected));
 ```
 
+## Unit tests
+
+node-assertthat is covered by unit tests that are based on Expresso. To run these tests, simply run
+
+    $ expresso
+
+in the root folder of the module.
+
 ## Copyright
 
 (c) Copyright 2011 [Golo Roden](http://www.goloroden.de), contact using webmaster@goloroden.de
