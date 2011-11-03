@@ -31,7 +31,7 @@ That's it :-)!
 
 ### equalTo
 
-Asserts that *actual* and *expected* have the same values.
+Asserts that *actual* and *expected* share the same value.
 
 ```javascript
 assert.that(actual, is.equalTo(expected));
@@ -39,7 +39,7 @@ assert.that(actual, is.equalTo(expected));
 
 ### sameAs
 
-Asserts that *actual* and *expected* have the same reference, i.e. the same identity.
+Asserts that *actual* and *expected* share the same reference, i.e. both refer to the same object.
 
 ```javascript
 assert.that(actual, is.sameAs(expected));
