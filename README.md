@@ -29,7 +29,7 @@ That's it :-)!
 
 ## Available constraints
 
-### equalTo
+### is.equalTo
 
 Asserts that *actual* and *expected* share the same value.
 
@@ -37,12 +37,28 @@ Asserts that *actual* and *expected* share the same value.
 assert.that(actual, is.equalTo(expected));
 ```
 
-### sameAs
+### is.false
+
+Asserts that *actual* is false.
+
+```javascript
+assert.that(actual, is.false);
+```
+
+### is.sameAs
 
 Asserts that *actual* and *expected* share the same reference, i.e. both refer to the same object.
 
 ```javascript
 assert.that(actual, is.sameAs(expected));
+```
+
+### is.true
+
+Asserts that *actual* is true.
+
+```javascript
+assert.that(actual, is.true);
 ```
 
 ## Unit tests
