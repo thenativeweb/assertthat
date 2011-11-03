@@ -1,0 +1,11 @@
+{
+  "name": "node-assertthat",
+  "version": "0.0.1",
+  "main": "./lib/assert.js",
+  "description": "node-assertthat provides a fluent TDD style for Node.js: assert.that(actual, is.equalto(expected));",
+  "author": "Golo Roden <webmaster@goloroden.de> (http://www.goloroden.de)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goloroden/node-assertthat"
+  }
+}
