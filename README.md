@@ -85,4 +85,4 @@ in the root folder of the module.
 
 ## Copyright
 
-(c) Copyright 2011 [Golo Roden](http://www.goloroden.de), contact using webmaster@goloroden.de
+(c) Copyright 2011-2012 [Golo Roden](http://www.goloroden.de), contact using webmaster@goloroden.de
