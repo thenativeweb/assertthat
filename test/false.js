@@ -14,5 +14,19 @@ module.exports = {
     assert.throws(function() {
       assert.that(actual, is.false);
     }, assert.AssertionError);
+  },
+  'not.false succeeds when comparing with true.': function() {
+    var actual = true;
+
+    assert.doesNotThrow(function() {
+      assert.that(actual, is.not.false);
+    });
+  },
+  'not.false fails when comparing with false.': function() {
+    var actual = false;
+
+    assert.throws(function() {
+      assert.that(actual, is.not.false);
+    }, assert.AssertionError);
   }
 };

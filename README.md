@@ -29,20 +29,15 @@ That's it :-)!
 
 ## Available constraints
 
+Please note that all *is* functions can be negated using the *not* keyword.
+
 ### is.equalTo
 
 Asserts that *actual* and *expected* share the same value.
 
 ```javascript
 assert.that(actual, is.equalTo(expected));
-```
-
-### is.false
-
-Asserts that *actual* is false.
-
-```javascript
-assert.that(actual, is.false);
+assert.that(actual, is.not.equalTo(expected));
 ```
 
 ### is.sameAs
@@ -51,6 +46,7 @@ Asserts that *actual* and *expected* share the same reference, i.e. both refer t
 
 ```javascript
 assert.that(actual, is.sameAs(expected));
+assert.that(actual, is.not.sameAs(expected));
 ```
 
 ### is.true
@@ -59,6 +55,16 @@ Asserts that *actual* is true.
 
 ```javascript
 assert.that(actual, is.true);
+assert.that(actual, is.not.true);
+```
+
+### is.false
+
+Asserts that *actual* is false.
+
+```javascript
+assert.that(actual, is.false);
+assert.that(actual, is.notfalse);
 ```
 
 ### throws.a / throws.an
