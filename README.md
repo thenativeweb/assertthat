@@ -64,7 +64,7 @@ Asserts that *actual* is false.
 
 ```javascript
 assert.that(actual, is.false);
-assert.that(actual, is.notfalse);
+assert.that(actual, is.not.false);
 ```
 
 ### throws.a / throws.an
