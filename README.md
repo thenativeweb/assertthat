@@ -75,6 +75,14 @@ Asserts that *f* throws an error of type *err*.
 assert.that(f, throws.an(err));
 ```
 
+### doesNotThrow.a / doesNotThrow.an
+
+Asserts that *f* does not throw an error of type *err*.
+
+```javascript
+assert.that(f, doesNotThrow.an(err));
+```
+
 ## Unit tests
 
 node-assertthat is covered by unit tests that are based on Expresso. To run these tests, simply run
