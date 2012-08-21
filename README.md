@@ -1,6 +1,6 @@
 # node-assertthat
 
-node-assertthat provides a fluent TDD style for Node.js: assert.that(actual, is.equalto(expected));
+node-assertthat provides a fluent TDD style for Node.js: `assert.that(actual, is.equalto(expected));`
 
 ## Installation
 
@@ -33,11 +33,11 @@ That's it :-)!
 
 ## Available constraints
 
-Please note that all *is* functions can be negated using the *not* keyword.
+Please note that all `is` functions can be negated using the `not` keyword.
 
 ### is.true
 
-Asserts that *actual* is true.
+Asserts that `actual` is true.
 
 ```javascript
 assert.that(actual, is.true);
@@ -46,7 +46,7 @@ assert.that(actual, is.not.true);
 
 ### is.false
 
-Asserts that *actual* is false.
+Asserts that `actual` is false.
 
 ```javascript
 assert.that(actual, is.false);
