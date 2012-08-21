@@ -49,8 +49,8 @@ assert.that(actual, is.not.equalTo(expected));
 Asserts that `actual` is false.
 
 ```javascript
-assert.that(actual, is.false);
-assert.that(actual, is.not.false);
+assert.that(actual, is.false());
+assert.that(actual, is.not.false());
 ```
 
 ### is.greaterThan
@@ -71,6 +71,15 @@ assert.that(actual, is.lessThan(expected));
 assert.that(actual, is.not.lessThan(expected));
 ```
 
+### is.null
+
+Asserts that `actual` is null.
+
+```javascript
+assert.that(actual, is.null());
+assert.that(actual, is.not.null());
+```
+
 ### is.sameAs
 
 Asserts that `actual` is identical to `expected`.
@@ -85,8 +94,8 @@ assert.that(actual, is.not.sameAs(expected));
 Asserts that `actual` is true.
 
 ```javascript
-assert.that(actual, is.true);
-assert.that(actual, is.not.true);
+assert.that(actual, is.true());
+assert.that(actual, is.not.true());
 ```
 
 ## Running the tests
