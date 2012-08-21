@@ -107,6 +107,15 @@ assert.that(actual, is.sameAs(expected));
 assert.that(actual, is.not.sameAs(expected));
 ```
 
+### is.throwing
+
+Asserts that `f` throws an exception.
+
+```javascript
+assert.that(f, is.throwing());
+assert.that(f, is.not.throwing());
+```
+
 ### is.true
 
 Asserts that `actual` is true.
