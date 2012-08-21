@@ -1,31 +1,27 @@
 var assert = require('../lib/assert.js');
 
-suite('true', function () {
-  var actual = true;
-
-  test('is.true', function () {
+suite('is.true', function () {
+  test('true => ok', function () {
     assert.doesNotThrow(function() {
-      assert.that(actual, is.true);
+      assert.that(true, is.true);
     });
   });
-  test('is.not.true', function () {
+  test('false => exception', function () {
     assert.throws(function() {
-      assert.that(actual, is.not.true);
+      assert.that(false, is.true);
     });
   });
 });
 
-suite('false', function () {
-  var actual = false;
-
-  test('is.true', function () {
+suite('is.not.true', function () {
+  test('true => exception', function () {
     assert.throws(function() {
-      assert.that(actual, is.true);
+      assert.that(true, is.not.true);
     });
   });
-  test('is.not.true', function () {
+  test('false => ok', function () {
     assert.doesNotThrow(function() {
-      assert.that(actual, is.not.true);
+      assert.that(false, is.not.true);
     });
   });
 });
