@@ -33,7 +33,7 @@ That's it :-)!
 
 ## Available constraints
 
-Please note that all `is` functions can be negated using the `not` keyword.
+Please note that any constraint can be negated using the `not` keyword.
 
 ### is.equalTo
 
