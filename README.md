@@ -53,6 +53,15 @@ assert.that(actual, is.false);
 assert.that(actual, is.not.false);
 ```
 
+### is.sameAs
+
+Asserts that `actual` is identical to `expected`.
+
+```javascript
+assert.that(actual, is.sameAs(expected));
+assert.that(actual, is.not.sameAs(expected));
+```
+
 ### is.true
 
 Asserts that `actual` is true.
