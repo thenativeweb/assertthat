@@ -35,13 +35,13 @@ That's it :-)!
 
 Please note that all `is` functions can be negated using the `not` keyword.
 
-### is.true
+### is.equalTo
 
-Asserts that `actual` is true.
+Asserts that `actual` is equal to `expected`.
 
 ```javascript
-assert.that(actual, is.true);
-assert.that(actual, is.not.true);
+assert.that(actual, is.equalTo(expected));
+assert.that(actual, is.not.equalTo(expected));
 ```
 
 ### is.false
@@ -51,6 +51,15 @@ Asserts that `actual` is false.
 ```javascript
 assert.that(actual, is.false);
 assert.that(actual, is.not.false);
+```
+
+### is.true
+
+Asserts that `actual` is true.
+
+```javascript
+assert.that(actual, is.true);
+assert.that(actual, is.not.true);
 ```
 
 ## Running the tests
