@@ -1,32 +1,31 @@
 var assert = require('../lib/assert.js');
 
-module.exports = {
-  'true succeeds when comparing with true.': function() {
-    var actual = true;
+suite('true', function () {
+  var actual = true;
 
+  test('is.true', function () {
     assert.doesNotThrow(function() {
       assert.that(actual, is.true);
     });
-  },
-  'true fails when comparing with false.': function() {
-    var actual = false;
+  });
+  test('is.not.true', function () {
+    assert.throws(function() {
+      assert.that(actual, is.not.true);
+    });
+  });
+});
 
+suite('false', function () {
+  var actual = false;
+
+  test('is.true', function () {
     assert.throws(function() {
       assert.that(actual, is.true);
-    }, assert.AssertionError);
-  },
-  'not.true succeeds when comparing with false.': function() {
-    var actual = false;
-
+    });
+  });
+  test('is.not.true', function () {
     assert.doesNotThrow(function() {
       assert.that(actual, is.not.true);
     });
-  },
-  'not.true fails when comparing with true.': function() {
-    var actual = true;
-
-    assert.throws(function() {
-      assert.that(actual, is.not.true);
-    }, assert.AssertionError);
-  }
-};
+  });
+});
