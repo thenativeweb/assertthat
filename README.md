@@ -35,6 +35,24 @@ That's it :-)!
 
 Please note that any constraint can be negated using the `not` keyword.
 
+### is.atLeast
+
+Asserts that `actual` is greater than or equal to `expected`.
+
+```javascript
+assert.that(actual, is.atLeast(expected));
+assert.that(actual, is.not.atLeast(expected));
+```
+
+### is.atMost
+
+Asserts that `actual` is less than or equal to `expected`.
+
+```javascript
+assert.that(actual, is.atMost(expected));
+assert.that(actual, is.not.atMost(expected));
+```
+
 ### is.equalTo
 
 Asserts that `actual` is equal to `expected`.
