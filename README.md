@@ -8,11 +8,15 @@ node-assertthat provides a fluent TDD style for Node.js: assert.that(actual, is.
 
 ## Quick Start
 
-Using node-assertthat is easy. All you need to do is to require it, and then use it:
+Using node-assertthat is easy. All you need to do is to add a reference to it within your Node.js application:
 
 ```javascript
 var assert = require('node-assertthat');
+```
 
+Now you are able to use the various constraints:
+
+```javascript
 var add = function(first, second) {
   return first + second;
 };
@@ -30,24 +34,6 @@ That's it :-)!
 ## Available constraints
 
 Please note that all *is* functions can be negated using the *not* keyword.
-
-### is.equalTo
-
-Asserts that *actual* and *expected* share the same value.
-
-```javascript
-assert.that(actual, is.equalTo(expected));
-assert.that(actual, is.not.equalTo(expected));
-```
-
-### is.sameAs
-
-Asserts that *actual* and *expected* share the same reference, i.e. both refer to the same object.
-
-```javascript
-assert.that(actual, is.sameAs(expected));
-assert.that(actual, is.not.sameAs(expected));
-```
 
 ### is.true
 
@@ -67,29 +53,11 @@ assert.that(actual, is.false);
 assert.that(actual, is.not.false);
 ```
 
-### throws.a / throws.an
+## Running the tests
 
-Asserts that *f* throws an error of type *err*.
+Go to the folder where you have cloned node-assertthat to and run [mocha](https://github.com/visionmedia/mocha):
 
-```javascript
-assert.that(f, throws.an(err));
-```
-
-### doesNotThrow.a / doesNotThrow.an
-
-Asserts that *f* does not throw an error of type *err*.
-
-```javascript
-assert.that(f, doesNotThrow.an(err));
-```
-
-## Unit tests
-
-node-assertthat is covered by unit tests that are based on Expresso. To run these tests, simply run
-
-    $ expresso
-
-in the root folder of the module.
+    $ mocha
 
 ## Copyright
 
