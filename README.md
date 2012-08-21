@@ -1,6 +1,6 @@
 # node-assertthat
 
-node-assertthat provides a fluent TDD style for Node.js: `assert.that(actual, is.equalto(expected));`
+node-assertthat provides a fluent TDD style for Node.js: `assert.that(actual, is.equalTo(expected));
 
 ## Installation
 
