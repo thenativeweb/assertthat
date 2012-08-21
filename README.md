@@ -62,6 +62,15 @@ assert.that(actual, is.greaterThan(expected));
 assert.that(actual, is.not.greaterThan(expected));
 ```
 
+### is.lessThan
+
+Asserts that `actual` is less than `expected`.
+
+```javascript
+assert.that(actual, is.lessThan(expected));
+assert.that(actual, is.not.lessThan(expected));
+```
+
 ### is.sameAs
 
 Asserts that `actual` is identical to `expected`.
