@@ -98,6 +98,15 @@ assert.that(actual, is.true());
 assert.that(actual, is.not.true());
 ```
 
+### is.undefined
+
+Asserts that `actual` is undefined.
+
+```javascript
+assert.that(actual, is.undefined());
+assert.that(actual, is.not.undefined());
+```
+
 ## Running the tests
 
 Go to the folder where you have cloned node-assertthat to and run [mocha](https://github.com/visionmedia/mocha):
