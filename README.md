@@ -89,6 +89,15 @@ assert.that(actual, is.lessThan(expected));
 assert.that(actual, is.not.lessThan(expected));
 ```
 
+### is.NaN
+
+Asserts that `actual` is NaN.
+
+```javascript
+assert.that(actual, is.NaN());
+assert.that(actual, is.not.NaN());
+```
+
 ### is.null
 
 Asserts that `actual` is null.
