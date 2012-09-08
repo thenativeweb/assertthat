@@ -53,6 +53,15 @@ assert.that(actual, is.atMost(expected));
 assert.that(actual, is.not.atMost(expected));
 ```
 
+### is.between
+
+Asserts that `actual` is between `expectedLow` and `expectedHigh`.
+
+```javascript
+assert.that(actual, is.between(expectedLow, expectedHigh));
+assert.that(actual, is.not.between(expectedLow, expectedHigh));
+```
+
 ### is.equalTo
 
 Asserts that `actual` is equal to `expected`.
