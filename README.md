@@ -2,6 +2,8 @@
 
 node-assertthat provides a fluent TDD style for Node.js: `assert.that(actual, is.equalTo(expected));`
 
+If you have any questions or feedback, feel free to contact me using [@goloroden](https://twitter.com/goloroden) on Twitter.
+
 ## Installation
 
     $ npm install node-assertthat
