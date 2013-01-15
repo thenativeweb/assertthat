@@ -156,9 +156,9 @@ assert.that(actual, is.not.undefined());
 
 ## Running the tests
 
-Go to the folder where you have cloned node-assertthat to and run [mocha](https://github.com/visionmedia/mocha):
+node-assertthat has been developed using TDD. To run the tests, go to the folder where you have installed node-assertthat to and run `npm test`. You need to have [mocha](https://github.com/visionmedia/mocha) installed.
 
-    $ mocha
+    $ npm test
 
 ## License
 
