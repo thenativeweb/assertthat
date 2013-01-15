@@ -118,6 +118,15 @@ assert.that(actual, is.null());
 assert.that(actual, is.not.null());
 ```
 
+### is.ofType
+
+Asserts that `actual` is of type `expected`.
+
+```javascript
+assert.that(actual, is.ofType(expected));
+assert.that(actual, is.not.ofType(expected));
+```
+
 ### is.sameAs
 
 Asserts that `actual` is identical to `expected`.
