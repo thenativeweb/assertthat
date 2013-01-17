@@ -82,6 +82,15 @@ assert.that(actual, is.false());
 assert.that(actual, is.not.false());
 ```
 
+### is.falsy
+
+Asserts that `actual` is falsy.
+
+```javascript
+assert.that(actual, is.falsy());
+assert.that(actual, is.not.falsy());
+```
+
 ### is.greaterThan
 
 Asserts that `actual` is greater than `expected`.
