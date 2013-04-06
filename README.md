@@ -154,6 +154,16 @@ assert.that(f, is.throwing());
 assert.that(f, is.not.throwing());
 ```
 
+### is.throwingMsg
+
+Asserts that `f` throws an exception with a Message.
+
+```javascript
+assert.that(f, is.throwingMsg());
+assert.that(f, is.not.throwingMsg());
+```
+
+
 ### is.true
 
 Asserts that `actual` is true.
