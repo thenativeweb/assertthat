@@ -1,0 +1,6 @@
+{
+  "JAVASCRIPT": {
+    "compare": [ "./lib/index.js" ],
+    "DIST_DIR": "./bin"
+  }
+}
