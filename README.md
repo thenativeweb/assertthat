@@ -31,8 +31,6 @@ assert.that(actual, is.equalTo(expected));
 
 Please note that node-assertthat extends Node's assert module, i.e. all the code you have been used to will work with node-assertthat as well.
 
-That's it :-)!
-
 ## Available constraints
 
 Please note that any constraint can be negated using the `not` keyword.
