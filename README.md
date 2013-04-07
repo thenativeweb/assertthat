@@ -152,6 +152,13 @@ assert.that(f, is.throwing());
 assert.that(f, is.not.throwing());
 ```
 
+Alternatively, asserts that `f` throws an exception with the `expected` message.
+
+```javascript
+assert.that(f, is.throwing(expected));
+assert.that(f, is.not.throwing(expected));
+```
+
 ### is.true
 
 Asserts that `actual` is true.
