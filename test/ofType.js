@@ -27,3 +27,28 @@ suite('is.not.ofType', function () {
     });
   });
 });
+
+suite('is.ofType - array test', function () {
+  test('[] is.ofType("object")', function () {
+    assert.doesNotThrow(function () {
+      assert.that([], is.ofType('object'));
+    });
+  });
+  test('[] is.ofType("array")', function () {
+    assert.doesNotThrow(function () {
+      assert.that([], is.ofType('array'));
+    });
+  });
+  test('no array => is.not.ofType("array")', function () {
+    assert.doesNotThrow(function () {
+      assert.that('foo', is.not.ofType('array'));
+    });
+  });
+  test('no array => exception', function () {
+    assert.throws(function () {
+      assert.that('foo', is.ofType('array'));
+    });
+  });
+});
+
+
