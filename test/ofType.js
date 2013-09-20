@@ -13,6 +13,16 @@ suite('is.ofType', function () {
       assert.that('foo', is.ofType('number'));
     });
   });
+  test('array => ok', function () {
+    assert.doesNotThrow(function () {
+      assert.that([], is.ofType('array'));
+    });
+  });
+  test('no array => exception', function () {
+    assert.throws(function () {
+      assert.that('foo', is.ofType('array'));
+    });
+  });
 });
 
 suite('is.not.ofType', function () {
@@ -26,29 +36,14 @@ suite('is.not.ofType', function () {
       assert.that('foo', is.not.ofType('number'));
     });
   });
-});
-
-suite('is.ofType - array test', function () {
-  test('[] is.ofType("object")', function () {
-    assert.doesNotThrow(function () {
-      assert.that([], is.ofType('object'));
+  test('array => exception', function () {
+    assert.throws(function () {
+      assert.that([], is.not.ofType('array'));
     });
   });
-  test('[] is.ofType("array")', function () {
-    assert.doesNotThrow(function () {
-      assert.that([], is.ofType('array'));
-    });
-  });
-  test('no array => is.not.ofType("array")', function () {
-    assert.doesNotThrow(function () {
-      assert.that('foo', is.not.ofType('array'));
-    });
-  });
-  test('no array => exception', function () {
+  test('no array => ok', function () {
     assert.throws(function () {
       assert.that('foo', is.ofType('array'));
     });
   });
 });
-
-

@@ -10,13 +10,13 @@ module.exports = function (grunt) {
     },
 
     mochaTest: {
-      files: ['test/**/*.js']
-    },
-
-    mochaTestConfig: {
-      options: {
-        reporter: 'spec',
-        ui: 'tdd'
+      test: {
+        options: {
+          bail: true,
+          reporter: 'spec',
+          ui: 'tdd'
+        },
+        src: ['test/**/*.js']
       }
     },
 
