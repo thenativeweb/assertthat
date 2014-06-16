@@ -15,7 +15,7 @@ suite('is.ofType', function () {
   });
   test('array => ok', function () {
     assert.doesNotThrow(function () {
-      assert.that([], is.ofType('array'));
+      assert.that([ ], is.ofType('array'));
     });
   });
   test('no array => exception', function () {
@@ -38,7 +38,7 @@ suite('is.not.ofType', function () {
   });
   test('array => exception', function () {
     assert.throws(function () {
-      assert.that([], is.not.ofType('array'));
+      assert.that([ ], is.not.ofType('array'));
     });
   });
   test('no array => ok', function () {

@@ -2,8 +2,8 @@
 
 var assert = require('../lib/assert.js');
 
-var o1 = {},
-    o2 = {};
+var o1 = { },
+    o2 = { };
 
 suite('is.sameAs', function () {
   test('identical => ok', function () {

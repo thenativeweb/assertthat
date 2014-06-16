@@ -1,29 +1,28 @@
 {
   "name": "node-assertthat",
-  "version": "0.0.21",
+  "version": "0.1.1",
   "description": "node-assertthat provides a fluent TDD style for Node.js: assert.that(actual, is.equalTo(expected));",
-  "author": "Golo Roden <webmaster@goloroden.de> (http://www.goloroden.de)",
-  "contributors": [ 
+  "contributors": [
+    {
+      "name": "Golo Roden",
+      "email": "golo.roden@thenativeweb.io"
+    },
     {
       "name": "Markus Grimm",
       "email": "mail@markusgrimm.de"
-    } 
+    }
   ],
-  "main": "./lib/assert.js",
+  "main": "lib/assert.js",
   "dependencies": {
-    "comparejs": "0.0.11"
+    "comparejs": "0.1.1"
   },
   "devDependencies": {
-    "grunt": "0.4.0",
-    "grunt-contrib-jshint": "0.1.1",
-    "grunt-contrib-watch": "0.2.0",
-    "grunt-mocha-test": "0.7.0"
-  },
-  "scripts": {
-    "test": "mocha"
+    "grunt": "0.4.5",
+    "tourism": "0.1.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/goloroden/node-assertthat"
-  }
+    "url": "git://github.com/thenativeweb/node-assertthat.git"
+  },
+  "license": "MIT"
 }
