@@ -44,6 +44,13 @@ suite('is.throwing with message', function () {
     done();
   });
 
+  test('falsy code with empty message => exception', function (done) {
+    assert.throws(function () {
+      assert.that(falsyCode, is.throwing(''));
+    });
+    done();
+  });
+
   test('truthy code => exception', function (done) {
     assert.throws(function () {
       assert.that(truthyCode, is.throwing('foo'));
@@ -59,6 +66,7 @@ suite('is.not.throwing', function () {
     });
     done();
   });
+
   test('truthy code => ok', function (done) {
     assert.doesNotThrow(function () {
       assert.that(truthyCode, is.not.throwing());
@@ -74,12 +82,21 @@ suite('is.not.throwing with message', function () {
     });
     done();
   });
+
   test('falsy code with other message => ok', function (done) {
     assert.doesNotThrow(function () {
       assert.that(falsyCode2, is.not.throwing('foo'));
     });
     done();
   });
+
+  test('falsy code with empty message => ok', function (done) {
+    assert.doesNotThrow(function () {
+      assert.that(falsyCode, is.not.throwing(''));
+    });
+    done();
+  });
+
   test('truthy code => ok', function (done) {
     assert.doesNotThrow(function () {
       assert.that(truthyCode, is.not.throwing('foo'));
