@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "grunt": "0.4.5",
-    "tourism": "0.1.0"
+    "tourism": "0.7.3"
   },
   "repository": {
     "type": "git",
