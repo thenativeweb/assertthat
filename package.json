@@ -1,6 +1,6 @@
 {
   "name": "node-assertthat",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "node-assertthat provides a fluent TDD style for Node.js: assert.that(actual, is.equalTo(expected));",
   "contributors": [
     {
