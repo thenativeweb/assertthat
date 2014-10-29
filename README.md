@@ -96,6 +96,15 @@ assert.that(actual, is.greaterThan(expected));
 assert.that(actual, is.not.greaterThan(expected));
 ```
 
+### is.instanceOf
+
+Asserts that `actual` is an instance of `expected`.
+
+```javascript
+assert.that(actual, is.instanceOf(expected));
+assert.that(actual, is.not.instanceOf(expected));
+```
+
 ### is.lessThan
 
 Asserts that `actual` is less than `expected`.
