@@ -1,7 +1,7 @@
 {
   "name": "assertthat",
   "version": "0.3.0",
-  "description": "assertthat provides a fluent TDD style for Node.js: assert.that(actual, is.equalTo(expected));",
+  "description": "assertthat provides fluent TDD.",
   "contributors": [
     {
       "name": "Golo Roden",
@@ -17,6 +17,7 @@
     "comparejs": "0.1.2"
   },
   "devDependencies": {
+    "chai": "1.10.0",
     "grunt": "0.4.5",
     "tourism": "0.10.2"
   },

@@ -1,6 +1,6 @@
 # assertthat
 
-assertthat provides a fluent TDD style for Node.js: `assert.that(actual, is.equalTo(expected));`
+assertthat provides fluent TDD.
 
 ## Installation
 
@@ -8,13 +8,13 @@ assertthat provides a fluent TDD style for Node.js: `assert.that(actual, is.equa
 
 ## Quick Start
 
-Using assertthat is easy. All you need to do is to add a reference to it within your Node.js application:
+First you need to add a reference to assertthat to your application.
 
 ```javascript
 var assert = require('assertthat');
 ```
 
-Now you are able to use the various constraints:
+Now you are able to use the various constraints.
 
 ```javascript
 var add = function(first, second) {
@@ -24,10 +24,8 @@ var add = function(first, second) {
 var actual = add(23, 42),
     expected = 65;
 
-assert.that(actual, is.equalTo(expected));
+assert.that(actual).is.equalTo(expected);
 ```
-
-Please note that assertthat extends Node's assert module, i.e. all the code you have been used to will work with assertthat as well.
 
 ## Available constraints
 
@@ -38,8 +36,8 @@ Please note that any constraint can be negated using the `not` keyword.
 Asserts that `actual` is greater than or equal to `expected`.
 
 ```javascript
-assert.that(actual, is.atLeast(expected));
-assert.that(actual, is.not.atLeast(expected));
+assert.that(actual).is.atLeast(expected);
+assert.that(actual).is.not.atLeast(expected);
 ```
 
 ### is.atMost
@@ -47,8 +45,8 @@ assert.that(actual, is.not.atLeast(expected));
 Asserts that `actual` is less than or equal to `expected`.
 
 ```javascript
-assert.that(actual, is.atMost(expected));
-assert.that(actual, is.not.atMost(expected));
+assert.that(actual).is.atMost(expected);
+assert.that(actual).is.not.atMost(expected);
 ```
 
 ### is.between
@@ -56,8 +54,8 @@ assert.that(actual, is.not.atMost(expected));
 Asserts that `actual` is between `expectedLow` and `expectedHigh`.
 
 ```javascript
-assert.that(actual, is.between(expectedLow, expectedHigh));
-assert.that(actual, is.not.between(expectedLow, expectedHigh));
+assert.that(actual).is.between(expectedLow, expectedHigh);
+assert.that(actual).is.not.between(expectedLow, expectedHigh);
 ```
 
 ### is.equalTo
@@ -65,8 +63,8 @@ assert.that(actual, is.not.between(expectedLow, expectedHigh));
 Asserts that `actual` is equal to `expected`.
 
 ```javascript
-assert.that(actual, is.equalTo(expected));
-assert.that(actual, is.not.equalTo(expected));
+assert.that(actual).is.equalTo(expected);
+assert.that(actual).is.not.equalTo(expected);
 ```
 
 ### is.false
@@ -74,8 +72,8 @@ assert.that(actual, is.not.equalTo(expected));
 Asserts that `actual` is false.
 
 ```javascript
-assert.that(actual, is.false());
-assert.that(actual, is.not.false());
+assert.that(actual).is.false();
+assert.that(actual).is.not.false();
 ```
 
 ### is.falsy
@@ -83,8 +81,8 @@ assert.that(actual, is.not.false());
 Asserts that `actual` is falsy.
 
 ```javascript
-assert.that(actual, is.falsy());
-assert.that(actual, is.not.falsy());
+assert.that(actual).is.falsy();
+assert.that(actual).is.not.falsy();
 ```
 
 ### is.greaterThan
@@ -92,8 +90,8 @@ assert.that(actual, is.not.falsy());
 Asserts that `actual` is greater than `expected`.
 
 ```javascript
-assert.that(actual, is.greaterThan(expected));
-assert.that(actual, is.not.greaterThan(expected));
+assert.that(actual).is.greaterThan(expected);
+assert.that(actual).is.not.greaterThan(expected);
 ```
 
 ### is.instanceOf
@@ -101,8 +99,8 @@ assert.that(actual, is.not.greaterThan(expected));
 Asserts that `actual` is an instance of `expected`.
 
 ```javascript
-assert.that(actual, is.instanceOf(expected));
-assert.that(actual, is.not.instanceOf(expected));
+assert.that(actual).is.instanceOf(expected);
+assert.that(actual).is.not.instanceOf(expected);
 ```
 
 ### is.lessThan
@@ -110,8 +108,8 @@ assert.that(actual, is.not.instanceOf(expected));
 Asserts that `actual` is less than `expected`.
 
 ```javascript
-assert.that(actual, is.lessThan(expected));
-assert.that(actual, is.not.lessThan(expected));
+assert.that(actual).is.lessThan(expected);
+assert.that(actual).is.not.lessThan(expected);
 ```
 
 ### is.NaN
@@ -119,8 +117,8 @@ assert.that(actual, is.not.lessThan(expected));
 Asserts that `actual` is NaN.
 
 ```javascript
-assert.that(actual, is.NaN());
-assert.that(actual, is.not.NaN());
+assert.that(actual).is.NaN();
+assert.that(actual).is.not.NaN();
 ```
 
 ### is.null
@@ -128,8 +126,8 @@ assert.that(actual, is.not.NaN());
 Asserts that `actual` is null.
 
 ```javascript
-assert.that(actual, is.null());
-assert.that(actual, is.not.null());
+assert.that(actual).is.null();
+assert.that(actual).is.not.null();
 ```
 
 ### is.ofType
@@ -137,8 +135,8 @@ assert.that(actual, is.not.null());
 Asserts that `actual` is of type `expected`.
 
 ```javascript
-assert.that(actual, is.ofType(expected));
-assert.that(actual, is.not.ofType(expected));
+assert.that(actual).is.ofType(expected);
+assert.that(actual).is.not.ofType(expected);
 ```
 
 ### is.sameAs
@@ -146,8 +144,8 @@ assert.that(actual, is.not.ofType(expected));
 Asserts that `actual` is identical to `expected`.
 
 ```javascript
-assert.that(actual, is.sameAs(expected));
-assert.that(actual, is.not.sameAs(expected));
+assert.that(actual).is.sameAs(expected);
+assert.that(actual).is.not.sameAs(expected);
 ```
 
 ### is.throwing
@@ -155,15 +153,15 @@ assert.that(actual, is.not.sameAs(expected));
 Asserts that `f` throws an exception.
 
 ```javascript
-assert.that(f, is.throwing());
-assert.that(f, is.not.throwing());
+assert.that(f).is.throwing();
+assert.that(f).is.not.throwing();
 ```
 
 Alternatively, asserts that `f` throws an exception with the `expected` message.
 
 ```javascript
-assert.that(f, is.throwing(expected));
-assert.that(f, is.not.throwing(expected));
+assert.that(f).is.throwing(expected);
+assert.that(f).is.not.throwing(expected);
 ```
 
 ### is.true
@@ -171,8 +169,8 @@ assert.that(f, is.not.throwing(expected));
 Asserts that `actual` is true.
 
 ```javascript
-assert.that(actual, is.true());
-assert.that(actual, is.not.true());
+assert.that(actual).is.true();
+assert.that(actual).is.not.true();
 ```
 
 ### is.undefined
@@ -180,8 +178,8 @@ assert.that(actual, is.not.true());
 Asserts that `actual` is undefined.
 
 ```javascript
-assert.that(actual, is.undefined());
-assert.that(actual, is.not.undefined());
+assert.that(actual).is.undefined();
+assert.that(actual).is.not.undefined();
 ```
 
 ## Running the build
