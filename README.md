@@ -1,17 +1,17 @@
-# node-assertthat
+# assertthat
 
-node-assertthat provides a fluent TDD style for Node.js: `assert.that(actual, is.equalTo(expected));`
+assertthat provides a fluent TDD style for Node.js: `assert.that(actual, is.equalTo(expected));`
 
 ## Installation
 
-    $ npm install node-assertthat
+    $ npm install assertthat
 
 ## Quick Start
 
-Using node-assertthat is easy. All you need to do is to add a reference to it within your Node.js application:
+Using assertthat is easy. All you need to do is to add a reference to it within your Node.js application:
 
 ```javascript
-var assert = require('node-assertthat');
+var assert = require('assertthat');
 ```
 
 Now you are able to use the various constraints:
@@ -27,7 +27,7 @@ var actual = add(23, 42),
 assert.that(actual, is.equalTo(expected));
 ```
 
-Please note that node-assertthat extends Node's assert module, i.e. all the code you have been used to will work with node-assertthat as well.
+Please note that assertthat extends Node's assert module, i.e. all the code you have been used to will work with assertthat as well.
 
 ## Available constraints
 
@@ -186,14 +186,14 @@ assert.that(actual, is.not.undefined());
 
 ## Running the build
 
-This module can be built using [Grunt](http://gruntjs.com/). Besides running the tests, this also analyses the code. To run Grunt, go to the folder where you have installed node-assertthat and run `grunt`. You need to have [grunt-cli](https://github.com/gruntjs/grunt-cli) installed.
+This module can be built using [Grunt](http://gruntjs.com/). Besides running the tests, this also analyses the code. To run Grunt, go to the folder where you have installed assertthat and run `grunt`. You need to have [grunt-cli](https://github.com/gruntjs/grunt-cli) installed.
 
     $ grunt
 
 ## License
 
 The MIT License (MIT)
-Copyright (c) 2011-2014 the native web.
+Copyright (c) 2011-2015 the native web.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
