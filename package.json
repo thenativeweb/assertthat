@@ -1,7 +1,7 @@
 {
-  "name": "assert-that",
+  "name": "assertthat",
   "version": "0.2.3",
-  "description": "assert-that provides a fluent TDD style for Node.js: assert.that(actual, is.equalTo(expected));",
+  "description": "assertthat provides a fluent TDD style for Node.js: assert.that(actual, is.equalTo(expected));",
   "contributors": [
     {
       "name": "Golo Roden",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/thenativeweb/node-assertthat.git"
+    "url": "git://github.com/thenativeweb/assertthat.git"
   },
   "license": "MIT"
 }
