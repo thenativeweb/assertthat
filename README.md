@@ -31,7 +31,7 @@ assert.that(actual).is.equalTo(expected);
 
 Please note that any constraint can be negated using the `not` keyword.
 
-### is.atLeast
+### atLeast
 
 Asserts that `actual` is greater than or equal to `expected`.
 
@@ -40,7 +40,7 @@ assert.that(actual).is.atLeast(expected);
 assert.that(actual).is.not.atLeast(expected);
 ```
 
-### is.atMost
+### atMost
 
 Asserts that `actual` is less than or equal to `expected`.
 
@@ -49,7 +49,7 @@ assert.that(actual).is.atMost(expected);
 assert.that(actual).is.not.atMost(expected);
 ```
 
-### is.between
+### between
 
 Asserts that `actual` is between `expectedLow` and `expectedHigh`.
 
@@ -58,7 +58,7 @@ assert.that(actual).is.between(expectedLow, expectedHigh);
 assert.that(actual).is.not.between(expectedLow, expectedHigh);
 ```
 
-### is.equalTo
+### equalTo
 
 Asserts that `actual` is equal to `expected`.
 
@@ -67,7 +67,7 @@ assert.that(actual).is.equalTo(expected);
 assert.that(actual).is.not.equalTo(expected);
 ```
 
-### is.false
+### false
 
 Asserts that `actual` is false.
 
@@ -76,7 +76,7 @@ assert.that(actual).is.false();
 assert.that(actual).is.not.false();
 ```
 
-### is.falsy
+### falsy
 
 Asserts that `actual` is falsy.
 
@@ -85,7 +85,7 @@ assert.that(actual).is.falsy();
 assert.that(actual).is.not.falsy();
 ```
 
-### is.greaterThan
+### greaterThan
 
 Asserts that `actual` is greater than `expected`.
 
@@ -94,7 +94,7 @@ assert.that(actual).is.greaterThan(expected);
 assert.that(actual).is.not.greaterThan(expected);
 ```
 
-### is.instanceOf
+### instanceOf
 
 Asserts that `actual` is an instance of `expected`.
 
@@ -103,7 +103,7 @@ assert.that(actual).is.instanceOf(expected);
 assert.that(actual).is.not.instanceOf(expected);
 ```
 
-### is.lessThan
+### lessThan
 
 Asserts that `actual` is less than `expected`.
 
@@ -112,7 +112,7 @@ assert.that(actual).is.lessThan(expected);
 assert.that(actual).is.not.lessThan(expected);
 ```
 
-### is.NaN
+### NaN
 
 Asserts that `actual` is NaN.
 
@@ -121,7 +121,7 @@ assert.that(actual).is.NaN();
 assert.that(actual).is.not.NaN();
 ```
 
-### is.null
+### null
 
 Asserts that `actual` is null.
 
@@ -130,7 +130,7 @@ assert.that(actual).is.null();
 assert.that(actual).is.not.null();
 ```
 
-### is.ofType
+### ofType
 
 Asserts that `actual` is of type `expected`.
 
@@ -139,7 +139,7 @@ assert.that(actual).is.ofType(expected);
 assert.that(actual).is.not.ofType(expected);
 ```
 
-### is.sameAs
+### sameAs
 
 Asserts that `actual` is identical to `expected`.
 
@@ -148,7 +148,7 @@ assert.that(actual).is.sameAs(expected);
 assert.that(actual).is.not.sameAs(expected);
 ```
 
-### is.throwing
+### throwing
 
 Asserts that `f` throws an exception.
 
@@ -164,7 +164,7 @@ assert.that(f).is.throwing(expected);
 assert.that(f).is.not.throwing(expected);
 ```
 
-### is.true
+### true
 
 Asserts that `actual` is true.
 
@@ -173,7 +173,7 @@ assert.that(actual).is.true();
 assert.that(actual).is.not.true();
 ```
 
-### is.undefined
+### undefined
 
 Asserts that `actual` is undefined.
 
