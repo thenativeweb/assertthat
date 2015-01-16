@@ -16,14 +16,14 @@ suite('assert', function () {
       done();
     });
 
-    test('throws an exception if actual is missing.', function (done) {
+    test('throws an error if actual is missing.', function (done) {
       chai.throw(function () {
         assert.that();
       }, 'Actual is missing.');
       done();
     });
 
-    test('does not throw an exception if actual is undefined.', function (done) {
+    test('does not throw an error if actual is undefined.', function (done) {
       chai.doesNotThrow(function () {
         assert.that(undefined);
       });
