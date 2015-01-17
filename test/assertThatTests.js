@@ -107,7 +107,7 @@ suite('assert', function () {
           done();
         });
 
-        test.skip('throwing.', function (done) {
+        test('throwing.', function (done) {
           chai.typeOf(assert.that(23).is.throwing, 'function');
           done();
         });
