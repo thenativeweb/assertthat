@@ -27,6 +27,16 @@ suite('humanReadable', function () {
     done();
   });
 
+  test('returns the stringified value when given undefined.', function (done) {
+    chai.equal(humanReadable(undefined), 'undefined');
+    done();
+  });
+
+  test('returns the stringified value when given null.', function (done) {
+    chai.equal(humanReadable(null), 'null');
+    done();
+  });
+
   test('returns a quoted value when given a string.', function (done) {
     chai.equal(humanReadable('foo'), '\'foo\'');
     done();
