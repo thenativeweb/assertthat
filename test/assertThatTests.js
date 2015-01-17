@@ -42,17 +42,17 @@ suite('assert', function () {
       });
 
       suite('has constraints', function () {
-        test.skip('atLeast.', function (done) {
+        test('atLeast.', function (done) {
           chai.typeOf(assert.that(23).is.atLeast, 'function');
           done();
         });
 
-        test.skip('atMost.', function (done) {
+        test('atMost.', function (done) {
           chai.typeOf(assert.that(23).is.atMost, 'function');
           done();
         });
 
-        test.skip('between.', function (done) {
+        test('between.', function (done) {
           chai.typeOf(assert.that(23).is.between, 'function');
           done();
         });
@@ -62,7 +62,7 @@ suite('assert', function () {
           done();
         });
 
-        test.skip('false.', function (done) {
+        test('false.', function (done) {
           chai.typeOf(assert.that(23).is.false, 'function');
           done();
         });
@@ -92,7 +92,7 @@ suite('assert', function () {
           done();
         });
 
-        test.skip('null.', function (done) {
+        test('null.', function (done) {
           chai.typeOf(assert.that(23).is.null, 'function');
           done();
         });
@@ -102,7 +102,7 @@ suite('assert', function () {
           done();
         });
 
-        test.skip('sameAs.', function (done) {
+        test('sameAs.', function (done) {
           chai.typeOf(assert.that(23).is.sameAs, 'function');
           done();
         });
@@ -112,12 +112,12 @@ suite('assert', function () {
           done();
         });
 
-        test.skip('true.', function (done) {
+        test('true.', function (done) {
           chai.typeOf(assert.that(23).is.true, 'function');
           done();
         });
 
-        test.skip('undefined.', function (done) {
+        test('undefined.', function (done) {
           chai.typeOf(assert.that(23).is.undefined, 'function');
           done();
         });

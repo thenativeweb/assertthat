@@ -22,6 +22,11 @@ suite('humanReadable', function () {
     done();
   });
 
+  test('returns the stringified value when given a boolean.', function (done) {
+    chai.equal(humanReadable(false), 'false');
+    done();
+  });
+
   test('returns a quoted value when given a string.', function (done) {
     chai.equal(humanReadable('foo'), '\'foo\'');
     done();
