@@ -72,17 +72,17 @@ suite('assert', function () {
           done();
         });
 
-        test.skip('greaterThan.', function (done) {
+        test('greaterThan.', function (done) {
           chai.typeOf(assert.that(23).is.greaterThan, 'function');
           done();
         });
 
-        test.skip('instanceOf.', function (done) {
+        test('instanceOf.', function (done) {
           chai.typeOf(assert.that(23).is.instanceOf, 'function');
           done();
         });
 
-        test.skip('lessThan.', function (done) {
+        test('lessThan.', function (done) {
           chai.typeOf(assert.that(23).is.lessThan, 'function');
           done();
         });

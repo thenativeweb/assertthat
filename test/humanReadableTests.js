@@ -31,4 +31,25 @@ suite('humanReadable', function () {
     chai.equal(humanReadable('foo'), '\'foo\'');
     done();
   });
+
+  test('returns a formatted value when given an object.', function (done) {
+    chai.equal(humanReadable({
+      foo: 'bar'
+    }), '{\n  foo: \'bar\'\n}');
+    done();
+  });
+
+  test('returns a formatted value when given a function.', function (done) {
+    chai.equal(humanReadable(function Foo () {
+      this.bar = 23;
+    }), 'Foo');
+    done();
+  });
+
+  test('returns a formatted value when given an anonymous function.', function (done) {
+    chai.equal(humanReadable(function () {
+      this.bar = 23;
+    }), '(anonymous)');
+    done();
+  });
 });

@@ -14,7 +14,8 @@
   ],
   "main": "lib/assert.js",
   "dependencies": {
-    "comparejs": "0.1.2"
+    "comparejs": "0.1.2",
+    "stringify-object": "1.0.0"
   },
   "devDependencies": {
     "chai": "1.10.0",
