@@ -67,7 +67,7 @@ suite('assert', function () {
           done();
         });
 
-        test.skip('falsy.', function (done) {
+        test('falsy.', function (done) {
           chai.typeOf(assert.that(23).is.falsy, 'function');
           done();
         });
@@ -87,7 +87,7 @@ suite('assert', function () {
           done();
         });
 
-        test.skip('NaN.', function (done) {
+        test('NaN.', function (done) {
           chai.typeOf(assert.that(23).is.NaN, 'function');
           done();
         });
