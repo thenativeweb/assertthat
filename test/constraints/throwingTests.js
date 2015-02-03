@@ -56,6 +56,15 @@ suite('throwing', function () {
       }, 'Expected \'Foo failed.\' to equal \'Bar failed.\'.');
       done();
     });
+
+    test('throws an error if actual is throwing an exception as expected, but not with empty message as expected.', function (done) {
+      chai.throw(function () {
+        throwing(function () {
+          throw new Error('Foo failed.');
+        })('');
+      }, 'Expected \'Foo failed.\' to equal \'\'.');
+      done();
+    });
   });
 
   suite('negated', function () {
@@ -107,6 +116,15 @@ suite('throwing', function () {
           throwing.negated(function () {
             throw new Error('Foo failed.')
           })('Bar failed.');
+        });
+        done();
+      });
+
+      test('does not throw an error if actual is throwing errX and errY is not expected.', function (done) {
+        chai.doesNotThrow(function () {
+          throwing.negated(function () {
+            throw new Error('Foo failed.')
+          })('');
         });
         done();
       });
