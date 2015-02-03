@@ -20,7 +20,7 @@
   "devDependencies": {
     "chai": "1.10.0",
     "grunt": "0.4.5",
-    "tourism": "0.10.2"
+    "tourism": "0.11.2"
   },
   "repository": {
     "type": "git",

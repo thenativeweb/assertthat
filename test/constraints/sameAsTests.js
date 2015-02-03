@@ -37,4 +37,39 @@ suite('sameAs', function () {
       done();
     });
   });
+
+  suite('negated', function () {
+    test('is a function.', function (done) {
+      chai.typeOf(sameAs.negated, 'function');
+      done();
+    });
+
+    test('returns a constraint.', function (done) {
+      chai.typeOf(sameAs.negated(23), 'function');
+      done();
+    });
+
+    suite('constraint', function () {
+      test('throws an error if expected is missing.', function (done) {
+        chai.throw(function () {
+          sameAs.negated(23)();
+        }, 'Expected is missing.');
+        done();
+      });
+
+      test('does not throw an error if actual is not same as expected.', function (done) {
+        chai.doesNotThrow(function () {
+          sameAs.negated(23)(42);
+        });
+        done();
+      });
+
+      test('throws an error if actual is same as expected.', function (done) {
+        chai.throw(function () {
+          sameAs.negated(23)(23);
+        }, 'Expected 23 not to be same as 23.');
+        done();
+      });
+    });
+  });
 });

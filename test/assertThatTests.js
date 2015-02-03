@@ -130,82 +130,82 @@ suite('assert', function () {
         });
 
         suite('has constraints', function () {
-          test.skip('atLeast.', function (done) {
+          test('atLeast.', function (done) {
             chai.typeOf(assert.that(23).is.not.atLeast, 'function');
             done();
           });
 
-          test.skip('atMost.', function (done) {
+          test('atMost.', function (done) {
             chai.typeOf(assert.that(23).is.not.atMost, 'function');
             done();
           });
 
-          test.skip('between.', function (done) {
+          test('between.', function (done) {
             chai.typeOf(assert.that(23).is.not.between, 'function');
             done();
           });
 
-          test.skip('equalTo.', function (done) {
+          test('equalTo.', function (done) {
             chai.typeOf(assert.that(23).is.not.equalTo, 'function');
             done();
           });
 
-          test.skip('false.', function (done) {
+          test('false.', function (done) {
             chai.typeOf(assert.that(23).is.not.false, 'function');
             done();
           });
 
-          test.skip('falsy.', function (done) {
+          test('falsy.', function (done) {
             chai.typeOf(assert.that(23).is.not.falsy, 'function');
             done();
           });
 
-          test.skip('greaterThan.', function (done) {
+          test('greaterThan.', function (done) {
             chai.typeOf(assert.that(23).is.not.greaterThan, 'function');
             done();
           });
 
-          test.skip('instanceOf.', function (done) {
+          test('instanceOf.', function (done) {
             chai.typeOf(assert.that(23).is.not.instanceOf, 'function');
             done();
           });
 
-          test.skip('lessThan.', function (done) {
+          test('lessThan.', function (done) {
             chai.typeOf(assert.that(23).is.not.lessThan, 'function');
             done();
           });
 
-          test.skip('NaN.', function (done) {
+          test('NaN.', function (done) {
             chai.typeOf(assert.that(23).is.not.NaN, 'function');
             done();
           });
 
-          test.skip('null.', function (done) {
+          test('null.', function (done) {
             chai.typeOf(assert.that(23).is.not.null, 'function');
             done();
           });
 
-          test.skip('ofType.', function (done) {
+          test('ofType.', function (done) {
             chai.typeOf(assert.that(23).is.not.ofType, 'function');
             done();
           });
 
-          test.skip('sameAs.', function (done) {
+          test('sameAs.', function (done) {
             chai.typeOf(assert.that(23).is.not.sameAs, 'function');
             done();
           });
 
-          test.skip('throwing.', function (done) {
+          test('throwing.', function (done) {
             chai.typeOf(assert.that(23).is.not.throwing, 'function');
             done();
           });
 
-          test.skip('true.', function (done) {
+          test('true.', function (done) {
             chai.typeOf(assert.that(23).is.not.true, 'function');
             done();
           });
 
-          test.skip('undefined.', function (done) {
+          test('undefined.', function (done) {
             chai.typeOf(assert.that(23).is.not.undefined, 'function');
             done();
           });

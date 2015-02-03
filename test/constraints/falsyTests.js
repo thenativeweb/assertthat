@@ -30,4 +30,32 @@ suite('falsy', function () {
       done();
     });
   });
+
+  suite('negated', function () {
+    test('is a function.', function (done) {
+      chai.typeOf(falsy.negated, 'function');
+      done();
+    });
+
+    test('returns a constraint.', function (done) {
+      chai.typeOf(falsy.negated(0), 'function');
+      done();
+    });
+
+    suite('constraint', function () {
+      test('does not throw an error if actual is not falsy.', function (done) {
+        chai.doesNotThrow(function () {
+          falsy.negated(23)();
+        });
+        done();
+      });
+
+      test('throws an error if actual is falsy.', function (done) {
+        chai.throw(function () {
+          falsy.negated(0)();
+        }, 'Expected 0 not to be falsy.');
+        done();
+      });
+    });
+  });
 });
