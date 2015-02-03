@@ -12,7 +12,7 @@
       "email": "mail@markusgrimm.de"
     }
   ],
-  "main": "lib/assert.js",
+  "main": "lib/assertThat.js",
   "dependencies": {
     "comparejs": "0.1.2",
     "stringify-object": "1.0.0"
