@@ -8,8 +8,8 @@
       "email": "golo.roden@thenativeweb.io"
     },
     {
-      "name": "Markus Grimm",
-      "email": "mail@markusgrimm.de"
+      "name": "Matthias Wagler",
+      "email": "matthias.wagler@thenativeweb.io"
     }
   ],
   "main": "lib/assertThat.js",
@@ -18,9 +18,9 @@
     "stringify-object": "1.0.0"
   },
   "devDependencies": {
-    "chai": "1.10.0",
+    "chai": "2.0.0",
     "grunt": "0.4.5",
-    "tourism": "0.11.2"
+    "tourism": "0.13.2"
   },
   "repository": {
     "type": "git",
