@@ -157,7 +157,7 @@ assert.that(f).is.throwing();
 assert.that(f).is.not.throwing();
 ```
 
-Alternatively, asserts that `f` throws an exception with the `expected` message.
+Alternatively, asserts that `f` throws an exception with the `expected` message. For the `expected` message you can either specify a string or a regular expression.
 
 ```javascript
 assert.that(f).is.throwing(expected);

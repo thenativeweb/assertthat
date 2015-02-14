@@ -49,6 +49,11 @@ suite('humanReadable', function () {
     done();
   });
 
+  test('returns a formatted value when given a regular expression.', function (done) {
+    chai.equal(humanReadable(/foo/), '/foo/');
+    done();
+  });
+
   test('returns a formatted value when given a function.', function (done) {
     chai.equal(humanReadable(function Foo () {
       this.bar = 23;

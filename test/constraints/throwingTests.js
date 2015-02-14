@@ -48,12 +48,30 @@ suite('throwing', function () {
       done();
     });
 
+    test('does not throw an error if actual is throwing as expected with message (regex).', function (done) {
+      chai.doesNotThrow(function () {
+        throwing(function () {
+          throw new Error('Foo failed.');
+        })(/Foo/);
+      });
+      done();
+    });
+
     test('throws an error if actual is throwing an exception as expected, but with wrong message.', function (done) {
       chai.throw(function () {
         throwing(function () {
           throw new Error('Foo failed.');
         })('Bar failed.');
       }, 'Expected \'Foo failed.\' to equal \'Bar failed.\'.');
+      done();
+    });
+
+    test('throws an error if actual is throwing an exception as expected, but with wrong message (regex).', function (done) {
+      chai.throw(function () {
+        throwing(function () {
+          throw new Error('Foo failed.');
+        })(/Bar/);
+      }, 'Expected \'Foo failed.\' to equal /Bar/.');
       done();
     });
 
@@ -111,11 +129,29 @@ suite('throwing', function () {
         done();
       });
 
+      test('throws an error if actual is throwing errX and errY is not expected (regex).', function (done) {
+        chai.throw(function () {
+          throwing.negated(function () {
+            throw new Error('Foo failed.')
+          })(/Foo/);
+        });
+        done();
+      });
+
       test('does not throw an error if actual is throwing errX and errY is not expected.', function (done) {
         chai.doesNotThrow(function () {
           throwing.negated(function () {
             throw new Error('Foo failed.')
           })('Bar failed.');
+        });
+        done();
+      });
+
+      test('does not throw an error if actual is throwing errX and errY is not expected (regex).', function (done) {
+        chai.doesNotThrow(function () {
+          throwing.negated(function () {
+            throw new Error('Foo failed.')
+          })(/Bar/);
         });
         done();
       });
