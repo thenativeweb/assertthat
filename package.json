@@ -26,5 +26,9 @@
     "type": "git",
     "url": "git://github.com/thenativeweb/assertthat.git"
   },
+  "keywords": [
+    "tdd",
+    "test"
+  ],
   "license": "MIT"
 }
