@@ -27,6 +27,7 @@
     "url": "git://github.com/thenativeweb/assertthat.git"
   },
   "keywords": [
+    "assert",
     "tdd",
     "test"
   ],
