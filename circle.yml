@@ -14,3 +14,9 @@ dependencies:
 test:
   override:
     - grunt
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - git describe --exact-match $CIRCLE_SHA1 && npm publish; exit 0
