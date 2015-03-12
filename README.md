@@ -2,8 +2,6 @@
 
 assertthat provides fluent TDD.
 
-[![Circle CI](https://circleci.com/gh/thenativeweb/assertthat.svg?style=svg)](https://circleci.com/gh/thenativeweb/assertthat)
-
 ## Installation
 
     $ npm install assertthat
