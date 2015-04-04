@@ -123,7 +123,7 @@ suite('throwing', function () {
       test('throws an error if actual is throwing errX and errY is not expected.', function (done) {
         chai.throw(function () {
           throwing.negated(function () {
-            throw new Error('Foo failed.')
+            throw new Error('Foo failed.');
           })('Foo failed.');
         });
         done();
@@ -132,7 +132,7 @@ suite('throwing', function () {
       test('throws an error if actual is throwing errX and errY is not expected (regex).', function (done) {
         chai.throw(function () {
           throwing.negated(function () {
-            throw new Error('Foo failed.')
+            throw new Error('Foo failed.');
           })(/Foo/);
         });
         done();
@@ -141,7 +141,7 @@ suite('throwing', function () {
       test('does not throw an error if actual is throwing errX and errY is not expected.', function (done) {
         chai.doesNotThrow(function () {
           throwing.negated(function () {
-            throw new Error('Foo failed.')
+            throw new Error('Foo failed.');
           })('Bar failed.');
         });
         done();
@@ -150,7 +150,7 @@ suite('throwing', function () {
       test('does not throw an error if actual is throwing errX and errY is not expected (regex).', function (done) {
         chai.doesNotThrow(function () {
           throwing.negated(function () {
-            throw new Error('Foo failed.')
+            throw new Error('Foo failed.');
           })(/Bar/);
         });
         done();
@@ -159,7 +159,7 @@ suite('throwing', function () {
       test('does not throw an error if actual is throwing errX and errY is not expected.', function (done) {
         chai.doesNotThrow(function () {
           throwing.negated(function () {
-            throw new Error('Foo failed.')
+            throw new Error('Foo failed.');
           })('');
         });
         done();

@@ -15,12 +15,12 @@
   "main": "lib/assertThat.js",
   "dependencies": {
     "comparejs": "0.1.2",
-    "stringify-object": "1.0.0"
+    "stringify-object": "1.0.1"
   },
   "devDependencies": {
-    "chai": "2.0.0",
+    "chai": "2.2.0",
     "grunt": "0.4.5",
-    "tourism": "0.13.2"
+    "tourism": "0.16.1"
   },
   "repository": {
     "type": "git",
