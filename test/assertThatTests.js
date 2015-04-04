@@ -57,6 +57,16 @@ suite('assert', function () {
           done();
         });
 
+        test('containing.', function (done) {
+          chai.typeOf(assert.that(23).is.containing, 'function');
+          done();
+        });
+
+        test('endingWith.', function (done) {
+          chai.typeOf(assert.that(23).is.endingWith, 'function');
+          done();
+        });
+
         test('equalTo.', function (done) {
           chai.typeOf(assert.that(23).is.equalTo, 'function');
           done();
@@ -107,6 +117,11 @@ suite('assert', function () {
           done();
         });
 
+        test('startingWith.', function (done) {
+          chai.typeOf(assert.that(23).is.startingWith, 'function');
+          done();
+        });
+
         test('throwing.', function (done) {
           chai.typeOf(assert.that(23).is.throwing, 'function');
           done();
@@ -142,6 +157,16 @@ suite('assert', function () {
 
           test('between.', function (done) {
             chai.typeOf(assert.that(23).is.not.between, 'function');
+            done();
+          });
+
+          test('containing.', function (done) {
+            chai.typeOf(assert.that(23).is.not.containing, 'function');
+            done();
+          });
+
+          test('endingWith.', function (done) {
+            chai.typeOf(assert.that(23).is.not.endingWith, 'function');
             done();
           });
 
@@ -192,6 +217,11 @@ suite('assert', function () {
 
           test('sameAs.', function (done) {
             chai.typeOf(assert.that(23).is.not.sameAs, 'function');
+            done();
+          });
+
+          test('startingWith.', function (done) {
+            chai.typeOf(assert.that(23).is.not.startingWith, 'function');
             done();
           });
 

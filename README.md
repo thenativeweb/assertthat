@@ -58,6 +58,24 @@ assert.that(actual).is.between(expectedLow, expectedHigh);
 assert.that(actual).is.not.between(expectedLow, expectedHigh);
 ```
 
+### containing
+
+Asserts that `actual` contains `expected`.
+
+```javascript
+assert.that(actual).is.containing(expected);
+assert.that(actual).is.not.containing(expected);
+```
+
+### endingWith
+
+Asserts that `actual` ends with `expected`.
+
+```javascript
+assert.that(actual).is.endingWith(expected);
+assert.that(actual).is.not.endingWith(expected);
+```
+
 ### equalTo
 
 Asserts that `actual` is equal to `expected`.
@@ -146,6 +164,15 @@ Asserts that `actual` is identical to `expected`.
 ```javascript
 assert.that(actual).is.sameAs(expected);
 assert.that(actual).is.not.sameAs(expected);
+```
+
+### startingWith
+
+Asserts that `actual` starts with `expected`.
+
+```javascript
+assert.that(actual).is.startingWith(expected);
+assert.that(actual).is.not.startingWith(expected);
 ```
 
 ### throwing
