@@ -209,6 +209,21 @@ assert.that(actual).is.undefined();
 assert.that(actual).is.not.undefined();
 ```
 
+### existing
+
+Assert that `actual` exists
+```javascript
+assert.that(actual).is.existing();
+assert.that(actual).is.not.existing();
+```
+
+### array
+
+Assert that `actual` is an array
+```javascript
+assert.that(actual).is.array();
+```
+
 ## Running the build
 
 This module can be built using [Grunt](http://gruntjs.com/). Besides running the tests, this also analyses the code. To run Grunt, go to the folder where you have installed assertthat and run `grunt`. You need to have [grunt-cli](https://github.com/gruntjs/grunt-cli) installed.
