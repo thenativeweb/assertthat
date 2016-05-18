@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var equalTo = require('../../lib/constraints/equalTo');
+const equalTo = require('../../lib/constraints/equalTo');
 
 suite('equalTo', function () {
   test('is a function.', function (done) {

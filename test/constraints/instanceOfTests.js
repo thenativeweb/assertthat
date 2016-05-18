@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var instanceOf = require('../../lib/constraints/instanceOf');
+const instanceOf = require('../../lib/constraints/instanceOf');
 
 suite('instanceOf', function () {
   test('is a function.', function (done) {
@@ -67,7 +67,7 @@ suite('instanceOf', function () {
       test('throws an error if actual is an instance of expected.', function (done) {
         chai.throw(function () {
           instanceOf.negated(new Error())(Error);
-        }, 'Expected {} not to be an instance of Error.');
+        }, `Expected 'Error' not to be an instance of Error.`);
         done();
       });
     });

@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var ofType = require('../../lib/constraints/ofType');
+const ofType = require('../../lib/constraints/ofType');
 
 suite('ofType', function () {
   test('is a function.', function (done) {

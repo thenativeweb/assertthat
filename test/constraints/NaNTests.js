@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var isNan = require('../../lib/constraints/nan');
+const isNan = require('../../lib/constraints/nan');
 
 suite('NaN', function () {
   test('is a function.', function (done) {

@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var humanReadable = require('../lib/humanReadable');
+const humanReadable = require('../lib/humanReadable');
 
 suite('humanReadable', function () {
   test('is a function.', function (done) {

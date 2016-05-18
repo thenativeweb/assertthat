@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var isNull = require('../../lib/constraints/null');
+const isNull = require('../../lib/constraints/null');
 
 suite('null', function () {
   test('is a function.', function (done) {

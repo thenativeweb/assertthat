@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var isUndefined = require('../../lib/constraints/undefined');
+const isUndefined = require('../../lib/constraints/undefined');
 
 suite('undefined', function () {
   test('is a function.', function (done) {

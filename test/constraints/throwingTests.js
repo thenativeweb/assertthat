@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var throwing = require('../../lib/constraints/throwing');
+const throwing = require('../../lib/constraints/throwing');
 
 suite('throwing', function () {
   test('is a function.', function (done) {

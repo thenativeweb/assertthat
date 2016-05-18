@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var atMost = require('../../lib/constraints/atMost');
+const atMost = require('../../lib/constraints/atMost');
 
 suite('atMost', function () {
   test('is a function.', function (done) {

@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var assert = require('../lib/assertThat');
+const assert = require('../lib/assertThat');
 
 suite('assert', function () {
   test('is an object.', function (done) {

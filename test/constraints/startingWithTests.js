@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var startingWith = require('../../lib/constraints/startingWith');
+const startingWith = require('../../lib/constraints/startingWith');
 
 suite('startingWith', function () {
   test('is a function.', function (done) {

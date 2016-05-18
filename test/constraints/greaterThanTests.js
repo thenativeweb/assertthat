@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var greaterThan = require('../../lib/constraints/greaterThan');
+const greaterThan = require('../../lib/constraints/greaterThan');
 
 suite('greaterThan', function () {
   test('is a function.', function (done) {

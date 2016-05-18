@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var lessThan = require('../../lib/constraints/lessThan');
+const lessThan = require('../../lib/constraints/lessThan');
 
 suite('lessThan', function () {
   test('is a function.', function (done) {

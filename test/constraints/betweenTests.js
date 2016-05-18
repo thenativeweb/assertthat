@@ -1,8 +1,8 @@
 'use strict';
 
-var chai = require('chai').assert;
+const chai = require('chai').assert;
 
-var between = require('../../lib/constraints/between');
+const between = require('../../lib/constraints/between');
 
 suite('between', function () {
   test('is a function.', function (done) {
