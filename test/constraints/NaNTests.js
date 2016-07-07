@@ -4,54 +4,54 @@ const chai = require('chai').assert;
 
 const isNan = require('../../lib/constraints/nan');
 
-suite('NaN', function () {
-  test('is a function.', function (done) {
+suite('NaN', () => {
+  test('is a function.', done => {
     chai.typeOf(isNan, 'function');
     done();
   });
 
-  test('returns a constraint.', function (done) {
+  test('returns a constraint.', done => {
     chai.typeOf(isNan(Number.NaN), 'function');
     done();
   });
 
-  suite('constraint', function () {
-    test('does not throw an error if actual is NaN.', function (done) {
-      chai.doesNotThrow(function () {
+  suite('constraint', () => {
+    test('does not throw an error if actual is NaN.', done => {
+      chai.doesNotThrow(() => {
         isNan(Number.NaN)();
       });
       done();
     });
 
-    test('throws an error if actual is not NaN.', function (done) {
-      chai.throw(function () {
+    test('throws an error if actual is not NaN.', done => {
+      chai.throw(() => {
         isNan(23)();
       }, 'Expected 23 to be NaN.');
       done();
     });
   });
 
-  suite('negated', function () {
-    test('is a function.', function (done) {
+  suite('negated', () => {
+    test('is a function.', done => {
       chai.typeOf(isNan.negated, 'function');
       done();
     });
 
-    test('returns a constraint.', function (done) {
+    test('returns a constraint.', done => {
       chai.typeOf(isNan.negated(Number.NaN), 'function');
       done();
     });
 
-    suite('constraint', function () {
-      test('does not throw an error if actual is not NaN.', function (done) {
-        chai.doesNotThrow(function () {
+    suite('constraint', () => {
+      test('does not throw an error if actual is not NaN.', done => {
+        chai.doesNotThrow(() => {
           isNan.negated(23)();
         });
         done();
       });
 
-      test('throws an error if actual is NaN.', function (done) {
-        chai.throw(function () {
+      test('throws an error if actual is NaN.', done => {
+        chai.throw(() => {
           isNan.negated(Number.NaN)();
         }, 'Expected NaN not to be NaN.');
         done();
