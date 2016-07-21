@@ -97,6 +97,11 @@ suite('assert', () => {
           done();
         });
 
+        test('matching.', done => {
+          chai.typeOf(assert.that(23).is.matching, 'function');
+          done();
+        });
+
         test('NaN.', done => {
           chai.typeOf(assert.that(23).is.NaN, 'function');
           done();
@@ -197,6 +202,11 @@ suite('assert', () => {
 
           test('lessThan.', done => {
             chai.typeOf(assert.that(23).is.not.lessThan, 'function');
+            done();
+          });
+
+          test('matching.', done => {
+            chai.typeOf(assert.that(23).is.not.matching, 'function');
             done();
           });
 

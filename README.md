@@ -132,6 +132,15 @@ assert.that(actual).is.lessThan(expected);
 assert.that(actual).is.not.lessThan(expected);
 ```
 
+### matching
+
+Asserts that `actual` matches `expected`.
+
+```javascript
+assert.that(actual).is.matching(expected);
+assert.that(actual).is.not.matching(expected);
+```
+
 ### NaN
 
 Asserts that `actual` is NaN.
