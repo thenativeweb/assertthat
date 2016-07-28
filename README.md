@@ -134,7 +134,7 @@ assert.that(actual).is.not.lessThan(expected);
 
 ### matching
 
-Asserts that `actual` matches `expected`.
+Asserts that `actual` matches `expected` where `expected` is a regular expression.
 
 ```javascript
 assert.that(actual).is.matching(expected);
