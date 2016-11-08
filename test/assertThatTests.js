@@ -67,6 +67,11 @@ suite('assert', () => {
           done();
         });
 
+        test('containingAll.', done => {
+          chai.typeOf(assert.that(23).is.containingAll, 'function');
+          done();
+        });
+
         test('endingWith.', done => {
           chai.typeOf(assert.that(23).is.endingWith, 'function');
           done();
@@ -177,6 +182,11 @@ suite('assert', () => {
 
           test('containingAnyOf.', done => {
             chai.typeOf(assert.that([ 1, 2, 3 ]).is.not.containingAnyOf, 'function');
+            done();
+          });
+
+          test('containingAll.', done => {
+            chai.typeOf(assert.that(23).is.not.containingAll, 'function');
             done();
           });
 
