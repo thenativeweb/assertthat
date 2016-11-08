@@ -69,6 +69,15 @@ assert.that(actual).is.containing(expected);
 assert.that(actual).is.not.containing(expected);
 ```
 
+### containingAnyOf
+
+Asserts that `actual` contains `expected`.
+
+```javascript
+assert.that(actual).is.containingAnyOf(expected);
+assert.that(actual).is.not.containingAnyOf(expected);
+```
+
 ### endingWith
 
 Asserts that `actual` ends with `expected`.
