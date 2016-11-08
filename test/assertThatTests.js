@@ -68,7 +68,7 @@ suite('assert', () => {
         });
 
         test('containingAll.', done => {
-          chai.typeOf(assert.that(23).is.containingAll, 'function');
+          chai.typeOf(assert.that(23).is.containingAllOf, 'function');
           done();
         });
 
@@ -186,7 +186,7 @@ suite('assert', () => {
           });
 
           test('containingAll.', done => {
-            chai.typeOf(assert.that(23).is.not.containingAll, 'function');
+            chai.typeOf(assert.that(23).is.not.containingAllOf, 'function');
             done();
           });
 
