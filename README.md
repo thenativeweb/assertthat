@@ -24,7 +24,7 @@ const add = function(first, second) {
 };
 
 const actual = add(23, 42),
-    expected = 65;
+      expected = 65;
 
 assert.that(actual).is.equalTo(expected);
 ```
@@ -234,7 +234,7 @@ assert.that(actual).is.not.undefined();
 To build this module use [roboter](https://www.npmjs.com/package/roboter).
 
 ```bash
-$ bot build-server
+$ bot
 ```
 
 ## License
