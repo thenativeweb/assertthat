@@ -71,11 +71,20 @@ assert.that(actual).is.not.containing(expected);
 
 ### containingAnyOf
 
-Asserts that `actual` contains `expected`.
+Asserts that `actual` contains any of `expected`.
 
 ```javascript
 assert.that(actual).is.containingAnyOf(expected);
 assert.that(actual).is.not.containingAnyOf(expected);
+```
+
+### containingAllOf
+
+Asserts that `actual` contains all of `expected`.
+
+```javascript
+assert.that(actual).is.containingAllOf(expected);
+assert.that(actual).is.not.containingAllOf(expected);
 ```
 
 ### endingWith
