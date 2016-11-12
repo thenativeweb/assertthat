@@ -168,7 +168,7 @@ suite('throwing', () => {
         done();
       });
 
-      test('does not throw an error if actual is throwing errX and errY is not expected.', done => {
+      test('does not throw an error if actual is throwing errX and there is no errY expected.', done => {
         chai.doesNotThrow(() => {
           throwing.negated(() => {
             throw new Error('Foo failed.');
