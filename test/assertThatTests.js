@@ -273,4 +273,60 @@ suite('assert', () => {
       });
     });
   });
+
+  suite('plugin support', () => {
+    suite('validate plugin', () => {
+      test('should validate plugin property name', done => {
+        const plugin = function () {
+          const type = {};
+
+          type.foo = 'foo';
+
+          return type;
+        };
+
+        chai.throws(() => assert.use(plugin), 'Plugin Property-Name is missing.');
+        done();
+      });
+
+      test('should validate plugin contains behaviour', done => {
+        const plugin = function () {
+          const type = {};
+
+          type.getPropertyName = function () {
+            return 'type';
+          };
+
+          return type;
+        };
+
+        chai.throws(() => assert.use(plugin), 'Plugin does not contain any behaviour.');
+        done();
+      });
+    });
+
+    suite('plugin injection', () => {
+      test('should add the plugin', done => {
+        const plugin = function () {
+          const typePlugin = {};
+
+          typePlugin.getPropertyName = function () {
+            return 'type';
+          };
+          typePlugin.addProperties = function (is, actual) {
+            is.actual = actual;
+
+            return is;
+          };
+
+          return typePlugin;
+        };
+
+        chai.equal(assert.plugins.length, 0);
+        assert.use(plugin);
+        chai.equal(assert.plugins.length, 1);
+        done();
+      });
+    });
+  });
 });
