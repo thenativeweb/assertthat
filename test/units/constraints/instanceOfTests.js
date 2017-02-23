@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const instanceOf = require('../../lib/constraints/instanceOf');
+const instanceOf = require('../../../lib/constraints/instanceOf');
 
 suite('instanceOf', () => {
   test('is a function.', done => {

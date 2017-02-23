@@ -16,16 +16,16 @@
       "email": "ganeshpl@thoughtworks.com"
     }
   ],
-  "main": "lib/assertThat.js",
+  "main": "dist/assertThat.js",
   "dependencies": {
-    "comparejs": "0.1.5",
+    "comparejs": "0.1.6",
     "harmony-reflect": "1.5.1",
     "stringify-object": "3.1.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "roboter": "0.14.1",
-    "roboter-server": "0.14.1"
+    "roboter": "0.14.6",
+    "roboter-server": "0.14.6"
   },
   "repository": {
     "type": "git",

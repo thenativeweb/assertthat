@@ -6,12 +6,8 @@ roboter.
   workOn('server').
   equipWith(task => {
     task('universal/analyze', {
-      src: [ '**/*.js', '!node_modules/**/*.js', '!coverage/**/*.js' ],
+      src: [ '**/*.js', '!node_modules/**/*.js', '!coverage/**/*.js', '!dist/**/*.js' ],
       rules: '.eslintrc.json'
-    });
-
-    task('universal/test-units', {
-      src: 'test/**/*Tests.js'
     });
 
     task('universal/license', {
@@ -38,6 +34,15 @@ roboter.
 
         // MIT, see https://github.com/mklabs/node-fileset/blob/v0.2.1/LICENSE-MIT
         fileset: '0.2.1',
+
+        // MIT, https://github.com/tarruda/has/blob/1.0.1/package.json
+        has: '1.0.1',
+
+        // BSD-2-Clause, see https://github.com/facebook/regenerator/blob/e22c9317987ebcf4041e9188cb208b94f662df35/LICENSE
+        'regenerator-transform': '0.9.8',
+
+        // BSD-2-Clause, see https://github.com/jviereck/regjsparser/blob/0.1.5/LICENSE.BSD
+        regjsparser: '0.1.5',
 
         // MIT, see https://github.com/eugeneware/unique-stream/blob/v1.0.0/LICENSE
         'unique-stream': '1.0.0'

@@ -2,72 +2,72 @@
 
 const chai = require('chai').assert;
 
-const atLeast = require('../../lib/constraints/atLeast');
+const sameAs = require('../../../lib/constraints/sameAs');
 
-suite('atLeast', () => {
+suite('sameAs', () => {
   test('is a function.', done => {
-    chai.typeOf(atLeast, 'function');
+    chai.typeOf(sameAs, 'function');
     done();
   });
 
   test('returns a constraint.', done => {
-    chai.typeOf(atLeast(23), 'function');
+    chai.typeOf(sameAs(23), 'function');
     done();
   });
 
   suite('constraint', () => {
     test('throws an error if expected is missing.', done => {
       chai.throw(() => {
-        atLeast(23)();
+        sameAs(23)();
       }, 'Expected is missing.');
       done();
     });
 
-    test('does not throw an error if actual is at least expected.', done => {
+    test('does not throw an error if actual is same as expected.', done => {
       chai.doesNotThrow(() => {
-        atLeast(23)(23);
+        sameAs(23)(23);
       });
       done();
     });
 
-    test('throws an error if actual is not at least expected.', done => {
+    test('throws an error if actual is not same as expected.', done => {
       chai.throw(() => {
-        atLeast(23)(42);
-      }, 'Expected 23 to be at least 42.');
+        sameAs(23)(42);
+      }, 'Expected 23 to be same as 42.');
       done();
     });
   });
 
   suite('negated', () => {
     test('is a function.', done => {
-      chai.typeOf(atLeast.negated, 'function');
+      chai.typeOf(sameAs.negated, 'function');
       done();
     });
 
     test('returns a constraint.', done => {
-      chai.typeOf(atLeast.negated(23), 'function');
+      chai.typeOf(sameAs.negated(23), 'function');
       done();
     });
 
     suite('constraint', () => {
       test('throws an error if expected is missing.', done => {
         chai.throw(() => {
-          atLeast.negated(23)();
+          sameAs.negated(23)();
         }, 'Expected is missing.');
         done();
       });
 
-      test('does not throw an error if actual is not at least expected.', done => {
+      test('does not throw an error if actual is not same as expected.', done => {
         chai.doesNotThrow(() => {
-          atLeast.negated(23)(42);
+          sameAs.negated(23)(42);
         });
         done();
       });
 
-      test('throws an error if actual is at least expected.', done => {
+      test('throws an error if actual is same as expected.', done => {
         chai.throw(() => {
-          atLeast.negated(23)(23);
-        }, 'Expected 23 not to be at least 23.');
+          sameAs.negated(23)(23);
+        }, 'Expected 23 not to be same as 23.');
         done();
       });
     });

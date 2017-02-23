@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const throwing = require('../../lib/constraints/throwing');
+const throwing = require('../../../lib/constraints/throwing');
 
 suite('throwing', () => {
   test('is a function.', done => {

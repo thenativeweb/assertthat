@@ -2,72 +2,72 @@
 
 const chai = require('chai').assert;
 
-const sameAs = require('../../lib/constraints/sameAs');
+const equalTo = require('../../../lib/constraints/equalTo');
 
-suite('sameAs', () => {
+suite('equalTo', () => {
   test('is a function.', done => {
-    chai.typeOf(sameAs, 'function');
+    chai.typeOf(equalTo, 'function');
     done();
   });
 
   test('returns a constraint.', done => {
-    chai.typeOf(sameAs(23), 'function');
+    chai.typeOf(equalTo(23), 'function');
     done();
   });
 
   suite('constraint', () => {
     test('throws an error if expected is missing.', done => {
       chai.throw(() => {
-        sameAs(23)();
+        equalTo(23)();
       }, 'Expected is missing.');
       done();
     });
 
-    test('does not throw an error if actual is same as expected.', done => {
+    test('does not throw an error if actual is equal to expected.', done => {
       chai.doesNotThrow(() => {
-        sameAs(23)(23);
+        equalTo(23)(23);
       });
       done();
     });
 
-    test('throws an error if actual is not same as expected.', done => {
+    test('throws an error if actual is not equal to expected.', done => {
       chai.throw(() => {
-        sameAs(23)(42);
-      }, 'Expected 23 to be same as 42.');
+        equalTo(23)(42);
+      }, 'Expected 23 to equal 42.');
       done();
     });
   });
 
   suite('negated', () => {
     test('is a function.', done => {
-      chai.typeOf(sameAs.negated, 'function');
+      chai.typeOf(equalTo.negated, 'function');
       done();
     });
 
     test('returns a constraint.', done => {
-      chai.typeOf(sameAs.negated(23), 'function');
+      chai.typeOf(equalTo.negated(23), 'function');
       done();
     });
 
     suite('constraint', () => {
       test('throws an error if expected is missing.', done => {
         chai.throw(() => {
-          sameAs.negated(23)();
+          equalTo.negated(23)();
         }, 'Expected is missing.');
         done();
       });
 
-      test('does not throw an error if actual is not same as expected.', done => {
+      test('does not throw an error if actual is not equal to expected.', done => {
         chai.doesNotThrow(() => {
-          sameAs.negated(23)(42);
+          equalTo.negated(23)(42);
         });
         done();
       });
 
-      test('throws an error if actual is same as expected.', done => {
+      test('throws an error if actual is equal to expected.', done => {
         chai.throw(() => {
-          sameAs.negated(23)(23);
-        }, 'Expected 23 not to be same as 23.');
+          equalTo.negated(23)(23);
+        }, 'Expected 23 not to equal 23.');
         done();
       });
     });

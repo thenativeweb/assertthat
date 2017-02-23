@@ -2,72 +2,72 @@
 
 const chai = require('chai').assert;
 
-const ofType = require('../../lib/constraints/ofType');
+const atMost = require('../../../lib/constraints/atMost');
 
-suite('ofType', () => {
+suite('atMost', () => {
   test('is a function.', done => {
-    chai.typeOf(ofType, 'function');
+    chai.typeOf(atMost, 'function');
     done();
   });
 
   test('returns a constraint.', done => {
-    chai.typeOf(ofType(23), 'function');
+    chai.typeOf(atMost(23), 'function');
     done();
   });
 
   suite('constraint', () => {
     test('throws an error if expected is missing.', done => {
       chai.throw(() => {
-        ofType(23)();
+        atMost(23)();
       }, 'Expected is missing.');
       done();
     });
 
-    test('does not throw an error if actual is equal to expected.', done => {
+    test('does not throw an error if actual is at most expected.', done => {
       chai.doesNotThrow(() => {
-        ofType(23)('number');
+        atMost(23)(23);
       });
       done();
     });
 
-    test('throws an error if actual is not equal to expected.', done => {
+    test('throws an error if actual is not at most expected.', done => {
       chai.throw(() => {
-        ofType(23)('string');
-      }, 'Expected 23 to be of type \'string\'.');
+        atMost(42)(23);
+      }, 'Expected 42 to be at most 23.');
       done();
     });
   });
 
   suite('negated', () => {
     test('is a function.', done => {
-      chai.typeOf(ofType.negated, 'function');
+      chai.typeOf(atMost.negated, 'function');
       done();
     });
 
     test('returns a constraint.', done => {
-      chai.typeOf(ofType.negated(23), 'function');
+      chai.typeOf(atMost.negated(23), 'function');
       done();
     });
 
     suite('constraint', () => {
       test('throws an error if expected is missing.', done => {
         chai.throw(() => {
-          ofType.negated(23)();
+          atMost.negated(23)();
         }, 'Expected is missing.');
         done();
       });
 
-      test('does not throw an error if actual is not equal to expected.', done => {
+      test('does not throw an error if actual is not at most expected.', done => {
         chai.doesNotThrow(() => {
-          ofType.negated(23)('string');
+          atMost.negated(42)(23);
         });
         done();
       });
 
-      test('throws an error if actual is equal to expected.', done => {
+      test('throws an error if actual is at most expected.', done => {
         chai.throw(() => {
-          ofType.negated(23)('number');
-        }, 'Expected 23 not to be of type \'number\'.');
+          atMost.negated(23)(23);
+        }, 'Expected 23 to be at most 23.');
         done();
       });
     });

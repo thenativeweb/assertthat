@@ -2,72 +2,72 @@
 
 const chai = require('chai').assert;
 
-const equalTo = require('../../lib/constraints/equalTo');
+const ofType = require('../../../lib/constraints/ofType');
 
-suite('equalTo', () => {
+suite('ofType', () => {
   test('is a function.', done => {
-    chai.typeOf(equalTo, 'function');
+    chai.typeOf(ofType, 'function');
     done();
   });
 
   test('returns a constraint.', done => {
-    chai.typeOf(equalTo(23), 'function');
+    chai.typeOf(ofType(23), 'function');
     done();
   });
 
   suite('constraint', () => {
     test('throws an error if expected is missing.', done => {
       chai.throw(() => {
-        equalTo(23)();
+        ofType(23)();
       }, 'Expected is missing.');
       done();
     });
 
     test('does not throw an error if actual is equal to expected.', done => {
       chai.doesNotThrow(() => {
-        equalTo(23)(23);
+        ofType(23)('number');
       });
       done();
     });
 
     test('throws an error if actual is not equal to expected.', done => {
       chai.throw(() => {
-        equalTo(23)(42);
-      }, 'Expected 23 to equal 42.');
+        ofType(23)('string');
+      }, 'Expected 23 to be of type \'string\'.');
       done();
     });
   });
 
   suite('negated', () => {
     test('is a function.', done => {
-      chai.typeOf(equalTo.negated, 'function');
+      chai.typeOf(ofType.negated, 'function');
       done();
     });
 
     test('returns a constraint.', done => {
-      chai.typeOf(equalTo.negated(23), 'function');
+      chai.typeOf(ofType.negated(23), 'function');
       done();
     });
 
     suite('constraint', () => {
       test('throws an error if expected is missing.', done => {
         chai.throw(() => {
-          equalTo.negated(23)();
+          ofType.negated(23)();
         }, 'Expected is missing.');
         done();
       });
 
       test('does not throw an error if actual is not equal to expected.', done => {
         chai.doesNotThrow(() => {
-          equalTo.negated(23)(42);
+          ofType.negated(23)('string');
         });
         done();
       });
 
       test('throws an error if actual is equal to expected.', done => {
         chai.throw(() => {
-          equalTo.negated(23)(23);
-        }, 'Expected 23 not to equal 23.');
+          ofType.negated(23)('number');
+        }, 'Expected 23 not to be of type \'number\'.');
         done();
       });
     });

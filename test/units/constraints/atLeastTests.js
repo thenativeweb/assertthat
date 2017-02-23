@@ -2,72 +2,72 @@
 
 const chai = require('chai').assert;
 
-const lessThan = require('../../lib/constraints/lessThan');
+const atLeast = require('../../../lib/constraints/atLeast');
 
-suite('lessThan', () => {
+suite('atLeast', () => {
   test('is a function.', done => {
-    chai.typeOf(lessThan, 'function');
+    chai.typeOf(atLeast, 'function');
     done();
   });
 
   test('returns a constraint.', done => {
-    chai.typeOf(lessThan(23), 'function');
+    chai.typeOf(atLeast(23), 'function');
     done();
   });
 
   suite('constraint', () => {
     test('throws an error if expected is missing.', done => {
       chai.throw(() => {
-        lessThan(23)();
+        atLeast(23)();
       }, 'Expected is missing.');
       done();
     });
 
-    test('does not throw an error if actual is less than expected.', done => {
+    test('does not throw an error if actual is at least expected.', done => {
       chai.doesNotThrow(() => {
-        lessThan(23)(42);
+        atLeast(23)(23);
       });
       done();
     });
 
-    test('throws an error if actual is not less than expected.', done => {
+    test('throws an error if actual is not at least expected.', done => {
       chai.throw(() => {
-        lessThan(42)(23);
-      }, 'Expected 42 to be less than 23.');
+        atLeast(23)(42);
+      }, 'Expected 23 to be at least 42.');
       done();
     });
   });
 
   suite('negated', () => {
     test('is a function.', done => {
-      chai.typeOf(lessThan.negated, 'function');
+      chai.typeOf(atLeast.negated, 'function');
       done();
     });
 
     test('returns a constraint.', done => {
-      chai.typeOf(lessThan.negated(23), 'function');
+      chai.typeOf(atLeast.negated(23), 'function');
       done();
     });
 
     suite('constraint', () => {
       test('throws an error if expected is missing.', done => {
         chai.throw(() => {
-          lessThan.negated(23)();
+          atLeast.negated(23)();
         }, 'Expected is missing.');
         done();
       });
 
-      test('does not throw an error if actual is not less than expected.', done => {
+      test('does not throw an error if actual is not at least expected.', done => {
         chai.doesNotThrow(() => {
-          lessThan.negated(42)(23);
+          atLeast.negated(23)(42);
         });
         done();
       });
 
-      test('throws an error if actual is less than expected.', done => {
+      test('throws an error if actual is at least expected.', done => {
         chai.throw(() => {
-          lessThan.negated(23)(42);
-        }, 'Expected 23 not to be less than 42.');
+          atLeast.negated(23)(23);
+        }, 'Expected 23 not to be at least 23.');
         done();
       });
     });

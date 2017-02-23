@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const startingWith = require('../../lib/constraints/startingWith');
+const startingWith = require('../../../lib/constraints/startingWith');
 
 suite('startingWith', () => {
   test('is a function.', done => {

@@ -2,72 +2,72 @@
 
 const chai = require('chai').assert;
 
-const atMost = require('../../lib/constraints/atMost');
+const matching = require('../../../lib/constraints/matching');
 
-suite('atMost', () => {
+suite('matching', () => {
   test('is a function.', done => {
-    chai.typeOf(atMost, 'function');
+    chai.typeOf(matching, 'function');
     done();
   });
 
   test('returns a constraint.', done => {
-    chai.typeOf(atMost(23), 'function');
+    chai.typeOf(matching('foo'), 'function');
     done();
   });
 
   suite('constraint', () => {
     test('throws an error if expected is missing.', done => {
       chai.throw(() => {
-        atMost(23)();
+        matching('foo')();
       }, 'Expected is missing.');
       done();
     });
 
-    test('does not throw an error if actual is at most expected.', done => {
+    test('does not throw an error if actual is matching expected.', done => {
       chai.doesNotThrow(() => {
-        atMost(23)(23);
+        matching('foo')(/foo/);
       });
       done();
     });
 
-    test('throws an error if actual is not at most expected.', done => {
+    test('throws an error if actual is not matching expected.', done => {
       chai.throw(() => {
-        atMost(42)(23);
-      }, 'Expected 42 to be at most 23.');
+        matching('foo')(/bar/);
+      }, 'Expected \'foo\' to match /bar/.');
       done();
     });
   });
 
   suite('negated', () => {
     test('is a function.', done => {
-      chai.typeOf(atMost.negated, 'function');
+      chai.typeOf(matching.negated, 'function');
       done();
     });
 
     test('returns a constraint.', done => {
-      chai.typeOf(atMost.negated(23), 'function');
+      chai.typeOf(matching.negated('foo'), 'function');
       done();
     });
 
     suite('constraint', () => {
       test('throws an error if expected is missing.', done => {
         chai.throw(() => {
-          atMost.negated(23)();
+          matching.negated('foo')();
         }, 'Expected is missing.');
         done();
       });
 
-      test('does not throw an error if actual is not at most expected.', done => {
+      test('does not throw an error if actual is not matching expected.', done => {
         chai.doesNotThrow(() => {
-          atMost.negated(42)(23);
+          matching.negated('foo')(/bar/);
         });
         done();
       });
 
-      test('throws an error if actual is at most expected.', done => {
+      test('throws an error if actual is matching expected.', done => {
         chai.throw(() => {
-          atMost.negated(23)(23);
-        }, 'Expected 23 to be at most 23.');
+          matching.negated('foo')(/foo/);
+        }, 'Expected \'foo\' not to match /foo/.');
         done();
       });
     });

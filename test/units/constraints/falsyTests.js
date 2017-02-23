@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const falsy = require('../../lib/constraints/falsy');
+const falsy = require('../../../lib/constraints/falsy');
 
 suite('falsy', () => {
   test('is a function.', done => {
