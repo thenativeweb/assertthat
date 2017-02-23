@@ -10,6 +10,10 @@ roboter.
       rules: '.eslintrc.json'
     });
 
+    task('universal/release', {
+      createDistribution: true
+    });
+
     task('universal/license', {
       compatible: [
         // Individual licenses
