@@ -195,6 +195,15 @@ assert.that(actual).is.sameAs(expected);
 assert.that(actual).is.not.sameAs(expected);
 ```
 
+### sameJsonAs
+
+Asserts that `actual` is stringified as the same JSON as `expected`.
+
+```javascript
+assert.that(actual).is.sameJsonAs(expected);
+assert.that(actual).is.not.sameJsonAs(expected);
+```
+
 ### startingWith
 
 Asserts that `actual` starts with `expected`.

@@ -132,6 +132,11 @@ suite('assert', () => {
           done();
         });
 
+        test('sameJsonAs.', done => {
+          chai.typeOf(assert.that(23).is.sameJsonAs, 'function');
+          done();
+        });
+
         test('startingWith.', done => {
           chai.typeOf(assert.that(23).is.startingWith, 'function');
           done();
@@ -247,6 +252,11 @@ suite('assert', () => {
 
           test('sameAs.', done => {
             chai.typeOf(assert.that(23).is.not.sameAs, 'function');
+            done();
+          });
+
+          test('sameJsonAs.', done => {
+            chai.typeOf(assert.that(23).is.not.sameJsonAs, 'function');
             done();
           });
 

@@ -42,8 +42,8 @@ roboter.
         // MIT, https://github.com/tarruda/has/blob/1.0.1/package.json
         has: '1.0.1',
 
-        // BSD-2-Clause, see https://github.com/facebook/regenerator/blob/e22c9317987ebcf4041e9188cb208b94f662df35/LICENSE
-        'regenerator-transform': '0.9.8',
+        // BSD-2-Clause, see https://github.com/facebook/regenerator/blob/85c9e43331576be96e5dcc61757995397ab15b77/LICENSE
+        'regenerator-transform': '0.9.11',
 
         // BSD-2-Clause, see https://github.com/jviereck/regjsparser/blob/0.1.5/LICENSE.BSD
         regjsparser: '0.1.5',
