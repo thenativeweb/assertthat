@@ -218,15 +218,47 @@ assert.that(actual).is.not.startingWith(expected);
 Asserts that `f` throws an exception.
 
 ```javascript
-assert.that(f).is.throwing();
-assert.that(f).is.not.throwing();
+assert.that(() => {
+  f();
+}).is.throwing();
+assert.that(() => {
+  f();
+}).is.not.throwing();
 ```
 
 Alternatively, asserts that `f` throws an exception with the `expected` message. For the `expected` message you can either specify a string or a regular expression.
 
 ```javascript
-assert.that(f).is.throwing(expected);
-assert.that(f).is.not.throwing(expected);
+assert.that(() => {
+  f();
+}).is.throwing(expected);
+assert.that(() => {
+  f();
+}).is.not.throwing(expected);
+```
+
+### throwingAsync
+
+Asserts that `f` throws an exception.
+
+```javascript
+await assert.that(async () => {
+  await f();
+}).is.throwingAsync();
+await assert.that(async () => {
+  await f();
+}).is.not.throwingAsync();
+```
+
+Alternatively, asserts that `f` throws an exception with the `expected` message. For the `expected` message you can either specify a string or a regular expression.
+
+```javascript
+await assert.that(async () => {
+  await f();
+}).is.throwingAsync(expected);
+await assert.that(async () => {
+  await f();
+}).is.not.throwingAsync(expected);
 ```
 
 ### true

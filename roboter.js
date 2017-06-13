@@ -36,6 +36,9 @@ roboter.
         // BSD-3-Clause, see https://github.com/deoxxa/duplexer2/blob/0.0.2/LICENSE.md
         duplexer2: '0.0.2',
 
+        // BSD-3-Clause, see https://github.com/estools/esquery/blob/v1.0.0/license.txt
+        esquery: '1.0.0',
+
         // MIT, see https://github.com/mklabs/node-fileset/blob/v0.2.1/LICENSE-MIT
         fileset: '0.2.1',
 

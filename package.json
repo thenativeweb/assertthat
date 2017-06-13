@@ -23,9 +23,9 @@
     "stringify-object": "3.2.0"
   },
   "devDependencies": {
-    "chai": "3.5.0",
-    "roboter": "0.15.1",
-    "roboter-server": "0.15.1"
+    "chai": "4.0.2",
+    "roboter": "0.15.2",
+    "roboter-server": "0.15.2"
   },
   "repository": {
     "type": "git",
