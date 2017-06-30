@@ -24,8 +24,8 @@
   },
   "devDependencies": {
     "chai": "4.0.2",
-    "roboter": "0.15.2",
-    "roboter-server": "0.15.2"
+    "roboter": "0.15.3",
+    "roboter-server": "0.15.3"
   },
   "repository": {
     "type": "git",
