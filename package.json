@@ -14,12 +14,17 @@
     {
       "name": "Ganesh Patil",
       "email": "ganeshpl@thoughtworks.com"
+    },
+    {
+      "name": "Jan-Hendrik Grundhöfer",
+      "email": "jan-hendrik.grundhoefer@thenativeweb.io"
     }
   ],
   "main": "dist/assertThat.js",
   "dependencies": {
     "comparejs": "0.1.6",
     "harmony-reflect": "1.5.1",
+    "regenerator-runtime": "0.10.5",
     "stringify-object": "3.2.0"
   },
   "devDependencies": {
