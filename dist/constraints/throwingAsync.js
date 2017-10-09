@@ -11,7 +11,7 @@ var fail = require('../fail');
 
 var throwing = function throwing(actual) {
   return function () {
-    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(expected) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(expected) {
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -21,7 +21,7 @@ var throwing = function throwing(actual) {
               return actual();
 
             case 3:
-              _context.next = 14;
+              _context.next = 18;
               break;
 
             case 5:
@@ -44,29 +44,45 @@ var throwing = function throwing(actual) {
               return _context.abrupt('return');
 
             case 11:
-              if (!(_context.t0.message === expected)) {
-                _context.next = 13;
+              if (!(typeof expected === 'function')) {
+                _context.next = 15;
+                break;
+              }
+
+              if (!expected(_context.t0)) {
+                _context.next = 14;
                 break;
               }
 
               return _context.abrupt('return');
 
-            case 13:
+            case 14:
+              return _context.abrupt('return', fail('Expected %s to fulfill predicate.', [_context.t0.message]));
+
+            case 15:
+              if (!(_context.t0.message === expected)) {
+                _context.next = 17;
+                break;
+              }
+
+              return _context.abrupt('return');
+
+            case 17:
               return _context.abrupt('return', fail('Expected %s to equal %s.', [_context.t0.message, expected]));
 
-            case 14:
+            case 18:
               if (expected) {
-                _context.next = 16;
+                _context.next = 20;
                 break;
               }
 
               return _context.abrupt('return', fail('Expected an exception.', []));
 
-            case 16:
+            case 20:
 
               fail('Expected an exception with message %s.', [expected]);
 
-            case 17:
+            case 21:
             case 'end':
               return _context.stop();
           }
@@ -82,7 +98,7 @@ var throwing = function throwing(actual) {
 
 throwing.negated = function (actual) {
   return function () {
-    var _ref2 = _asyncToGenerator(regeneratorRuntime.mark(function _callee2(expected) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(expected) {
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -92,7 +108,7 @@ throwing.negated = function (actual) {
               return actual();
 
             case 3:
-              _context2.next = 13;
+              _context2.next = 17;
               break;
 
             case 5:
@@ -115,14 +131,30 @@ throwing.negated = function (actual) {
               return _context2.abrupt('return', fail('Expected not to throw an exception with message %s.', [expected]));
 
             case 11:
+              if (!(typeof expected === 'function')) {
+                _context2.next = 15;
+                break;
+              }
+
+              if (!expected(_context2.t0)) {
+                _context2.next = 14;
+                break;
+              }
+
+              return _context2.abrupt('return', fail('Expected %s not to fulfill predicate.', [_context2.t0.message]));
+
+            case 14:
+              return _context2.abrupt('return');
+
+            case 15:
               if (!(_context2.t0.message === expected)) {
-                _context2.next = 13;
+                _context2.next = 17;
                 break;
               }
 
               return _context2.abrupt('return', fail('Expected not to throw an exception with message %s.', [expected]));
 
-            case 13:
+            case 17:
             case 'end':
               return _context2.stop();
           }
