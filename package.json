@@ -14,18 +14,22 @@
     {
       "name": "Ganesh Patil",
       "email": "ganeshpl@thoughtworks.com"
+    },
+    {
+      "name": "Jan-Hendrik Grundhöfer",
+      "email": "jan-hendrik.grundhoefer@thenativeweb.io"
     }
   ],
   "main": "dist/assertThat.js",
   "dependencies": {
     "comparejs": "0.1.6",
     "harmony-reflect": "1.5.1",
-    "stringify-object": "3.2.0"
+    "stringify-object": "3.2.1"
   },
   "devDependencies": {
-    "chai": "4.0.2",
-    "roboter": "0.15.3",
-    "roboter-server": "0.15.3"
+    "chai": "4.1.2",
+    "roboter": "0.15.4",
+    "roboter-server": "0.15.4"
   },
   "repository": {
     "type": "git",

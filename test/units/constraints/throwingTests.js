@@ -63,6 +63,15 @@ suite('throwing', () => {
       done();
     });
 
+    test('does not throw an error if actual is throwing as expected with message (function).', done => {
+      chai.doesNotThrow(() => {
+        throwing(() => {
+          throw new Error('Foo failed.');
+        })(ex => /Foo/.test(ex.message));
+      });
+      done();
+    });
+
     test('throws an error if actual is throwing an exception as expected, but with wrong message.', done => {
       chai.throw(() => {
         throwing(() => {
@@ -78,6 +87,15 @@ suite('throwing', () => {
           throw new Error('Foo failed.');
         })(/Bar/);
       }, 'Expected \'Foo failed.\' to equal /Bar/.');
+      done();
+    });
+
+    test('throws an error if actual is throwing an exception as expected, but with wrong message (function).', done => {
+      chai.throw(() => {
+        throwing(() => {
+          throw new Error('Foo failed.');
+        })(ex => /Bar/.test(ex.message));
+      }, 'Expected \'Foo failed.\' to fulfill predicate.');
       done();
     });
 
@@ -150,6 +168,15 @@ suite('throwing', () => {
         done();
       });
 
+      test('throws an error if actual is throwing errX and errY is not expected (function).', done => {
+        chai.throw(() => {
+          throwing.negated(() => {
+            throw new Error('Foo failed.');
+          })(ex => /Foo/.test(ex.message));
+        });
+        done();
+      });
+
       test('does not throw an error if actual is throwing errX and errY is not expected.', done => {
         chai.doesNotThrow(() => {
           throwing.negated(() => {
@@ -164,6 +191,15 @@ suite('throwing', () => {
           throwing.negated(() => {
             throw new Error('Foo failed.');
           })(/Bar/);
+        });
+        done();
+      });
+
+      test('does not throw an error if actual is throwing errX and errY is not expected (function).', done => {
+        chai.doesNotThrow(() => {
+          throwing.negated(() => {
+            throw new Error('Foo failed.');
+          })(ex => /Bar/.test(ex.message));
         });
         done();
       });

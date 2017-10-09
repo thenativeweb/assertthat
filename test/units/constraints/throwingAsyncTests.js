@@ -100,6 +100,20 @@ suite('throwingAsync', () => {
       })();
     });
 
+    test('does not throw an error if actual is throwing as expected with message (function).', done => {
+      (async function () {
+        try {
+          await throwingAsync(async () => {
+            throw new Error('Foo failed.');
+          })(ex => /Foo/.test(ex.message));
+        } catch (ex) {
+          return done(new Error('Invalid operation.'));
+        }
+
+        return done();
+      })();
+    });
+
     test('throws an error if actual is throwing an exception as expected, but with wrong message.', done => {
       (async function () {
         try {
@@ -129,6 +143,26 @@ suite('throwingAsync', () => {
         } catch (ex) {
           try {
             chai.equal(ex.message, 'Expected \'Foo failed.\' to equal /Bar/.');
+          } catch (exChai) {
+            return done(exChai);
+          }
+
+          return done();
+        }
+
+        return done(new Error('Invalid operation.'));
+      })();
+    });
+
+    test('throws an error if actual is throwing an exception as expected, but with wrong message (function).', done => {
+      (async function () {
+        try {
+          await throwingAsync(async () => {
+            throw new Error('Foo failed.');
+          })(ex => /Bar/.test(ex.message));
+        } catch (ex) {
+          try {
+            chai.equal(ex.message, 'Expected \'Foo failed.\' to fulfill predicate.');
           } catch (exChai) {
             return done(exChai);
           }
@@ -245,6 +279,20 @@ suite('throwingAsync', () => {
         })();
       });
 
+      test('throws an error if actual is throwing errX and errY is not expected (function).', done => {
+        (async function () {
+          try {
+            await throwingAsync.negated(async () => {
+              throw new Error('Foo failed.');
+            })(ex => /Foo/.test(ex.message));
+          } catch (ex) {
+            return done();
+          }
+
+          return done('Invalid operation.');
+        })();
+      });
+
       test('does not throw an error if actual is throwing errX and errY is not expected.', done => {
         (async function () {
           try {
@@ -265,6 +313,20 @@ suite('throwingAsync', () => {
             await throwingAsync.negated(async () => {
               throw new Error('Foo failed.');
             })(/Bar/);
+          } catch (ex) {
+            return done('Invalid operation.');
+          }
+
+          return done();
+        })();
+      });
+
+      test('does not throw an error if actual is throwing errX and errY is not expected (function).', done => {
+        (async function () {
+          try {
+            await throwingAsync.negated(async () => {
+              throw new Error('Foo failed.');
+            })(ex => /Bar/.test(ex.message));
           } catch (ex) {
             return done('Invalid operation.');
           }

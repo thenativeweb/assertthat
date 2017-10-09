@@ -4,7 +4,7 @@ assertthat provides fluent TDD.
 
 ## Installation
 
-```bash
+```shell
 $ npm install assertthat
 ```
 
@@ -226,7 +226,7 @@ assert.that(() => {
 }).is.not.throwing();
 ```
 
-Alternatively, asserts that `f` throws an exception with the `expected` message. For the `expected` message you can either specify a string or a regular expression.
+Alternatively, asserts that `f` throws an exception with the `expected` message. For the `expected` message you can either specify a string, a regular expression or a predicate.
 
 ```javascript
 assert.that(() => {
@@ -250,7 +250,7 @@ await assert.that(async () => {
 }).is.not.throwingAsync();
 ```
 
-Alternatively, asserts that `f` throws an exception with the `expected` message. For the `expected` message you can either specify a string or a regular expression.
+Alternatively, asserts that `f` throws an exception with the `expected` message. For the `expected` message you can either specify a string, a regular expression or a predicate.
 
 ```javascript
 await assert.that(async () => {
@@ -283,7 +283,7 @@ assert.that(actual).is.not.undefined();
 
 To build this module use [roboter](https://www.npmjs.com/package/roboter).
 
-```bash
+```shell
 $ bot
 ```
 
