@@ -1,6 +1,3 @@
 {
-  "extends": "eslint-config-es/2015/server",
-  "rules": {
-    "prefer-rest-params": 0
-  }
+  "extends": "eslint-config-es/2015/server"
 }
