@@ -283,4 +283,35 @@ suite('assert', () => {
       });
     });
   });
+
+  suite('extension', () => {
+    test('adds an extension.', done => {
+      const extName = 'a';
+
+      chai.equal(assert.forExtension(extName), null);
+
+      assert.addExtension(extName);
+
+      chai.deepEqual(assert.forExtension(extName).methods, {});
+      chai.deepEqual(assert.forExtension(extName).nextedExtensions, {});
+      done();
+    });
+
+    test('does not override existing extension.', done => {
+      const extName = 'an';
+      const fnName = 'isTrue';
+      const fnDef = arg => arg === true;
+
+      chai.equal(assert.forExtension(extName), null);
+
+      assert.addExtension(extName);
+      assert.forExtension(extName).addMethod(fnName, fnDef);
+
+      const expected = {};
+
+      expected[fnName] = fnDef;
+      chai.deepEqual(assert.forExtension(extName).methods, expected);
+      done();
+    });
+  });
 });
