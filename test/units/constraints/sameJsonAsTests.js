@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const sameJsonAs = require('../../../lib/constraints/sameJsonAs');
+const sameJsonAs = require('../../../src/constraints/sameJsonAs');
 
 suite('sameJsonAs', () => {
   test('is a function.', done => {
@@ -81,7 +81,7 @@ suite('sameJsonAs', () => {
       test('throws an error if actual is the same JSON as expected even when functions are used.', done => {
         chai.throw(() => {
           sameJsonAs.negated({ foo: 'bar', bar () {} })({ foo: 'bar' });
-        }, 'Expected {\n  foo: \'bar\',\n  bar: bar() {}\n} not to equal {\n  foo: \'bar\'\n}.');
+        }, 'Expected {\n  foo: \'bar\',\n  bar: bar () {}\n} not to equal {\n  foo: \'bar\'\n}.');
         done();
       });
     });

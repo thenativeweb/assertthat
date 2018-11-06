@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const isUndefined = require('../../../lib/constraints/undefined');
+const isUndefined = require('../../../src/constraints/undefined');
 
 suite('undefined', () => {
   test('is a function.', done => {

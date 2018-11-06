@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const assert = require('../../lib/assertThat');
+const assert = require('../../src/assertThat');
 
 suite('assert', () => {
   test('is an object.', done => {

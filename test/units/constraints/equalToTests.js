@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const equalTo = require('../../../lib/constraints/equalTo');
+const equalTo = require('../../../src/constraints/equalTo');
 
 suite('equalTo', () => {
   test('is a function.', done => {

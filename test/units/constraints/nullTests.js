@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const isNull = require('../../../lib/constraints/null');
+const isNull = require('../../../src/constraints/null');
 
 suite('null', () => {
   test('is a function.', done => {
