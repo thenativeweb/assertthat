@@ -1,6 +1,8 @@
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 
 var stringifyObject = require('stringify-object');
 
@@ -10,24 +12,24 @@ var humanReadable = function humanReadable(value) {
   }
 
   if (typeof value === 'number') {
-    return '' + value;
+    return "".concat(value);
   }
 
   if (typeof value === 'boolean') {
-    return '' + value;
+    return "".concat(value);
   }
 
   if (typeof value === 'string') {
-    return '\'' + value + '\'';
+    return "'".concat(value, "'");
   }
 
-  if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
+  if ((0, _typeof2.default)(value) === 'object') {
     if (value === null) {
       return 'null';
     }
 
     if (value instanceof Error) {
-      return '\'Error\'';
+      return "'Error'";
     }
 
     if (value instanceof RegExp) {
@@ -48,7 +50,7 @@ var humanReadable = function humanReadable(value) {
     return 'undefined';
   }
 
-  throw new Error('Unsupported type \'' + (typeof value === 'undefined' ? 'undefined' : _typeof(value)) + '\'.');
+  throw new Error("Unsupported type '".concat((0, _typeof2.default)(value), "'."));
 };
 
 module.exports = humanReadable;

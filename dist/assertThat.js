@@ -35,7 +35,6 @@ assert.that = function (actual) {
   var is = {
     not: {}
   };
-
   is.atLeast = atLeast(actual);
   is.atMost = atMost(actual);
   is.between = between(actual);
@@ -60,7 +59,6 @@ assert.that = function (actual) {
   is.throwingAsync = throwingAsync(actual);
   is.true = isTrue(actual);
   is.undefined = isUndefined(actual);
-
   is.not.atLeast = atLeast.negated(actual);
   is.not.atMost = atMost.negated(actual);
   is.not.between = between.negated(actual);
@@ -85,8 +83,9 @@ assert.that = function (actual) {
   is.not.throwingAsync = throwingAsync.negated(actual);
   is.not.true = isTrue.negated(actual);
   is.not.undefined = isUndefined.negated(actual);
-
-  return { is: is };
+  return {
+    is: is
+  };
 };
 
 module.exports = assert;

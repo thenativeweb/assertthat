@@ -14,6 +14,7 @@ var throwing = function throwing(actual) {
       if (expected instanceof RegExp && expected.test(err.message)) {
         return;
       }
+
       if (typeof expected === 'function') {
         if (expected(err)) {
           return;
@@ -25,8 +26,9 @@ var throwing = function throwing(actual) {
       if (err.message === expected) {
         return;
       }
-
       /* eslint-disable consistent-return */
+
+
       return fail('Expected %s to equal %s.', [err.message, expected]);
       /* eslint-enable consistent-return */
     }
@@ -53,6 +55,7 @@ throwing.negated = function (actual) {
       if (expected instanceof RegExp && expected.test(err.message)) {
         return fail('Expected not to throw an exception with message %s.', [expected]);
       }
+
       if (typeof expected === 'function') {
         if (expected(err)) {
           return fail('Expected %s not to fulfill predicate.', [err.message]);

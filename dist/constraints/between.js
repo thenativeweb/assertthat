@@ -9,6 +9,7 @@ var between = function between(actual) {
     if (arguments.length === 0) {
       throw new Error('Expected lower bound is missing.');
     }
+
     if (arguments.length === 1) {
       throw new Error('Expected upper bound is missing.');
     }
@@ -26,6 +27,7 @@ between.negated = function (actual) {
     if (arguments.length === 0) {
       throw new Error('Expected lower bound is missing.');
     }
+
     if (arguments.length === 1) {
       throw new Error('Expected upper bound is missing.');
     }

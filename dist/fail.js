@@ -1,12 +1,12 @@
 'use strict';
 
-var assert = require('assert'),
-    util = require('util');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-// Polyfill for the Reflect API to make assertthat work with Node.js < 6.0.0 as well.
-// If we decide to drop support for these Node.js version, the following line may be
-// removed.
-var Reflect = require('harmony-reflect');
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
+var assert = require('assert'),
+    _require = require('util'),
+    format = _require.format;
 
 var humanReadable = require('./humanReadable');
 
@@ -14,17 +14,23 @@ var fail = function fail(message, values) {
   if (!message) {
     throw new Error('Message is missing.');
   }
+
   if (!values) {
     throw new Error('Values are missing.');
   }
 
-  var newArgs = values.map(function (value) {
+  var humanReadableValues = values.map(function (value) {
     return humanReadable(value);
-  });
+  }); // Starting with Node.js 10, the following should actually look like this:
+  //
+  // assert.fail(format(message, ...humanReadableValues));
+  //
+  // To still support Node.js < 10, we fall back to use strictEqual here, and
+  // provide 0 as actual value, 1 as expected value, to ensure that this
+  // assertion always fails. Once we drop support for Node.js < 10, we can
+  // replace this line with the above one.
 
-  newArgs.unshift(message);
-
-  assert.fail(undefined, undefined, Reflect.apply(util.format, this, newArgs));
+  assert.strictEqual(0, 1, format.apply(void 0, [message].concat((0, _toConsumableArray2.default)(humanReadableValues))));
 };
 
 module.exports = fail;
