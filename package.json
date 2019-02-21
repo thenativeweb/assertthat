@@ -23,7 +23,7 @@
   "main": "dist/assertThat.js",
   "dependencies": {
     "@babel/runtime": "7.3.1",
-    "comparejs": "1.0.2",
+    "comparejs": "1.0.3",
     "stringify-object": "3.3.0"
   },
   "devDependencies": {
