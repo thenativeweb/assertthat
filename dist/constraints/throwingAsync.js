@@ -94,7 +94,7 @@ var throwing = function throwing(actual) {
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 5]]);
+        }, _callee, null, [[0, 5]]);
       }));
 
       return function (_x) {
@@ -171,7 +171,7 @@ throwing.negated = function (actual) {
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 5]]);
+        }, _callee2, null, [[0, 5]]);
       }));
 
       return function (_x2) {
