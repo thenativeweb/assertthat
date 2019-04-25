@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const atLeast = require('../../../src/constraints/atLeast');
+const atLeast = require('../../../lib/constraints/atLeast');
 
 suite('atLeast', () => {
   test('is a function.', done => {

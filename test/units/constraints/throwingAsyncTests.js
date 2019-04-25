@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const throwingAsync = require('../../../src/constraints/throwingAsync');
+const throwingAsync = require('../../../lib/constraints/throwingAsync');
 
 suite('throwingAsync', () => {
   test('is a function.', done => {

@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const sameJsonAs = require('../../../src/constraints/sameJsonAs');
+const sameJsonAs = require('../../../lib/constraints/sameJsonAs');
 
 suite('sameJsonAs', () => {
   test('is a function.', done => {

@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const humanReadable = require('../../src/humanReadable');
+const humanReadable = require('../../lib/humanReadable');
 
 suite('humanReadable', () => {
   test('is a function.', done => {

@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const between = require('../../../src/constraints/between');
+const between = require('../../../lib/constraints/between');
 
 suite('between', () => {
   test('is a function.', done => {

@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const endingWith = require('../../../src/constraints/endingWith');
+const endingWith = require('../../../lib/constraints/endingWith');
 
 suite('endingWith', () => {
   test('is a function.', done => {

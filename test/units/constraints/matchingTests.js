@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const matching = require('../../../src/constraints/matching');
+const matching = require('../../../lib/constraints/matching');
 
 suite('matching', () => {
   test('is a function.', done => {

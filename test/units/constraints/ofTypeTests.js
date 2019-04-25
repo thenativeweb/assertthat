@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const ofType = require('../../../src/constraints/ofType');
+const ofType = require('../../../lib/constraints/ofType');
 
 suite('ofType', () => {
   test('is a function.', done => {

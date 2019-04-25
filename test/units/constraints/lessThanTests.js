@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const lessThan = require('../../../src/constraints/lessThan');
+const lessThan = require('../../../lib/constraints/lessThan');
 
 suite('lessThan', () => {
   test('is a function.', done => {

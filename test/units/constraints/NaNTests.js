@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const isNan = require('../../../src/constraints/nan');
+const isNan = require('../../../lib/constraints/nan');
 
 suite('NaN', () => {
   test('is a function.', done => {

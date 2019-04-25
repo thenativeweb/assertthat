@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const greaterThan = require('../../../src/constraints/greaterThan');
+const greaterThan = require('../../../lib/constraints/greaterThan');
 
 suite('greaterThan', () => {
   test('is a function.', done => {

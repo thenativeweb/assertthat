@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const fail = require('../../src/fail');
+const fail = require('../../lib/fail');
 
 suite('fail', () => {
   test('is a function.', done => {

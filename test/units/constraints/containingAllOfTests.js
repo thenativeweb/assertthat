@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const containingAllOf = require('../../../src/constraints/containingAllOf');
+const containingAllOf = require('../../../lib/constraints/containingAllOf');
 
 suite('containingAll', () => {
   test('is a function.', done => {

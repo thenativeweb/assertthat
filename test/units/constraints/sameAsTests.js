@@ -2,7 +2,7 @@
 
 const chai = require('chai').assert;
 
-const sameAs = require('../../../src/constraints/sameAs');
+const sameAs = require('../../../lib/constraints/sameAs');
 
 suite('sameAs', () => {
   test('is a function.', done => {

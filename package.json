@@ -20,15 +20,14 @@
       "email": "jan-hendrik.grundhoefer@thenativeweb.io"
     }
   ],
-  "main": "dist/assertThat.js",
+  "main": "lib/assertThat.js",
   "dependencies": {
-    "@babel/runtime": "7.3.1",
-    "comparejs": "1.0.3",
+    "comparejs": "2.0.0",
     "stringify-object": "3.3.0"
   },
   "devDependencies": {
     "chai": "4.2.0",
-    "roboter": "4.0.0"
+    "roboter": "4.1.0"
   },
   "repository": {
     "type": "git",
