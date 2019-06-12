@@ -32,7 +32,14 @@ suite('sameJsonAs', () => {
 
     test('does not throw an error if actual is the same JSON as expected even when functions are used.', done => {
       chai.doesNotThrow(() => {
-        sameJsonAs({ foo: 'bar', bar () {} })({ foo: 'bar' });
+        sameJsonAs({
+          foo: 'bar',
+          bar () {
+            // Intentionally left blank.
+          }
+        })({
+          foo: 'bar'
+        });
       });
       done();
     });
@@ -80,8 +87,15 @@ suite('sameJsonAs', () => {
 
       test('throws an error if actual is the same JSON as expected even when functions are used.', done => {
         chai.throw(() => {
-          sameJsonAs.negated({ foo: 'bar', bar () {} })({ foo: 'bar' });
-        }, 'Expected {\n  foo: \'bar\',\n  bar: bar () {}\n} not to equal {\n  foo: \'bar\'\n}.');
+          /* eslint-disable no-inline-comments */
+          sameJsonAs.negated({
+            foo: 'bar',
+            bar () { /* Intentionally left blank. */ }
+          })({
+            foo: 'bar'
+          });
+          /* eslint-enable no-inline-comments */
+        }, 'Expected {\n  foo: \'bar\',\n  bar: bar () { /* Intentionally left blank. */ }\n} not to equal {\n  foo: \'bar\'\n}.');
         done();
       });
     });

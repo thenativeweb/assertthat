@@ -64,7 +64,7 @@ suite('throwingAsync', () => {
           await throwingAsync(async () => {
             throw new Error('Foo failed.');
           })();
-        } catch (ex) {
+        } catch {
           return done(new Error('Invalid operation.'));
         }
 
@@ -78,7 +78,7 @@ suite('throwingAsync', () => {
           await throwingAsync(async () => {
             throw new Error('Foo failed.');
           })('Foo failed.');
-        } catch (ex) {
+        } catch {
           return done(new Error('Invalid operation.'));
         }
 
@@ -91,8 +91,8 @@ suite('throwingAsync', () => {
         try {
           await throwingAsync(async () => {
             throw new Error('Foo failed.');
-          })(/Foo/);
-        } catch (ex) {
+          })(/Foo/u);
+        } catch {
           return done(new Error('Invalid operation.'));
         }
 
@@ -105,8 +105,8 @@ suite('throwingAsync', () => {
         try {
           await throwingAsync(async () => {
             throw new Error('Foo failed.');
-          })(ex => /Foo/.test(ex.message));
-        } catch (ex) {
+          })(ex => /Foo/u.test(ex.message));
+        } catch {
           return done(new Error('Invalid operation.'));
         }
 
@@ -139,10 +139,10 @@ suite('throwingAsync', () => {
         try {
           await throwingAsync(async () => {
             throw new Error('Foo failed.');
-          })(/Bar/);
+          })(/Bar/u);
         } catch (ex) {
           try {
-            chai.equal(ex.message, 'Expected \'Foo failed.\' to equal /Bar/.');
+            chai.equal(ex.message, 'Expected \'Foo failed.\' to equal /Bar/u.');
           } catch (exChai) {
             return done(exChai);
           }
@@ -159,7 +159,7 @@ suite('throwingAsync', () => {
         try {
           await throwingAsync(async () => {
             throw new Error('Foo failed.');
-          })(ex => /Bar/.test(ex.message));
+          })(ex => /Bar/u.test(ex.message));
         } catch (ex) {
           try {
             chai.equal(ex.message, 'Expected \'Foo failed.\' to fulfill predicate.');
@@ -215,7 +215,7 @@ suite('throwingAsync', () => {
             await throwingAsync.negated(async () => {
               // Intentionally left blank.
             })();
-          } catch (ex) {
+          } catch {
             return done('Invalid operation.');
           }
 
@@ -229,7 +229,7 @@ suite('throwingAsync', () => {
             await throwingAsync.negated(async () => {
               throw new Error('Foo failed.');
             })();
-          } catch (ex) {
+          } catch {
             return done();
           }
 
@@ -243,7 +243,7 @@ suite('throwingAsync', () => {
             await throwingAsync.negated(async () => {
               // Intentionally left blank.
             })('Foo failed.');
-          } catch (ex) {
+          } catch {
             return done('Invalid operation.');
           }
 
@@ -257,7 +257,7 @@ suite('throwingAsync', () => {
             await throwingAsync.negated(async () => {
               throw new Error('Foo failed.');
             })('Foo failed.');
-          } catch (ex) {
+          } catch {
             return done();
           }
 
@@ -270,8 +270,8 @@ suite('throwingAsync', () => {
           try {
             await throwingAsync.negated(async () => {
               throw new Error('Foo failed.');
-            })(/Foo/);
-          } catch (ex) {
+            })(/Foo/u);
+          } catch {
             return done();
           }
 
@@ -284,8 +284,8 @@ suite('throwingAsync', () => {
           try {
             await throwingAsync.negated(async () => {
               throw new Error('Foo failed.');
-            })(ex => /Foo/.test(ex.message));
-          } catch (ex) {
+            })(ex => /Foo/u.test(ex.message));
+          } catch {
             return done();
           }
 
@@ -299,7 +299,7 @@ suite('throwingAsync', () => {
             await throwingAsync.negated(async () => {
               throw new Error('Foo failed.');
             })('Bar failed.');
-          } catch (ex) {
+          } catch {
             return done('Invalid operation.');
           }
 
@@ -312,8 +312,8 @@ suite('throwingAsync', () => {
           try {
             await throwingAsync.negated(async () => {
               throw new Error('Foo failed.');
-            })(/Bar/);
-          } catch (ex) {
+            })(/Bar/u);
+          } catch {
             return done('Invalid operation.');
           }
 
@@ -326,8 +326,8 @@ suite('throwingAsync', () => {
           try {
             await throwingAsync.negated(async () => {
               throw new Error('Foo failed.');
-            })(ex => /Bar/.test(ex.message));
-          } catch (ex) {
+            })(ex => /Bar/u.test(ex.message));
+          } catch {
             return done('Invalid operation.');
           }
 
@@ -341,7 +341,7 @@ suite('throwingAsync', () => {
             await throwingAsync.negated(async () => {
               throw new Error('Foo failed.');
             })('');
-          } catch (ex) {
+          } catch {
             return done('Invalid operation.');
           }
 

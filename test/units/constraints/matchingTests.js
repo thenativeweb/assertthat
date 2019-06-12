@@ -25,15 +25,15 @@ suite('matching', () => {
 
     test('does not throw an error if actual is matching expected.', done => {
       chai.doesNotThrow(() => {
-        matching('foo')(/foo/);
+        matching('foo')(/foo/u);
       });
       done();
     });
 
     test('throws an error if actual is not matching expected.', done => {
       chai.throw(() => {
-        matching('foo')(/bar/);
-      }, 'Expected \'foo\' to match /bar/.');
+        matching('foo')(/bar/u);
+      }, 'Expected \'foo\' to match /bar/u.');
       done();
     });
   });
@@ -59,15 +59,15 @@ suite('matching', () => {
 
       test('does not throw an error if actual is not matching expected.', done => {
         chai.doesNotThrow(() => {
-          matching.negated('foo')(/bar/);
+          matching.negated('foo')(/bar/u);
         });
         done();
       });
 
       test('throws an error if actual is matching expected.', done => {
         chai.throw(() => {
-          matching.negated('foo')(/foo/);
-        }, 'Expected \'foo\' not to match /foo/.');
+          matching.negated('foo')(/foo/u);
+        }, 'Expected \'foo\' not to match /foo/u.');
         done();
       });
     });

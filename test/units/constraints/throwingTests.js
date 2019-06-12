@@ -58,7 +58,7 @@ suite('throwing', () => {
       chai.doesNotThrow(() => {
         throwing(() => {
           throw new Error('Foo failed.');
-        })(/Foo/);
+        })(/Foo/u);
       });
       done();
     });
@@ -67,7 +67,7 @@ suite('throwing', () => {
       chai.doesNotThrow(() => {
         throwing(() => {
           throw new Error('Foo failed.');
-        })(ex => /Foo/.test(ex.message));
+        })(ex => /Foo/u.test(ex.message));
       });
       done();
     });
@@ -85,8 +85,8 @@ suite('throwing', () => {
       chai.throw(() => {
         throwing(() => {
           throw new Error('Foo failed.');
-        })(/Bar/);
-      }, 'Expected \'Foo failed.\' to equal /Bar/.');
+        })(/Bar/u);
+      }, 'Expected \'Foo failed.\' to equal /Bar/u.');
       done();
     });
 
@@ -94,7 +94,7 @@ suite('throwing', () => {
       chai.throw(() => {
         throwing(() => {
           throw new Error('Foo failed.');
-        })(ex => /Bar/.test(ex.message));
+        })(ex => /Bar/u.test(ex.message));
       }, 'Expected \'Foo failed.\' to fulfill predicate.');
       done();
     });
@@ -163,7 +163,7 @@ suite('throwing', () => {
         chai.throw(() => {
           throwing.negated(() => {
             throw new Error('Foo failed.');
-          })(/Foo/);
+          })(/Foo/u);
         });
         done();
       });
@@ -172,7 +172,7 @@ suite('throwing', () => {
         chai.throw(() => {
           throwing.negated(() => {
             throw new Error('Foo failed.');
-          })(ex => /Foo/.test(ex.message));
+          })(ex => /Foo/u.test(ex.message));
         });
         done();
       });
@@ -190,7 +190,7 @@ suite('throwing', () => {
         chai.doesNotThrow(() => {
           throwing.negated(() => {
             throw new Error('Foo failed.');
-          })(/Bar/);
+          })(/Bar/u);
         });
         done();
       });
@@ -199,7 +199,7 @@ suite('throwing', () => {
         chai.doesNotThrow(() => {
           throwing.negated(() => {
             throw new Error('Foo failed.');
-          })(ex => /Bar/.test(ex.message));
+          })(ex => /Bar/u.test(ex.message));
         });
         done();
       });

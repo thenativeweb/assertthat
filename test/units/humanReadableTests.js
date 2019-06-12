@@ -50,7 +50,7 @@ suite('humanReadable', () => {
   });
 
   test('returns a formatted value when given a regular expression.', done => {
-    chai.equal(humanReadable(/foo/), '/foo/');
+    chai.equal(humanReadable(/foo/u), '/foo/u');
     done();
   });
 
