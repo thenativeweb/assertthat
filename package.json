@@ -22,7 +22,7 @@
   ],
   "main": "lib/assertThat.js",
   "dependencies": {
-    "comparejs": "2.0.0",
+    "comparejs": "2.1.0",
     "stringify-object": "3.3.0"
   },
   "devDependencies": {
