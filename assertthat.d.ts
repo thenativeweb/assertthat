@@ -1,9 +1,9 @@
 declare const assert: {
   that: (actual: any) => {
     is: {
-      atLeast: (expected: number | string | [] | {}) => void;
-      atMost: (expected: number | string | [] | {}) => void;
-      between: (expectedLower: number | string | [] | {}, expectedUpper: number | string | [] | {}) => void;
+      atLeast: (expected: number | [] | {}) => void;
+      atMost: (expected: number | [] | {}) => void;
+      between: (expectedLower: number | [] | {}, expectedUpper: number | [] | {}) => void;
       containing: (expected: any) => void;
       containingAnyOf: (expected: any[]) => void;
       containingAllOf: (expected: any[]) => void;
@@ -11,9 +11,9 @@ declare const assert: {
       equalTo: (expected: any) => void;
       false: () => void;
       falsy: () => void;
-      greaterThan: (expected: number) => void;
+      greaterThan: (expected: number | [] | {}) => void;
       instanceOf: (expected: new(...args: any[]) => {}) => void;
-      lessThan: (expected: number) => void;
+      lessThan: (expected: number | [] | {}) => void;
       matching: (expected: RegExp) => void;
       NaN: () => void;
       null: () => void;
@@ -27,9 +27,9 @@ declare const assert: {
       undefined: () => void;
 
       not: {
-        atLeast: (expected: number | string | [] | {}) => void;
-        atMost: (expected: number | string | [] | {}) => void;
-        between: (expectedLower: number | string | [] | {}, expectedUpper: number | string | [] | {}) => void;
+        atLeast: (expected: number | [] | {}) => void;
+        atMost: (expected: number | [] | {}) => void;
+        between: (expectedLower: number | [] | {}, expectedUpper: number | string | [] | {}) => void;
         containing: (expected: any) => void;
         containingAnyOf: (expected: any[]) => void;
         containingAllOf: (expected: any[]) => void;
@@ -37,9 +37,9 @@ declare const assert: {
         equalTo: (expected: any) => void;
         false: () => void;
         falsy: () => void;
-        greaterThan: (expected: number) => void;
+        greaterThan: (expected: number | [] | {}) => void;
         instanceOf: (expected: new(...args: any[]) => {}) => void;
-        lessThan: (expected: number) => void;
+        lessThan: (expected: number | [] | {}) => void;
         matching: (expected: RegExp) => void;
         NaN: () => void;
         null: () => void;
@@ -51,7 +51,7 @@ declare const assert: {
         throwingAsync: (expected?: string | ((ex: Error) => boolean)) => void;
         true: () => void;
         undefined: () => void;
-      }
+      };
     };
   };
 };
