@@ -1,7 +1,7 @@
 import chaiStatic from 'chai';
+import throwing from '../../../lib/constraints/throwing';
 
 const chai = chaiStatic.assert;
-import throwing from '../../../lib/constraints/throwing';
 
 suite('throwing', (): void => {
   test('is a function.', async (): Promise<void> => {
