@@ -29,7 +29,7 @@
     }
   ],
   "main": "build/lib/assertThat.js",
-  "types": "build/lib/assertthat.d.ts",
+  "types": "build/lib/assertThat.d.ts",
   "dependencies": {
     "comparejs": "3.0.0",
     "stringify-object": "3.3.0"
