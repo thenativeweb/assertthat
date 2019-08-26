@@ -24,7 +24,7 @@
       "email": "hannes.leutloff@thenativeweb.io"
     }
   ],
-  "main": "lib/assertThat.js",
+  "main": "build/lib/assertThat.js",
   "types": "assertthat.d.ts",
   "dependencies": {
     "comparejs": "3.0.0",
