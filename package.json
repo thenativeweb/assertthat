@@ -22,10 +22,14 @@
     {
       "name": "Hannes Leutloff",
       "email": "hannes.leutloff@thenativeweb.io"
+    },
+    {
+      "name": "Martin Bories",
+      "email": "martin.bories@protonmail.com"
     }
   ],
-  "main": "lib/assertThat.js",
-  "types": "assertthat.d.ts",
+  "main": "build/lib/assertThat.js",
+  "types": "build/lib/assertThat.d.ts",
   "dependencies": {
     "comparejs": "3.0.0",
     "stringify-object": "3.3.0"
