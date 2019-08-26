@@ -6,10 +6,6 @@ const containsAny = function (actual: any[], expected: any[]): boolean {
 
 const containingAnyOf = function (actual: any): (expected: any[]) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (containsAny(actual, expected)) {
       return;
     }
@@ -20,10 +16,6 @@ const containingAnyOf = function (actual: any): (expected: any[]) => void {
 
 containingAnyOf.negated = function (actual: any): (expected: any[]) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (!containsAny(actual, expected)) {
       return;
     }

@@ -1,13 +1,8 @@
 import cmp from 'comparejs';
-
 import fail from '../fail';
 
 const sameAs = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (cmp.identity(actual, expected)) {
       return;
     }
@@ -18,10 +13,6 @@ const sameAs = function (actual: any): (expected: any) => void {
 
 sameAs.negated = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (!cmp.identity(actual, expected)) {
       return;
     }

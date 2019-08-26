@@ -2,10 +2,6 @@ import fail from '../fail';
 
 const endingWith = function (actual: any): (expected: string) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (
       actual.length >= expected.length &&
       actual.lastIndexOf(expected) === actual.length - expected.length
@@ -19,10 +15,6 @@ const endingWith = function (actual: any): (expected: string) => void {
 
 endingWith.negated = function (actual: any): (expected: string) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (
       actual.length < expected.length ||
       actual.lastIndexOf(expected) !== actual.length - expected.length

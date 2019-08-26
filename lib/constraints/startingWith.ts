@@ -2,10 +2,6 @@ import fail from '../fail';
 
 const startingWith = function (actual: any): (expected: string) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (actual.indexOf(expected) === 0) {
       return;
     }
@@ -16,10 +12,6 @@ const startingWith = function (actual: any): (expected: string) => void {
 
 startingWith.negated = function (actual: any): (expected: string) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (actual.indexOf(expected) !== 0) {
       return;
     }

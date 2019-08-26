@@ -3,10 +3,6 @@ import fail from '../fail';
 
 const atLeast = function (actual: any): (expected: number | [] | {}) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (cmp.greaterThanOrEqual(actual, expected)) {
       return;
     }
@@ -17,10 +13,6 @@ const atLeast = function (actual: any): (expected: number | [] | {}) => void {
 
 atLeast.negated = function (actual: any): (expected: number | [] | {}) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (!cmp.greaterThanOrEqual(actual, expected)) {
       return;
     }

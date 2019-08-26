@@ -2,10 +2,6 @@ import fail from '../fail';
 
 const matching = function (actual: any): (expected: RegExp) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (expected.test(actual)) {
       return;
     }
@@ -16,10 +12,6 @@ const matching = function (actual: any): (expected: RegExp) => void {
 
 matching.negated = function (actual: any): (expected: RegExp) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (!expected.test(actual)) {
       return;
     }

@@ -79,10 +79,6 @@ const assert = {
       };
     };
   } {
-    if (arguments.length === 0) {
-      throw new Error('Actual is missing.');
-    }
-
     const is = {
       atLeast: atLeast(actual),
       atMost: atMost(actual),

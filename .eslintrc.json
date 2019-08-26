@@ -1,11 +1,3 @@
 {
-  "extends": "es/node",
-  "rules": {
-    "no-underscore-dangle": [ "error", {
-      "allow": [],
-      "allowAfterThis": true,
-      "allowAfterSuper": false,
-      "enforceInMethodNames": true
-    }]
-  }
+  "extends": "es/node"
 }

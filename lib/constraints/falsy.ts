@@ -1,5 +1,4 @@
 import cmp from 'comparejs';
-
 import fail from '../fail';
 
 const falsy = function (actual: any): () => void {

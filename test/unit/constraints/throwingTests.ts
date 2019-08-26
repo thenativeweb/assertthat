@@ -1,7 +1,6 @@
 import chaiStatic from 'chai';
 
 const chai = chaiStatic.assert;
-
 import throwing from '../../../lib/constraints/throwing';
 
 suite('throwing', (): void => {

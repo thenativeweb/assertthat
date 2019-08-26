@@ -2,10 +2,6 @@ import fail from '../fail';
 
 const ofType = function (actual: any): (expected: string) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (Array.isArray(actual) && (expected === 'array' || expected === 'object')) {
       return;
     }
@@ -22,10 +18,6 @@ const ofType = function (actual: any): (expected: string) => void {
 
 ofType.negated = function (actual: any): (expected: string) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (Array.isArray(actual) && (expected !== 'array' && expected !== 'object')) {
       return;
     }

@@ -2,10 +2,6 @@ import fail from '../fail';
 
 const containing = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (actual.includes(expected)) {
       return;
     }
@@ -16,10 +12,6 @@ const containing = function (actual: any): (expected: any) => void {
 
 containing.negated = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (!actual.includes(expected)) {
       return;
     }

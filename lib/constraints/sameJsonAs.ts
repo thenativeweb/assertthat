@@ -1,13 +1,8 @@
 import cmp from 'comparejs';
-
 import fail from '../fail';
 
 const sameJsonAs = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (cmp.equal(JSON.stringify(actual), JSON.stringify(expected))) {
       return;
     }
@@ -18,10 +13,6 @@ const sameJsonAs = function (actual: any): (expected: any) => void {
 
 sameJsonAs.negated = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (arguments.length === 0) {
-      throw new Error('Expected is missing.');
-    }
-
     if (!cmp.equal(JSON.stringify(actual), JSON.stringify(expected))) {
       return;
     }
