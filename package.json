@@ -38,7 +38,7 @@
     "@types/chai": "4.2.3",
     "@types/stringify-object": "3.2.0",
     "chai": "4.2.0",
-    "roboter": "7.5.0"
+    "roboter": "8.0.0"
   },
   "repository": {
     "type": "git",
