@@ -1,9 +1,9 @@
-import cmp from 'comparejs';
-import fail from '../fail';
+import { compare } from 'comparejs';
+import { fail } from '../fail';
 
 const atMost = function (actual: any): (expected: number | [] | {}) => void {
   return function (expected): void {
-    if (cmp.lessThanOrEqual(actual, expected)) {
+    if (compare.lessThanOrEqual(actual, expected)) {
       return;
     }
 
@@ -13,7 +13,7 @@ const atMost = function (actual: any): (expected: number | [] | {}) => void {
 
 atMost.negated = function (actual: any): (expected: number | [] | {}) => void {
   return function (expected): void {
-    if (!cmp.lessThanOrEqual(actual, expected)) {
+    if (!compare.lessThanOrEqual(actual, expected)) {
       return;
     }
 
@@ -21,4 +21,4 @@ atMost.negated = function (actual: any): (expected: number | [] | {}) => void {
   };
 };
 
-export default atMost;
+export { atMost };

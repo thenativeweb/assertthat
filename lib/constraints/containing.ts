@@ -1,4 +1,4 @@
-import fail from '../fail';
+import { fail } from '../fail';
 
 const containing = function (actual: any): (expected: any) => void {
   return function (expected): void {
@@ -20,4 +20,4 @@ containing.negated = function (actual: any): (expected: any) => void {
   };
 };
 
-export default containing;
+export { containing };

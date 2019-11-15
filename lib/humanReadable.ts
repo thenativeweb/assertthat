@@ -43,4 +43,4 @@ const humanReadable = function (value: any): string {
   throw new Error(`Unsupported type '${typeof value}'.`);
 };
 
-export default humanReadable;
+export { humanReadable };

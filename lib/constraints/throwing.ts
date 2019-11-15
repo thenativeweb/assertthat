@@ -1,4 +1,4 @@
-import fail from '../fail';
+import { fail } from '../fail';
 
 const throwing = function (actual: any): (expected?: string | RegExp | ((ex: Error) => boolean)) => void {
   return function (expected): void {
@@ -66,4 +66,4 @@ throwing.negated = function (actual: any): (expected?: string | RegExp | ((ex: E
   };
 };
 
-export default throwing;
+export { throwing };

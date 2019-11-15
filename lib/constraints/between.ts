@@ -1,11 +1,11 @@
-import cmp from 'comparejs';
-import fail from '../fail';
+import { compare } from 'comparejs';
+import { fail } from '../fail';
 
 const between = function (actual: any): (expectedLower: number | [] | {}, expectedUpper: number | [] | {}) => void {
   return function (expectedLower, expectedUpper): void {
     if (
-      cmp.greaterThanOrEqual(actual, expectedLower) &&
-      cmp.lessThanOrEqual(actual, expectedUpper)
+      compare.greaterThanOrEqual(actual, expectedLower) &&
+      compare.lessThanOrEqual(actual, expectedUpper)
     ) {
       return;
     }
@@ -17,8 +17,8 @@ const between = function (actual: any): (expectedLower: number | [] | {}, expect
 between.negated = function (actual: any): (expectedLower: number | [] | {}, expectedUpper: number | [] | {}) => void {
   return function (expectedLower, expectedUpper): void {
     if (
-      !cmp.greaterThanOrEqual(actual, expectedLower) ||
-      !cmp.lessThanOrEqual(actual, expectedUpper)
+      !compare.greaterThanOrEqual(actual, expectedLower) ||
+      !compare.lessThanOrEqual(actual, expectedUpper)
     ) {
       return;
     }
@@ -27,4 +27,4 @@ between.negated = function (actual: any): (expectedLower: number | [] | {}, expe
   };
 };
 
-export default between;
+export { between };

@@ -1,9 +1,9 @@
-import cmp from 'comparejs';
-import fail from '../fail';
+import { compare } from 'comparejs';
+import { fail } from '../fail';
 
 const sameJsonAs = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (cmp.equal(JSON.stringify(actual), JSON.stringify(expected))) {
+    if (compare.equal(JSON.stringify(actual), JSON.stringify(expected))) {
       return;
     }
 
@@ -13,7 +13,7 @@ const sameJsonAs = function (actual: any): (expected: any) => void {
 
 sameJsonAs.negated = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (!cmp.equal(JSON.stringify(actual), JSON.stringify(expected))) {
+    if (!compare.equal(JSON.stringify(actual), JSON.stringify(expected))) {
       return;
     }
 
@@ -21,4 +21,4 @@ sameJsonAs.negated = function (actual: any): (expected: any) => void {
   };
 };
 
-export default sameJsonAs;
+export { sameJsonAs };

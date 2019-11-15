@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import sameAs from '../../../lib/constraints/sameAs';
+import { sameAs } from '../../../lib/constraints/sameAs';
 
 const chai = chaiStatic.assert;
 

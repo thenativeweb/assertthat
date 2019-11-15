@@ -1,4 +1,4 @@
-import between from '../../../lib/constraints/between';
+import { between } from '../../../lib/constraints/between';
 import chaiStatic from 'chai';
 
 const chai = chaiStatic.assert;

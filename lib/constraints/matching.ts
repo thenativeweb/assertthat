@@ -1,4 +1,4 @@
-import fail from '../fail';
+import { fail } from '../fail';
 
 const matching = function (actual: any): (expected: RegExp) => void {
   return function (expected): void {
@@ -20,4 +20,4 @@ matching.negated = function (actual: any): (expected: RegExp) => void {
   };
 };
 
-export default matching;
+export { matching };

@@ -1,9 +1,9 @@
-import cmp from 'comparejs';
-import fail from '../fail';
+import { compare } from 'comparejs';
+import { fail } from '../fail';
 
 const isNull = function (actual: any): () => void {
   return function (): void {
-    if (cmp.equal(actual, null)) {
+    if (compare.equal(actual, null)) {
       return;
     }
 
@@ -13,7 +13,7 @@ const isNull = function (actual: any): () => void {
 
 isNull.negated = function (actual: any): () => void {
   return function (): void {
-    if (!cmp.equal(actual, null)) {
+    if (!compare.equal(actual, null)) {
       return;
     }
 
@@ -21,4 +21,4 @@ isNull.negated = function (actual: any): () => void {
   };
 };
 
-export default isNull;
+export { isNull };

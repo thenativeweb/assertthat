@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import throwing from '../../../lib/constraints/throwing';
+import { throwing } from '../../../lib/constraints/throwing';
 
 const chai = chaiStatic.assert;
 

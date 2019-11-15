@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import equalTo from '../../../lib/constraints/equalTo';
+import { equalTo } from '../../../lib/constraints/equalTo';
 
 const chai = chaiStatic.assert;
 

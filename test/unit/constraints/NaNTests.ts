@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import isNan from '../../../lib/constraints/nan';
+import { isNan } from '../../../lib/constraints/nan';
 
 const chai = chaiStatic.assert;
 

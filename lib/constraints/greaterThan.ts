@@ -1,9 +1,9 @@
-import cmp from 'comparejs';
-import fail from '../fail';
+import { compare } from 'comparejs';
+import { fail } from '../fail';
 
 const greaterThan = function (actual: any): (expected: number | [] | {}) => void {
   return function (expected): void {
-    if (cmp.greaterThan(actual, expected)) {
+    if (compare.greaterThan(actual, expected)) {
       return;
     }
 
@@ -13,7 +13,7 @@ const greaterThan = function (actual: any): (expected: number | [] | {}) => void
 
 greaterThan.negated = function (actual: any): (expected: number | [] | {}) => void {
   return function (expected): void {
-    if (!cmp.greaterThan(actual, expected)) {
+    if (!compare.greaterThan(actual, expected)) {
       return;
     }
 
@@ -21,4 +21,4 @@ greaterThan.negated = function (actual: any): (expected: number | [] | {}) => vo
   };
 };
 
-export default greaterThan;
+export { greaterThan };

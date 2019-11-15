@@ -1,4 +1,4 @@
-import atLeast from '../../../lib/constraints/atLeast';
+import { atLeast } from '../../../lib/constraints/atLeast';
 import chaiStatic from 'chai';
 
 const chai = chaiStatic.assert;

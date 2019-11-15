@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import isUndefined from '../../../lib/constraints/undefined';
+import { isUndefined } from '../../../lib/constraints/undefined';
 
 const chai = chaiStatic.assert;
 

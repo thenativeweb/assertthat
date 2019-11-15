@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import greaterThan from '../../../lib/constraints/greaterThan';
+import { greaterThan } from '../../../lib/constraints/greaterThan';
 
 const chai = chaiStatic.assert;
 

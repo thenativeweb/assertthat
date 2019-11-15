@@ -1,9 +1,9 @@
-import cmp from 'comparejs';
-import fail from '../fail';
+import { compare } from 'comparejs';
+import { fail } from '../fail';
 
 const sameAs = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (cmp.identity(actual, expected)) {
+    if (compare.identity(actual, expected)) {
       return;
     }
 
@@ -13,7 +13,7 @@ const sameAs = function (actual: any): (expected: any) => void {
 
 sameAs.negated = function (actual: any): (expected: any) => void {
   return function (expected): void {
-    if (!cmp.identity(actual, expected)) {
+    if (!compare.identity(actual, expected)) {
       return;
     }
 
@@ -21,4 +21,4 @@ sameAs.negated = function (actual: any): (expected: any) => void {
   };
 };
 
-export default sameAs;
+export { sameAs };

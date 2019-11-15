@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import isTrue from '../../../lib/constraints/true';
+import { isTrue } from '../../../lib/constraints/true';
 
 const chai = chaiStatic.assert;
 

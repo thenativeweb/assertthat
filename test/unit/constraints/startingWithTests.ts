@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import startingWith from '../../../lib/constraints/startingWith';
+import { startingWith } from '../../../lib/constraints/startingWith';
 
 const chai = chaiStatic.assert;
 

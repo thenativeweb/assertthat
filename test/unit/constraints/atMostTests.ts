@@ -1,4 +1,4 @@
-import atMost from '../../../lib/constraints/atMost';
+import { atMost } from '../../../lib/constraints/atMost';
 import chaiStatic from 'chai';
 
 const chai = chaiStatic.assert;

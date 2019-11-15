@@ -1,4 +1,4 @@
-import fail from '../fail';
+import { fail } from '../fail';
 
 const endingWith = function (actual: any): (expected: string) => void {
   return function (expected): void {
@@ -26,4 +26,4 @@ endingWith.negated = function (actual: any): (expected: string) => void {
   };
 };
 
-export default endingWith;
+export { endingWith };

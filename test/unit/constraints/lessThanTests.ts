@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import lessThan from '../../../lib/constraints/lessThan';
+import { lessThan } from '../../../lib/constraints/lessThan';
 
 const chai = chaiStatic.assert;
 

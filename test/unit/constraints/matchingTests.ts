@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import matching from '../../../lib/constraints/matching';
+import { matching } from '../../../lib/constraints/matching';
 
 const chai = chaiStatic.assert;
 

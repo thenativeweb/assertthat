@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import containingAnyOf from '../../../lib/constraints/containingAnyOf';
+import { containingAnyOf } from '../../../lib/constraints/containingAnyOf';
 
 const chai = chaiStatic.assert;
 

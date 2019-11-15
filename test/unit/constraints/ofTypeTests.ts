@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import ofType from '../../../lib/constraints/ofType';
+import { ofType } from '../../../lib/constraints/ofType';
 
 const chai = chaiStatic.assert;
 

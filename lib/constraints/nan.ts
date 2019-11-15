@@ -1,4 +1,4 @@
-import fail from '../fail';
+import { fail } from '../fail';
 
 const isNan = function (actual: any): () => void {
   return function (): void {
@@ -20,4 +20,4 @@ isNan.negated = function (actual: any): () => void {
   };
 };
 
-export default isNan;
+export { isNan };

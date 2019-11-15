@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import instanceOf from '../../../lib/constraints/instanceOf';
+import { instanceOf } from '../../../lib/constraints/instanceOf';
 
 const chai = chaiStatic.assert;
 

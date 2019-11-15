@@ -1,4 +1,4 @@
-import fail from '../fail';
+import { fail } from '../fail';
 
 const containsAny = function (actual: any[], expected: any[]): boolean {
   return expected.some((element: any): boolean => actual.includes(element));
@@ -24,4 +24,4 @@ containingAnyOf.negated = function (actual: any): (expected: any[]) => void {
   };
 };
 
-export default containingAnyOf;
+export { containingAnyOf };

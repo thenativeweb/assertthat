@@ -1,4 +1,4 @@
-import fail from '../fail';
+import { fail } from '../fail';
 
 const ofType = function (actual: any): (expected: string) => void {
   return function (expected): void {
@@ -32,4 +32,4 @@ ofType.negated = function (actual: any): (expected: string) => void {
   };
 };
 
-export default ofType;
+export { ofType };

@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import humanReadable from '../../lib/humanReadable';
+import { humanReadable } from '../../lib/humanReadable';
 
 const chai = chaiStatic.assert;
 

@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import sameJsonAs from '../../../lib/constraints/sameJsonAs';
+import { sameJsonAs } from '../../../lib/constraints/sameJsonAs';
 
 const chai = chaiStatic.assert;
 

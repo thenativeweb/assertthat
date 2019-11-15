@@ -1,5 +1,5 @@
 import chaiStatic from 'chai';
-import fail from '../../lib/fail';
+import { fail } from '../../lib/fail';
 
 const chai = chaiStatic.assert;
 

@@ -1,4 +1,4 @@
-import fail from '../fail';
+import { fail } from '../fail';
 
 const instanceOf = function (actual: any): (expected: new(...args: any[]) => {}) => void {
   return function (expected): void {
@@ -20,4 +20,4 @@ instanceOf.negated = function (actual: any): (expected: new(...args: any[]) => {
   };
 };
 
-export default instanceOf;
+export { instanceOf };

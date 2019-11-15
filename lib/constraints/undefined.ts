@@ -1,9 +1,9 @@
-import cmp from 'comparejs';
-import fail from '../fail';
+import { compare } from 'comparejs';
+import { fail } from '../fail';
 
 const isUndefined = function (actual: any): () => void {
   return function (): void {
-    if (cmp.equal(actual, undefined)) {
+    if (compare.equal(actual, undefined)) {
       return;
     }
 
@@ -13,7 +13,7 @@ const isUndefined = function (actual: any): () => void {
 
 isUndefined.negated = function (actual: any): () => void {
   return function (): void {
-    if (!cmp.equal(actual, undefined)) {
+    if (!compare.equal(actual, undefined)) {
       return;
     }
 
@@ -21,4 +21,4 @@ isUndefined.negated = function (actual: any): () => void {
   };
 };
 
-export default isUndefined;
+export { isUndefined };

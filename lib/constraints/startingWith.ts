@@ -1,4 +1,4 @@
-import fail from '../fail';
+import { fail } from '../fail';
 
 const startingWith = function (actual: any): (expected: string) => void {
   return function (expected): void {
@@ -20,4 +20,4 @@ startingWith.negated = function (actual: any): (expected: string) => void {
   };
 };
 
-export default startingWith;
+export { startingWith };
