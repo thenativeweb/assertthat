@@ -28,8 +28,8 @@
       "email": "martin.bories@protonmail.com"
     }
   ],
-  "main": "build/lib/assertThat.js",
-  "types": "build/lib/assertThat.d.ts",
+  "main": "build/lib/assertthat.js",
+  "types": "build/lib/assertthat.d.ts",
   "dependencies": {
     "comparejs": "3.0.1",
     "stringify-object": "3.3.0"

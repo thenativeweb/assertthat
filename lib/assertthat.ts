@@ -137,4 +137,4 @@ const assert = {
   }
 };
 
-export default assert;
+export { assert };

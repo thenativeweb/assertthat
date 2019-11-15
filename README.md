@@ -23,13 +23,13 @@ $ npm install assertthat
 First you need to add a reference to assertthat to your application.
 
 ```javascript
-const assert = require('assertthat').default;
+const { assert } = require('assertthat');
 ```
 
 If you use TypeScript, use the following code instead:
 
 ```typescript
-import assert from 'assertthat';
+import { assert } from 'assertthat';
 ```
 
 Now you are able to use the various constraints.
