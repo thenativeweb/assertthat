@@ -1,4 +1,4 @@
-import { assert } from '../../lib/assertThat';
+import { assert } from '../../lib/assertthat';
 import chaiStatic from 'chai';
 
 const chai = chaiStatic.assert;
