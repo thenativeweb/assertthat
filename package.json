@@ -39,7 +39,7 @@
     "@types/stringify-object": "3.2.0",
     "chai": "4.2.0",
     "roboter": "11.0.20",
-    "semantic-release-configuration": "1.0.16"
+    "semantic-release-configuration": "1.0.17"
   },
   "repository": {
     "type": "git",
