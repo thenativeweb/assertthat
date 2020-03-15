@@ -35,7 +35,7 @@
     "stringify-object": "3.3.0"
   },
   "devDependencies": {
-    "@types/chai": "4.2.10",
+    "@types/chai": "4.2.11",
     "@types/stringify-object": "3.2.0",
     "chai": "4.2.0",
     "roboter": "11.1.2",
