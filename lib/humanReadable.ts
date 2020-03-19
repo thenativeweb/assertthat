@@ -6,6 +6,7 @@ const humanReadable = function (value: any): string {
   }
 
   if (typeof value === 'boolean') {
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
     return `${value}`;
   }
 
@@ -23,6 +24,7 @@ const humanReadable = function (value: any): string {
     }
 
     if (value instanceof RegExp) {
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       return value.toString();
     }
 
