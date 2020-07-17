@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/thenativeweb/assertthat/compare/5.1.1...5.2.0) (2020-07-17)
+
+
+### Features
+
+* Introduce option to type exception as custom errors. ([#193](https://github.com/thenativeweb/assertthat/issues/193)) ([4c91377](https://github.com/thenativeweb/assertthat/commit/4c9137792e088b42efa0675fd977c56bc8f4b277))
+
 ## [5.1.1](https://github.com/thenativeweb/assertthat/compare/5.1.0...5.1.1) (2020-03-19)
 
 
