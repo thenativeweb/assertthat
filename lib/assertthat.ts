@@ -46,8 +46,8 @@ const assert = {
       sameAs: (expected: any) => void;
       sameJsonAs: (expected: any) => void;
       startingWith: (expected: string) => void;
-      throwing: (expected?: string | RegExp | ((ex: Error) => boolean)) => void;
-      throwingAsync: (expected?: string | RegExp | ((ex: Error) => boolean)) => Promise<void>;
+      throwing: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => void;
+      throwingAsync: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => Promise<void>;
       true: () => void;
       undefined: () => void;
 
@@ -72,8 +72,8 @@ const assert = {
         sameAs: (expected: any) => void;
         sameJsonAs: (expected: any) => void;
         startingWith: (expected: string) => void;
-        throwing: (expected?: string | RegExp | ((ex: Error) => boolean)) => void;
-        throwingAsync: (expected?: string | RegExp | ((ex: Error) => boolean)) => Promise<void>;
+        throwing: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => void;
+        throwingAsync: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => Promise<void>;
         true: () => void;
         undefined: () => void;
       };
@@ -100,8 +100,12 @@ const assert = {
       sameAs: sameAs(actual),
       sameJsonAs: sameJsonAs(actual),
       startingWith: startingWith(actual),
-      throwing: throwing(actual),
-      throwingAsync: throwingAsync(actual),
+      throwing <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): void {
+        throwing<TError>(actual)(expected);
+      },
+      async throwingAsync <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): Promise<void> {
+        await throwingAsync<TError>(actual)(expected);
+      },
       true: isTrue(actual),
       undefined: isUndefined(actual),
 
@@ -126,8 +130,12 @@ const assert = {
         sameAs: sameAs.negated(actual),
         sameJsonAs: sameJsonAs.negated(actual),
         startingWith: startingWith.negated(actual),
-        throwing: throwing.negated(actual),
-        throwingAsync: throwingAsync.negated(actual),
+        throwing <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): void {
+          throwing.negated<TError>(actual)(expected);
+        },
+        async throwingAsync <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): Promise<void> {
+          await throwingAsync.negated<TError>(actual)(expected);
+        },
         true: isTrue.negated(actual),
         undefined: isUndefined.negated(actual)
       }
