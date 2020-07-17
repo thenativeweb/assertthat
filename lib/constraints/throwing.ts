@@ -1,6 +1,6 @@
 import { fail } from '../fail';
 
-const throwing = function (actual: any): (expected?: string | RegExp | ((ex: Error) => boolean)) => void {
+const throwing = function <TError extends Error = Error> (actual: any): (expected?: string | RegExp | ((ex: TError) => boolean)) => void {
   return function (expected): void {
     try {
       actual();
@@ -39,7 +39,7 @@ const throwing = function (actual: any): (expected?: string | RegExp | ((ex: Err
   };
 };
 
-throwing.negated = function (actual: any): (expected?: string | RegExp | ((ex: Error) => boolean)) => void {
+throwing.negated = function <TError extends Error = Error> (actual: any): (expected?: string | RegExp | ((ex: TError) => boolean)) => void {
   return function (expected): void {
     try {
       actual();

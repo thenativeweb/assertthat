@@ -1,6 +1,6 @@
 import { fail } from '../fail';
 
-const throwingAsync = function (actual: any): (expected?: string | RegExp | ((ex: Error) => boolean)) => Promise<void> {
+const throwingAsync = function <TError extends Error = Error> (actual: any): (expected?: string | RegExp | ((ex: TError) => boolean)) => Promise<void> {
   return async function (expected): Promise<void> {
     try {
       await actual();
@@ -39,7 +39,7 @@ const throwingAsync = function (actual: any): (expected?: string | RegExp | ((ex
   };
 };
 
-throwingAsync.negated = function (actual: any): (expected?: string | RegExp | ((ex: Error) => boolean)) => Promise<void> {
+throwingAsync.negated = function <TError extends Error = Error> (actual: any): (expected?: string | RegExp | ((ex: TError) => boolean)) => Promise<void> {
   return async function (expected): Promise<void> {
     try {
       await actual();
