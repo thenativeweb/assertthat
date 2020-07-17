@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/thenativeweb/assertthat/compare/5.2.0...5.2.1) (2020-07-17)
+
+
+### Bug Fixes
+
+* Actually export typed assertions. ([#194](https://github.com/thenativeweb/assertthat/issues/194)) ([b43ffd2](https://github.com/thenativeweb/assertthat/commit/b43ffd26c661e52f8342fc3184f4b018aff9a210))
+
 # [5.2.0](https://github.com/thenativeweb/assertthat/compare/5.1.1...5.2.0) (2020-07-17)
 
 
