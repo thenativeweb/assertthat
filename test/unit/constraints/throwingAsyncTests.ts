@@ -120,6 +120,20 @@ suite('throwingAsync', (): void => {
         chai.equal(ex.message, 'Expected \'Foo failed.\' to equal \'\'.');
       }
     });
+
+    test('correctly types the exception.', async (): Promise<void> => {
+      class CustomError extends Error {
+        public code = 'ECODE';
+      }
+
+      try {
+        await throwingAsync<CustomError>(async (): Promise<void> => {
+          throw new CustomError();
+        })((ex): boolean => ex.code === 'ECODE');
+      } catch {
+        throw new Error('Should not have thrown.');
+      }
+    });
   });
 
   suite('negated', (): void => {
@@ -235,6 +249,21 @@ suite('throwingAsync', (): void => {
           })('');
         } catch {
           throw new Error('Should not have thrown.');
+        }
+      });
+
+      test('correctly types the exception.', async (): Promise<void> => {
+        class CustomError extends Error {
+          public code = 'ECODE';
+        }
+
+        try {
+          await throwingAsync.negated<CustomError>(async (): Promise<void> => {
+            throw new CustomError('Foo failed.');
+          })((ex): boolean => ex.code === 'ECODE');
+          throw new Error('Should have thrown.');
+        } catch (ex) {
+          chai.equal(ex.message, `Expected 'Foo failed.' not to fulfill predicate.`);
         }
       });
     });

@@ -94,6 +94,18 @@ suite('throwing', (): void => {
         })('');
       }, 'Expected \'Foo failed.\' to equal \'\'.');
     });
+
+    test('correctly types the exception.', async (): Promise<void> => {
+      class CustomError extends Error {
+        public code = 'ECODE';
+      }
+
+      chai.doesNotThrow((): void => {
+        throwing<CustomError>((): void => {
+          throw new CustomError();
+        })((ex): boolean => ex.code === 'ECODE');
+      });
+    });
   });
 
   suite('negated', (): void => {
@@ -185,6 +197,18 @@ suite('throwing', (): void => {
           throwing.negated((): void => {
             throw new Error('Foo failed.');
           })('');
+        });
+      });
+
+      test('correctly types the exception.', async (): Promise<void> => {
+        class CustomError extends Error {
+          public code = 'ECODE';
+        }
+
+        chai.throw((): void => {
+          throwing.negated<CustomError>((): void => {
+            throw new CustomError();
+          })((ex): boolean => ex.code === 'ECODE');
         });
       });
     });
