@@ -9,12 +9,14 @@ suite('undefined', (): void => {
   });
 
   test('returns a constraint.', async (): Promise<void> => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     chai.typeOf(isUndefined(undefined), 'function');
   });
 
   suite('constraint', (): void => {
     test('does not throw an error if actual is undefined.', async (): Promise<void> => {
       chai.doesNotThrow((): void => {
+        // eslint-disable-next-line unicorn/no-useless-undefined
         isUndefined(undefined)();
       });
     });
@@ -32,6 +34,7 @@ suite('undefined', (): void => {
     });
 
     test('returns a constraint.', async (): Promise<void> => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       chai.typeOf(isUndefined.negated(undefined), 'function');
     });
 
@@ -44,6 +47,7 @@ suite('undefined', (): void => {
 
       test('throws an error if actual is undefined.', async (): Promise<void> => {
         chai.throw((): void => {
+          // eslint-disable-next-line unicorn/no-useless-undefined
           isUndefined.negated(undefined)();
         }, 'Expected undefined not to be undefined.');
       });

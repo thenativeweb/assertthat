@@ -26,9 +26,9 @@ import { throwingAsync } from './constraints/throwingAsync';
 const assert = {
   that (actual: any): {
     is: {
-      atLeast: (expected: number | [] | {}) => void;
-      atMost: (expected: number | [] | {}) => void;
-      between: (expectedLower: number | [] | {}, expectedUpper: number | [] | {}) => void;
+      atLeast: (expected: number | [] | Record<string, unknown>) => void;
+      atMost: (expected: number | [] | Record<string, unknown>) => void;
+      between: (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void;
       containing: (expected: any) => void;
       containingAnyOf: (expected: any[]) => void;
       containingAllOf: (expected: any[]) => void;
@@ -36,9 +36,9 @@ const assert = {
       equalTo: (expected: any) => void;
       false: () => void;
       falsy: () => void;
-      greaterThan: (expected: number | [] | {}) => void;
-      instanceOf: (expected: new(...args: any[]) => {}) => void;
-      lessThan: (expected: number | [] | {}) => void;
+      greaterThan: (expected: number | [] | Record<string, unknown>) => void;
+      instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
+      lessThan: (expected: number | [] | Record<string, unknown>) => void;
       matching: (expected: RegExp) => void;
       NaN: () => void;
       null: () => void;
@@ -52,9 +52,9 @@ const assert = {
       undefined: () => void;
 
       not: {
-        atLeast: (expected: number | [] | {}) => void;
-        atMost: (expected: number | [] | {}) => void;
-        between: (expectedLower: number | [] | {}, expectedUpper: number | string | [] | {}) => void;
+        atLeast: (expected: number | [] | Record<string, unknown>) => void;
+        atMost: (expected: number | [] | Record<string, unknown>) => void;
+        between: (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void;
         containing: (expected: any) => void;
         containingAnyOf: (expected: any[]) => void;
         containingAllOf: (expected: any[]) => void;
@@ -62,9 +62,9 @@ const assert = {
         equalTo: (expected: any) => void;
         false: () => void;
         falsy: () => void;
-        greaterThan: (expected: number | [] | {}) => void;
-        instanceOf: (expected: new(...args: any[]) => {}) => void;
-        lessThan: (expected: number | [] | {}) => void;
+        greaterThan: (expected: number | [] | Record<string, unknown>) => void;
+        instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
+        lessThan: (expected: number | [] | Record<string, unknown>) => void;
         matching: (expected: RegExp) => void;
         NaN: () => void;
         null: () => void;

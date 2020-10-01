@@ -21,8 +21,8 @@ suite('throwingAsync', (): void => {
           // Intentionally left blank.
         })();
         throw new Error('Should have thrown.');
-      } catch (ex) {
-        chai.equal(ex.message, 'Expected an exception.');
+      } catch (ex: unknown) {
+        chai.equal((ex as NodeJS.ErrnoException).message, 'Expected an exception.');
       }
     });
 
@@ -32,8 +32,8 @@ suite('throwingAsync', (): void => {
           // Intentionally left blank.
         })('Foo failed.');
         throw new Error('Should have thrown.');
-      } catch (ex) {
-        chai.equal(ex.message, 'Expected an exception with message \'Foo failed.\'.');
+      } catch (ex: unknown) {
+        chai.equal((ex as NodeJS.ErrnoException).message, 'Expected an exception with message \'Foo failed.\'.');
       }
     });
 
@@ -83,8 +83,8 @@ suite('throwingAsync', (): void => {
           throw new Error('Foo failed.');
         })('Bar failed.');
         throw new Error('Should have thrown.');
-      } catch (ex) {
-        chai.equal(ex.message, 'Expected \'Foo failed.\' to equal \'Bar failed.\'.');
+      } catch (ex: unknown) {
+        chai.equal((ex as NodeJS.ErrnoException).message, 'Expected \'Foo failed.\' to equal \'Bar failed.\'.');
       }
     });
 
@@ -94,8 +94,8 @@ suite('throwingAsync', (): void => {
           throw new Error('Foo failed.');
         })(/Bar/u);
         throw new Error('Should have thrown.');
-      } catch (ex) {
-        chai.equal(ex.message, 'Expected \'Foo failed.\' to equal /Bar/u.');
+      } catch (ex: unknown) {
+        chai.equal((ex as NodeJS.ErrnoException).message, 'Expected \'Foo failed.\' to equal /Bar/u.');
       }
     });
 
@@ -105,8 +105,8 @@ suite('throwingAsync', (): void => {
           throw new Error('Foo failed.');
         })((ex: Error): boolean => ex.message.includes('Bar'));
         throw new Error('Should have thrown.');
-      } catch (ex) {
-        chai.equal(ex.message, 'Expected \'Foo failed.\' to fulfill predicate.');
+      } catch (ex: unknown) {
+        chai.equal((ex as NodeJS.ErrnoException).message, 'Expected \'Foo failed.\' to fulfill predicate.');
       }
     });
 
@@ -116,8 +116,8 @@ suite('throwingAsync', (): void => {
           throw new Error('Foo failed.');
         })('');
         throw new Error('Should have thrown.');
-      } catch (ex) {
-        chai.equal(ex.message, 'Expected \'Foo failed.\' to equal \'\'.');
+      } catch (ex: unknown) {
+        chai.equal((ex as NodeJS.ErrnoException).message, 'Expected \'Foo failed.\' to equal \'\'.');
       }
     });
 
@@ -164,8 +164,8 @@ suite('throwingAsync', (): void => {
             throw new Error('Foo failed.');
           })();
           throw new Error('Should have thrown.');
-        } catch (ex) {
-          chai.equal(ex.message, `Expected not to throw an exception (received: 'Foo failed.').`);
+        } catch (ex: unknown) {
+          chai.equal((ex as NodeJS.ErrnoException).message, `Expected not to throw an exception (received: 'Foo failed.').`);
         }
       });
 
@@ -185,8 +185,8 @@ suite('throwingAsync', (): void => {
             throw new Error('Foo failed.');
           })('Foo failed.');
           throw new Error('Should have thrown.');
-        } catch (ex) {
-          chai.equal(ex.message, `Expected not to throw an exception with message 'Foo failed.'.`);
+        } catch (ex: unknown) {
+          chai.equal((ex as NodeJS.ErrnoException).message, `Expected not to throw an exception with message 'Foo failed.'.`);
         }
       });
 
@@ -196,8 +196,8 @@ suite('throwingAsync', (): void => {
             throw new Error('Foo failed.');
           })(/Foo/u);
           throw new Error('Should have thrown.');
-        } catch (ex) {
-          chai.equal(ex.message, `Expected not to throw an exception with message /Foo/u.`);
+        } catch (ex: unknown) {
+          chai.equal((ex as NodeJS.ErrnoException).message, `Expected not to throw an exception with message /Foo/u.`);
         }
       });
 
@@ -207,8 +207,8 @@ suite('throwingAsync', (): void => {
             throw new Error('Foo failed.');
           })((ex: Error): boolean => ex.message.includes('Foo'));
           throw new Error('Should have thrown.');
-        } catch (ex) {
-          chai.equal(ex.message, `Expected 'Foo failed.' not to fulfill predicate.`);
+        } catch (ex: unknown) {
+          chai.equal((ex as NodeJS.ErrnoException).message, `Expected 'Foo failed.' not to fulfill predicate.`);
         }
       });
 
@@ -262,8 +262,8 @@ suite('throwingAsync', (): void => {
             throw new CustomError('Foo failed.');
           })((ex): boolean => ex.code === 'ECODE');
           throw new Error('Should have thrown.');
-        } catch (ex) {
-          chai.equal(ex.message, `Expected 'Foo failed.' not to fulfill predicate.`);
+        } catch (ex: unknown) {
+          chai.equal((ex as NodeJS.ErrnoException).message, `Expected 'Foo failed.' not to fulfill predicate.`);
         }
       });
     });

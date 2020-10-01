@@ -1,7 +1,7 @@
 import { compare } from 'comparejs';
 import { fail } from '../fail';
 
-const atMost = function (actual: any): (expected: number | [] | {}) => void {
+const atMost = function (actual: any): (expected: number | [] | Record<string, unknown>) => void {
   return function (expected): void {
     if (compare.lessThanOrEqual(actual, expected)) {
       return;
@@ -11,7 +11,7 @@ const atMost = function (actual: any): (expected: number | [] | {}) => void {
   };
 };
 
-atMost.negated = function (actual: any): (expected: number | [] | {}) => void {
+atMost.negated = function (actual: any): (expected: number | [] | Record<string, unknown>) => void {
   return function (expected): void {
     if (!compare.lessThanOrEqual(actual, expected)) {
       return;

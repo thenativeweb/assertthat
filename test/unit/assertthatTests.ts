@@ -11,6 +11,7 @@ suite('assert', (): void => {
   suite('that', (): void => {
     test('does not throw an error if actual is undefined.', async (): Promise<void> => {
       chai.doesNotThrow((): void => {
+        // eslint-disable-next-line unicorn/no-useless-undefined
         assert.that(undefined);
       });
     });
