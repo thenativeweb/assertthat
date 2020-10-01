@@ -1,10 +1,11 @@
 import { fail } from '../fail';
 
+/* eslint-disable @typescript-eslint/no-implicit-any-catch */
 const throwing = function <TError extends Error = Error> (actual: any): (expected?: string | RegExp | ((ex: TError) => boolean)) => void {
   return function (expected): void {
     try {
       actual();
-    } catch (ex) {
+    } catch (ex: any) {
       if (!expected && expected !== '') {
         return;
       }
@@ -43,7 +44,7 @@ throwing.negated = function <TError extends Error = Error> (actual: any): (expec
   return function (expected): void {
     try {
       actual();
-    } catch (ex) {
+    } catch (ex: any) {
       if (!expected && expected !== '') {
         return fail(`Expected not to throw an exception (received: '${ex.message}').`, []);
       }
@@ -65,5 +66,6 @@ throwing.negated = function <TError extends Error = Error> (actual: any): (expec
     }
   };
 };
+/* eslint-enable @typescript-eslint/no-implicit-any-catch */
 
 export { throwing };

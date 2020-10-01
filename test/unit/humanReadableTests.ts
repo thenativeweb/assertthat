@@ -13,6 +13,7 @@ suite('humanReadable', (): void => {
   });
 
   test('returns the stringified value when given undefined.', async (): Promise<void> => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     chai.equal(humanReadable(undefined), 'undefined');
   });
 

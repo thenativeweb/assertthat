@@ -1,7 +1,7 @@
 import { compare } from 'comparejs';
 import { fail } from '../fail';
 
-const between = function (actual: any): (expectedLower: number | [] | {}, expectedUpper: number | [] | {}) => void {
+const between = function (actual: any): (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void {
   return function (expectedLower, expectedUpper): void {
     if (
       compare.greaterThanOrEqual(actual, expectedLower) &&
@@ -14,7 +14,7 @@ const between = function (actual: any): (expectedLower: number | [] | {}, expect
   };
 };
 
-between.negated = function (actual: any): (expectedLower: number | [] | {}, expectedUpper: number | [] | {}) => void {
+between.negated = function (actual: any): (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void {
   return function (expectedLower, expectedUpper): void {
     if (
       !compare.greaterThanOrEqual(actual, expectedLower) ||

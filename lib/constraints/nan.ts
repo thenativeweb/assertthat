@@ -2,7 +2,7 @@ import { fail } from '../fail';
 
 const isNan = function (actual: any): () => void {
   return function (): void {
-    if (typeof actual === 'number' && isNaN(actual)) {
+    if (typeof actual === 'number' && Number.isNaN(actual)) {
       return;
     }
 
@@ -12,7 +12,7 @@ const isNan = function (actual: any): () => void {
 
 isNan.negated = function (actual: any): () => void {
   return function (): void {
-    if (!(typeof actual === 'number') || !isNaN(actual)) {
+    if (!(typeof actual === 'number') || !Number.isNaN(actual)) {
       return;
     }
 
