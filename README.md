@@ -295,7 +295,7 @@ assert.that(actual).is.undefined();
 assert.that(actual).is.not.undefined();
 ```
 
-## Running the build
+## Running the quality assurance
 
 To build this module use [roboter](https://www.npmjs.com/package/roboter).
 
