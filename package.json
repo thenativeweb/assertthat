@@ -32,7 +32,7 @@
   "types": "build/lib/assertthat.d.ts",
   "dependencies": {
     "@types/stringify-object": "3.3.0",
-    "comparejs": "4.0.1",
+    "comparejs": "4.0.2",
     "stringify-object": "3.3.0"
   },
   "devDependencies": {
