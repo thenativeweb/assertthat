@@ -1,3 +1,10 @@
+## [5.2.2](https://github.com/thenativeweb/assertthat/compare/5.2.1...5.2.2) (2020-11-03)
+
+
+### Bug Fixes
+
+* Fix headline for robot section in readme. ([#240](https://github.com/thenativeweb/assertthat/issues/240)) ([f8e3885](https://github.com/thenativeweb/assertthat/commit/f8e3885b0cd2c6827612f0022d7610f5dfac8bde))
+
 ## [5.2.1](https://github.com/thenativeweb/assertthat/compare/5.2.0...5.2.1) (2020-07-17)
 
 
