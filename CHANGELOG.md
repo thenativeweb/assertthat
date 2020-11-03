@@ -1,3 +1,10 @@
+## [5.2.5](https://github.com/thenativeweb/assertthat/compare/5.2.4...5.2.5) (2020-11-03)
+
+
+### Bug Fixes
+
+* bump comparejs from 4.0.3 to 4.0.4 ([#247](https://github.com/thenativeweb/assertthat/issues/247)) ([d6b81f3](https://github.com/thenativeweb/assertthat/commit/d6b81f3cf4b57f6edcf8f5b962fd6916998f1263))
+
 ## [5.2.4](https://github.com/thenativeweb/assertthat/compare/5.2.3...5.2.4) (2020-11-03)
 
 
