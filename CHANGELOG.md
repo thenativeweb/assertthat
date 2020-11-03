@@ -1,3 +1,17 @@
+## [5.2.3](https://github.com/thenativeweb/assertthat/compare/5.2.2...5.2.3) (2020-11-03)
+
+
+### Bug Fixes
+
+* bump comparejs from 4.0.1 to 4.0.2 ([#245](https://github.com/thenativeweb/assertthat/issues/245)) ([1062445](https://github.com/thenativeweb/assertthat/commit/106244516a1437ea6f9e6b4e6eb310ddea9dff99))
+
+## [5.2.2](https://github.com/thenativeweb/assertthat/compare/5.2.1...5.2.2) (2020-11-03)
+
+
+### Bug Fixes
+
+* Fix headline for robot section in readme. ([#240](https://github.com/thenativeweb/assertthat/issues/240)) ([f8e3885](https://github.com/thenativeweb/assertthat/commit/f8e3885b0cd2c6827612f0022d7610f5dfac8bde))
+
 ## [5.2.1](https://github.com/thenativeweb/assertthat/compare/5.2.0...5.2.1) (2020-07-17)
 
 
