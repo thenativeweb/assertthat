@@ -9,13 +9,13 @@ suite('instanceOf', (): void => {
   });
 
   test('returns a constraint.', async (): Promise<void> => {
-    chai.typeOf(instanceOf(new Error()), 'function');
+    chai.typeOf(instanceOf(new Error('Something went wrong.')), 'function');
   });
 
   suite('constraint', (): void => {
     test('does not throw an error if actual is an instance of expected.', async (): Promise<void> => {
       chai.doesNotThrow((): void => {
-        instanceOf(new Error())(Error);
+        instanceOf(new Error('Something went wrong.'))(Error);
       });
     });
 
@@ -32,7 +32,7 @@ suite('instanceOf', (): void => {
     });
 
     test('returns a constraint.', async (): Promise<void> => {
-      chai.typeOf(instanceOf.negated(new Error()), 'function');
+      chai.typeOf(instanceOf.negated(new Error('Something went wrong.')), 'function');
     });
 
     suite('constraint', (): void => {
@@ -44,7 +44,7 @@ suite('instanceOf', (): void => {
 
       test('throws an error if actual is an instance of expected.', async (): Promise<void> => {
         chai.throw((): void => {
-          instanceOf.negated(new Error())(Error);
+          instanceOf.negated(new Error('Something went wrong.'))(Error);
         }, `Expected 'Error' not to be an instance of Error.`);
       });
     });
