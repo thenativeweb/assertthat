@@ -26,96 +26,98 @@ suite('assert', (): void => {
       });
 
       suite('has constraints', (): void => {
+        const actual: any = 23;
+
         test('atLeast.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.atLeast, 'function');
+          chai.typeOf(assert.that(actual).is.atLeast, 'function');
         });
 
         test('atMost.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.atMost, 'function');
+          chai.typeOf(assert.that(actual).is.atMost, 'function');
         });
 
         test('between.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.between, 'function');
+          chai.typeOf(assert.that(actual).is.between, 'function');
         });
 
         test('containing.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.containing, 'function');
+          chai.typeOf(assert.that(actual).is.containing, 'function');
         });
 
         test('containingAnyOf.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.containingAnyOf, 'function');
+          chai.typeOf(assert.that(actual).is.containingAnyOf, 'function');
         });
 
         test('containingAll.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.containingAllOf, 'function');
+          chai.typeOf(assert.that(actual).is.containingAllOf, 'function');
         });
 
         test('endingWith.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.endingWith, 'function');
+          chai.typeOf(assert.that(actual).is.endingWith, 'function');
         });
 
         test('equalTo.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.equalTo, 'function');
+          chai.typeOf(assert.that(actual).is.equalTo, 'function');
         });
 
         test('false.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.false, 'function');
+          chai.typeOf(assert.that(actual).is.false, 'function');
         });
 
         test('falsy.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.falsy, 'function');
+          chai.typeOf(assert.that(actual).is.falsy, 'function');
         });
 
         test('greaterThan.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.greaterThan, 'function');
+          chai.typeOf(assert.that(actual).is.greaterThan, 'function');
         });
 
         test('instanceOf.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.instanceOf, 'function');
+          chai.typeOf(assert.that(actual).is.instanceOf, 'function');
         });
 
         test('lessThan.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.lessThan, 'function');
+          chai.typeOf(assert.that(actual).is.lessThan, 'function');
         });
 
         test('matching.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.matching, 'function');
+          chai.typeOf(assert.that(actual).is.matching, 'function');
         });
 
         test('NaN.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.NaN, 'function');
+          chai.typeOf(assert.that(actual).is.NaN, 'function');
         });
 
         test('null.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.null, 'function');
+          chai.typeOf(assert.that(actual).is.null, 'function');
         });
 
         test('ofType.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.ofType, 'function');
+          chai.typeOf(assert.that(actual).is.ofType, 'function');
         });
 
         test('sameAs.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.sameAs, 'function');
+          chai.typeOf(assert.that(actual).is.sameAs, 'function');
         });
 
         test('sameJsonAs.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.sameJsonAs, 'function');
+          chai.typeOf(assert.that(actual).is.sameJsonAs, 'function');
         });
 
         test('startingWith.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.startingWith, 'function');
+          chai.typeOf(assert.that(actual).is.startingWith, 'function');
         });
 
         test('throwing.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.throwing, 'function');
+          chai.typeOf(assert.that(actual).is.throwing, 'function');
         });
 
         test('true.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.true, 'function');
+          chai.typeOf(assert.that(actual).is.true, 'function');
         });
 
         test('undefined.', async (): Promise<void> => {
-          chai.typeOf(assert.that(23).is.undefined, 'function');
+          chai.typeOf(assert.that(actual).is.undefined, 'function');
         });
       });
 
@@ -125,20 +127,22 @@ suite('assert', (): void => {
         });
 
         suite('has constraints', (): void => {
+          const actual: any = 23;
+
           test('atLeast.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.atLeast, 'function');
+            chai.typeOf(assert.that(actual).is.not.atLeast, 'function');
           });
 
           test('atMost.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.atMost, 'function');
+            chai.typeOf(assert.that(actual).is.not.atMost, 'function');
           });
 
           test('between.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.between, 'function');
+            chai.typeOf(assert.that(actual).is.not.between, 'function');
           });
 
           test('containing.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.containing, 'function');
+            chai.typeOf(assert.that(actual).is.not.containing, 'function');
           });
 
           test('containingAnyOf.', async (): Promise<void> => {
@@ -146,75 +150,75 @@ suite('assert', (): void => {
           });
 
           test('containingAll.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.containingAllOf, 'function');
+            chai.typeOf(assert.that(actual).is.not.containingAllOf, 'function');
           });
 
           test('endingWith.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.endingWith, 'function');
+            chai.typeOf(assert.that(actual).is.not.endingWith, 'function');
           });
 
           test('equalTo.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.equalTo, 'function');
+            chai.typeOf(assert.that(actual).is.not.equalTo, 'function');
           });
 
           test('false.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.false, 'function');
+            chai.typeOf(assert.that(actual).is.not.false, 'function');
           });
 
           test('falsy.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.falsy, 'function');
+            chai.typeOf(assert.that(actual).is.not.falsy, 'function');
           });
 
           test('greaterThan.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.greaterThan, 'function');
+            chai.typeOf(assert.that(actual).is.not.greaterThan, 'function');
           });
 
           test('instanceOf.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.instanceOf, 'function');
+            chai.typeOf(assert.that(actual).is.not.instanceOf, 'function');
           });
 
           test('lessThan.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.lessThan, 'function');
+            chai.typeOf(assert.that(actual).is.not.lessThan, 'function');
           });
 
           test('matching.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.matching, 'function');
+            chai.typeOf(assert.that(actual).is.not.matching, 'function');
           });
 
           test('NaN.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.NaN, 'function');
+            chai.typeOf(assert.that(actual).is.not.NaN, 'function');
           });
 
           test('null.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.null, 'function');
+            chai.typeOf(assert.that(actual).is.not.null, 'function');
           });
 
           test('ofType.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.ofType, 'function');
+            chai.typeOf(assert.that(actual).is.not.ofType, 'function');
           });
 
           test('sameAs.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.sameAs, 'function');
+            chai.typeOf(assert.that(actual).is.not.sameAs, 'function');
           });
 
           test('sameJsonAs.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.sameJsonAs, 'function');
+            chai.typeOf(assert.that(actual).is.not.sameJsonAs, 'function');
           });
 
           test('startingWith.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.startingWith, 'function');
+            chai.typeOf(assert.that(actual).is.not.startingWith, 'function');
           });
 
           test('throwing.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.throwing, 'function');
+            chai.typeOf(assert.that(actual).is.not.throwing, 'function');
           });
 
           test('true.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.true, 'function');
+            chai.typeOf(assert.that(actual).is.not.true, 'function');
           });
 
           test('undefined.', async (): Promise<void> => {
-            chai.typeOf(assert.that(23).is.not.undefined, 'function');
+            chai.typeOf(assert.that(actual).is.not.undefined, 'function');
           });
         });
       });

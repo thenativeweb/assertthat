@@ -23,9 +23,164 @@ import { startingWith } from './constraints/startingWith';
 import { throwing } from './constraints/throwing';
 import { throwingAsync } from './constraints/throwingAsync';
 
-const assert = {
-  that (actual: any): {
-    is: {
+function that (actual: number): {
+  is: {
+    atLeast: (expected: number | [] | Record<string, unknown>) => void;
+    atMost: (expected: number | [] | Record<string, unknown>) => void;
+    between: (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void;
+    equalTo: (expected: any) => void;
+    falsy: () => void;
+    greaterThan: (expected: number | [] | Record<string, unknown>) => void;
+    lessThan: (expected: number | [] | Record<string, unknown>) => void;
+    NaN: () => void;
+    ofType: (expected: string) => void;
+    sameAs: (expected: any) => void;
+    sameJsonAs: (expected: any) => void;
+
+    not: {
+      atLeast: (expected: number | [] | Record<string, unknown>) => void;
+      atMost: (expected: number | [] | Record<string, unknown>) => void;
+      between: (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void;
+      equalTo: (expected: any) => void;
+      falsy: () => void;
+      greaterThan: (expected: number | [] | Record<string, unknown>) => void;
+      lessThan: (expected: number | [] | Record<string, unknown>) => void;
+      NaN: () => void;
+      ofType: (expected: string) => void;
+      sameAs: (expected: any) => void;
+      sameJsonAs: (expected: any) => void;
+    };
+  };
+};
+// eslint-disable-next-line @typescript-eslint/unified-signatures,no-redeclare
+function that (actual: string): {
+  is: {
+    containing: (expected: any) => void;
+    containingAnyOf: (expected: any[]) => void;
+    containingAllOf: (expected: any[]) => void;
+    endingWith: (expected: string) => void;
+    equalTo: (expected: any) => void;
+    falsy: () => void;
+    matching: (expected: RegExp) => void;
+    ofType: (expected: string) => void;
+    sameAs: (expected: any) => void;
+    sameJsonAs: (expected: any) => void;
+    startingWith: (expected: string) => void;
+
+    not: {
+      containing: (expected: any) => void;
+      containingAnyOf: (expected: any[]) => void;
+      containingAllOf: (expected: any[]) => void;
+      endingWith: (expected: string) => void;
+      equalTo: (expected: any) => void;
+      falsy: () => void;
+      matching: (expected: RegExp) => void;
+      ofType: (expected: string) => void;
+      sameAs: (expected: any) => void;
+      sameJsonAs: (expected: any) => void;
+      startingWith: (expected: string) => void;
+    };
+  };
+};
+// eslint-disable-next-line @typescript-eslint/unified-signatures,no-redeclare
+function that (actual: boolean): {
+  is: {
+    equalTo: (expected: any) => void;
+    false: () => void;
+    falsy: () => void;
+    instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
+    ofType: (expected: string) => void;
+    sameAs: (expected: any) => void;
+    sameJsonAs: (expected: any) => void;
+    true: () => void;
+
+    not: {
+      equalTo: (expected: any) => void;
+      false: () => void;
+      falsy: () => void;
+      instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
+      ofType: (expected: string) => void;
+      sameAs: (expected: any) => void;
+      sameJsonAs: (expected: any) => void;
+      true: () => void;
+    };
+  };
+};
+// eslint-disable-next-line @typescript-eslint/unified-signatures,no-redeclare
+function that (actual: any[]): {
+  is: {
+    containing: (expected: any) => void;
+    containingAnyOf: (expected: any[]) => void;
+    containingAllOf: (expected: any[]) => void;
+    equalTo: (expected: any) => void;
+    falsy: () => void;
+    ofType: (expected: string) => void;
+    sameAs: (expected: any) => void;
+    sameJsonAs: (expected: any) => void;
+
+    not: {
+      containing: (expected: any) => void;
+      containingAnyOf: (expected: any[]) => void;
+      containingAllOf: (expected: any[]) => void;
+      equalTo: (expected: any) => void;
+      falsy: () => void;
+      ofType: (expected: string) => void;
+      sameAs: (expected: any) => void;
+      sameJsonAs: (expected: any) => void;
+    };
+  };
+};
+// eslint-disable-next-line @typescript-eslint/unified-signatures,no-redeclare
+function that (actual: object): {
+  is: {
+    equalTo: (expected: any) => void;
+    falsy: () => void;
+    instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
+    null: () => void;
+    ofType: (expected: string) => void;
+    sameAs: (expected: any) => void;
+    sameJsonAs: (expected: any) => void;
+
+    not: {
+      equalTo: (expected: any) => void;
+      falsy: () => void;
+      instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
+      null: () => void;
+      ofType: (expected: string) => void;
+      sameAs: (expected: any) => void;
+      sameJsonAs: (expected: any) => void;
+    };
+  };
+};
+// eslint-disable-next-line @typescript-eslint/unified-signatures,no-redeclare
+function that (actual: any): {
+  is: {
+    atLeast: (expected: number | [] | Record<string, unknown>) => void;
+    atMost: (expected: number | [] | Record<string, unknown>) => void;
+    between: (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void;
+    containing: (expected: any) => void;
+    containingAnyOf: (expected: any[]) => void;
+    containingAllOf: (expected: any[]) => void;
+    endingWith: (expected: string) => void;
+    equalTo: (expected: any) => void;
+    false: () => void;
+    falsy: () => void;
+    greaterThan: (expected: number | [] | Record<string, unknown>) => void;
+    instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
+    lessThan: (expected: number | [] | Record<string, unknown>) => void;
+    matching: (expected: RegExp) => void;
+    NaN: () => void;
+    null: () => void;
+    ofType: (expected: string) => void;
+    sameAs: (expected: any) => void;
+    sameJsonAs: (expected: any) => void;
+    startingWith: (expected: string) => void;
+    throwing: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => void;
+    throwingAsync: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => Promise<void>;
+    true: () => void;
+    undefined: () => void;
+
+    not: {
       atLeast: (expected: number | [] | Record<string, unknown>) => void;
       atMost: (expected: number | [] | Record<string, unknown>) => void;
       between: (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void;
@@ -50,36 +205,14 @@ const assert = {
       throwingAsync: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => Promise<void>;
       true: () => void;
       undefined: () => void;
-
-      not: {
-        atLeast: (expected: number | [] | Record<string, unknown>) => void;
-        atMost: (expected: number | [] | Record<string, unknown>) => void;
-        between: (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void;
-        containing: (expected: any) => void;
-        containingAnyOf: (expected: any[]) => void;
-        containingAllOf: (expected: any[]) => void;
-        endingWith: (expected: string) => void;
-        equalTo: (expected: any) => void;
-        false: () => void;
-        falsy: () => void;
-        greaterThan: (expected: number | [] | Record<string, unknown>) => void;
-        instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
-        lessThan: (expected: number | [] | Record<string, unknown>) => void;
-        matching: (expected: RegExp) => void;
-        NaN: () => void;
-        null: () => void;
-        ofType: (expected: string) => void;
-        sameAs: (expected: any) => void;
-        sameJsonAs: (expected: any) => void;
-        startingWith: (expected: string) => void;
-        throwing: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => void;
-        throwingAsync: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => Promise<void>;
-        true: () => void;
-        undefined: () => void;
-      };
     };
-  } {
-    const is = {
+  };
+};
+
+// eslint-disable-next-line func-style,no-redeclare
+function that (actual: any): any {
+  return {
+    is: {
       atLeast: atLeast(actual),
       atMost: atMost(actual),
       between: between(actual),
@@ -139,10 +272,12 @@ const assert = {
         true: isTrue.negated(actual),
         undefined: isUndefined.negated(actual)
       }
-    };
+    }
+  };
+}
 
-    return { is };
-  }
+const assert = {
+  that
 };
 
 export { assert };
