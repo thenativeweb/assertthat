@@ -1,3 +1,10 @@
+## [5.2.6](https://github.com/thenativeweb/assertthat/compare/5.2.5...5.2.6) (2021-03-25)
+
+
+### Bug Fixes
+
+* Migrate from master to main. ([#327](https://github.com/thenativeweb/assertthat/issues/327)) ([88ce4f9](https://github.com/thenativeweb/assertthat/commit/88ce4f9e8b411e9592c19cb8395a10dbfb2d59ff))
+
 ## [5.2.5](https://github.com/thenativeweb/assertthat/compare/5.2.4...5.2.5) (2020-11-03)
 
 
