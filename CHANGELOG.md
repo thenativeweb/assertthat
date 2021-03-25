@@ -1,3 +1,10 @@
+## [5.2.7](https://github.com/thenativeweb/assertthat/compare/5.2.6...5.2.7) (2021-03-25)
+
+
+### Bug Fixes
+
+* bump comparejs from 4.0.5 to 4.0.6 ([#329](https://github.com/thenativeweb/assertthat/issues/329)) ([4c5dff0](https://github.com/thenativeweb/assertthat/commit/4c5dff006db1d03fd2fe2e95db51719641fdd378))
+
 ## [5.2.6](https://github.com/thenativeweb/assertthat/compare/5.2.5...5.2.6) (2021-03-25)
 
 
