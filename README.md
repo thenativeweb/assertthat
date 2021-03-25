@@ -9,7 +9,7 @@ assertthat provides fluent TDD.
 | Version          | [![npm](https://img.shields.io/npm/v/assertthat)](https://www.npmjs.com/package/assertthat)                                                      |
 | Dependencies     | ![David](https://img.shields.io/david/thenativeweb/assertthat)                                                                                   |
 | Dev dependencies | ![David](https://img.shields.io/david/dev/thenativeweb/assertthat)                                                                               |
-| Build            | ![GitHub Actions](https://github.com/thenativeweb/assertthat/workflows/Release/badge.svg?branch=master) |
+| Build            | ![GitHub Actions](https://github.com/thenativeweb/assertthat/workflows/Release/badge.svg?branch=main) |
 | License          | ![GitHub](https://img.shields.io/github/license/thenativeweb/assertthat)                                                                         |
 
 ## Installation
