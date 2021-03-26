@@ -1,3 +1,24 @@
+## [5.2.8](https://github.com/thenativeweb/assertthat/compare/5.2.7...5.2.8) (2021-03-25)
+
+
+### Bug Fixes
+
+* bump comparejs from 4.0.6 to 4.0.7 ([#332](https://github.com/thenativeweb/assertthat/issues/332)) ([08b3b60](https://github.com/thenativeweb/assertthat/commit/08b3b60d99263a90aab07e8bd2dd5caac155f228))
+
+## [5.2.7](https://github.com/thenativeweb/assertthat/compare/5.2.6...5.2.7) (2021-03-25)
+
+
+### Bug Fixes
+
+* bump comparejs from 4.0.5 to 4.0.6 ([#329](https://github.com/thenativeweb/assertthat/issues/329)) ([4c5dff0](https://github.com/thenativeweb/assertthat/commit/4c5dff006db1d03fd2fe2e95db51719641fdd378))
+
+## [5.2.6](https://github.com/thenativeweb/assertthat/compare/5.2.5...5.2.6) (2021-03-25)
+
+
+### Bug Fixes
+
+* Migrate from master to main. ([#327](https://github.com/thenativeweb/assertthat/issues/327)) ([88ce4f9](https://github.com/thenativeweb/assertthat/commit/88ce4f9e8b411e9592c19cb8395a10dbfb2d59ff))
+
 ## [5.2.5](https://github.com/thenativeweb/assertthat/compare/5.2.4...5.2.5) (2020-11-03)
 
 

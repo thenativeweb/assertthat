@@ -1,6 +1,6 @@
 {
   "name": "assertthat",
-  "version": "5.2.5",
+  "version": "5.2.8",
   "description": "assertthat provides fluent TDD.",
   "contributors": [
     {
@@ -32,14 +32,14 @@
   "types": "build/lib/assertthat.d.ts",
   "dependencies": {
     "@types/stringify-object": "3.3.0",
-    "comparejs": "4.0.4",
+    "comparejs": "4.0.7",
     "stringify-object": "3.3.0"
   },
   "devDependencies": {
-    "@types/chai": "4.2.14",
-    "chai": "4.2.0",
-    "roboter": "11.6.4",
-    "semantic-release-configuration": "1.0.30"
+    "@types/chai": "4.2.15",
+    "chai": "4.3.4",
+    "roboter": "11.6.34",
+    "semantic-release-configuration": "2.0.0"
   },
   "repository": {
     "type": "git",
