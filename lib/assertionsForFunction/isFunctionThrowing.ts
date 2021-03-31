@@ -1,5 +1,4 @@
 import { AssertionFailed } from '../errors';
-import { stripIndent } from 'common-tags';
 import { error, Result, value } from 'defekt';
 
 /* eslint-disable @typescript-eslint/ban-types */
@@ -18,12 +17,11 @@ const isFunctionThrowing = function <TError extends Error = Error> (actual: Func
       }
 
       return error(new AssertionFailed({
-        message: stripIndent`
-          The function threw an unexpected exception.
-
-          Expected the message to match: ${expected.toString()}
-          Actual message: ${ex.message}
-        `
+        message: 'The function threw an unexpected exception.',
+        data: {
+          expected: `The message should have matched:\n${expected.toString()}`,
+          actual: `Error message:\n${ex.message}`
+        }
       }));
     }
     if (typeof expected === 'function') {
@@ -32,12 +30,11 @@ const isFunctionThrowing = function <TError extends Error = Error> (actual: Func
       }
 
       return error(new AssertionFailed({
-        message: stripIndent`
-          The function threw an unexpected exception.
-
-          Expected the exception to fulfil a predicate.
-          Actual message: ${ex.message}
-        `
+        message: 'The function threw an unexpected exception.',
+        data: {
+          expected: `The exception should have fulfilled a predicate.`,
+          actual: `Error message:\n${ex.message}`
+        }
       }));
     }
 
@@ -46,12 +43,11 @@ const isFunctionThrowing = function <TError extends Error = Error> (actual: Func
     }
 
     return error(new AssertionFailed({
-      message: stripIndent`
-        The function threw an unexpected exception.
-
-        Expected the message to be: ${expected}
-        Actual message: ${ex.message}
-      `
+      message: 'The function threw an unexpected exception.',
+      data: {
+        expected: `The message should have been:\n${expected}`,
+        actual: `Error message:\n${ex.message}`
+      }
     }));
   }
 

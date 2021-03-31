@@ -29,12 +29,11 @@ const isFunctionThrowingAsync = async function <TError extends Error = Error> (
       }
 
       return error(new AssertionFailed({
-        message: stripIndent`
-          The function threw an unexpected asynchronous exception.
-
-          Expected the message to match: ${expected.toString()}
-          Actual message: ${ex.message}
-        `
+        message: 'The function threw an unexpected asynchronous exception.',
+        data: {
+          expected: `The message should have matched:\n${expected.toString()}`,
+          actual: `Error message:\n${ex.message}`
+        }
       }));
     }
     if (typeof expected === 'function') {
@@ -43,12 +42,11 @@ const isFunctionThrowingAsync = async function <TError extends Error = Error> (
       }
 
       return error(new AssertionFailed({
-        message: stripIndent`
-          The function threw an unexpected asynchronous exception.
-
-          Expected the exception to fulfil a predicate.
-          Actual message: ${ex.message}
-        `
+        message: 'The function threw an unexpected asynchronous exception.',
+        data: {
+          expected: `The exception should have fulfilled a predicate.`,
+          actual: `Error message:\n${ex.message}`
+        }
       }));
     }
 
@@ -57,12 +55,11 @@ const isFunctionThrowingAsync = async function <TError extends Error = Error> (
     }
 
     return error(new AssertionFailed({
-      message: stripIndent`
-        The function threw an unexpected asynchronous exception.
-
-        Expected the message to be: ${expected}
-        Actual message: ${ex.message}
-      `
+      message: 'The function threw an unexpected asynchronous exception.',
+      data: {
+        expected: `The message should have been:\n${expected}`,
+        actual: `Error message:\n${ex.message}`
+      }
     }));
   }
 

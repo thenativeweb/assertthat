@@ -2,6 +2,7 @@ import { assert } from '../../lib/assertthat';
 import { AssertionFailed } from '../../lib/errors';
 import { assertthatForFunction } from '../../lib/assertthatForFunction';
 import { stripIndent } from 'common-tags';
+import { formatErrorMessage } from 'lib/formatErrorMessage';
 
 suite('assertthatForFunction', (): void => {
   suite('equalTo', (): void => {
@@ -26,12 +27,11 @@ suite('assertthatForFunction', (): void => {
         assertthatForFunction(function1).is.equalTo(function2);
       }).is.throwing<AssertionFailed>(
         (ex): boolean =>
-          ex.message === stripIndent`
-            The functions are not equal.
-
-            Expected: ${function2.toString()}
-            Actual: ${function1.toString()}
-          `
+          ex.message === formatErrorMessage({
+            message: 'The functions are not equal.',
+            expected: function2.toString(),
+            actual: function1.toString()
+          })
       );
     });
   });
@@ -56,7 +56,9 @@ suite('assertthatForFunction', (): void => {
         assertthatForFunction(function1).is.sameAs(function2);
       }).is.throwing<AssertionFailed>(
         (ex): boolean =>
-          ex.message === 'The functions are not the same.'
+          ex.message === formatErrorMessage({
+            message: 'The functions are not the same.'
+          })
       );
     });
   });
@@ -83,7 +85,9 @@ suite('assertthatForFunction', (): void => {
         assertthatForFunction(fun).is.throwing();
       }).is.throwing<AssertionFailed>(
         (ex): boolean =>
-          ex.message === 'The function did not throw an exception.'
+          ex.message === formatErrorMessage({
+            message: 'The function did not throw an exception.'
+          })
       );
     });
 
@@ -108,12 +112,11 @@ suite('assertthatForFunction', (): void => {
         assertthatForFunction(fun).is.throwing('Bar');
       }).is.throwing<AssertionFailed>(
         (ex): boolean =>
-          ex.message === stripIndent`
-            The function threw an unexpected exception.
-
-            Expected the message to be: Bar
-            Actual message: Foo
-          `
+          ex.message === formatErrorMessage({
+            message: 'The function threw an unexpected exception.',
+            expected: 'The message should have been:\nBar',
+            actual: 'Error message:\nFoo'
+          })
       );
     });
 
@@ -140,12 +143,11 @@ suite('assertthatForFunction', (): void => {
         assertthatForFunction(fun).is.throwing(regExp);
       }).is.throwing<AssertionFailed>(
         (ex): boolean =>
-          ex.message === stripIndent`
-            The function threw an unexpected exception.
-
-            Expected the message to match: ${regExp.toString()}
-            Actual message: Foo bar.
-          `
+          ex.message === formatErrorMessage({
+            message: 'The function threw an unexpected exception.',
+            expected: `The message should have matched:\n${regExp.toString()}`,
+            actual: 'Error message:\nFoo bar.'
+          })
       );
     });
 
@@ -174,12 +176,11 @@ suite('assertthatForFunction', (): void => {
         assertthatForFunction(fun).is.throwing(predicate);
       }).is.throwing<AssertionFailed>(
         (ex): boolean =>
-          ex.message === stripIndent`
-            The function threw an unexpected exception.
-
-            Expected the exception to fulfil a predicate.
-            Actual message: Foo bar.
-          `
+          ex.message === formatErrorMessage({
+            message: 'The function threw an unexpected exception.',
+            expected: 'The exception should have fulfilled a predicate.',
+            actual: 'Error message:\nFoo bar.'
+          })
       );
     });
   });
@@ -195,7 +196,9 @@ suite('assertthatForFunction', (): void => {
         await assert.that(fun).is.throwingAsync();
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
-          ex.message === 'The function did not return a Promise.'
+          ex.message === formatErrorMessage({
+            message: 'The function did not return a Promise.'
+          })
       );
     });
 
@@ -220,7 +223,9 @@ suite('assertthatForFunction', (): void => {
         await assert.that(fun).is.throwingAsync();
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
-          ex.message === 'The function did not throw an asynchronous exception.'
+          ex.message === formatErrorMessage({
+            message: 'The function did not throw an asynchronous exception.'
+          })
       );
     });
 
@@ -245,12 +250,11 @@ suite('assertthatForFunction', (): void => {
         await assert.that(fun).is.throwingAsync('Foo');
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
-          ex.message === stripIndent`
-            The function threw an unexpected asynchronous exception.
-
-            Expected the message to be: Foo
-            Actual message: Not foo
-          `
+          ex.message === formatErrorMessage({
+            message: 'The function threw an unexpected asynchronous exception.',
+            expected: 'The message should have been:\nFoo',
+            actual: 'Error message:\nNot foo'
+          })
       );
     });
 
@@ -276,12 +280,11 @@ suite('assertthatForFunction', (): void => {
         await assert.that(fun).is.throwingAsync(regExp);
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
-          ex.message === stripIndent`
-            The function threw an unexpected asynchronous exception.
-
-            Expected the message to match: ${regExp.toString()}
-            Actual message: Not foo
-          `
+          ex.message === formatErrorMessage({
+            message: 'The function threw an unexpected asynchronous exception.',
+            expected: `The message should have matched:\n${regExp.toString()}`,
+            actual: 'Error message:\nNot foo'
+          })
       );
     });
 
@@ -306,12 +309,11 @@ suite('assertthatForFunction', (): void => {
         await assert.that(fun).is.throwingAsync((ex): boolean => ex.message === 'Foo');
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
-          ex.message === stripIndent`
-            The function threw an unexpected asynchronous exception.
-
-            Expected the exception to fulfil a predicate.
-            Actual message: Not foo
-          `
+          ex.message === formatErrorMessage({
+            message: 'The function threw an unexpected asynchronous exception.',
+            expected: 'The exception should have fulfilled a predicate.',
+            actual: 'Error message:\nNot foo'
+          })
       );
     });
   });
@@ -339,12 +341,11 @@ suite('assertthatForFunction', (): void => {
           assertthatForFunction(function1).is.not.equalTo(function2);
         }).is.throwing<AssertionFailed>(
           (ex): boolean =>
-            ex.message === stripIndent`
-              The functions are equal.
-
-              Expected not to be: ${function2.toString()}
-              Actual: ${function1.toString()}
-            `
+            ex.message === formatErrorMessage({
+              message: 'The functions are equal.',
+              expected: `Not to equal:\n${function2.toString()}`,
+              actual: function1.toString()
+            })
         );
       });
     });
@@ -369,7 +370,9 @@ suite('assertthatForFunction', (): void => {
           assertthatForFunction(function1).is.not.sameAs(function1);
         }).is.throwing<AssertionFailed>(
           (ex): boolean =>
-            ex.message === 'The functions are the same.'
+            ex.message === formatErrorMessage({
+              message: 'The functions are the same.'
+            })
         );
       });
     });
@@ -396,11 +399,10 @@ suite('assertthatForFunction', (): void => {
           assertthatForFunction(fun).is.not.throwing();
         }).is.throwing<AssertionFailed>(
           (ex): boolean =>
-            ex.message === stripIndent`
-              The function threw an unexpected exception.
-
-              Actual message: Foo
-            `
+            ex.message === formatErrorMessage({
+              message: 'The function threw an unexpected exception.',
+              actual: 'Error message:\nFoo'
+            })
         );
       });
 
@@ -425,12 +427,11 @@ suite('assertthatForFunction', (): void => {
           assertthatForFunction(fun).is.not.throwing('Foo');
         }).is.throwing<AssertionFailed>(
           (ex): boolean =>
-            ex.message === stripIndent`
-              The function threw an unexpected exception.
-
-              Expected the message not to be: Foo
-              Actual message: Foo
-            `
+            ex.message === formatErrorMessage({
+              message: 'The function threw an unexpected exception.',
+              expected: 'The message should not have been:\nFoo',
+              actual: 'Error message:\nFoo'
+            })
         );
       });
 
@@ -457,12 +458,11 @@ suite('assertthatForFunction', (): void => {
           assert.that(fun).is.not.throwing(regExp);
         }).is.throwing<AssertionFailed>(
           (ex): boolean =>
-            ex.message === stripIndent`
-              The function threw an unexpected exception.
-
-              Expected the message not to match: ${regExp.toString()}
-              Actual message: Foo bar.
-            `
+            ex.message === formatErrorMessage({
+              message: 'The function threw an unexpected exception.',
+              expected: `The message should not have matched:\n${regExp.toString()}`,
+              actual: 'Error message:\nFoo bar.'
+            })
         );
       });
 
@@ -491,12 +491,11 @@ suite('assertthatForFunction', (): void => {
           assertthatForFunction(fun).is.not.throwing(predicate);
         }).is.throwing<AssertionFailed>(
           (ex): boolean =>
-            ex.message === stripIndent`
-              The function threw an unexpected exception.
-
-              Expected the exception not to fulfil a predicate.
-              Actual message: Foo bar.
-            `
+            ex.message === formatErrorMessage({
+              message: 'The function threw an unexpected exception.',
+              expected: 'The exception should not have fulfilled a predicate.',
+              actual: 'Error message:\nFoo bar.'
+            })
         );
       });
     });
@@ -512,7 +511,9 @@ suite('assertthatForFunction', (): void => {
           await assert.that(fun).is.not.throwingAsync();
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
-            ex.message === 'The function did not return a Promise.'
+            ex.message === formatErrorMessage({
+              message: 'The function did not return a Promise.'
+            })
         );
       });
 
@@ -537,11 +538,10 @@ suite('assertthatForFunction', (): void => {
           await assert.that(fun).is.not.throwingAsync();
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
-            ex.message === stripIndent`
-              The function threw an unexpected asynchronous exception.
-
-              Actual message: Foo
-            `
+            ex.message === formatErrorMessage({
+              message: 'The function threw an unexpected asynchronous exception.',
+              actual: 'Error message:\nFoo'
+            })
         );
       });
 
@@ -566,12 +566,11 @@ suite('assertthatForFunction', (): void => {
           await assert.that(fun).is.not.throwingAsync('Foo');
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
-            ex.message === stripIndent`
-              The function threw an unexpected asynchronous exception.
-
-              Expected the message not to be: Foo
-              Actual message: Foo
-            `
+            ex.message === formatErrorMessage({
+              message: 'The function threw an unexpected asynchronous exception.',
+              expected: 'The message should not have been:\nFoo',
+              actual: 'Error message:\nFoo'
+            })
         );
       });
 
@@ -597,12 +596,11 @@ suite('assertthatForFunction', (): void => {
           await assert.that(fun).is.not.throwingAsync(regExp);
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
-            ex.message === stripIndent`
-              The function threw an unexpected asynchronous exception.
-
-              Expected the message not to match: ${regExp.toString()}
-              Actual message: Foo bar
-            `
+            ex.message === formatErrorMessage({
+              message: 'The function threw an unexpected asynchronous exception.',
+              expected: `The message should not have matched:\n${regExp.toString()}`,
+              actual: 'Error message:\nFoo bar'
+            })
         );
       });
 
@@ -627,12 +625,11 @@ suite('assertthatForFunction', (): void => {
           await assert.that(fun).is.not.throwingAsync((ex): boolean => ex.message === 'Foo');
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
-            ex.message === stripIndent`
-              The function threw an unexpected asynchronous exception.
-
-              Expected the exception not to fulfil a predicate.
-              Actual message: Foo
-            `
+            ex.message === formatErrorMessage({
+              message: 'The function threw an unexpected asynchronous exception.',
+              expected: 'The exception should not have fulfilled a predicate.',
+              actual: 'Error message:\nFoo'
+            })
         );
       });
     });

@@ -1,5 +1,4 @@
 import { AssertionFailed } from '../errors';
-import { stripIndent } from 'common-tags';
 import { error, Result, value } from 'defekt';
 
 /* eslint-disable @typescript-eslint/ban-types */
@@ -12,12 +11,11 @@ const isFunctionEqualToFunction = function (actual: Function, expected: Function
   }
 
   return error(new AssertionFailed({
-    message: stripIndent`
-      The functions are not equal.
-
-      Expected: ${expectedSource}
-      Actual: ${actualSource}
-    `
+    message: 'The functions are not equal.',
+    data: {
+      expected: expectedSource,
+      actual: actualSource
+    }
   }));
 };
 /* eslint-enable @typescript-eslint/ban-types */

@@ -1,5 +1,4 @@
 import { AssertionFailed } from '../errors';
-import { stripIndent } from 'common-tags';
 import { error, Result, value } from 'defekt';
 
 /* eslint-disable @typescript-eslint/ban-types */
@@ -21,43 +20,39 @@ const isFunctionNotThrowingAsync = async function <TError extends Error = Error>
   } catch (ex: any) {
     if (expected === undefined) {
       return error(new AssertionFailed({
-        message: stripIndent`
-          The function threw an unexpected asynchronous exception.
-
-          Actual message: ${ex.message}
-        `
+        message: 'The function threw an unexpected asynchronous exception.',
+        data: {
+          actual: `Error message:\n${ex.message}`
+        }
       }));
     }
 
     if (expected instanceof RegExp && expected.test(ex.message)) {
       return error(new AssertionFailed({
-        message: stripIndent`
-          The function threw an unexpected asynchronous exception.
-
-          Expected the message not to match: ${expected.toString()}
-          Actual message: ${ex.message}
-        `
+        message: 'The function threw an unexpected asynchronous exception.',
+        data: {
+          expected: `The message should not have matched:\n${expected.toString()}`,
+          actual: `Error message:\n${ex.message}`
+        }
       }));
     }
     if (typeof expected === 'function' && expected(ex)) {
       return error(new AssertionFailed({
-        message: stripIndent`
-          The function threw an unexpected asynchronous exception.
-
-          Expected the exception not to fulfil a predicate.
-          Actual message: ${ex.message}
-        `
+        message: 'The function threw an unexpected asynchronous exception.',
+        data: {
+          expected: `The exception should not have fulfilled a predicate.`,
+          actual: `Error message:\n${ex.message}`
+        }
       }));
     }
 
     if (typeof expected === 'string' && ex.message === expected) {
       return error(new AssertionFailed({
-        message: stripIndent`
-          The function threw an unexpected asynchronous exception.
-
-          Expected the message not to be: ${expected}
-          Actual message: ${ex.message}
-        `
+        message: 'The function threw an unexpected asynchronous exception.',
+        data: {
+          expected: `The message should not have been:\n${expected}`,
+          actual: `Error message:\n${ex.message}`
+        }
       }));
     }
   }
