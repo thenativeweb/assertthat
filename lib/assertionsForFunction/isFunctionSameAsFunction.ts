@@ -2,7 +2,10 @@ import { AssertionFailed } from '../errors';
 import { error, Result, value } from 'defekt';
 
 /* eslint-disable @typescript-eslint/ban-types */
-const isFunctionSameAsFunction = function (actual: Function, expected: Function): Result<undefined, AssertionFailed> {
+const isFunctionSameAsFunction = function (
+  actual: Function,
+  expected: Function
+): Result<undefined, AssertionFailed> {
   if (actual === expected) {
     return value();
   }

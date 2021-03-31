@@ -2,7 +2,10 @@ import { AssertionFailed } from '../errors';
 import { error, Result, value } from 'defekt';
 
 /* eslint-disable @typescript-eslint/ban-types */
-const isFunctionThrowing = function <TError extends Error = Error> (actual: Function, expected?: string | RegExp | ((ex: TError) => boolean)): Result<undefined, AssertionFailed> {
+const isFunctionThrowing = function <TError extends Error = Error> (
+  actual: Function,
+  expected?: string | RegExp | ((ex: TError) => boolean)
+): Result<undefined, AssertionFailed> {
   try {
     actual();
   // eslint-disable-next-line @typescript-eslint/no-implicit-any-catch

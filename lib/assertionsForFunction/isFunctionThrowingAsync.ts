@@ -1,5 +1,4 @@
 import { AssertionFailed } from '../errors';
-import { stripIndent } from 'common-tags';
 import { error, Result, value } from 'defekt';
 
 /* eslint-disable @typescript-eslint/ban-types */

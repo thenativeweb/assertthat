@@ -193,7 +193,7 @@ suite('assertthatForFunction', (): void => {
       };
 
       await assert.that(async (): Promise<void> => {
-        await assert.that(fun).is.throwingAsync();
+        await assertthatForFunction(fun).is.throwingAsync();
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
           ex.message === formatErrorMessage({
@@ -209,7 +209,7 @@ suite('assertthatForFunction', (): void => {
       };
 
       await assert.that(async (): Promise<void> => {
-        await assert.that(fun).is.throwingAsync();
+        await assertthatForFunction(fun).is.throwingAsync();
       }).is.not.throwingAsync();
     });
 
@@ -220,7 +220,7 @@ suite('assertthatForFunction', (): void => {
       };
 
       await assert.that(async (): Promise<void> => {
-        await assert.that(fun).is.throwingAsync();
+        await assertthatForFunction(fun).is.throwingAsync();
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
           ex.message === formatErrorMessage({
@@ -236,7 +236,7 @@ suite('assertthatForFunction', (): void => {
       };
 
       await assert.that(async (): Promise<void> => {
-        await assert.that(fun).is.throwingAsync('Foo');
+        await assertthatForFunction(fun).is.throwingAsync('Foo');
       }).is.not.throwingAsync();
     });
 
@@ -247,7 +247,7 @@ suite('assertthatForFunction', (): void => {
       };
 
       await assert.that(async (): Promise<void> => {
-        await assert.that(fun).is.throwingAsync('Foo');
+        await assertthatForFunction(fun).is.throwingAsync('Foo');
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
           ex.message === formatErrorMessage({
@@ -265,7 +265,7 @@ suite('assertthatForFunction', (): void => {
       };
 
       await assert.that(async (): Promise<void> => {
-        await assert.that(fun).is.throwingAsync(/^Foo.*/u);
+        await assertthatForFunction(fun).is.throwingAsync(/^Foo.*/u);
       }).is.not.throwingAsync();
     });
 
@@ -277,7 +277,7 @@ suite('assertthatForFunction', (): void => {
       const regExp = /^Foo.*/u;
 
       await assert.that(async (): Promise<void> => {
-        await assert.that(fun).is.throwingAsync(regExp);
+        await assertthatForFunction(fun).is.throwingAsync(regExp);
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
           ex.message === formatErrorMessage({
@@ -295,7 +295,7 @@ suite('assertthatForFunction', (): void => {
       };
 
       await assert.that(async (): Promise<void> => {
-        await assert.that(fun).is.throwingAsync((ex): boolean => ex.message === 'Foo');
+        await assertthatForFunction(fun).is.throwingAsync((ex): boolean => ex.message === 'Foo');
       }).is.not.throwingAsync();
     });
 
@@ -306,7 +306,7 @@ suite('assertthatForFunction', (): void => {
       };
 
       await assert.that(async (): Promise<void> => {
-        await assert.that(fun).is.throwingAsync((ex): boolean => ex.message === 'Foo');
+        await assertthatForFunction(fun).is.throwingAsync((ex): boolean => ex.message === 'Foo');
       }).is.throwingAsync<AssertionFailed>(
         (ex): boolean =>
           ex.message === formatErrorMessage({
@@ -443,7 +443,7 @@ suite('assertthatForFunction', (): void => {
         const regExp = /^Foo.*/u;
 
         assert.that((): void => {
-          assert.that(fun).is.not.throwing(regExp);
+          assertthatForFunction(fun).is.not.throwing(regExp);
         }).is.not.throwing();
       });
 
@@ -455,7 +455,7 @@ suite('assertthatForFunction', (): void => {
         const regExp = /^Foo.*/u;
 
         assert.that((): void => {
-          assert.that(fun).is.not.throwing(regExp);
+          assertthatForFunction(fun).is.not.throwing(regExp);
         }).is.throwing<AssertionFailed>(
           (ex): boolean =>
             ex.message === formatErrorMessage({
@@ -508,7 +508,7 @@ suite('assertthatForFunction', (): void => {
         };
 
         await assert.that(async (): Promise<void> => {
-          await assert.that(fun).is.not.throwingAsync();
+          await assertthatForFunction(fun).is.not.throwingAsync();
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
             ex.message === formatErrorMessage({
@@ -524,7 +524,7 @@ suite('assertthatForFunction', (): void => {
         };
 
         await assert.that(async (): Promise<void> => {
-          await assert.that(fun).is.not.throwingAsync();
+          await assertthatForFunction(fun).is.not.throwingAsync();
         }).is.not.throwingAsync();
       });
 
@@ -535,7 +535,7 @@ suite('assertthatForFunction', (): void => {
         };
 
         await assert.that(async (): Promise<void> => {
-          await assert.that(fun).is.not.throwingAsync();
+          await assertthatForFunction(fun).is.not.throwingAsync();
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
             ex.message === formatErrorMessage({
@@ -552,7 +552,7 @@ suite('assertthatForFunction', (): void => {
         };
 
         await assert.that(async (): Promise<void> => {
-          await assert.that(fun).is.not.throwingAsync('Not foo');
+          await assertthatForFunction(fun).is.not.throwingAsync('Not foo');
         }).is.not.throwingAsync();
       });
 
@@ -563,7 +563,7 @@ suite('assertthatForFunction', (): void => {
         };
 
         await assert.that(async (): Promise<void> => {
-          await assert.that(fun).is.not.throwingAsync('Foo');
+          await assertthatForFunction(fun).is.not.throwingAsync('Foo');
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
             ex.message === formatErrorMessage({
@@ -581,7 +581,7 @@ suite('assertthatForFunction', (): void => {
         };
 
         await assert.that(async (): Promise<void> => {
-          await assert.that(fun).is.not.throwingAsync(/^Foo.*/u);
+          await assertthatForFunction(fun).is.not.throwingAsync(/^Foo.*/u);
         }).is.not.throwingAsync();
       });
 
@@ -593,7 +593,7 @@ suite('assertthatForFunction', (): void => {
         const regExp = /^Foo.*/u;
 
         await assert.that(async (): Promise<void> => {
-          await assert.that(fun).is.not.throwingAsync(regExp);
+          await assertthatForFunction(fun).is.not.throwingAsync(regExp);
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
             ex.message === formatErrorMessage({
@@ -611,7 +611,7 @@ suite('assertthatForFunction', (): void => {
         };
 
         await assert.that(async (): Promise<void> => {
-          await assert.that(fun).is.not.throwingAsync((ex): boolean => ex.message === 'Foo');
+          await assertthatForFunction(fun).is.not.throwingAsync((ex): boolean => ex.message === 'Foo');
         }).is.not.throwingAsync();
       });
 
@@ -622,7 +622,7 @@ suite('assertthatForFunction', (): void => {
         };
 
         await assert.that(async (): Promise<void> => {
-          await assert.that(fun).is.not.throwingAsync((ex): boolean => ex.message === 'Foo');
+          await assertthatForFunction(fun).is.not.throwingAsync((ex): boolean => ex.message === 'Foo');
         }).is.throwingAsync<AssertionFailed>(
           (ex): boolean =>
             ex.message === formatErrorMessage({
