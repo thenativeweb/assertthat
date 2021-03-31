@@ -8,10 +8,7 @@ const isFunctionNotSameAsFunction = function (actual: Function, expected: Functi
   }
 
   return error(new AssertionFailed({
-    message: 'The functions are the same.',
-    data: {
-      formattedMessage: `The functions are the same.`
-    }
+    message: 'The functions are the same.'
   }));
 };
 /* eslint-enable @typescript-eslint/ban-types */

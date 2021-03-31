@@ -7,6 +7,8 @@ import { error, Result, value } from 'defekt';
 import { isFunctionNotEqualToFunction } from './assertionsForFunction/isFunctionNotEqualToFunction';
 import { isFunctionNotSameAsFunction } from './assertionsForFunction/isFunctionNotSameAsFunction';
 import { isFunctionNotThrowing } from './assertionsForFunction/isFunctionNotThrowing';
+import { isFunctionThrowingAsync } from './assertionsForFunction/isFunctionThrowingAsync';
+import { isFunctionNotThrowingAsync } from './assertionsForFunction/isFunctionNotThrowingAsync';
 
 /* eslint-disable @typescript-eslint/ban-types */
 type AssertthatForFunction = (actual: Function) => {
@@ -40,7 +42,7 @@ const assertthatForFunction = function (actual: Function): ReturnType<Assertthat
         report(isFunctionThrowing(actual, expected));
       },
       async throwingAsync <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): Promise<void> {
-
+        report(await isFunctionThrowingAsync(actual, expected));
       },
 
       not: {
@@ -54,8 +56,8 @@ const assertthatForFunction = function (actual: Function): ReturnType<Assertthat
           report(isFunctionNotThrowing(actual, expected));
         },
         async throwingAsync <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): Promise<void> {
-
-        },
+          report(await isFunctionNotThrowingAsync(actual, expected));
+        }
       }
     }
   };

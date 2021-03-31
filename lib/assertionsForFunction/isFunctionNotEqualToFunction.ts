@@ -12,14 +12,12 @@ const isFunctionNotEqualToFunction = function (actual: Function, expected: Funct
   }
 
   return error(new AssertionFailed({
-    message: 'The functions are equal.',
-    data: {
-      formattedMessage: stripIndent`
-        The functions are equal.
-        Expected not to be: ${expectedSource}
-        Actual: ${actualSource}
-      `
-    }
+    message: stripIndent`
+      The functions are equal.
+
+      Expected not to be: ${expectedSource}
+      Actual: ${actualSource}
+    `
   }));
 };
 /* eslint-enable @typescript-eslint/ban-types */
