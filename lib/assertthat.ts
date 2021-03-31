@@ -1,126 +1,62 @@
-// eslint-disable-next-line no-redeclare,@typescript-eslint/unified-signatures
-function that (actual: number): {
-  is: {
-    number: symbol;
+import { isResult } from 'defekt';
+import { assertthatForArray, AssertthatForArray } from './assertthatForArray';
+import { assertthatForBoolean, AssertthatForBoolean } from './assertthatForBoolean';
+import { assertthatForFunction, AssertthatForFunction } from './assertthatForFunction';
+import { assertthatForMap, AssertthatForMap } from './assertthatForMap';
+import { assertthatForNumber, AssertthatForNumber } from './assertthatForNumber';
+import { assertthatForObject, AssertthatForObject } from './assertthatForObject';
+import { assertthatForResult, AssertthatForResult } from './assertthatForResult';
+import { assertthatForSet, AssertthatForSet } from './assertthatForSet';
+import { assertthatForString, AssertthatForString } from './assertthatForString';
+import { assertthatForSymbol, AssertthatForSymbol } from './assertthatForSymbol';
+import * as errors from './errors';
 
-    not: {
+type AssertThat =
+  AssertthatForNumber &
+  AssertthatForString &
+  AssertthatForBoolean &
+  AssertthatForSet &
+  AssertthatForMap &
+  AssertthatForResult &
+  AssertthatForArray &
+  AssertthatForSymbol &
+  AssertthatForFunction &
+  AssertthatForObject;
 
-    };
-  };
-};
-// eslint-disable-next-line no-redeclare,@typescript-eslint/unified-signatures
-function that (actual: string): {
-  is: {
-    string: symbol;
-
-    not: {
-
-    };
-  };
-};
-// eslint-disable-next-line no-redeclare,@typescript-eslint/unified-signatures
-function that (actual: boolean): {
-  is: {
-    boolean: symbol;
-
-    not: {
-
-    };
-  };
-};
-// eslint-disable-next-line no-redeclare,@typescript-eslint/unified-signatures
-function that (actual: any[]): {
-  is: {
-    array: symbol;
-
-    not: {
-
-    };
-  };
-};
-// eslint-disable-next-line no-redeclare,@typescript-eslint/unified-signatures
-function that (actual: symbol): {
-  is: {
-    symbol: symbol;
-
-    not: {
-
-    };
-  };
-};
-// eslint-disable-next-line no-redeclare,@typescript-eslint/unified-signatures
-function that (actual: Set<any>): {
-  is: {
-    set: symbol;
-
-    not: {
-
-    };
-  };
-};
-// eslint-disable-next-line no-redeclare,@typescript-eslint/unified-signatures
-function that (actual: Map<any, any>): {
-  is: {
-    map: symbol;
-
-    not: {
-
-    };
-  };
-};
-// eslint-disable-next-line no-redeclare,@typescript-eslint/ban-types
-function that (actual: Function): {
-  is: {
-    function: symbol;
-
-    not: {
-
-    };
-  };
-};
-// eslint-disable-next-line no-redeclare,@typescript-eslint/unified-signatures
-function that (actual: object): {
-  is: {
-    object: symbol;
-
-    not: {
-
-    };
-  };
-};
-
-// eslint-disable-next-line func-style,no-redeclare
-function that (actual: any): any {
-  const hasTypeDependentProperty: any = {};
-
-  if (actual.instanceOf(Set)) {
-    hasTypeDependentProperty.set = Symbol('Set');
-  } else if (actual.instanceOf(Map)) {
-    hasTypeDependentProperty.map = Symbol('Map');
-  } else if (Array.isArray(actual)) {
-    hasTypeDependentProperty.array = Symbol('Array');
-  } else if (typeof actual === 'number') {
-    hasTypeDependentProperty.number = Symbol('number');
-  } else if (typeof actual === 'string') {
-    hasTypeDependentProperty.string = Symbol('string');
-  } else if (typeof actual === 'boolean') {
-    hasTypeDependentProperty.boolean = Symbol('boolean');
-  } else if (typeof actual === 'symbol') {
-    hasTypeDependentProperty.symbol = Symbol('symbol');
-  } else if (typeof actual === 'object') {
-    hasTypeDependentProperty.object = Symbol('object');
+const that: AssertThat = (actual: any): any => {
+  if (actual instanceof Set) {
+    return assertthatForSet(actual);
+  }
+  if (actual instanceof Map) {
+    return assertthatForMap(actual);
+  }
+  if (Array.isArray(actual)) {
+    return assertthatForArray(actual);
+  }
+  if (isResult(actual)) {
+    return assertthatForResult(actual);
+  }
+  if (typeof actual === 'number') {
+    return assertthatForNumber(actual);
+  }
+  if (typeof actual === 'string') {
+    return assertthatForString(actual);
+  }
+  if (typeof actual === 'boolean') {
+    return assertthatForBoolean(actual);
+  }
+  if (typeof actual === 'symbol') {
+    return assertthatForSymbol(actual);
+  }
+  if (typeof actual === 'function') {
+    return assertthatForFunction(actual);
+  }
+  if (typeof actual === 'object') {
+    return assertthatForObject(actual);
   }
 
-  return {
-    is: {
-      ...hasTypeDependentProperty,
-
-      not: {
-
-      }
-    }
-  };
-}
+  throw new errors.InvalidOperation();
+};
 
 const assert = {
   that
