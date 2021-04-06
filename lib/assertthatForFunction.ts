@@ -1,14 +1,12 @@
-import { AssertionFailed } from './errors';
-import { isFunctionEqualToFunction } from './assertionsForFunction/isFunctionEqualToFunction';
-import { isFunctionSameAsFunction } from './assertionsForFunction/isFunctionSameAsFunction';
-import { isFunctionThrowing } from './assertionsForFunction/isFunctionThrowing';
+import { isFunctionEqualToFunction } from './assertions/forFunctions/isFunctionEqualToFunction';
+import { isFunctionNotEqualToFunction } from './assertions/forFunctions/isFunctionNotEqualToFunction';
+import { isFunctionNotSameAsFunction } from './assertions/forFunctions/isFunctionNotSameAsFunction';
+import { isFunctionNotThrowing } from './assertions/forFunctions/isFunctionNotThrowing';
+import { isFunctionNotThrowingAsync } from './assertions/forFunctions/isFunctionNotThrowingAsync';
+import { isFunctionSameAsFunction } from './assertions/forFunctions/isFunctionSameAsFunction';
+import { isFunctionThrowing } from './assertions/forFunctions/isFunctionThrowing';
+import { isFunctionThrowingAsync } from './assertions/forFunctions/isFunctionThrowingAsync';
 import { report } from './report';
-import { error, Result, value } from 'defekt';
-import { isFunctionNotEqualToFunction } from './assertionsForFunction/isFunctionNotEqualToFunction';
-import { isFunctionNotSameAsFunction } from './assertionsForFunction/isFunctionNotSameAsFunction';
-import { isFunctionNotThrowing } from './assertionsForFunction/isFunctionNotThrowing';
-import { isFunctionThrowingAsync } from './assertionsForFunction/isFunctionThrowingAsync';
-import { isFunctionNotThrowingAsync } from './assertionsForFunction/isFunctionNotThrowingAsync';
 
 /* eslint-disable @typescript-eslint/ban-types */
 type AssertthatForFunction = (actual: Function) => {

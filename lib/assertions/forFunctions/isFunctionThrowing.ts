@@ -1,4 +1,4 @@
-import { AssertionFailed } from '../errors';
+import { AssertionFailed } from '../../errors';
 import { error, Result, value } from 'defekt';
 
 /* eslint-disable @typescript-eslint/ban-types */

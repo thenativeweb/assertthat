@@ -7,7 +7,7 @@ const report = function (result: Result<any, AssertionFailed>): void {
     return;
   }
 
-  throw new Error(formatErrorMessage({
+  throw new AssertionFailed(formatErrorMessage({
     message: result.error.message,
     expected: result.error.data?.expected,
     actual: result.error.data?.actual,

@@ -1,4 +1,5 @@
-import { AssertionFailed } from '../errors';
+import { AssertionFailed } from '../../errors';
+import { equalTo } from '../../comparisons/forFunctions/equalTo';
 import { error, Result, value } from 'defekt';
 
 /* eslint-disable @typescript-eslint/ban-types */
@@ -6,18 +7,15 @@ const isFunctionEqualToFunction = function (
   actual: Function,
   expected: Function
 ): Result<undefined, AssertionFailed> {
-  const actualSource = actual.toString();
-  const expectedSource = expected.toString();
-
-  if (actualSource === expectedSource) {
+  if (equalTo(actual, expected)) {
     return value();
   }
 
   return error(new AssertionFailed({
     message: 'The functions are not equal.',
     data: {
-      expected: expectedSource,
-      actual: actualSource
+      expected: expected.toString(),
+      actual: actual.toString()
     }
   }));
 };
