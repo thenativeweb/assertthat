@@ -366,7 +366,7 @@ suite('assertthatForString', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The strings are equal.',
-              expected,
+              expected: `To not equal:\n${expected}`,
               actual
             })
         );
@@ -441,7 +441,7 @@ suite('assertthatForString', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The strings are the same.',
-              expected,
+              expected: `To not be the same as:\n${expected}`,
               actual
             })
         );
@@ -468,7 +468,7 @@ suite('assertthatForString', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The strings have the same JSON representation.',
-              expected: JSON.stringify(expected),
+              expected: `To not equal:\n${JSON.stringify(expected)}`,
               actual: JSON.stringify(actual)
             })
         );

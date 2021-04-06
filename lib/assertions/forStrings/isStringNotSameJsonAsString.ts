@@ -1,5 +1,6 @@
 import { AssertionFailed } from '../../errors';
 import { sameJsonAs } from '../../comparisons/forAny/sameJsonAs';
+import { stripIndents } from 'common-tags';
 import { error, Result, value } from 'defekt';
 
 const isStringNotSameJsonAsString = function (
@@ -16,7 +17,10 @@ const isStringNotSameJsonAsString = function (
   return error(new AssertionFailed({
     message: 'The strings have the same JSON representation.',
     data: {
-      expected: `${expectedJsonRepresentation}`,
+      expected: stripIndents`
+        To not equal:
+        ${expectedJsonRepresentation}
+      `,
       actual: `${actualJsonRepresentation}`
     }
   }));

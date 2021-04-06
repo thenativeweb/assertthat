@@ -336,7 +336,7 @@ suite('assertthatForNumber', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The numbers are equal.',
-              expected: '5',
+              expected: 'To not equal:\n5',
               actual: '5'
             })
         );
@@ -411,7 +411,7 @@ suite('assertthatForNumber', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The numbers are the same.',
-              expected: '5',
+              expected: 'To not be the same as:\n5',
               actual: '5'
             })
         );
@@ -438,7 +438,7 @@ suite('assertthatForNumber', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The numbers have the same JSON representation.',
-              expected: JSON.stringify(expected),
+              expected: `To not equal:\n${JSON.stringify(expected)}`,
               actual: JSON.stringify(actual)
             })
         );
@@ -474,7 +474,7 @@ suite('assertthatForNumber', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The number is greater than the expected value.',
-              expected: `${expected}`,
+              expected: `To not be greater than:\n${expected}`,
               actual: `${actual}`
             })
         );
@@ -510,7 +510,7 @@ suite('assertthatForNumber', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The number is less than the expected value.',
-              expected: `${expected}`,
+              expected: `To not be less than:\n${expected}`,
               actual: `${actual}`
             })
         );
@@ -537,7 +537,7 @@ suite('assertthatForNumber', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The number is at least the expected value.',
-              expected: `${expected}`,
+              expected: `To not be at least:\n${expected}`,
               actual: `${actual}`
             })
         );
@@ -553,7 +553,7 @@ suite('assertthatForNumber', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The number is at least the expected value.',
-              expected: `${expected}`,
+              expected: `To not be at least:\n${expected}`,
               actual: `${actual}`
             })
         );
@@ -580,7 +580,7 @@ suite('assertthatForNumber', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The number is at most the expected value.',
-              expected: `${expected}`,
+              expected: `To not be at most:\n${expected}`,
               actual: `${actual}`
             })
         );
@@ -596,7 +596,7 @@ suite('assertthatForNumber', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The number is at most the expected value.',
-              expected: `${expected}`,
+              expected: `To not be at most:\n${expected}`,
               actual: `${actual}`
             })
         );

@@ -1,5 +1,6 @@
 import { AssertionFailed } from '../../errors';
 import { atMost } from '../../comparisons/forNumbers/atMost';
+import { stripIndents } from 'common-tags';
 import { error, Result, value } from 'defekt';
 
 const isNumberNotAtMostNumber = function (
@@ -13,7 +14,10 @@ const isNumberNotAtMostNumber = function (
   return error(new AssertionFailed({
     message: 'The number is at most the expected value.',
     data: {
-      expected: `${expected}`,
+      expected: stripIndents`
+        To not be at most:
+        ${expected}
+      `,
       actual: `${actual}`
     }
   }));

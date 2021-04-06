@@ -1,5 +1,6 @@
 import { AssertionFailed } from '../../errors';
 import { greaterThan } from '../../comparisons/forNumbers/greaterThan';
+import { stripIndents } from 'common-tags';
 import { error, Result, value } from 'defekt';
 
 const isNumberNotGreaterThanNumber = function (
@@ -13,7 +14,10 @@ const isNumberNotGreaterThanNumber = function (
   return error(new AssertionFailed({
     message: 'The number is greater than the expected value.',
     data: {
-      expected: `${expected}`,
+      expected: stripIndents`
+        To not be greater than:
+        ${expected}
+      `,
       actual: `${actual}`
     }
   }));

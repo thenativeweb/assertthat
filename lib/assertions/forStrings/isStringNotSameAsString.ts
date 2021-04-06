@@ -1,5 +1,6 @@
 import { AssertionFailed } from '../../errors';
 import { sameAs } from '../../comparisons/forAny/sameAs';
+import { stripIndents } from 'common-tags';
 import { error, Result, value } from 'defekt';
 
 const isStringNotSameAsString = function (
@@ -13,7 +14,10 @@ const isStringNotSameAsString = function (
   return error(new AssertionFailed({
     message: 'The strings are the same.',
     data: {
-      expected,
+      expected: stripIndents`
+        To not be the same as:
+        ${expected}
+      `,
       actual
     }
   }));

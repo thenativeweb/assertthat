@@ -1,5 +1,6 @@
 import { AssertionFailed } from '../../errors';
 import { sameAs } from '../../comparisons/forAny/sameAs';
+import { stripIndents } from 'common-tags';
 import { error, Result, value } from 'defekt';
 
 const isNumberNotSameAsNumber = function (
@@ -13,7 +14,10 @@ const isNumberNotSameAsNumber = function (
   return error(new AssertionFailed({
     message: 'The numbers are the same.',
     data: {
-      expected: `${expected}`,
+      expected: stripIndents`
+        To not be the same as:
+        ${expected}
+      `,
       actual: `${actual}`
     }
   }));
