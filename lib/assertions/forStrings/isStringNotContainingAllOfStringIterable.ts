@@ -15,7 +15,7 @@ const isStringNotContainingAllOfStringIterable = function (
     message: 'The string is containing all of the not expected sub-strings.',
     data: {
       expected: stripIndents`
-        To contain none of these sub-strings:
+        To not contain all of these sub-strings:
         ${[ ...expected ].join('\n')}
       `,
       actual

@@ -613,7 +613,7 @@ suite('assertthatForString', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The string is containing all of the not expected sub-strings.',
-              expected: `To contain none of these sub-strings:\n${expected.join('\n')}`,
+              expected: `To not contain all of these sub-strings:\n${expected.join('\n')}`,
               actual
             })
         );
@@ -629,7 +629,7 @@ suite('assertthatForString', (): void => {
           (ex): boolean =>
             ex.message === formatErrorMessage({
               message: 'The string is containing all of the not expected sub-strings.',
-              expected: `To contain none of these sub-strings:\n`,
+              expected: `To not contain all of these sub-strings:\n`,
               actual
             })
         );
