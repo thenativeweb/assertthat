@@ -1,7 +1,7 @@
 import { assert } from '../../lib/assertthat';
 import { AssertionFailed } from '../../lib/errors';
 import { assertthatForNumber } from '../../lib/assertthatForNumber';
-import { formatErrorMessage } from 'lib/formatErrorMessage';
+import { formatErrorMessage } from '../../lib/formatErrorMessage';
 
 suite('assertthatForNumber', (): void => {
   suite('equalTo', (): void => {

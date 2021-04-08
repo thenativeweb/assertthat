@@ -1,5 +1,5 @@
 import { assert } from '../../lib/assertthat';
-import { AssertionFailed } from 'lib/errors';
+import { AssertionFailed } from '../../lib/errors';
 import { assertthatForBoolean } from '../../lib/assertthatForBoolean';
 import { formatErrorMessage } from '../../lib/formatErrorMessage';
 

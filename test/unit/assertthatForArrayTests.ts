@@ -2,7 +2,7 @@ import { assert } from '../../lib/assertthat';
 import { AssertionFailed } from '../../lib/errors';
 import { assertthatForArray } from '../../lib/assertthatForArray';
 import { formatErrorMessage } from '../../lib/formatErrorMessage';
-import { prettyPrintArray } from '../../lib/prettyPrint/prettyPrintArray';
+import { prettyPrintArray } from '../../lib/prettyPrint/forArrays/prettyPrintArray';
 
 suite('assertthatForArray', (): void => {
   suite('equalTo', (): void => {
@@ -175,7 +175,7 @@ suite('assertthatForArray', (): void => {
 
     test('does not throw an error if expected is empty.', async (): Promise<void> => {
       const actual = [ 5, 7, 'foo' ];
-      const expected = [];
+      const expected: any[] = [];
 
       assert.that((): void => {
         assertthatForArray(actual).is.containingAllOf(expected);

@@ -1,6 +1,6 @@
 import { AssertionFailed } from '../../errors';
 import { equalTo } from '../../comparisons/forArrays/equalTo';
-import { prettyPrintArray } from '../../prettyPrint/prettyPrintArray';
+import { prettyPrintArray } from '../../prettyPrint/forArrays/prettyPrintArray';
 import { error, Result, value } from 'defekt';
 
 const isNumberEqualToNumber = function <TContent = any>(

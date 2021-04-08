@@ -1,8 +1,7 @@
 import { assert } from '../../lib/assertthat';
 import { AssertionFailed } from '../../lib/errors';
 import { assertthatForFunction } from '../../lib/assertthatForFunction';
-import { stripIndent } from 'common-tags';
-import { formatErrorMessage } from 'lib/formatErrorMessage';
+import { formatErrorMessage } from '../../lib/formatErrorMessage';
 
 suite('assertthatForFunction', (): void => {
   suite('equalTo', (): void => {

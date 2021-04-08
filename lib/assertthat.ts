@@ -1,4 +1,5 @@
 import { isResult } from 'defekt';
+import { isSet } from './typeRecognition/isSet';
 import { assertthatForArray, AssertthatForArray } from './assertthatForArray';
 import { assertthatForBoolean, AssertthatForBoolean } from './assertthatForBoolean';
 import { assertthatForFunction, AssertthatForFunction } from './assertthatForFunction';
@@ -23,8 +24,9 @@ type AssertThat =
   AssertthatForFunction &
   AssertthatForObject;
 
+// eslint-disable-next-line consistent-this
 const that: AssertThat = (actual: any): any => {
-  if (actual instanceof Set) {
+  if (isSet(actual)) {
     return assertthatForSet(actual);
   }
   if (actual instanceof Map) {
