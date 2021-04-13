@@ -1,12 +1,11 @@
 import { ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
 import { compareArrays } from '../forArrays/compareArrays';
 import { InvalidOperation } from '../../errors';
+import { unequalCharCost } from '../../constants/costs';
 import {
   AdditionDiffSegment as AdditionStringDiffSegment,
   OmissionDiffSegment as OmissionStringDiffSegment
 } from '../../diffs/forStrings/StringDiffSegment';
-import { blank, Blank } from '../../constants/blank';
-import { charVsBlankCost, unequalCharCost } from '../../constants/costs';
 import {
   isAdditionDiffSegment as isAdditionArrayDiffSegment,
   isChangeDiffSegment as isChangeArrayDiffSegment,
@@ -64,15 +63,9 @@ const convertArrayDiffToStringDiff = function (arrayDiff: ArrayDiff<string>): St
 };
 
 const compareStrings = function (
-  actual: string | Blank,
-  expected: string | Blank
+  actual: string,
+  expected: string
 ): StringDiff {
-  if (actual === blank || expected === blank) {
-    return stringDiff({
-      segments: [],
-      cost: charVsBlankCost
-    });
-  }
   if (actual === expected) {
     return stringDiff({
       segments: [],

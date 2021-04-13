@@ -1,5 +1,13 @@
+import { isArray } from './types/isArray';
+import { isBoolean } from './types/isBoolean';
+import { isFunction } from './types/isFunction';
+import { isMap } from './types/isMap';
+import { isNumber } from './types/isNumber';
+import { isObject } from './types/isObject';
 import { isResult } from 'defekt';
-import { isSet } from './typeRecognition/isSet';
+import { isSet } from './types/isSet';
+import { isString } from './types/isString';
+import { isSymbol } from './types/isSymbol';
 import { assertthatForArray, AssertthatForArray } from './assertthatForArray';
 import { assertthatForBoolean, AssertthatForBoolean } from './assertthatForBoolean';
 import { assertthatForFunction, AssertthatForFunction } from './assertthatForFunction';
@@ -29,31 +37,31 @@ const that: AssertThat = (actual: any): any => {
   if (isSet(actual)) {
     return assertthatForSet(actual);
   }
-  if (actual instanceof Map) {
+  if (isMap(actual)) {
     return assertthatForMap(actual);
   }
-  if (Array.isArray(actual)) {
+  if (isArray(actual)) {
     return assertthatForArray(actual);
   }
   if (isResult(actual)) {
     return assertthatForResult(actual);
   }
-  if (typeof actual === 'number') {
+  if (isNumber(actual)) {
     return assertthatForNumber(actual);
   }
-  if (typeof actual === 'string') {
+  if (isString(actual)) {
     return assertthatForString(actual);
   }
-  if (typeof actual === 'boolean') {
+  if (isBoolean(actual)) {
     return assertthatForBoolean(actual);
   }
-  if (typeof actual === 'symbol') {
+  if (isSymbol(actual)) {
     return assertthatForSymbol(actual);
   }
-  if (typeof actual === 'function') {
+  if (isFunction(actual)) {
     return assertthatForFunction(actual);
   }
-  if (typeof actual === 'object') {
+  if (isObject(actual)) {
     return assertthatForObject(actual);
   }
 

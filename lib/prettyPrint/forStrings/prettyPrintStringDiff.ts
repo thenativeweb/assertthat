@@ -20,7 +20,7 @@ const prettyPrintStringDiff = function (diff: StringDiff): string {
     }
   }
 
-  return result;
+  return `"${result}"`;
 };
 
 export {

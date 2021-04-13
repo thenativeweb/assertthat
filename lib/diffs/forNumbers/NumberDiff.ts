@@ -16,7 +16,6 @@ interface NumberDiff extends Diff {
   actual?: number;
   expected?: number;
   difference: number;
-  cost: number;
 }
 
 const isNumberDiff = function (diff: any): diff is NumberDiff {

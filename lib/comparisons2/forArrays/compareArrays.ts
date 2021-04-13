@@ -1,21 +1,13 @@
-import { arrayVsBlankCost } from '../../constants/costs';
+import { arrayMissingElementCost } from '../../constants/costs';
 import { compare } from '../typeAware/compare';
 import { simplifyDiff } from '../../diffs/forArrays/simplifyDiff';
 import { AdditionDiffSegment, OmissionDiffSegment } from '../../diffs/forArrays/ArrayDiffSegment';
 import { arrayDiff, ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
-import { Blank, blank } from '../../constants/blank';
 
 const compareArrays = function <TContent>(
-  actual: TContent[] | Blank,
-  expected: TContent[] | Blank
+  actual: TContent[],
+  expected: TContent[]
 ): ArrayDiff<TContent> {
-  if (actual === blank || expected === blank) {
-    return arrayDiff({
-      segments: [],
-      cost: arrayVsBlankCost
-    });
-  }
-
   const results: Map<string, ArrayDiff<TContent>> = new Map();
 
   results.set('-1|-1', arrayDiff({
@@ -31,7 +23,7 @@ const compareArrays = function <TContent>(
 
     for (let index = 0; index <= indexActual; index++) {
       segment.addition.push(actual[index]);
-      segment.cost += compare(actual[index], blank).cost;
+      segment.cost += arrayMissingElementCost;
     }
 
     results.set(`${indexActual}|-1`, arrayDiff({
@@ -48,7 +40,7 @@ const compareArrays = function <TContent>(
 
     for (let index = 0; index <= indexExpected; index++) {
       segment.omission.push(expected[index]);
-      segment.cost += compare(expected[index], blank).cost;
+      segment.cost += arrayMissingElementCost;
     }
 
     results.set(`-1|${indexExpected}`, arrayDiff({
@@ -64,12 +56,10 @@ const compareArrays = function <TContent>(
       const maybeEqualCost = maybeEqualPreviousDiff.cost + maybeEqualCurrentDiff.cost;
 
       const omissionPreviousDiff = results.get(`${indexActual}|${indexExpected - 1}`)!;
-      const omissionCurrentDiff = compare(blank, elementExpected);
-      const omissionCost = omissionPreviousDiff.cost + omissionCurrentDiff.cost;
+      const omissionCost = omissionPreviousDiff.cost + arrayMissingElementCost;
 
       const additionPreviousDiff = results.get(`${indexActual - 1}|${indexExpected}`)!;
-      const additionCurrentDiff = compare(blank, elementActual);
-      const additionCost = additionPreviousDiff.cost + additionCurrentDiff.cost;
+      const additionCost = additionPreviousDiff.cost + arrayMissingElementCost;
 
       if (maybeEqualCost <= omissionCost && maybeEqualCost <= additionCost) {
         if (maybeEqualCurrentDiff.cost === 0) {
@@ -101,7 +91,7 @@ const compareArrays = function <TContent>(
             ...omissionPreviousDiff.segments,
             {
               omission: [ elementExpected ],
-              cost: omissionCurrentDiff.cost
+              cost: arrayMissingElementCost
             }
           ],
           cost: omissionCost
@@ -112,7 +102,7 @@ const compareArrays = function <TContent>(
             ...additionPreviousDiff.segments,
             {
               addition: [ elementActual ],
-              cost: additionCurrentDiff.cost
+              cost: arrayMissingElementCost
             }
           ],
           cost: additionCost

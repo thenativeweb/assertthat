@@ -5,8 +5,8 @@ import { prettyPrintNumber } from './prettyPrintNumber';
 
 const prettyPrintNumberDiff = function (diff: NumberDiff): string {
   return oneLine`
-    ${diff.actual ? chalk.green(prettyPrintNumber(diff.actual)) : ''}
-    ${diff.expected ? chalk.red(prettyPrintNumber(diff.expected)) : ''} (${prettyPrintNumber(diff.difference)})
+    ${diff.actual !== undefined ? chalk.green(prettyPrintNumber(diff.actual)) : ''}
+    ${diff.expected !== undefined ? chalk.red(prettyPrintNumber(diff.expected)) : ''} (${prettyPrintNumber(diff.difference)})
   `;
 };
 

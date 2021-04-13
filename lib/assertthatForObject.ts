@@ -1,7 +1,8 @@
+import { assertObjectIsEqualToObject } from './assertions2/forObjects/assertObjectIsEqualToObject';
+import { report2 } from './report2';
+
 type AssertthatForObject<TObject extends object = any> = (actual: TObject) => {
   is: {
-    number: symbol;
-
     equalTo: (expected: TObject) => void;
     falsy: () => void;
     truthy: () => void;
@@ -19,7 +20,13 @@ type AssertthatForObject<TObject extends object = any> = (actual: TObject) => {
 };
 
 const assertthatForObject = function <TObject extends object>(actual: TObject): ReturnType<AssertthatForObject<TObject>> {
-  return {} as any;
+  return {
+    is: {
+      equalTo (expected: TObject): void {
+        report2(assertObjectIsEqualToObject(actual, expected));
+      }
+    }
+  } as any;
 };
 
 export type {

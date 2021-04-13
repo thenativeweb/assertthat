@@ -1,14 +1,10 @@
-import { Blank, blank } from '../../constants/blank';
+import { unequalBooleanCost } from '../../constants/costs';
 import { booleanDiff, BooleanDiff } from '../../diffs/forBooleans/BooleanDiff';
-import { booleanVsBlankCost, unequalBooleanCost } from '../../constants/costs';
 
-const compareBooleans = function (actual: boolean | Blank, expected: boolean | Blank): BooleanDiff {
-  if (expected === blank || actual === blank) {
-    return booleanDiff({
-      cost: booleanVsBlankCost
-    });
-  }
-
+const compareBooleans = function (
+  actual: boolean,
+  expected: boolean
+): BooleanDiff {
   return booleanDiff({
     actual,
     expected,

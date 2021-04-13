@@ -1,15 +1,9 @@
-import { Blank, blank } from '../../constants/blank';
+import { unequalNumberCost } from '../../constants/costs';
 import { numberDiff, NumberDiff } from '../../diffs/forNumbers/NumberDiff';
-import { numberVsBlankCost, unequalNumberCost } from '../../constants/costs';
 
-const compareNumbers = function (actual: number | Blank, expected: number | Blank): NumberDiff {
-  if (expected === blank || actual === blank) {
-    return numberDiff({
-      difference: Number.POSITIVE_INFINITY,
-      cost: numberVsBlankCost
-    });
-  }
-
+const compareNumbers = function (
+  actual: number, expected: number
+): NumberDiff {
   const difference = actual - expected;
 
   return numberDiff({

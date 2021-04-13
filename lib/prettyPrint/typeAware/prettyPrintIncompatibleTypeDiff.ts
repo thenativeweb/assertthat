@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { IncompatibleTypeDiff } from 'lib/diffs/IncompatibleTypeDiff';
+import { IncompatibleTypeDiff } from '../../diffs/IncompatibleTypeDiff';
 import { oneLine } from 'common-tags';
 import { prettyPrint } from './prettyPrint';
 

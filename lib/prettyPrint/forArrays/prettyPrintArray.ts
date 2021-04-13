@@ -2,6 +2,10 @@ import { prettyPrint } from '../typeAware/prettyPrint';
 import { source } from 'common-tags';
 
 const prettyPrintArray = function (value: any[], depth = 0): string {
+  if (value.length === 0) {
+    return '[]';
+  }
+
   const content = value.flatMap(
     (iValue, index, arr): string[] => {
       const prettyValue = prettyPrint(iValue, depth + 1).split('\n');
