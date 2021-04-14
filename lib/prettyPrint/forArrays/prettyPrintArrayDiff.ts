@@ -7,6 +7,10 @@ import { source } from 'common-tags';
 import { isAdditionDiffSegment, isChangeDiffSegment, isEqualDiffSegment, isOmissionDiffSegment } from '../../diffs/forArrays/ArrayDiffSegment';
 
 const prettyPrintArrayDiff = function (diff: ArrayDiff<any>, depth = 0): string {
+  if (diff.segments.length === 0) {
+    return '[]';
+  }
+
   const content = diff.segments.flatMap(
     (segment, index, arr): string[] => {
       let prettyValues: string[];

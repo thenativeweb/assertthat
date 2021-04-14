@@ -6,7 +6,9 @@ const unequalRecursionCost = 1;
 const unequalFunctionCost = 1;
 
 const arrayMissingElementCost = 0.5;
-const objectMissingPropertyCost = 1;
+const objectMissingPropertyCost = 0.5;
+const setMissingElementCost = 0.5;
+const mapMissingKeyCost = 0.5;
 
 const incompatibleTypesCost = 10;
 
@@ -20,6 +22,8 @@ export {
 
   arrayMissingElementCost,
   objectMissingPropertyCost,
+  setMissingElementCost,
+  mapMissingKeyCost,
 
   incompatibleTypesCost
 };

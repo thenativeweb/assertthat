@@ -7,10 +7,10 @@ const prettyPrintArray = function (value: any[], depth = 0): string {
   }
 
   const content = value.flatMap(
-    (iValue, index, arr): string[] => {
+    (iValue, index): string[] => {
       const prettyValue = prettyPrint(iValue, depth + 1).split('\n');
 
-      if (index < arr.length - 1 && prettyValue.length > 0) {
+      if (index < value.length - 1 && prettyValue.length > 0) {
         prettyValue[prettyValue.length - 1] += ',';
       }
 

@@ -1,7 +1,11 @@
 #+TITLE: Notes
 
 * todos
-** TODO Pretty printing diffs: leave out long stretches without changes
+** Pretty printing diffs
+*** TODO Pretty printing diffs: leave out long stretches without changes
+*** TODO Fix type switches: if one is an array and one an object, the object/object case takes effect
+*** TODO Fix type recognition: I forgot ~undefined~
+
 * draft control flow
 
 #+BEGIN_SRC js
