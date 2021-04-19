@@ -1,9 +1,8 @@
 import { defekt } from 'defekt';
 
-class AssertionFailed extends defekt({ code: 'AssertionFailed' }) {}
 class InvalidOperation extends defekt({ code: 'InvalidOperation' }) {}
 
-class AssertionFailed2 extends defekt({ code: 'AssertionFailed2' }) {
+class AssertionFailed extends defekt({ code: 'AssertionFailed' }) {
   public constructor ({ message, expected, actual, diff }: {
     message: string;
     expected?: string;
@@ -22,6 +21,5 @@ class AssertionFailed2 extends defekt({ code: 'AssertionFailed2' }) {
 
 export {
   AssertionFailed,
-  AssertionFailed2,
   InvalidOperation
 };

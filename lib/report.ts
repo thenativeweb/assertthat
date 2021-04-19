@@ -7,14 +7,34 @@ const report = function (result: Result<any, AssertionFailed>): void {
     return;
   }
 
-  throw new AssertionFailed(formatErrorMessage({
+  throw new Error(formatErrorMessage({
     message: result.error.message,
-    expected: result.error.data?.expected,
-    actual: result.error.data?.actual,
-    diff: result.error.data?.diff
+    expected: result.error.data.expected,
+    actual: result.error.data.actual,
+    diff: result.error.data.diff
   }));
 };
 
+const wrapAssertionInReport = function (
+  assertion: (...args: any[]) => Result<undefined, AssertionFailed>
+): () => void {
+  console.log('assertion was wrapped');
+  return function (...args): void {
+    console.log('wrapped assertion is called', { args });
+    report(assertion(...args));
+  };
+};
+
+const wrapAssertionInAsyncReport = function (
+  assertion: (...args: any[]) => Promise<Result<undefined, AssertionFailed>>
+): () => Promise<void> {
+  return async function (...args): Promise<void> {
+    report(await assertion(...args));
+  };
+};
+
 export {
-  report
+  report,
+  wrapAssertionInAsyncReport,
+  wrapAssertionInReport
 };

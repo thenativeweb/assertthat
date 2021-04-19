@@ -10,7 +10,7 @@ import { isResult } from 'defekt';
 import { isSet } from '../../types/isSet';
 import { isString } from '../../types/isString';
 import { isSymbol } from '../../types/isSymbol';
-import { isUndefined } from 'lib/types/isUndefined';
+import { isUndefined } from '../../types/isUndefined';
 import { prettyPrintArray } from '../forArrays/prettyPrintArray';
 import { prettyPrintBoolean } from '../forBooleans/prettyPrintBoolean';
 import { prettyPrintFunction } from '../forFunctions/prettyPrintFunction';

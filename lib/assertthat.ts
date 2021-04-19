@@ -1,3 +1,25 @@
+import { AssertThatForAny } from './assertions/forAny/AssertThatForAny';
+import { AssertThatForArray } from './assertions/forArrays/AssertThatForArray';
+import { AssertThatForBoolean } from './assertions/forBooleans/AssertThatForBoolean';
+import { AssertThatForFunction } from './assertions/forFunctions/AssertThatForFunction';
+import { AssertThatForMap } from './assertions/forMaps/AssertThatForMap';
+import { AssertThatForNumber } from './assertions/forNumbers/AssertThatForNumber';
+import { AssertThatForObject } from './assertions/forObjects/AssertThatForObject';
+import { AssertThatForResult } from './assertions/forResults/AssertThatForResult';
+import { AssertThatForSet } from './assertions/forSets/AssertThatForSet';
+import { AssertThatForString } from './assertions/forStrings/AssertThatForString';
+import { AssertThatForSymbol } from './assertions/forSymbols/AssertThatForSymbol';
+import { getAssertionsForAny, getNegatedAssertionsForAny } from './assertions/forAny/assertions';
+import { getAssertionsForArray, getNegatedAssertionsForArray } from './assertions/forArrays/assertions';
+import { getAssertionsForBoolean, getNegatedAssertionsForBoolean } from './assertions/forBooleans/assertions';
+import { getAssertionsForFunction, getNegatedAssertionsForFunction } from './assertions/forFunctions/assertions';
+import { getAssertionsForMap, getNegatedAssertionsForMap } from './assertions/forMaps/assertions';
+import { getAssertionsForNumber, getNegatedAssertionsForNumber } from './assertions/forNumbers/assertions';
+import { getAssertionsForObject, getNegatedAssertionsForObject } from './assertions/forObjects/assertions';
+import { getAssertionsForResult, getNegatedAssertionsForResult } from './assertions/forResults/assertions';
+import { getAssertionsForSet, getNegatedAssertionsForSet } from './assertions/forSets/assertions';
+import { getAssertionsForString, getNegatedAssertionsForString } from './assertions/forStrings/assertions';
+import { getAssertionsForSymbol, getNegatedAssertionsForSymbol } from './assertions/forSymbols/assertions';
 import { isArray } from './types/isArray';
 import { isBoolean } from './types/isBoolean';
 import { isFunction } from './types/isFunction';
@@ -8,65 +30,52 @@ import { isResult } from 'defekt';
 import { isSet } from './types/isSet';
 import { isString } from './types/isString';
 import { isSymbol } from './types/isSymbol';
-import { assertthatForArray, AssertthatForArray } from './assertthatForArray';
-import { assertthatForBoolean, AssertthatForBoolean } from './assertthatForBoolean';
-import { assertthatForFunction, AssertthatForFunction } from './assertthatForFunction';
-import { assertthatForMap, AssertthatForMap } from './assertthatForMap';
-import { assertthatForNumber, AssertthatForNumber } from './assertthatForNumber';
-import { assertthatForObject, AssertthatForObject } from './assertthatForObject';
-import { assertthatForResult, AssertthatForResult } from './assertthatForResult';
-import { assertthatForSet, AssertthatForSet } from './assertthatForSet';
-import { assertthatForString, AssertthatForString } from './assertthatForString';
-import { assertthatForSymbol, AssertthatForSymbol } from './assertthatForSymbol';
-import * as errors from './errors';
 
 type AssertThat =
-  AssertthatForNumber &
-  AssertthatForString &
-  AssertthatForBoolean &
-  AssertthatForSet &
-  AssertthatForMap &
-  AssertthatForResult &
-  AssertthatForArray &
-  AssertthatForSymbol &
-  AssertthatForFunction &
-  AssertthatForObject;
+  AssertThatForSet &
+  AssertThatForMap &
+  AssertThatForArray &
+  AssertThatForResult &
+  AssertThatForNumber &
+  AssertThatForString &
+  AssertThatForBoolean &
+  AssertThatForSymbol &
+  AssertThatForFunction &
+  AssertThatForObject &
+  AssertThatForAny;
 
 // eslint-disable-next-line consistent-this
-const that: AssertThat = (actual: any): any => {
-  if (isSet(actual)) {
-    return assertthatForSet(actual);
-  }
-  if (isMap(actual)) {
-    return assertthatForMap(actual);
-  }
-  if (isArray(actual)) {
-    return assertthatForArray(actual);
-  }
-  if (isResult(actual)) {
-    return assertthatForResult(actual);
-  }
-  if (isNumber(actual)) {
-    return assertthatForNumber(actual);
-  }
-  if (isString(actual)) {
-    return assertthatForString(actual);
-  }
-  if (isBoolean(actual)) {
-    return assertthatForBoolean(actual);
-  }
-  if (isSymbol(actual)) {
-    return assertthatForSymbol(actual);
-  }
-  if (isFunction(actual)) {
-    return assertthatForFunction(actual);
-  }
-  if (isObject(actual)) {
-    return assertthatForObject(actual);
-  }
+const that: AssertThat = (actual: any): any => ({
+  is: {
+    ...getAssertionsForAny(actual),
 
-  throw new errors.InvalidOperation();
-};
+    ...isSet(actual) ? getAssertionsForSet(actual) : {},
+    ...isMap(actual) ? getAssertionsForMap(actual) : {},
+    ...isArray(actual) ? getAssertionsForArray(actual) : {},
+    ...isResult(actual) ? getAssertionsForResult(actual) : {},
+    ...isNumber(actual) ? getAssertionsForNumber(actual) : {},
+    ...isString(actual) ? getAssertionsForString(actual) : {},
+    ...isBoolean(actual) ? getAssertionsForBoolean(actual) : {},
+    ...isSymbol(actual) ? getAssertionsForSymbol(actual) : {},
+    ...isFunction(actual) ? getAssertionsForFunction(actual) : {},
+    ...isObject(actual) ? getAssertionsForObject(actual) : {},
+
+    not: {
+      ...getNegatedAssertionsForAny(actual),
+
+      ...isSet(actual) ? getNegatedAssertionsForSet(actual) : {},
+      ...isMap(actual) ? getNegatedAssertionsForMap(actual) : {},
+      ...isArray(actual) ? getNegatedAssertionsForArray(actual) : {},
+      ...isResult(actual) ? getNegatedAssertionsForResult(actual) : {},
+      ...isNumber(actual) ? getNegatedAssertionsForNumber(actual) : {},
+      ...isString(actual) ? getNegatedAssertionsForString(actual) : {},
+      ...isBoolean(actual) ? getNegatedAssertionsForBoolean(actual) : {},
+      ...isSymbol(actual) ? getNegatedAssertionsForSymbol(actual) : {},
+      ...isFunction(actual) ? getNegatedAssertionsForFunction(actual) : {},
+      ...isObject(actual) ? getNegatedAssertionsForObject(actual) : {}
+    }
+  }
+});
 
 const assert = {
   that
