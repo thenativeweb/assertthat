@@ -3,11 +3,12 @@ import { compare } from '../typeAware/compare';
 import { simplifyDiff } from '../../diffs/forArrays/simplifyDiff';
 import { AdditionDiffSegment, OmissionDiffSegment } from '../../diffs/forArrays/ArrayDiffSegment';
 import { arrayDiff, ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
+import { EqualDiff, equalDiff } from '../../diffs/EqualDiff';
 
 const compareArrays = function <TContent>(
   actual: TContent[],
   expected: TContent[]
-): ArrayDiff<TContent> {
+): ArrayDiff<TContent> | EqualDiff {
   const results: Map<string, ArrayDiff<TContent>> = new Map();
 
   results.set('-1|-1', arrayDiff({
@@ -108,7 +109,15 @@ const compareArrays = function <TContent>(
           cost: additionCost
         }));
       }
+
+      results.delete(`${indexActual - 1}|${indexExpected - 1}`);
     }
+  }
+
+  const diff = results.get(`${actual.length - 1}|${expected.length - 1}`)!;
+
+  if (diff.cost === 0) {
+    return equalDiff({ value: actual });
   }
 
   return simplifyDiff(results.get(`${actual.length - 1}|${expected.length - 1}`)!);

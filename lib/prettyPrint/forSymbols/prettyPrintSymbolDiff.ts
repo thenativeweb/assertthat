@@ -4,7 +4,7 @@ import { SymbolDiff } from '../../diffs/forSymbols/SymbolDiff';
 const prettyPrintSymbolDiff = function (
   diff: SymbolDiff
 ): string {
-  return `Symbol(${prettyPrintStringDiff(diff.descriptionDifference)})`;
+  return `Symbol(${prettyPrintStringDiff(diff.descriptionDiff)})`;
 };
 
 export {

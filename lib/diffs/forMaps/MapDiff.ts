@@ -15,7 +15,7 @@ interface MapDiff extends Diff {
   kind: typeof mapDiffSymbol;
   additions: Map<any, any>;
   omissions: Map<any, any>;
-  changes: Map<any, any>;
+  changes: Map<any, Diff>;
   equal: Map<any, any>;
 }
 

@@ -4,6 +4,7 @@ const unequalBooleanCost = 1;
 const unequalSymbolCost = 1;
 const unequalRecursionCost = 1;
 const unequalFunctionCost = 1;
+const unequalResultCost = 1;
 
 const arrayMissingElementCost = 0.5;
 const objectMissingPropertyCost = 0.5;
@@ -19,6 +20,7 @@ export {
   unequalSymbolCost,
   unequalRecursionCost,
   unequalFunctionCost,
+  unequalResultCost,
 
   arrayMissingElementCost,
   objectMissingPropertyCost,

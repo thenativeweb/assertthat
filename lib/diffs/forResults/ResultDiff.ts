@@ -1,4 +1,5 @@
 import { Diff } from '../Diff';
+import { Result } from 'defekt';
 
 const unequalValueResultDiffSymbol: unique symbol = Symbol('unequal value result diff');
 const unequalErrorResultDiffSymbol: unique symbol = Symbol('unequal error result diff');
@@ -53,10 +54,14 @@ interface UnequalErrorResultDiff extends Diff {
 
 interface ExpectedValueGotErrorResultDiff extends Diff {
   kind: typeof expectedValueGotErrorResultDiffSymbol;
+  actual: Result<any, any>;
+  expected: Result<any, any>;
 }
 
 interface ExpectedErrorGotValueResultDiff extends Diff {
   kind: typeof expectedErrorGotValueResultDiffSymbol;
+  actual: Result<any, any>;
+  expected: Result<any, any>;
 }
 
 type ResultDiff =

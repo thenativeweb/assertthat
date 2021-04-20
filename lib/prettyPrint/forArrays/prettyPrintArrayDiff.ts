@@ -12,28 +12,26 @@ const prettyPrintArrayDiff = function (diff: ArrayDiff<any>, depth = 0): string 
   }
 
   const content = diff.segments.flatMap(
-    (segment, index, arr): string[] => {
-      let prettyValues: string[];
+    (segment): string[] => {
+      let prettyValuesLines: string[];
 
       if (isEqualDiffSegment(segment)) {
-        prettyValues = segment.equal.flatMap((value): string[] => prettyPrint(value, depth + 1).split('\n'));
+        prettyValuesLines = segment.equal.flatMap((value): string[] => `${prettyPrint(value, depth + 1)},`.split('\n'));
       } else if (isChangeDiffSegment(segment)) {
-        prettyValues = segment.change.flatMap((change): string[] => prettyPrintDiff(change, depth + 1).split('\n'));
+        prettyValuesLines = segment.change.flatMap((change): string[] => `${prettyPrintDiff(change, depth + 1)},`.split('\n'));
       } else if (isOmissionDiffSegment(segment)) {
-        prettyValues = segment.omission.flatMap((value): string[] => chalk.red(prettyPrint(value, depth + 1)).split('\n'));
+        prettyValuesLines = segment.omission.flatMap((value): string[] => chalk.red(`${prettyPrint(value, depth + 1)},`).split('\n'));
       } else if (isAdditionDiffSegment(segment)) {
-        prettyValues = segment.addition.flatMap((value): string[] => chalk.green(prettyPrint(value, depth + 1)).split('\n'));
+        prettyValuesLines = segment.addition.flatMap((value): string[] => chalk.green(`${prettyPrint(value, depth + 1)},`).split('\n'));
       } else {
         throw new InvalidOperation();
       }
 
-      if (index < arr.length - 1 && prettyValues.length > 0) {
-        prettyValues[prettyValues.length - 1] += ',';
-      }
-
-      return prettyValues;
+      return prettyValuesLines;
     }
   );
+
+  content[content.length - 1] = content[content.length - 1].slice(0, -1);
 
   if (depth >= 2) {
     return `[ ${content.join(' ')} ]`;

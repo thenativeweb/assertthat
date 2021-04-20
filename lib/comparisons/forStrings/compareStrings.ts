@@ -6,6 +6,7 @@ import {
   AdditionDiffSegment as AdditionStringDiffSegment,
   OmissionDiffSegment as OmissionStringDiffSegment
 } from '../../diffs/forStrings/StringDiffSegment';
+import { equalDiff, EqualDiff, isEqualDiff } from '../../diffs/EqualDiff';
 import {
   isAdditionDiffSegment as isAdditionArrayDiffSegment,
   isChangeDiffSegment as isChangeArrayDiffSegment,
@@ -52,7 +53,7 @@ const convertArrayDiffToStringDiff = function (arrayDiff: ArrayDiff<string>): St
     }
     if (isAdditionArrayDiffSegment(arrayDiffSegment)) {
       convertedStringDiff.segments.push({
-        omission: arrayDiffSegment.addition.join(''),
+        addition: arrayDiffSegment.addition.join(''),
         cost: arrayDiffSegment.cost
       });
     }
@@ -64,12 +65,12 @@ const convertArrayDiffToStringDiff = function (arrayDiff: ArrayDiff<string>): St
 
 const compareStrings = function (
   actual: string,
-  expected: string
-): StringDiff {
+  expected: string,
+  chunkDelimiter = ''
+): StringDiff | EqualDiff {
   if (actual === expected) {
-    return stringDiff({
-      segments: [],
-      cost: 0
+    return equalDiff({
+      value: actual
     });
   }
   if (actual.length === 1 && expected.length === 1) {
@@ -82,15 +83,14 @@ const compareStrings = function (
     });
   }
 
-  const actualExploded = actual.split('');
-  const expectedExploded = expected.split('');
+  const actualExploded = actual.split(chunkDelimiter);
+  const expectedExploded = expected.split(chunkDelimiter);
 
   const result = compareArrays(actualExploded, expectedExploded);
 
-  if (result.cost === 0) {
-    return stringDiff({
-      segments: [],
-      cost: 0
+  if (isEqualDiff(result)) {
+    return equalDiff({
+      value: actual
     });
   }
 

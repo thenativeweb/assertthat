@@ -1,5 +1,6 @@
 import { compareArrays } from '../forArrays/compareArrays';
 import { compareBooleans } from '../forBooleans/compareBooleans';
+import { compareErrors } from '../forErrors/compareErrors';
 import { compareFunctions } from '../forFunctions/compareFunctions';
 import { compareMaps } from '../forMaps/compareMaps';
 import { compareNumbers } from '../forNumbers/compareNumbers';
@@ -15,6 +16,7 @@ import { incompatibleTypeDiff } from '../../diffs/IncompatibleTypeDiff';
 import { incompatibleTypesCost } from '../../constants/costs';
 import { isArray } from '../../types/isArray';
 import { isBoolean } from '../../types/isBoolean';
+import { isError } from '../../types/isError';
 import { isFunction } from '../../types/isFunction';
 import { isMap } from '../../types/isMap';
 import { isNumber } from '../../types/isNumber';
@@ -29,6 +31,9 @@ import { isUndefined } from '../../types/isUndefined';
 const compare = function (actual: any, expected: any): Diff {
   if (isRecursion(actual) && isRecursion(expected)) {
     return compareRecursions(actual, expected);
+  }
+  if (isError(actual) && isError(expected)) {
+    return compareErrors(actual, expected);
   }
   if (isSet(actual) && isSet(expected)) {
     return compareSets(actual, expected);

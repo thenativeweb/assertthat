@@ -1,7 +1,7 @@
-import { Diff } from "../Diff";
+import { Diff } from '../Diff';
 
 interface EqualDiffSegment extends Diff {
-    equal: string;
+  equal: string;
 }
 
 interface ReplaceDiffSegment extends Diff {
@@ -10,11 +10,11 @@ interface ReplaceDiffSegment extends Diff {
 }
 
 interface OmissionDiffSegment extends Diff {
-    omission: string;
+  omission: string;
 }
 
 interface AdditionDiffSegment extends Diff {
-    addition: string;
+  addition: string;
 }
 
 type StringDiffSegment =

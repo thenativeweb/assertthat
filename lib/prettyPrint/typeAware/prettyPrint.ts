@@ -1,6 +1,7 @@
 import { InvalidOperation } from '../../errors';
 import { isArray } from '../../types/isArray';
 import { isBoolean } from '../../types/isBoolean';
+import { isError } from '../../types/isError';
 import { isFunction } from '../../types/isFunction';
 import { isMap } from '../../types/isMap';
 import { isNumber } from '../../types/isNumber';
@@ -13,6 +14,7 @@ import { isSymbol } from '../../types/isSymbol';
 import { isUndefined } from '../../types/isUndefined';
 import { prettyPrintArray } from '../forArrays/prettyPrintArray';
 import { prettyPrintBoolean } from '../forBooleans/prettyPrintBoolean';
+import { prettyPrintError } from '../forErrors/prettyPrintError';
 import { prettyPrintFunction } from '../forFunctions/prettyPrintFunction';
 import { prettyPrintMap } from '../forMaps/prettyPrintMap';
 import { prettyPrintNumber } from '../forNumbers/prettyPrintNumber';
@@ -27,6 +29,9 @@ import { prettyPrintUndefined } from '../forUndefined/prettyPrintUndefined';
 const prettyPrint = function (value: any, depth = 0): string {
   if (isRecursion(value)) {
     return prettyPrintRecursion(value);
+  }
+  if (isError(value)) {
+    return prettyPrintError(value);
   }
   if (isSet(value)) {
     return prettyPrintSet(value);

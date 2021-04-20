@@ -1,5 +1,6 @@
 import { compareStrings } from '../forStrings/compareStrings';
 import { unequalFunctionCost } from '../../constants/costs';
+import { equalDiff, EqualDiff, isEqualDiff } from '../../diffs/EqualDiff';
 import { functionDiff, FunctionDiff } from '../../diffs/forFunctions/FunctionDiff';
 
 const compareFunctions = function (
@@ -7,7 +8,7 @@ const compareFunctions = function (
   actual: Function,
   expected: Function
 /* eslint-enable @typescript-eslint/ban-types */
-): FunctionDiff {
+): FunctionDiff | EqualDiff {
   const actualStringRepresentation = actual.toString();
   const expectedStringRepresentation = expected.toString();
 
@@ -16,10 +17,9 @@ const compareFunctions = function (
     expectedStringRepresentation
   );
 
-  if (stringRepresentationDiff.cost === 0) {
-    return functionDiff({
-      cost: 0,
-      stringRepresentationDiff
+  if (isEqualDiff(stringRepresentationDiff)) {
+    return equalDiff({
+      value: actual
     });
   }
 

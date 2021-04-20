@@ -1,6 +1,8 @@
 import { InvalidOperation } from '../../errors';
 import { isArrayDiff } from '../../diffs/forArrays/ArrayDiff';
 import { isBooleanDiff } from '../../diffs/forBooleans/BooleanDiff';
+import { isEqualDiff } from '../../diffs/EqualDiff';
+import { isErrorDiff } from '../../diffs/forErrors/ErrorDiff';
 import { isFunctionDiff } from '../../diffs/forFunctions/FunctionDiff';
 import { isIncompatibleTypeDiff } from '../../diffs/IncompatibleTypeDiff';
 import { isMapDiff } from '../../diffs/forMaps/MapDiff';
@@ -11,9 +13,10 @@ import { isResultDiff } from '../../diffs/forResults/ResultDiff';
 import { isSetDiff } from '../../diffs/forSets/SetDiff';
 import { isStringDiff } from '../../diffs/forStrings/StringDiff';
 import { isSymbolDiff } from '../../diffs/forSymbols/SymbolDiff';
-import { isUndefinedDiff } from '../../diffs/forUndefined/UndefinedDiff';
 import { prettyPrintArrayDiff } from '../forArrays/prettyPrintArrayDiff';
 import { prettyPrintBooleanDiff } from '../forBooleans/prettyPrintBooleanDiff';
+import { prettyPrintEqualDiff } from '../prettyPrintEqualDiff';
+import { prettyPrintErrorDiff } from '../forErrors/prettyPrintErrorDiff';
 import { prettyPrintFunctionDiff } from '../forFunctions/prettyPrintFunctionDiff';
 import { prettyPrintIncompatibleTypeDiff } from './prettyPrintIncompatibleTypeDiff';
 import { prettyPrintMapDiff } from '../forMaps/prettyPrintMapDiff';
@@ -24,11 +27,16 @@ import { prettyPrintResultDiff } from '../forResults/prettyPrintResultDiff';
 import { prettyPrintSetDiff } from '../forSets/prettyPrintSetDiff';
 import { prettyPrintStringDiff } from '../forStrings/prettyPrintStringDiff';
 import { prettyPrintSymbolDiff } from '../forSymbols/prettyPrintSymbolDiff';
-import { prettyPrintUndefinedDiff } from '../forUndefined/prettyPrintUndefinedDiff';
 
 const prettyPrintDiff = function (diff: any, depth = 0): string {
+  if (isEqualDiff(diff)) {
+    return prettyPrintEqualDiff(diff);
+  }
   if (isRecursionDiff(diff)) {
     return prettyPrintRecursionDiff(diff);
+  }
+  if (isErrorDiff(diff)) {
+    return prettyPrintErrorDiff(diff);
   }
   if (isSetDiff(diff)) {
     return prettyPrintSetDiff(diff);
@@ -59,9 +67,6 @@ const prettyPrintDiff = function (diff: any, depth = 0): string {
   }
   if (isObjectDiff(diff)) {
     return prettyPrintObjectDiff(diff);
-  }
-  if (isUndefinedDiff(diff)) {
-    return prettyPrintUndefinedDiff(diff);
   }
   if (isIncompatibleTypeDiff(diff)) {
     return prettyPrintIncompatibleTypeDiff(diff, depth);

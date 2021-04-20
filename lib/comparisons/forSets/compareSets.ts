@@ -1,11 +1,12 @@
 import { compare } from '../typeAware/compare';
 import { setMissingElementCost } from '../../constants/costs';
+import { equalDiff, EqualDiff } from '../../diffs/EqualDiff';
 import { setDiff, SetDiff } from '../../diffs/forSets/SetDiff';
 
 const compareSets = function (
   actual: Set<any>,
   expected: Set<any>
-): SetDiff {
+): SetDiff | EqualDiff {
   const newDiff = setDiff({
     cost: 0,
     additions: new Set(),
@@ -31,6 +32,10 @@ const compareSets = function (
       newDiff.omissions.add(expectedElement);
       newDiff.cost += setMissingElementCost;
     }
+  }
+
+  if (newDiff.cost === 0) {
+    return equalDiff({ value: actual });
   }
 
   return newDiff;

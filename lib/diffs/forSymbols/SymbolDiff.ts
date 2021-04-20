@@ -14,7 +14,7 @@ const symbolDiff = function (
 
 interface SymbolDiff extends Diff {
   kind: typeof symbolDiffSymbol;
-  descriptionDifference: StringDiff;
+  descriptionDiff: StringDiff;
 }
 
 const isSymbolDiff = function (diff: any): diff is SymbolDiff {

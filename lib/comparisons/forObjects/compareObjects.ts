@@ -1,11 +1,12 @@
 import { compare } from '../typeAware/compare';
 import { objectMissingPropertyCost } from '../../constants/costs';
+import { equalDiff, EqualDiff } from '../../diffs/EqualDiff';
 import { objectDiff, ObjectDiff } from '../../diffs/forObjects/ObjectDiff';
 
 const compareObjects = function (
   actual: any,
   expected: any
-): ObjectDiff {
+): ObjectDiff | EqualDiff {
   const newDiff = objectDiff({
     cost: 0,
     additions: {},
@@ -37,6 +38,10 @@ const compareObjects = function (
 
     newDiff.omissions[key] = expected[key];
     newDiff.cost += objectMissingPropertyCost;
+  }
+
+  if (newDiff.cost === 0) {
+    return equalDiff({ value: actual });
   }
 
   return newDiff;
