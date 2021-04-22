@@ -1,4 +1,13 @@
 import { assertActualIsEqualToExpected } from './assertActualIsEqualToExpected';
+import { assertActualIsFalsy } from './assertActualIsFalsy';
+import { assertActualIsIdenticalToExpected } from './assertActualIsIdenticalToExpected';
+import { assertActualIsNotEqualToExpected } from './assertActualIsNotEqualToExpected';
+import { assertActualIsNotFalsy } from './assertActualIsNotFalsy';
+import { assertActualIsNotIdenticalToExpected } from './assertActualIsNotIdenticalToExpected';
+import { assertActualIsNotSameJsonAsExpected } from './assertActualIsNotSameJsonAsExpected';
+import { assertActualIsNotTruthy } from './assertActualIsNotTruthy';
+import { assertActualIsSameJsonAsExpected } from './assertActualIsSameJsonAsExpected';
+import { assertActualIsTruthy } from './assertActualIsTruthy';
 import { CommonAssertions } from './CommonAssertions';
 import { report } from '../../report';
 
@@ -8,16 +17,16 @@ const getAssertionsForAny = function <TAny>(actual: TAny): CommonAssertions<TAny
       report(assertActualIsEqualToExpected(actual, expected));
     },
     identicalTo (expected: TAny): void {
-      //report(assertActualIsIdenticalToExpected(actual, expected));
+      report(assertActualIsIdenticalToExpected(actual, expected));
     },
     sameJsonAs (expected: TAny): void {
-      //report(assertActualIsSameJsonAsExpected(actual, expected));
+      report(assertActualIsSameJsonAsExpected(actual, expected));
     },
     falsy (): void {
-      //report(assertActualIsFalsy(actual));
+      report(assertActualIsFalsy(actual));
     },
     truthy (): void {
-      //report(assertActualIsTruthy(actual));
+      report(assertActualIsTruthy(actual));
     }
   };
 };
@@ -25,19 +34,19 @@ const getAssertionsForAny = function <TAny>(actual: TAny): CommonAssertions<TAny
 const getNegatedAssertionsForAny = function <TAny>(actual: TAny): CommonAssertions<TAny> {
   return {
     equalTo (expected: TAny): void {
-      //report(assertActualIsNotEqualToExpected(actual, expected));
+      report(assertActualIsNotEqualToExpected(actual, expected));
     },
     identicalTo (expected: TAny): void {
-      //report(assertActualIsNotIdenticalToExpected(actual, expected));
+      report(assertActualIsNotIdenticalToExpected(actual, expected));
     },
     sameJsonAs (expected: TAny): void {
-      //report(assertActualIsNotSameJsonAsExpected(actual, expected));
+      report(assertActualIsNotSameJsonAsExpected(actual, expected));
     },
     falsy (): void {
-      //report(assertActualIsNotFalsy(actual));
+      report(assertActualIsNotFalsy(actual));
     },
     truthy (): void {
-      //report(assertActualIsNotTruthy(actual));
+      report(assertActualIsNotTruthy(actual));
     }
   };
 };
