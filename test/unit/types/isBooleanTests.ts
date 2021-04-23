@@ -17,6 +17,7 @@ suite('isBoolean', (): void => {
     [ new Error('foo'), 'error' ],
     [ (): string => 'foo', 'function' ],
     [ new Map(), 'map' ],
+    [ null, 'null' ],
     [ 5, 'number' ],
     [{}, 'object' ],
     [ error(new Error('foo')), 'Result' ],

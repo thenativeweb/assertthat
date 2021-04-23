@@ -5,6 +5,9 @@ interface CommonAssertions<TAny> {
 
   falsy: () => void;
   truthy: () => void;
+
+  null: () => void;
+  undefined: () => void;
 }
 
 export type {

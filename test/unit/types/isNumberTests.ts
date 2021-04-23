@@ -18,6 +18,7 @@ suite('isNumber', (): void => {
     [ new Error('foo'), 'error' ],
     [ (): string => 'foo', 'function' ],
     [ new Map(), 'map' ],
+    [ null, 'null' ],
     [{}, 'object' ],
     [ error(new Error('foo')), 'Result' ],
     [ new Set(), 'set' ],

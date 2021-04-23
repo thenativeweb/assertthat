@@ -17,6 +17,7 @@ suite('isFunction', (): void => {
     [ new Error('foo'), 'error' ],
     [ false, 'boolean' ],
     [ new Map(), 'map' ],
+    [ null, 'null' ],
     [ 5, 'number' ],
     [{}, 'object' ],
     [ error(new Error('foo')), 'Result' ],

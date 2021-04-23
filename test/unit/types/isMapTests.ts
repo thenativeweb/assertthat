@@ -17,6 +17,7 @@ suite('isMap', (): void => {
     [ false, 'boolean' ],
     [ new Error('foo'), 'error' ],
     [ (): string => 'foo', 'function' ],
+    [ null, 'null' ],
     [ 5, 'number' ],
     [{}, 'object' ],
     [ error(new Error('foo')), 'Result' ],

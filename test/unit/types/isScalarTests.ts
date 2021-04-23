@@ -6,6 +6,7 @@ import { recursion } from '../../../lib/types/Recursion';
 suite('isScalar', (): void => {
   for (const [ value, type ] of [
     [ false, 'boolean' ],
+    [ null, 'null' ],
     [ 5, 'number' ],
     [ 'foo', 'string' ],
     [ Symbol('foo'), 'symbol' ],

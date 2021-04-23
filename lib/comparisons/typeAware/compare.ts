@@ -10,8 +10,8 @@ import { compareResults } from '../forResults/compareResults';
 import { compareSets } from '../forSets/compareSets';
 import { compareStrings } from '../forStrings/compareStrings';
 import { compareSymbols } from '../forSymbols/compareSymbols';
-import { compareUndefined } from '../forUndefined/compareUndefined';
 import { Diff } from '../../diffs/Diff';
+import { equalDiff } from '../../diffs/EqualDiff';
 import { incompatibleTypeDiff } from '../../diffs/IncompatibleTypeDiff';
 import { incompatibleTypesCost } from '../../constants/costs';
 import { isArray } from '../../types/isArray';
@@ -19,6 +19,7 @@ import { isBoolean } from '../../types/isBoolean';
 import { isError } from '../../types/isError';
 import { isFunction } from '../../types/isFunction';
 import { isMap } from '../../types/isMap';
+import { isNull } from '../../types/isNull';
 import { isNumber } from '../../types/isNumber';
 import { isObject } from '../../types/isObject';
 import { isRecursion } from '../../types/Recursion';
@@ -29,6 +30,12 @@ import { isSymbol } from '../../types/isSymbol';
 import { isUndefined } from '../../types/isUndefined';
 
 const compare = function (actual: any, expected: any): Diff {
+  if (isUndefined(actual) && isUndefined(expected)) {
+    return equalDiff({ value: actual });
+  }
+  if (isNull(actual) && isNull(expected)) {
+    return equalDiff({ value: actual });
+  }
   if (isRecursion(actual) && isRecursion(expected)) {
     return compareRecursions(actual, expected);
   }
@@ -64,9 +71,6 @@ const compare = function (actual: any, expected: any): Diff {
   }
   if (isObject(actual) && isObject(expected)) {
     return compareObjects(actual, expected);
-  }
-  if (isUndefined(actual) && isUndefined(expected)) {
-    return compareUndefined(actual, expected);
   }
 
   return incompatibleTypeDiff({

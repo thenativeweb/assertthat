@@ -6,6 +6,8 @@ import { assert } from '../../../../lib/assertthat';
 import { compare } from '../../../../lib/comparisons/typeAware/compare';
 import { equalDiff } from '../../../../lib/diffs/EqualDiff';
 import { objectDiff } from '../../../../lib/diffs/forObjects/ObjectDiff';
+import { incompatibleTypeDiff } from '../../../../lib/diffs/IncompatibleTypeDiff';
+import { incompatibleTypesCost } from '../../../../lib/constants/costs';
 
 suite('compare', (): void => {
   test('returns equal diff for complex data.', async (): Promise<void> => {
@@ -135,5 +137,44 @@ suite('compare', (): void => {
         }
       })
     );
+  });
+
+  suite('simple cases', (): void => {
+    test('returns an equal diff for two undefineds.', async (): Promise<void> => {
+      const actual = undefined;
+      const expected = undefined;
+
+      const diff = compare(actual, expected);
+
+      assert.that(diff).is.equalTo(
+        equalDiff({ value: undefined })
+      );
+    });
+
+    test('returns an equal diff for two nulls.', async (): Promise<void> => {
+      const actual = null;
+      const expected = null;
+
+      const diff = compare(actual, expected);
+
+      assert.that(diff).is.equalTo(
+        equalDiff({ value: null })
+      );
+    });
+
+    test('returns a type mismatch diff for two different types.', async (): Promise<void> => {
+      const actual = 5;
+      const expected = 'foo';
+
+      const diff = compare(actual, expected);
+
+      assert.that(diff).is.equalTo(
+        incompatibleTypeDiff({
+          actual,
+          expected,
+          cost: incompatibleTypesCost
+        })
+      );
+    });
   });
 });

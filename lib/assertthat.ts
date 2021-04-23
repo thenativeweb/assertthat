@@ -8,7 +8,15 @@ import { AssertThatForObject } from './assertions/forObjects/AssertThatForObject
 import { AssertThatForResult } from './assertions/forResults/AssertThatForResult';
 import { AssertThatForSet } from './assertions/forSets/AssertThatForSet';
 import { AssertThatForString } from './assertions/forStrings/AssertThatForString';
-import { AssertThatForSymbol } from './assertions/forSymbols/AssertThatForSymbol';
+import { isArray } from './types/isArray';
+import { isBoolean } from './types/isBoolean';
+import { isFunction } from './types/isFunction';
+import { isMap } from './types/isMap';
+import { isNumber } from './types/isNumber';
+import { isObject } from './types/isObject';
+import { isResult } from 'defekt';
+import { isSet } from './types/isSet';
+import { isString } from './types/isString';
 import { getAssertionsForAny, getNegatedAssertionsForAny } from './assertions/forAny/assertions';
 import { getAssertionsForArray, getNegatedAssertionsForArray } from './assertions/forArrays/assertions';
 import { getAssertionsForBoolean, getNegatedAssertionsForBoolean } from './assertions/forBooleans/assertions';
@@ -19,17 +27,6 @@ import { getAssertionsForObject, getNegatedAssertionsForObject } from './asserti
 import { getAssertionsForResult, getNegatedAssertionsForResult } from './assertions/forResults/assertions';
 import { getAssertionsForSet, getNegatedAssertionsForSet } from './assertions/forSets/assertions';
 import { getAssertionsForString, getNegatedAssertionsForString } from './assertions/forStrings/assertions';
-import { getAssertionsForSymbol, getNegatedAssertionsForSymbol } from './assertions/forSymbols/assertions';
-import { isArray } from './types/isArray';
-import { isBoolean } from './types/isBoolean';
-import { isFunction } from './types/isFunction';
-import { isMap } from './types/isMap';
-import { isNumber } from './types/isNumber';
-import { isObject } from './types/isObject';
-import { isResult } from 'defekt';
-import { isSet } from './types/isSet';
-import { isString } from './types/isString';
-import { isSymbol } from './types/isSymbol';
 
 type AssertThat =
   AssertThatForSet &
@@ -39,7 +36,6 @@ type AssertThat =
   AssertThatForNumber &
   AssertThatForString &
   AssertThatForBoolean &
-  AssertThatForSymbol &
   AssertThatForFunction &
   AssertThatForObject &
   AssertThatForAny;
@@ -56,7 +52,6 @@ const that: AssertThat = (actual: any): any => ({
     ...isNumber(actual) ? getAssertionsForNumber(actual) : {},
     ...isString(actual) ? getAssertionsForString(actual) : {},
     ...isBoolean(actual) ? getAssertionsForBoolean(actual) : {},
-    ...isSymbol(actual) ? getAssertionsForSymbol(actual) : {},
     ...isFunction(actual) ? getAssertionsForFunction(actual) : {},
     ...isObject(actual) ? getAssertionsForObject(actual) : {},
 
@@ -70,7 +65,6 @@ const that: AssertThat = (actual: any): any => ({
       ...isNumber(actual) ? getNegatedAssertionsForNumber(actual) : {},
       ...isString(actual) ? getNegatedAssertionsForString(actual) : {},
       ...isBoolean(actual) ? getNegatedAssertionsForBoolean(actual) : {},
-      ...isSymbol(actual) ? getNegatedAssertionsForSymbol(actual) : {},
       ...isFunction(actual) ? getNegatedAssertionsForFunction(actual) : {},
       ...isObject(actual) ? getNegatedAssertionsForObject(actual) : {}
     }

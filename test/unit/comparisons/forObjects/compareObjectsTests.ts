@@ -16,7 +16,7 @@ suite('compareObjects', (): void => {
 
   test('returns a object diff with additions if the objects are not equal.', async (): Promise<void> => {
     const actual = { foo: 5, bar: 8, bam: 13 };
-    const expected = { bam: 13};
+    const expected = { bam: 13 };
 
     const diff = compareObjects(actual, expected);
 

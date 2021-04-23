@@ -21,6 +21,7 @@ suite('isObject', (): void => {
   for (const [ value, type ] of [
     [ false, 'boolean' ],
     [ (): string => 'foo', 'function' ],
+    [ null, 'null' ],
     [ 5, 'number' ],
     [ 'foo', 'string' ],
     [ Symbol('foo'), 'symbol' ],

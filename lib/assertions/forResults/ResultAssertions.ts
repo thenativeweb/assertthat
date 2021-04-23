@@ -1,5 +1,6 @@
-interface ResultAssertions<TValue, TError extends Error> {
-
+interface ResultAssertions {
+  aValue: () => void;
+  anError: () => void;
 }
 
 export type {

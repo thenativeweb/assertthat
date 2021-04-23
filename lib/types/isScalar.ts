@@ -1,4 +1,5 @@
 import { isBoolean } from './isBoolean';
+import { isNull } from './isNull';
 import { isNumber } from './isNumber';
 import { isString } from './isString';
 import { isSymbol } from './isSymbol';
@@ -9,7 +10,8 @@ const isScalar = function (value: any): value is number | string | boolean | sym
         isString(value) ||
         isBoolean(value) ||
         isSymbol(value) ||
-        isUndefined(value);
+        isUndefined(value) ||
+        isNull(value);
 };
 
 export {

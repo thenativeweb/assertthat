@@ -14,6 +14,7 @@ interface Recursion {
 
 const isRecursion = function (value: any): value is Recursion {
   return typeof value === 'object' &&
+    value !== null &&
     'type' in value &&
     value.type === recursionSymbol;
 };

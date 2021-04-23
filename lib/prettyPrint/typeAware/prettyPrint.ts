@@ -4,6 +4,7 @@ import { isBoolean } from '../../types/isBoolean';
 import { isError } from '../../types/isError';
 import { isFunction } from '../../types/isFunction';
 import { isMap } from '../../types/isMap';
+import { isNull } from '../../types/isNull';
 import { isNumber } from '../../types/isNumber';
 import { isObject } from '../../types/isObject';
 import { isRecursion } from '../../types/Recursion';
@@ -17,6 +18,7 @@ import { prettyPrintBoolean } from '../forBooleans/prettyPrintBoolean';
 import { prettyPrintError } from '../forErrors/prettyPrintError';
 import { prettyPrintFunction } from '../forFunctions/prettyPrintFunction';
 import { prettyPrintMap } from '../forMaps/prettyPrintMap';
+import { prettyPrintNull } from '../forNull/prettyPrintNull';
 import { prettyPrintNumber } from '../forNumbers/prettyPrintNumber';
 import { prettyPrintObject } from '../forObjects/prettyPrintObject';
 import { prettyPrintRecursion } from '../forRecursions/prettyPrintRecursion';
@@ -65,6 +67,9 @@ const prettyPrint = function (value: any, depth = 0): string {
   }
   if (isUndefined(value)) {
     return prettyPrintUndefined(value);
+  }
+  if (isNull(value)) {
+    return prettyPrintNull(value);
   }
 
   throw new InvalidOperation('Could not pretty print a value with unknown type.');
