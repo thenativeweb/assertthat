@@ -1,13 +1,13 @@
 import { arrayDiff } from 'lib/diffs/forArrays/ArrayDiff';
-import { mapDiff } from 'lib/diffs/forMaps/MapDiff';
-import { setDiff } from 'lib/diffs/forSets/SetDiff';
-import { stringDiff } from 'lib/diffs/forStrings/StringDiff';
 import { assert } from '../../../../lib/assertthat';
 import { compare } from '../../../../lib/comparisons/typeAware/compare';
 import { equalDiff } from '../../../../lib/diffs/EqualDiff';
-import { objectDiff } from '../../../../lib/diffs/forObjects/ObjectDiff';
 import { incompatibleTypeDiff } from '../../../../lib/diffs/IncompatibleTypeDiff';
 import { incompatibleTypesCost } from '../../../../lib/constants/costs';
+import { mapDiff } from 'lib/diffs/forMaps/MapDiff';
+import { objectDiff } from '../../../../lib/diffs/forObjects/ObjectDiff';
+import { setDiff } from 'lib/diffs/forSets/SetDiff';
+import { stringDiff } from 'lib/diffs/forStrings/StringDiff';
 
 suite('compare', (): void => {
   test('returns equal diff for complex data.', async (): Promise<void> => {

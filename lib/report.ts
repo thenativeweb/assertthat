@@ -18,9 +18,7 @@ const report = function (result: Result<any, AssertionFailed>): void {
 const wrapAssertionInReport = function (
   assertion: (...args: any[]) => Result<undefined, AssertionFailed>
 ): () => void {
-  console.log('assertion was wrapped');
   return function (...args): void {
-    console.log('wrapped assertion is called', { args });
     report(assertion(...args));
   };
 };

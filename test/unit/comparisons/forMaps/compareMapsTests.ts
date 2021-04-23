@@ -45,7 +45,7 @@ suite('compareMaps', (): void => {
   });
 
   test('returns a map diff with changes if the maps are not equal.', async (): Promise<void> => {
-    const actual = new Map<any, any>([[ 'foo', 'foo' ], [ 'bam', 13]]);
+    const actual = new Map<any, any>([[ 'foo', 'foo' ], [ 'bam', 13 ]]);
     const expected = new Map<any, any>([[ 'foo', 'bar' ], [ 'bam', 13 ]]);
 
     const diff = compareMaps(actual, expected);

@@ -1,7 +1,6 @@
 import { assert } from '../../../../lib';
 import { assertActualIsNotUndefined } from '../../../../lib/assertions/forAny/assertActualIsNotUndefined';
 import { AssertionFailed } from '../../../../lib/errors';
-import { prettyPrint } from '../../../../lib/prettyPrint/typeAware/prettyPrint';
 import { error, value } from 'defekt';
 
 suite('assertActualIsNotUndefined', (): void => {

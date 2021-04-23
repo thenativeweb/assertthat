@@ -31,19 +31,14 @@
   "main": "build/lib/assertthat.js",
   "types": "build/lib/assertthat.d.ts",
   "dependencies": {
-    "@types/stringify-object": "3.3.0",
     "@types/uuid": "8.3.0",
     "chalk": "4.1.0",
     "common-tags": "1.8.0",
-    "comparejs": "4.0.7",
     "defekt": "7.1.0",
-    "stringify-object": "3.3.0",
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@types/chai": "4.2.15",
     "@types/common-tags": "1.8.0",
-    "chai": "4.3.4",
     "roboter": "11.6.34",
     "semantic-release-configuration": "2.0.0"
   },

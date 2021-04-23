@@ -1,18 +1,18 @@
 import { AssertionFailed } from '../../errors';
 import { error, Result, value } from 'defekt';
 
-const assertMapIsNotEmpty = function <TKey, TValue>(
-  actual: Map<TKey, TValue>
+const assertStringIsNotEmpty = function (
+  actual: string
 ): Result<undefined, AssertionFailed> {
-  if (actual.size > 0) {
+  if (actual.length > 0) {
     return value();
   }
 
   return error(new AssertionFailed({
-    message: 'The map is empty.'
+    message: 'The string is empty.'
   }));
 };
 
 export {
-  assertMapIsNotEmpty
+  assertStringIsNotEmpty
 };

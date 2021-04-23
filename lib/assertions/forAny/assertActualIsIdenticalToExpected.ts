@@ -10,7 +10,7 @@ const assertActualIsIdenticalToExpected = function (
   }
 
   return error(new AssertionFailed({
-    message: 'The values are not identical.',
+    message: 'The values are not identical.'
   }));
 };
 

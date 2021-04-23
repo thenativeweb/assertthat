@@ -1,9 +1,9 @@
 import { AssertionFailed } from '../../errors';
 import { compare } from '../../comparisons/typeAware/compare';
+import { dispel } from '../../dispel/dispel';
 import { isEqualDiff } from '../../diffs/EqualDiff';
 import { prettyPrint } from '../../prettyPrint/typeAware/prettyPrint';
 import { error, Result, value } from 'defekt';
-import { dispel } from '../../dispel/dispel';
 
 const assertActualIsNotEqualToExpected = function (
   actual: any,
@@ -17,7 +17,7 @@ const assertActualIsNotEqualToExpected = function (
 
   return error(new AssertionFailed({
     message: 'The values are equal.',
-    expected: `Not to equal:\n${prettyPrint(expected)}`,
+    expected: `Not to equal:\n${prettyPrint(expected)}`
   }));
 };
 

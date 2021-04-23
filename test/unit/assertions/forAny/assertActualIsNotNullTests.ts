@@ -1,7 +1,6 @@
 import { assert } from '../../../../lib';
 import { assertActualIsNotNull } from '../../../../lib/assertions/forAny/assertActualIsNotNull';
 import { AssertionFailed } from '../../../../lib/errors';
-import { prettyPrint } from '../../../../lib/prettyPrint/typeAware/prettyPrint';
 import { error, value } from 'defekt';
 
 suite('assertActualIsNotNull', (): void => {

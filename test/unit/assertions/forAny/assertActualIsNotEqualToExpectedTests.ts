@@ -53,7 +53,7 @@ suite('assertActualIsNotEqualToExpected', (): void => {
     ).is.equalTo(
       error(new AssertionFailed({
         message: 'The values are equal.',
-        expected: `Not to equal:\n${prettyPrint(expected)}`,
+        expected: `Not to equal:\n${prettyPrint(expected)}`
       }))
     );
   });

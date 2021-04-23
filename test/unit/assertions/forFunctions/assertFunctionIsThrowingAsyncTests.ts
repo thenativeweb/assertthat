@@ -83,7 +83,7 @@ suite('assertFunctionIsThrowingAsync', (): void => {
     };
     const regExp = /^Foo.*/u;
 
-    await assert.that(await assertFunctionIsThrowingAsync(fun, regExp)).is.equalTo(
+    assert.that(await assertFunctionIsThrowingAsync(fun, regExp)).is.equalTo(
       error(new AssertionFailed({
         message: 'The function threw an unexpected asynchronous exception.',
         expected: `The message should have matched:\n${regExp.toString()}`,

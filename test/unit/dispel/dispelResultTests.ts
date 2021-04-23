@@ -34,11 +34,11 @@ suite('dispelResult', (): void => {
     const dispelledResult = dispelResult(result[0], path, [{ reference: result, path: '/' }]);
 
     assert.that(dispelledResult).is.equalTo(
-      value([recursion({ recursionPath: '/' })])
+      value([ recursion({ recursionPath: '/' }) ])
     );
   });
 
-  test(`builds paths through value results with the path segment 'value'`, async (): Promise<void> => {
+  test(`builds paths through value results with the path segment 'value'.`, async (): Promise<void> => {
     const result: Result<any, any> = value([[[]]]);
 
     result.value[0][0].push(result.value[0]);
@@ -52,7 +52,7 @@ suite('dispelResult', (): void => {
     );
   });
 
-  test(`builds paths through error results with the path segment 'error'`, async (): Promise<void> => {
+  test(`builds paths through error results with the path segment 'error'.`, async (): Promise<void> => {
     const result: Result<any, any> = error([[[]]] as any);
 
     result.error[0][0].push(result.error[0]);
