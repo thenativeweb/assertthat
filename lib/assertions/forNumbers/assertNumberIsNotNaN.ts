@@ -1,7 +1,7 @@
 import { AssertionFailed } from '../../errors';
 import { error, Result, value } from 'defekt';
 
-const assertNumberIsNotNan = function (
+const assertNumberIsNotNaN = function (
   actual: number
 ): Result<undefined, AssertionFailed> {
   if (!Number.isNaN(actual)) {
@@ -14,5 +14,5 @@ const assertNumberIsNotNan = function (
 };
 
 export {
-  assertNumberIsNotNan
+  assertNumberIsNotNaN
 };

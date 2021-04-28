@@ -3,7 +3,7 @@ interface NumberAssertions {
   lessThan: (expected: number) => void;
   atLeast: (expected: number) => void;
   atMost: (expected: number) => void;
-  nan: () => void;
+  NaN: () => void;
 }
 
 export type {

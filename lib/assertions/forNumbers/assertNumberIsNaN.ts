@@ -2,7 +2,7 @@ import { AssertionFailed } from '../../errors';
 import { prettyPrint } from '../../prettyPrint/typeAware/prettyPrint';
 import { error, Result, value } from 'defekt';
 
-const assertNumberIsNan = function (
+const assertNumberIsNaN = function (
   actual: number
 ): Result<undefined, AssertionFailed> {
   if (Number.isNaN(actual)) {
@@ -16,5 +16,5 @@ const assertNumberIsNan = function (
 };
 
 export {
-  assertNumberIsNan
+  assertNumberIsNaN
 };

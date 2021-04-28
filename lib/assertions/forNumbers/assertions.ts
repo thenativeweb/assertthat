@@ -2,12 +2,12 @@ import { assertNumberIsAtLeastNumber } from './assertNumberIsAtLeastNumber';
 import { assertNumberIsAtMostNumber } from './assertNumberIsAtMostNumber';
 import { assertNumberIsGreaterThanNumber } from './assertNumberIsGreaterThanNumber';
 import { assertNumberIsLessThanNumber } from './assertNumberIsLessThanNumber';
-import { assertNumberIsNan } from './assertNumberIsNan';
+import { assertNumberIsNaN } from './assertNumberIsNaN';
 import { assertNumberIsNotAtLeastNumber } from './assertNumberIsNotAtLeastNumber';
 import { assertNumberIsNotAtMostNumber } from './assertNumberIsNotAtMostNumber';
 import { assertNumberIsNotGreaterThanNumber } from './assertNumberIsNotGreaterThanNumber';
 import { assertNumberIsNotLessThanNumber } from './assertNumberIsNotLessThanNumber';
-import { assertNumberIsNotNan } from './assertNumberIsNotNan';
+import { assertNumberIsNotNaN } from './assertNumberIsNotNaN';
 import { NumberAssertions } from './NumberAssertions';
 import { report } from '../../report';
 
@@ -25,8 +25,8 @@ const getAssertionsForNumber = function (actual: number): NumberAssertions {
     atMost (expected): void {
       report(assertNumberIsAtMostNumber(actual, expected));
     },
-    nan (): void {
-      report(assertNumberIsNan(actual));
+    NaN (): void {
+      report(assertNumberIsNaN(actual));
     }
   };
 };
@@ -45,8 +45,8 @@ const getNegatedAssertionsForNumber = function (actual: number): NumberAssertion
     atMost (expected): void {
       report(assertNumberIsNotAtMostNumber(actual, expected));
     },
-    nan (): void {
-      report(assertNumberIsNotNan(actual));
+    NaN (): void {
+      report(assertNumberIsNotNaN(actual));
     }
   };
 };
