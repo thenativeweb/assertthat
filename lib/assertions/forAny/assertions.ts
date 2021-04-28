@@ -5,10 +5,12 @@ import { assertActualIsNotEqualToExpected } from './assertActualIsNotEqualToExpe
 import { assertActualIsNotFalsy } from './assertActualIsNotFalsy';
 import { assertActualIsNotIdenticalToExpected } from './assertActualIsNotIdenticalToExpected';
 import { assertActualIsNotNull } from './assertActualIsNotNull';
+import { assertActualIsNotOfType } from './assertActualIsNotOfType';
 import { assertActualIsNotSameJsonAsExpected } from './assertActualIsNotSameJsonAsExpected';
 import { assertActualIsNotTruthy } from './assertActualIsNotTruthy';
 import { assertActualIsNotUndefined } from './assertActualIsNotUndefined';
 import { assertActualIsNull } from './assertActualIsNull';
+import { assertActualIsOfType } from './assertActualIsOfType';
 import { assertActualIsSameJsonAsExpected } from './assertActualIsSameJsonAsExpected';
 import { assertActualIsTruthy } from './assertActualIsTruthy';
 import { assertActualIsUndefined } from './assertActualIsUndefined';
@@ -39,6 +41,10 @@ const getAssertionsForAny = function <TAny>(actual: TAny): CommonAssertions<TAny
     },
     undefined (): void {
       report(assertActualIsUndefined(actual));
+    },
+
+    ofType (expected): void {
+      report(assertActualIsOfType(actual, expected));
     }
   };
 };
@@ -67,6 +73,10 @@ const getNegatedAssertionsForAny = function <TAny>(actual: TAny): CommonAssertio
     },
     undefined (): void {
       report(assertActualIsNotUndefined(actual));
+    },
+
+    ofType (expected): void {
+      report(assertActualIsNotOfType(actual, expected));
     }
   };
 };
