@@ -8,8 +8,8 @@ const prettyPrintIncompatibleTypeDiff = function (
   depth = 0
 ): string {
   return oneLine`
-    ${chalk.green(prettyPrint(incompatibleTypeDiff.actual, depth + 1))}
-    ${chalk.red(prettyPrint(incompatibleTypeDiff.expected, depth + 1))}
+    ${chalk.red(prettyPrint(incompatibleTypeDiff.actual, depth + 1))}
+    ${chalk.green(prettyPrint(incompatibleTypeDiff.expected, depth + 1))}
   `;
 };
 

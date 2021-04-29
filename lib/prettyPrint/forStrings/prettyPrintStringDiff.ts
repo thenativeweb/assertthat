@@ -10,13 +10,13 @@ const prettyPrintStringDiff = function (diff: StringDiff): string {
       result += segment.equal;
     }
     if (isReplaceDiffSegment(segment)) {
-      result += `${chalk.green(segment.replace)}${chalk.red(segment.replaceWith)}`;
+      result += `${chalk.red(segment.replace)}${chalk.green(segment.replaceWith)}`;
     }
     if (isOmissionDiffSegment(segment)) {
-      result += chalk.red(segment.omission);
+      result += chalk.green(segment.omission);
     }
     if (isAdditionDiffSegment(segment)) {
-      result += chalk.green(segment.addition);
+      result += chalk.red(segment.addition);
     }
   }
 

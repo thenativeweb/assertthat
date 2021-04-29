@@ -11,10 +11,10 @@ const prettyPrintResultDiff = function (diff: ResultDiff, depth = 0): string {
     return `ErrorResult(${prettyPrintDiff(diff.diff, depth + 1)})`;
   }
   if (isExpectedValueGotErrorResultDiff(diff)) {
-    return `${chalk.green('ErrorResult(...)')}\n${chalk.red('ValueResult(...)')}`;
+    return `${chalk.red('ErrorResult(...)')}\n${chalk.green('ValueResult(...)')}`;
   }
   if (isExpectedErrorGotValueResultDiff(diff)) {
-    return `${chalk.green('ValueResult(...)')}\n${chalk.red('ErrorResult(...)')}`;
+    return `${chalk.red('ValueResult(...)')}\n${chalk.green('ErrorResult(...)')}`;
   }
 
   throw new InvalidOperation();

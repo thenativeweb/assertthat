@@ -1,14 +1,18 @@
 import chalk from 'chalk';
+import { diffString } from '../utils/diffString';
 import { ObjectDiff } from '../../diffs/forObjects/ObjectDiff';
 import { prettyPrint } from '../typeAware/prettyPrint';
 import { prettyPrintDiff } from '../typeAware/prettyPrintDiff';
-import { source } from 'common-tags';
 
 const prettyPrintObjectDiff = function (diff: ObjectDiff, depth = 0): string {
   const content = [];
 
   for (const [ key, value ] of Object.entries(diff.equal)) {
-    const prettyValueLines = `${key}: ${prettyPrint(value, depth + 1)}`.split('\n');
+    const prettyValueLines = `${key}: ${prettyPrint(value, depth + 1)}`.
+      split('\n').
+      map(
+        (line): string => `  ${line}`
+      );
 
     if (prettyValueLines.length > 0) {
       prettyValueLines[prettyValueLines.length - 1] += ',';
@@ -17,7 +21,11 @@ const prettyPrintObjectDiff = function (diff: ObjectDiff, depth = 0): string {
     content.push(...prettyValueLines);
   }
   for (const [ key, value ] of Object.entries(diff.changes)) {
-    const prettyValueLines = `${key}: ${prettyPrintDiff(value, depth + 1)}`.split('\n');
+    const prettyValueLines = `${key}: ${prettyPrintDiff(value, depth + 1)}`.
+      split('\n').
+      map(
+        (line, index): string => index === 0 ? `* ${line}` : `  ${line}`
+      );
 
     if (prettyValueLines.length > 0) {
       prettyValueLines[prettyValueLines.length - 1] += ',';
@@ -26,7 +34,11 @@ const prettyPrintObjectDiff = function (diff: ObjectDiff, depth = 0): string {
     content.push(...prettyValueLines);
   }
   for (const [ key, value ] of Object.entries(diff.omissions)) {
-    const prettyValueLines = chalk.red(`${key}: ${prettyPrint(value, depth + 1)}`).split('\n');
+    const prettyValueLines = `${key}: ${prettyPrint(value, depth + 1)}`.
+      split('\n').
+      map(
+        (line, index): string => index === 0 ? chalk.green(`+ ${line}`) : `  ${chalk.green(line)}`
+      );
 
     if (prettyValueLines.length > 0) {
       prettyValueLines[prettyValueLines.length - 1] += ',';
@@ -35,7 +47,11 @@ const prettyPrintObjectDiff = function (diff: ObjectDiff, depth = 0): string {
     content.push(...prettyValueLines);
   }
   for (const [ key, value ] of Object.entries(diff.additions)) {
-    const prettyValueLines = chalk.green(`${key}: ${prettyPrint(value, depth + 1)}`).split('\n');
+    const prettyValueLines = `${key}: ${prettyPrint(value, depth + 1)}`.
+      split('\n').
+      map(
+        (line, index): string => index === 0 ? chalk.red(`- ${line}`) : `  ${chalk.red(line)}`
+      );
 
     if (prettyValueLines.length > 0) {
       prettyValueLines[prettyValueLines.length - 1] += ',';
@@ -54,7 +70,7 @@ const prettyPrintObjectDiff = function (diff: ObjectDiff, depth = 0): string {
     return `{ ${content.join(' ')} }`;
   }
 
-  return source`
+  return diffString`
     {
       ${content}
     }

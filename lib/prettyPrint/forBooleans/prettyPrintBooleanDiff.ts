@@ -5,8 +5,8 @@ import { prettyPrintBoolean } from './prettyPrintBoolean';
 
 const prettyPrintBooleanDiff = function (diff: BooleanDiff): string {
   return oneLine`
-    ${diff.actual ? chalk.green(prettyPrintBoolean(diff.actual)) : ''}
-    ${diff.expected ? chalk.red(prettyPrintBoolean(diff.expected)) : ''}
+    ${diff.actual !== undefined ? chalk.red(prettyPrintBoolean(diff.actual)) : ''}
+    ${diff.expected !== undefined ? chalk.green(prettyPrintBoolean(diff.expected)) : ''}
   `;
 };
 

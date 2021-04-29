@@ -1,13 +1,17 @@
 import chalk from 'chalk';
+import { diffString } from '../utils/diffString';
 import { prettyPrint } from '../typeAware/prettyPrint';
 import { SetDiff } from '../../diffs/forSets/SetDiff';
-import { source } from 'common-tags';
 
 const prettyPrintSetDiff = function (diff: SetDiff, depth = 0): string {
   const content = [];
 
   for (const value of diff.equal) {
-    const prettyValueLines = prettyPrint(value, depth + 1).split('\n');
+    const prettyValueLines = prettyPrint(value, depth + 1).
+      split('\n').
+      map(
+        (line): string => `  ${line}`
+      );
 
     if (prettyValueLines.length > 0) {
       prettyValueLines[prettyValueLines.length - 1] += ',';
@@ -16,7 +20,11 @@ const prettyPrintSetDiff = function (diff: SetDiff, depth = 0): string {
     content.push(...prettyValueLines);
   }
   for (const value of diff.omissions) {
-    const prettyValueLines = chalk.red(prettyPrint(value, depth + 1)).split('\n');
+    const prettyValueLines = prettyPrint(value, depth + 1).
+      split('\n').
+      map(
+        (line, index): string => index === 0 ? chalk.red(`- ${line}`) : `  ${chalk.green(line)}`
+      );
 
     if (prettyValueLines.length > 0) {
       prettyValueLines[prettyValueLines.length - 1] += ',';
@@ -25,7 +33,11 @@ const prettyPrintSetDiff = function (diff: SetDiff, depth = 0): string {
     content.push(...prettyValueLines);
   }
   for (const value of diff.additions) {
-    const prettyValueLines = chalk.green(prettyPrint(value, depth + 1)).split('\n');
+    const prettyValueLines = prettyPrint(value, depth + 1).
+      split('\n').
+      map(
+        (line, index): string => index === 0 ? chalk.green(`+ ${line}`) : `  ${chalk.red(line)}`
+      );
 
     if (prettyValueLines.length > 0) {
       prettyValueLines[prettyValueLines.length - 1] += ',';
@@ -44,7 +56,7 @@ const prettyPrintSetDiff = function (diff: SetDiff, depth = 0): string {
     return `Set([ ${content.join(' ')} ])`;
   }
 
-  return source`
+  return diffString`
     Set([
       ${content}
     ])

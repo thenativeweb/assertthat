@@ -15,24 +15,6 @@ const report = function (result: Result<any, AssertionFailed>): void {
   }));
 };
 
-const wrapAssertionInReport = function (
-  assertion: (...args: any[]) => Result<undefined, AssertionFailed>
-): () => void {
-  return function (...args): void {
-    report(assertion(...args));
-  };
-};
-
-const wrapAssertionInAsyncReport = function (
-  assertion: (...args: any[]) => Promise<Result<undefined, AssertionFailed>>
-): () => Promise<void> {
-  return async function (...args): Promise<void> {
-    report(await assertion(...args));
-  };
-};
-
 export {
-  report,
-  wrapAssertionInAsyncReport,
-  wrapAssertionInReport
+  report
 };

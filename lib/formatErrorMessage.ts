@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+import { diffString } from './prettyPrint/utils/diffString';
 import { source } from 'common-tags';
 
 const formatErrorMessage = function ({
@@ -28,8 +30,11 @@ const formatErrorMessage = function ({
     `}`;
   }
   if (diff) {
-    errorMessage += `\n\n${source`
+    errorMessage += `\n\n${diffString`
       --- DIFF ------------
+      ${chalk.red('--- needs to be removed')}
+      ${chalk.green('+++ is missing')}
+      *** changes in nested elements
 
         ${diff}
     `}`;
