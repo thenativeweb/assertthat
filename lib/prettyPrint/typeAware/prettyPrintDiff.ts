@@ -36,13 +36,13 @@ const prettyPrintDiff = function (diff: any, depth = 0): string {
     return prettyPrintRecursionDiff(diff);
   }
   if (isErrorDiff(diff)) {
-    return prettyPrintErrorDiff(diff);
+    return prettyPrintErrorDiff(diff, depth);
   }
   if (isSetDiff(diff)) {
-    return prettyPrintSetDiff(diff);
+    return prettyPrintSetDiff(diff, depth);
   }
   if (isMapDiff(diff)) {
-    return prettyPrintMapDiff(diff);
+    return prettyPrintMapDiff(diff, depth);
   }
   if (isArrayDiff(diff)) {
     return prettyPrintArrayDiff(diff, depth);
@@ -66,7 +66,7 @@ const prettyPrintDiff = function (diff: any, depth = 0): string {
     return prettyPrintFunctionDiff(diff);
   }
   if (isObjectDiff(diff)) {
-    return prettyPrintObjectDiff(diff);
+    return prettyPrintObjectDiff(diff, depth);
   }
   if (isIncompatibleTypeDiff(diff)) {
     return prettyPrintIncompatibleTypeDiff(diff, depth);

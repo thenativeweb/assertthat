@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { diffString } from './prettyPrint/utils/diffString';
+import { propagateDiffSymbols } from './prettyPrint/utils/propagateDiffSymbols';
 import { source } from 'common-tags';
 
 const formatErrorMessage = function ({
@@ -13,7 +13,11 @@ const formatErrorMessage = function ({
   actual?: string;
   diff?: string;
 }): string {
-  let errorMessage = message;
+  // Some test libraries (e.g. mocha) print the errors thrown in tests in red.
+  // Since our diff makes use of color, we want to guarantee that our error
+  // message is displayed as intended. To achieve this, we reset all color in
+  // the beginning.
+  let errorMessage = chalk.reset(message);
 
   if (expected) {
     errorMessage += `\n\n${source`
@@ -30,14 +34,15 @@ const formatErrorMessage = function ({
     `}`;
   }
   if (diff) {
-    errorMessage += `\n\n${diffString`
+    errorMessage += `\n\n${source`
       --- DIFF ------------
-      ${chalk.red('--- needs to be removed')}
-      ${chalk.green('+++ is missing')}
-      *** changes in nested elements
+      ${chalk.green('+++ must be added')}
+      ${chalk.red('--- must be removed')}
+    `}\n${propagateDiffSymbols(source`
+      *** contains changes
 
         ${diff}
-    `}`;
+    `)}`;
   }
 
   return errorMessage;

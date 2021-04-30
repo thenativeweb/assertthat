@@ -1,9 +1,13 @@
 import { ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
-import chalk from 'chalk';
-import { diffString } from '../utils/diffString';
-import { InvalidOperation } from '../../errors';
+import { formatNestedArray } from '../utils/formatNestedArray';
+import { maximumDepth } from '../../constants/maximumDepth';
+import { prepareAddition } from '../utils/prepareAddition';
+import { prepareChange } from '../utils/prepareChange';
+import { prepareOmission } from '../utils/prepareOmission';
+import { prepareSimple } from '../utils/prepareSimple';
 import { prettyPrint } from '../typeAware/prettyPrint';
 import { prettyPrintDiff } from '../typeAware/prettyPrintDiff';
+import { propagateDiffSymbols } from '../utils/propagateDiffSymbols';
 import { isAdditionDiffSegment, isChangeDiffSegment, isEqualDiffSegment, isOmissionDiffSegment } from '../../diffs/forArrays/ArrayDiffSegment';
 
 const prettyPrintArrayDiff = function (diff: ArrayDiff<any>, depth = 0): string {
@@ -11,59 +15,49 @@ const prettyPrintArrayDiff = function (diff: ArrayDiff<any>, depth = 0): string 
     return '[]';
   }
 
-  const content = diff.segments.flatMap(
-    (segment): string[] => {
-      if (isEqualDiffSegment(segment)) {
-        return segment.equal.flatMap(
-          (value): string[] => `${prettyPrint(value, depth + 1)},`.
-            split('\n').
-            map(
-              (line): string => `  ${line}`
-            )
-        );
+  const content: string[][] = [];
+
+  for (const segment of diff.segments) {
+    if (isEqualDiffSegment(segment)) {
+      for (const value of segment.equal) {
+        content.push(prepareSimple(
+          prettyPrint(value, depth + 1),
+          depth
+        ));
       }
-      if (isChangeDiffSegment(segment)) {
-        return segment.change.flatMap(
-          (change): string[] => `${prettyPrintDiff(change, depth + 1)},`.
-            split('\n').
-            map(
-              (line, index): string => index === 0 ? `* ${line}` : `  ${line}`
-            )
-        );
+    } else if (isChangeDiffSegment(segment)) {
+      for (const subDiff of segment.change) {
+        content.push(prepareChange(
+          prettyPrintDiff(subDiff, depth + 1),
+          depth
+        ));
       }
-      if (isOmissionDiffSegment(segment)) {
-        return segment.omission.flatMap(
-          (value): string[] => `${prettyPrint(value, depth + 1)},`.
-            split('\n').
-            map(
-              (line, index): string => index === 0 ? chalk.green(`+ ${line}`) : `  ${chalk.green(line)}`
-            )
-        );
+    } else if (isOmissionDiffSegment(segment)) {
+      for (const value of segment.omission) {
+        content.push(prepareOmission(
+          prettyPrint(value, depth + 1),
+          depth
+        ));
       }
-      if (isAdditionDiffSegment(segment)) {
-        return segment.addition.flatMap(
-          (value): string[] => `${prettyPrint(value, depth + 1)},`.
-            split('\n').
-            map(
-              (line, index): string => index === 0 ? chalk.red(`- ${line}`) : `  ${chalk.red(line)}`
-            )
-        );
+    } else if (isAdditionDiffSegment(segment)) {
+      for (const value of segment.addition) {
+        content.push(prepareAddition(
+          prettyPrint(value, depth + 1),
+          depth
+        ));
       }
-      throw new InvalidOperation();
     }
-  );
-
-  content[content.length - 1] = content[content.length - 1].slice(0, -1);
-
-  if (depth >= 2) {
-    return `[ ${content.join(' ')} ]`;
   }
 
-  return diffString`
+  if (depth >= maximumDepth) {
+    return formatNestedArray`[ ${content} ]`;
+  }
+
+  return propagateDiffSymbols(formatNestedArray`
     [
-      ${content}
+    ${content}
     ]
-  `;
+  `);
 };
 
 export {

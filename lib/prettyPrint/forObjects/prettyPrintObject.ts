@@ -1,34 +1,29 @@
+import { formatNestedArray } from '../utils/formatNestedArray';
+import { maximumDepth } from '../../constants/maximumDepth';
+import { prepareSimple } from '../utils/prepareSimple';
 import { prettyPrint } from '../typeAware/prettyPrint';
-import { source } from 'common-tags';
 
-const prettyPrintObject = function (value: object, depth = 0): string {
-  if (Object.keys(value).length === 0) {
+const prettyPrintObject = function (object: object, depth = 0): string {
+  if (Object.keys(object).length === 0) {
     return '{}';
   }
 
-  const content = Object.entries(value).flatMap(
-    ([ key, iValue ], index, arr): string[] => {
-      const prettyValue = prettyPrint(iValue, depth + 1).split('\n');
+  const content: string[][] = [];
 
-      if (prettyValue.length > 0) {
-        prettyValue[0] = `${key}: ${prettyValue[0]}`;
-
-        if (index < arr.length - 1) {
-          prettyValue[prettyValue.length - 1] += ',';
-        }
-      }
-
-      return prettyValue;
-    }
-  );
-
-  if (depth >= 2) {
-    return `{ ${content.join(' ')} }`;
+  for (const [ key, value ] of Object.entries(object)) {
+    content.push(prepareSimple(
+      `${key}: ${prettyPrint(value, depth + 1)}`,
+      depth
+    ));
   }
 
-  return source`
+  if (depth >= maximumDepth) {
+    return formatNestedArray`{ ${content} }`;
+  }
+
+  return formatNestedArray`
     {
-      ${content}
+    ${content}
     }
   `;
 };

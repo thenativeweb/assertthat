@@ -33,13 +33,13 @@ const prettyPrint = function (value: any, depth = 0): string {
     return prettyPrintRecursion(value);
   }
   if (isError(value)) {
-    return prettyPrintError(value);
+    return prettyPrintError(value, depth);
   }
   if (isSet(value)) {
-    return prettyPrintSet(value);
+    return prettyPrintSet(value, depth);
   }
   if (isMap(value)) {
-    return prettyPrintMap(value);
+    return prettyPrintMap(value, depth);
   }
   if (isArray(value)) {
     return prettyPrintArray(value, depth);
