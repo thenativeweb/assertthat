@@ -1,7 +1,7 @@
 import { InvalidOperation } from '../../errors';
 import { stripIndentTransformer, TemplateTag, TemplateTransformer, trimResultTransformer } from 'common-tags';
 
-const nestedInlineArrayTransformer = function (): TemplateTransformer {
+const twoDimensionalArrayTransformer = function (): TemplateTransformer {
   return {
     onSubstitution (substitution, resultSoFar): string {
       if (!Array.isArray(substitution)) {
@@ -11,50 +11,55 @@ const nestedInlineArrayTransformer = function (): TemplateTransformer {
       const lastSeparatorIndex = substitution.length - 2;
       const indentationMatch = /\n(?<indentation>[^\S\n]+)$/u.exec(resultSoFar);
 
-      return substitution.reduce((result, part, index): string => {
+      let endResult = '';
+
+      for (const [ index, part ] of substitution.entries()) {
         if (!Array.isArray(part)) {
           throw new InvalidOperation('Values formatted using the nested inline array transformer must be nested arrays.');
         }
         const isFirstPart = index === 0;
 
-        let next = '';
-
         // If there is no indentation, we want to display the array parts
         // inline. Thus, no newline, just a space to separate the parts.
-        next += isFirstPart ? '' : `${result}${indentationMatch ? '\n' : ' '}`;
+        endResult += isFirstPart ? '' : `${indentationMatch ? '\n' : ' '}`;
 
-        part.forEach((subPart: string, subIndex: number): void => {
-          const isFirstSubPart = subIndex === 0;
+        for (const [ subIndex, subPart ] of part.entries()) {
           const isLastSubPart = subIndex === part.length - 1;
-          const firstPartOverall = isFirstPart && isFirstSubPart;
+          const firstStringOverall = isFirstPart && subIndex === 0;
 
-          if (indentationMatch && !firstPartOverall) {
-            next += indentationMatch.groups?.indentation ?? '';
+          // The first part of the entire substitution does not need an
+          // indentation, since it is already indented in the enclosing template
+          // string. That is where the indentation match comes from.
+          if (indentationMatch && !firstStringOverall) {
+            endResult += indentationMatch.groups?.indentation ?? '';
           }
-          next += subPart;
+
+          endResult += subPart;
 
           if (!isLastSubPart) {
             if (indentationMatch) {
-              next += '\n';
+              endResult += '\n';
             } else {
               // If there is no indentation, we want to display the array parts
               // inline. Thus, no newline, just a space to separate the
               // sub-parts.
-              next += ' ';
+              endResult += ' ';
             }
           }
-        });
+        }
 
-        next += index <= lastSeparatorIndex ? ',' : '';
+        if (index <= lastSeparatorIndex) {
+          endResult += ',';
+        }
+      }
 
-        return next;
-      }, '');
+      return endResult;
     }
   };
 };
 
 const formatNestedArray = new TemplateTag([
-  nestedInlineArrayTransformer(),
+  twoDimensionalArrayTransformer(),
   stripIndentTransformer(),
   trimResultTransformer()
 ]);
