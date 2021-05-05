@@ -1,6 +1,6 @@
 import { Diff } from '../Diff';
 import { findOmissions } from '../findOmissions';
-import { objectMissingPropertyCost } from '../../constants/costs';
+import { size } from '../../size/typeAware/size';
 import { sum } from '../../utils/sum';
 import { objectDiff, ObjectDiff } from './ObjectDiff';
 
@@ -15,7 +15,7 @@ const findObjectDiffOmissions = function (diff: ObjectDiff): ObjectDiff {
 
   const keptOmissionsCost = sum(
     Object.values(diff.omissions).
-      map((): number => objectMissingPropertyCost)
+      map((omission): number => size(omission))
   );
   const keptChangesCost = sum(
     Object.values(filteredChanges).

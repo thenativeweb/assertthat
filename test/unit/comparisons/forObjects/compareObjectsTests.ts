@@ -21,7 +21,7 @@ suite('compareObjects', (): void => {
     const diff = compareObjects(actual, expected);
 
     assert.that(diff).is.equalTo(objectDiff({
-      cost: 1,
+      cost: 2,
       additions: { foo: 5, bar: 8 },
       omissions: {},
       changes: {},
@@ -36,7 +36,7 @@ suite('compareObjects', (): void => {
     const diff = compareObjects(actual, expected);
 
     assert.that(diff).is.equalTo(objectDiff({
-      cost: 1,
+      cost: 2,
       additions: {},
       omissions: { foo: 5, bar: 8 },
       changes: {},

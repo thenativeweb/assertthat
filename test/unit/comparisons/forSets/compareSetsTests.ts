@@ -20,7 +20,7 @@ suite('compareSets', (): void => {
     const diff = compareSets(actual, expected);
 
     assert.that(diff).is.equalTo(setDiff({
-      cost: 1,
+      cost: 2,
       additions: new Set([ 5, 8 ]),
       omissions: new Set(),
       equal: new Set([ 3 ])
@@ -34,7 +34,7 @@ suite('compareSets', (): void => {
     const diff = compareSets(actual, expected);
 
     assert.that(diff).is.equalTo(setDiff({
-      cost: 1,
+      cost: 2,
       additions: new Set(),
       omissions: new Set([ 5, 8 ]),
       equal: new Set([ 3 ])

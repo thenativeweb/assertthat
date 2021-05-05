@@ -1,5 +1,5 @@
 import { compare } from '../typeAware/compare';
-import { objectMissingPropertyCost } from '../../constants/costs';
+import { size } from '../../size/typeAware/size';
 import { equalDiff, EqualDiff } from '../../diffs/EqualDiff';
 import { objectDiff, ObjectDiff } from '../../diffs/forObjects/ObjectDiff';
 
@@ -27,7 +27,7 @@ const compareObjects = function (
       }
     } else {
       newDiff.additions[key] = actual[key];
-      newDiff.cost += objectMissingPropertyCost;
+      newDiff.cost += size(actual[key]);
     }
   }
 
@@ -37,7 +37,7 @@ const compareObjects = function (
     }
 
     newDiff.omissions[key] = expected[key];
-    newDiff.cost += objectMissingPropertyCost;
+    newDiff.cost += size(expected[key]);
   }
 
   if (newDiff.cost === 0) {

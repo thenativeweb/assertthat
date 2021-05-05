@@ -1,5 +1,5 @@
 import { compare } from '../typeAware/compare';
-import { setMissingElementCost } from '../../constants/costs';
+import { size } from '../../size/typeAware/size';
 import { equalDiff, EqualDiff } from '../../diffs/EqualDiff';
 import { setDiff, SetDiff } from '../../diffs/forSets/SetDiff';
 
@@ -16,7 +16,7 @@ const compareSets = function (
 
   for (const actualSubValue of actual) {
     newDiff.additions.add(actualSubValue);
-    newDiff.cost += setMissingElementCost;
+    newDiff.cost += size(actualSubValue);
   }
 
   for (const expectedElement of expected) {
@@ -27,10 +27,10 @@ const compareSets = function (
     if (elementInBothSets !== undefined) {
       newDiff.additions.delete(elementInBothSets);
       newDiff.equal.add(elementInBothSets);
-      newDiff.cost -= setMissingElementCost;
+      newDiff.cost -= size(elementInBothSets);
     } else {
       newDiff.omissions.add(expectedElement);
-      newDiff.cost += setMissingElementCost;
+      newDiff.cost += size(expectedElement);
     }
   }
 

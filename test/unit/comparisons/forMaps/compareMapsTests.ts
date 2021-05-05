@@ -21,7 +21,7 @@ suite('compareMaps', (): void => {
     const diff = compareMaps(actual, expected);
 
     assert.that(diff).is.equalTo(mapDiff({
-      cost: 1,
+      cost: 2,
       additions: new Map([[ 'foo', 5 ], [ 'bar', 8 ]]),
       omissions: new Map(),
       changes: new Map(),
@@ -36,7 +36,7 @@ suite('compareMaps', (): void => {
     const diff = compareMaps(actual, expected);
 
     assert.that(diff).is.equalTo(mapDiff({
-      cost: 1,
+      cost: 2,
       additions: new Map(),
       omissions: new Map([[ 'foo', 5 ], [ 'bar', 8 ]]),
       changes: new Map(),

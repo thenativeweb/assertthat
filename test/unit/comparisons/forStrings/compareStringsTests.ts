@@ -21,11 +21,11 @@ suite('compareStrings', (): void => {
 
     assert.that(diff).is.equalTo(
       stringDiff({
-        cost: 3.5,
+        cost: 7,
         segments: [
           {
             addition: 'foo bar',
-            cost: 3.5
+            cost: 7
           }
         ]
       })
@@ -40,11 +40,11 @@ suite('compareStrings', (): void => {
 
     assert.that(diff).is.equalTo(
       stringDiff({
-        cost: 3.5,
+        cost: 7,
         segments: [
           {
             omission: 'foo bar',
-            cost: 3.5
+            cost: 7
           }
         ]
       })
@@ -79,13 +79,13 @@ suite('compareStrings', (): void => {
 
     assert.that(diff).is.equalTo(
       stringDiff({
-        cost: 2,
+        cost: 3,
         segments: [
-          { omission: 'G', cost: 0.5 },
+          { omission: 'G', cost: 1 },
           { equal: 'G', cost: 0 },
           { replace: 'C', replaceWith: 'G', cost: 1 },
           { equal: 'TGAT', cost: 0 },
-          { addition: 'A', cost: 0.5 },
+          { addition: 'A', cost: 1 },
           { equal: 'TAGCT', cost: 0 }
         ]
       })
@@ -100,11 +100,11 @@ suite('compareStrings', (): void => {
 
     assert.that(diff).is.equalTo(
       stringDiff({
-        cost: 1,
+        cost: 2,
         segments: [
           { equal: 'foo', cost: 0 },
-          { addition: 'bar', cost: 0.5 },
-          { omission: 'foo', cost: 0.5 }
+          { addition: 'bar', cost: 1 },
+          { omission: 'foo', cost: 1 }
         ]
       })
     );

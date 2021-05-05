@@ -22,11 +22,11 @@ suite('compareArrays', (): void => {
 
     assert.that(diff).is.equalTo(
       arrayDiff({
-        cost: 1,
+        cost: 2,
         segments: [
           {
             addition: [ 'foo', 'bar' ],
-            cost: 1
+            cost: 2
           }
         ]
       })
@@ -41,11 +41,11 @@ suite('compareArrays', (): void => {
 
     assert.that(diff).is.equalTo(
       arrayDiff({
-        cost: 1,
+        cost: 2,
         segments: [
           {
             omission: [ 'foo', 'bar' ],
-            cost: 1
+            cost: 2
           }
         ]
       })

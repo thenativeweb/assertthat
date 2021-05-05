@@ -1,6 +1,6 @@
 import { Diff } from '../Diff';
 import { findAdditions } from '../findAdditions';
-import { objectMissingPropertyCost } from '../../constants/costs';
+import { size } from '../../size/typeAware/size';
 import { sum } from '../../utils/sum';
 import { objectDiff, ObjectDiff } from './ObjectDiff';
 
@@ -15,7 +15,7 @@ const findObjectDiffAdditions = function (diff: ObjectDiff): ObjectDiff {
 
   const keptAdditionsCost = sum(
     Object.values(diff.additions).
-      map((): number => objectMissingPropertyCost)
+      map((addition): number => size(addition))
   );
   const keptChangesCost = sum(
     Object.values(filteredChanges).

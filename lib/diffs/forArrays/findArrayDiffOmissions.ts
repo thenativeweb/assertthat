@@ -3,10 +3,9 @@ import { findOmissions } from '../findOmissions';
 import { sum } from '../../utils/sum';
 import { arrayDiff, ArrayDiff } from './ArrayDiff';
 import {
-  ArrayDiffSegment,
+  ArrayDiffSegment, isAdditionDiffSegment,
   isChangeDiffSegment,
-  isEqualDiffSegment,
-  isOmissionDiffSegment
+  isEqualDiffSegment
 } from './ArrayDiffSegment';
 
 const findArrayDiffOmissions = function (diff: ArrayDiff<any>): ArrayDiff<any> {
@@ -29,7 +28,7 @@ const findArrayDiffOmissions = function (diff: ArrayDiff<any>): ArrayDiff<any> {
     filter(
       (segment): boolean =>
         !isEqualDiffSegment(segment) &&
-          !isOmissionDiffSegment(segment) &&
+          !isAdditionDiffSegment(segment) &&
           segment.cost > 0
     );
 

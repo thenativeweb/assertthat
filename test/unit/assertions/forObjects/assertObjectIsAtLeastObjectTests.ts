@@ -118,5 +118,47 @@ suite('assertObjectIsAtLeastObject', (): void => {
         value()
       );
     });
+
+    test('does not return an error if a nested array on the actual side contain additional values 2.', async (): Promise<void> => {
+      /* eslint-disable @typescript-eslint/naming-convention */
+      const actual = {
+        sampleView: {
+          all: [
+            {
+              aggregateIdentifier: { context: { name: 'sampleContext', __typename: 'SampleView_all_resultItemT0AggregateIdentifierT0ContextT0' }, __typename: 'SampleView_all_resultItemT0AggregateIdentifierT0' },
+              id: 'a2c1ff6c-31bc-48e0-ba65-004906f00735',
+              __typename: 'SampleView_all_resultItemT0'
+            },
+            {
+              aggregateIdentifier: { context: { name: 'sampleContext', __typename: 'SampleView_all_resultItemT0AggregateIdentifierT0ContextT0' }, __typename: 'SampleView_all_resultItemT0AggregateIdentifierT0' },
+              id: 'd4712787-51df-4505-ad3b-2bf0c14fe332',
+              __typename: 'SampleView_all_resultItemT0'
+            }
+          ],
+          __typename: 'sampleView'
+        }
+      };
+      /* eslint-enable @typescript-eslint/naming-convention */
+      const expected = {
+        sampleView: {
+          all: [
+            {
+              aggregateIdentifier: { context: { name: 'sampleContext' }},
+              id: 'a2c1ff6c-31bc-48e0-ba65-004906f00735'
+            },
+            {
+              aggregateIdentifier: { context: { name: 'sampleContext' }},
+              id: 'd4712787-51df-4505-ad3b-2bf0c14fe332'
+            }
+          ]
+        }
+      };
+
+      assert.that(
+        assertObjectIsAtLeastObject(actual, expected)
+      ).is.equalTo(
+        value()
+      );
+    });
   });
 });

@@ -1,5 +1,5 @@
 import { compare } from '../typeAware/compare';
-import { mapMissingKeyCost } from '../../constants/costs';
+import { size } from '../../size/typeAware/size';
 import { equalDiff, EqualDiff, isEqualDiff } from '../../diffs/EqualDiff';
 import { mapDiff, MapDiff } from '../../diffs/forMaps/MapDiff';
 
@@ -15,9 +15,9 @@ const compareMaps = function (
     equal: new Map()
   });
 
-  for (const [ actualKey, actualValue ] of actual.entries()) {
-    newDiff.additions.set(actualKey, actualValue);
-    newDiff.cost += mapMissingKeyCost;
+  for (const [ actualKey, actualElement ] of actual.entries()) {
+    newDiff.additions.set(actualKey, actualElement);
+    newDiff.cost += size(actualElement);
   }
 
   for (const [ expectedKey, expectedElement ] of expected.entries()) {
@@ -27,7 +27,7 @@ const compareMaps = function (
 
     if (actualKeyInBothMaps !== undefined) {
       newDiff.additions.delete(actualKeyInBothMaps);
-      newDiff.cost -= mapMissingKeyCost;
+      newDiff.cost -= size(actual.get(actualKeyInBothMaps));
 
       const subDiff = compare(actual.get(actualKeyInBothMaps), expectedElement);
 
@@ -39,7 +39,7 @@ const compareMaps = function (
       }
     } else {
       newDiff.omissions.set(expectedKey, expectedElement);
-      newDiff.cost += mapMissingKeyCost;
+      newDiff.cost += size(expectedElement);
     }
   }
 

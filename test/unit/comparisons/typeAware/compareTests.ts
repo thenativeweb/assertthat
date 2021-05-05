@@ -41,7 +41,7 @@ suite('compare', (): void => {
     assert.that(diff).is.equalTo(equalDiff({ value: actual }));
   });
 
-  test('returns a deef diff for complex data.', async (): Promise<void> => {
+  test('returns a deep diff for complex data.', async (): Promise<void> => {
     const actual = {
       one: 'one',
       two: [ 1, 2, 3 ],
@@ -71,7 +71,7 @@ suite('compare', (): void => {
 
     assert.that(diff).is.equalTo(
       objectDiff({
-        cost: 14,
+        cost: 18,
         additions: {
           one: 'one'
         },
@@ -80,14 +80,14 @@ suite('compare', (): void => {
         },
         changes: {
           two: arrayDiff({
-            cost: 0.5,
+            cost: 1,
             segments: [
-              { addition: [ 1 ], cost: 0.5 },
+              { addition: [ 1 ], cost: 1 },
               { equal: [ 2, 3 ], cost: 0 }
             ]
           }),
           four: setDiff({
-            cost: 1,
+            cost: 2,
             additions: new Set([ 2, 3 ]),
             omissions: new Set(),
             equal: new Set([ 1 ])
@@ -109,19 +109,19 @@ suite('compare', (): void => {
             equal: new Map()
           }),
           six: objectDiff({
-            cost: 5.5,
+            cost: 7,
             additions: {},
             omissions: {},
             changes: {
               seven: objectDiff({
-                cost: 5.5,
+                cost: 7,
                 additions: {},
                 omissions: {},
                 changes: {
                   eight: stringDiff({
-                    cost: 5.5,
+                    cost: 7,
                     segments: [
-                      { addition: 'foo', cost: 1.5 },
+                      { addition: 'foo', cost: 3 },
                       { replace: '.bar', replaceWith: 'heck', cost: 4 }
                     ]
                   })
