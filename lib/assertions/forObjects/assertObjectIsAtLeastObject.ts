@@ -1,12 +1,11 @@
 import { AssertionFailed } from '../../errors';
 import { compareObjects } from '../../comparisons/forObjects/compareObjects';
 import { dispel } from '../../dispel/dispel';
+import { findObjectDiffOmissions } from '../../diffs/forObjects/findObjectDiffOmissions';
 import { isEqualDiff } from '../../diffs/EqualDiff';
-import { ObjectDiff } from '../../diffs/forObjects/ObjectDiff';
 import { prettyPrint } from '../../prettyPrint/typeAware/prettyPrint';
 import { prettyPrintDiff } from '../../prettyPrint/typeAware/prettyPrintDiff';
 import { error, Result, value } from 'defekt';
-import { findObjectDiffOmissions } from '../../diffs/forObjects/findObjectDiffOmissions';
 
 const assertObjectIsAtLeastObject = function (
   actual: object,
