@@ -20,7 +20,7 @@ $ npm install assertthat
 
 ## Quick Start
 
-First you need to add a reference to assertthat to your application.
+First you need to add a reference to `assertthat` to your application.
 
 ```javascript
 const { assert } = require('assertthat');
@@ -32,267 +32,292 @@ If you use TypeScript, use the following code instead:
 import { assert } from 'assertthat';
 ```
 
-Now you are able to use the various constraints.
+Now you are able to use various assertions, e.g. to compare two values for equality:
 
 ```javascript
-const add = function(first, second) {
-  return first + second;
-};
-
-const actual = add(23, 42),
+const actual = 23 + 42,
       expected = 65;
 
 assert.that(actual).is.equalTo(expected);
 ```
 
-## Available constraints
+## Using common assertions
 
-Please note that any constraint can be negated using the `not` keyword.
-
-### atLeast
-
-Asserts that `actual` is greater than or equal to `expected`.
+While most assertions work for any type, a few are only available for specific types. The former are called *common assertions*. No matter which assertions you use, they can always be negated by using the `not` modifier, such as:
 
 ```javascript
-assert.that(actual).is.atLeast(expected);
-assert.that(actual).is.not.atLeast(expected);
-```
-
-### atMost
-
-Asserts that `actual` is less than or equal to `expected`.
-
-```javascript
-assert.that(actual).is.atMost(expected);
-assert.that(actual).is.not.atMost(expected);
-```
-
-### between
-
-Asserts that `actual` is between `expectedLow` and `expectedHigh`.
-
-```javascript
-assert.that(actual).is.between(expectedLow, expectedHigh);
-assert.that(actual).is.not.between(expectedLow, expectedHigh);
-```
-
-### containing
-
-Asserts that `actual` contains `expected`.
-
-```javascript
-assert.that(actual).is.containing(expected);
-assert.that(actual).is.not.containing(expected);
-```
-
-### containingAnyOf
-
-Asserts that `actual` contains any of `expected`.
-
-```javascript
-assert.that(actual).is.containingAnyOf(expected);
-assert.that(actual).is.not.containingAnyOf(expected);
-```
-
-### containingAllOf
-
-Asserts that `actual` contains all of `expected`.
-
-```javascript
-assert.that(actual).is.containingAllOf(expected);
-assert.that(actual).is.not.containingAllOf(expected);
-```
-
-### endingWith
-
-Asserts that `actual` ends with `expected`.
-
-```javascript
-assert.that(actual).is.endingWith(expected);
-assert.that(actual).is.not.endingWith(expected);
-```
-
-### equalTo
-
-Asserts that `actual` is equal to `expected`.
-
-```javascript
-assert.that(actual).is.equalTo(expected);
 assert.that(actual).is.not.equalTo(expected);
 ```
 
-### false
+### Asserting for equality
 
-Asserts that `actual` is false.
-
-```javascript
-assert.that(actual).is.false();
-assert.that(actual).is.not.false();
-```
-
-### falsy
-
-Asserts that `actual` is falsy.
+To compare two values for equality, use the `equalTo` assertion. It works with value types and reference types, using a deep equality comparison on the latter, i.e. you can use it with objects, arrays, and other reference types, without having to care about the identity of these values:
 
 ```javascript
-assert.that(actual).is.falsy();
-assert.that(actual).is.not.falsy();
+assert.that(actual).is.equalTo(expected);
 ```
 
-### greaterThan
+### Asserting for identity
 
-Asserts that `actual` is greater than `expected`.
+If you actually care about identity, use the `identicalTo` assertion. On value types this will compare by value, but on reference types it will use their respective identity.
 
 ```javascript
-assert.that(actual).is.greaterThan(expected);
-assert.that(actual).is.not.greaterThan(expected);
+assert.that(actual).is.identicalTo(expected);
 ```
 
-### instanceOf
+### Asserting for JSON structures
 
-Asserts that `actual` is an instance of `expected`.
-
-```javascript
-assert.that(actual).is.instanceOf(expected);
-assert.that(actual).is.not.instanceOf(expected);
-```
-
-### lessThan
-
-Asserts that `actual` is less than `expected`.
-
-```javascript
-assert.that(actual).is.lessThan(expected);
-assert.that(actual).is.not.lessThan(expected);
-```
-
-### matching
-
-Asserts that `actual` matches `expected` where `expected` is a regular expression.
-
-```javascript
-assert.that(actual).is.matching(expected);
-assert.that(actual).is.not.matching(expected);
-```
-
-### NaN
-
-Asserts that `actual` is NaN.
-
-```javascript
-assert.that(actual).is.NaN();
-assert.that(actual).is.not.NaN();
-```
-
-### null
-
-Asserts that `actual` is null.
-
-```javascript
-assert.that(actual).is.null();
-assert.that(actual).is.not.null();
-```
-
-### ofType
-
-Asserts that `actual` is of type `expected`.
-
-```javascript
-assert.that(actual).is.ofType(expected);
-assert.that(actual).is.not.ofType(expected);
-```
-
-### sameAs
-
-Asserts that `actual` is identical to `expected`.
-
-```javascript
-assert.that(actual).is.sameAs(expected);
-assert.that(actual).is.not.sameAs(expected);
-```
-
-### sameJsonAs
-
-Asserts that `actual` is stringified as the same JSON as `expected`.
+From time to time you may want to assert that two values result in the same JSON structure. For these cases use `sameJsonAs`:
 
 ```javascript
 assert.that(actual).is.sameJsonAs(expected);
-assert.that(actual).is.not.sameJsonAs(expected);
 ```
 
-### startingWith
+### Asserting for literal values
 
-Asserts that `actual` starts with `expected`.
-
-```javascript
-assert.that(actual).is.startingWith(expected);
-assert.that(actual).is.not.startingWith(expected);
-```
-
-### throwing
-
-Asserts that `f` throws an exception.
-
-```javascript
-assert.that(() => {
-  f();
-}).is.throwing();
-assert.that(() => {
-  f();
-}).is.not.throwing();
-```
-
-Alternatively, asserts that `f` throws an exception with the `expected` message. For the `expected` message you can either specify a string, a regular expression or a predicate.
-
-```javascript
-assert.that(() => {
-  f();
-}).is.throwing(expected);
-assert.that(() => {
-  f();
-}).is.not.throwing(expected);
-```
-
-### throwingAsync
-
-Asserts that `f` throws an exception.
-
-```javascript
-await assert.that(async () => {
-  await f();
-}).is.throwingAsync();
-await assert.that(async () => {
-  await f();
-}).is.not.throwingAsync();
-```
-
-Alternatively, asserts that `f` throws an exception with the `expected` message. For the `expected` message you can either specify a string, a regular expression or a predicate.
-
-```javascript
-await assert.that(async () => {
-  await f();
-}).is.throwingAsync(expected);
-await assert.that(async () => {
-  await f();
-}).is.not.throwingAsync(expected);
-```
-
-### true
-
-Asserts that `actual` is true.
+There are special assertions for the literal values `true`, `false`, `null`, and `undefined`. Although you may use `equalTo` here as well, their usage is more straight-forward and intuitive:
 
 ```javascript
 assert.that(actual).is.true();
-assert.that(actual).is.not.true();
+assert.that(actual).is.false();
+assert.that(actual).is.null();
+assert.that(actual).is.undefined();
 ```
 
-### undefined
+### Asserting for a specific type
 
-Asserts that `actual` is undefined.
+Sometimes you may want to assert that a value is of a given type. For that, use the `ofType` assertion, and specify the expected type. The supported values are `array`, `boolean`, `error`, `function`, `map`, `null`, `number`, `object`, `result`, `set`, `string`, `symbol`, and `undefined`:
 
 ```javascript
-assert.that(actual).is.undefined();
-assert.that(actual).is.not.undefined();
+assert.that(actual).is.sameJsonAs('function');
+```
+
+## Using special assertions
+
+In contrast to the common assertions, special assertions are only available for specific types.
+
+### Asserting for arrays
+
+To assert that an array is empty, use the `empty` assertion:
+
+```javascript
+assert.that(actual).is.empty();
+```
+
+Alternatively, you may verify whether one or more elements are contained by using the `containing`, `containingAnyOf`, and `containingAllOf` assertions:
+
+```javascript
+// The given element must be contained.
+assert.that(actual).is.containing(23);
+
+// At least one of the given elements must be contained.
+assert.that(actual).is.containingAnyOf([ 23, 42 ]);
+
+// All of the given elements must be contained.
+assert.that(actual).is.containingAllOf([ 23, 42 ]);
+```
+
+### Asserting for functions
+
+You may want to ensure that a function throws an exception. For that, use the `throwing` assertion. Please note that you have to wrap the function you would like to verify into a callback:
+
+```javascript
+assert.that(() => {
+  actual();
+}).is.throwing();
+```
+
+If the function to check is asynchronous, use `throwingAsync` instead, and make sure to use `async` and `await` where needed:
+
+```javascript
+await assert.that(async () => {
+  await actual();
+}).is.throwingAsync();
+```
+
+Sometimes you may want to check for a specific exception. For that, provide the expected exception's message as a string or as a regular expression, or hand over a predicate function to check for anything else, such as the error code or the stack trace:
+
+```javascript
+// Using a string.
+assert.that(() => {
+  actual();
+}).is.throwing('File not found.');
+
+// Using a regular expression.
+assert.that(() => {
+  actual();
+}).is.throwing(/^File/u);
+
+// Using a predicate.
+assert.that(() => {
+  actual();
+}).is.throwing(ex => ex.code === 'ENOENT');
+```
+
+If you are using TypeScript, you may want to specify the type of the expected exception so that you get a correctly typed parameter in the predicate function:
+
+```typescript
+assert.that(() => {
+  actual();
+}).is.throwing<FileNotFound>((ex): boolean => ex.code === 'ENOENT');
+```
+
+### Asserting for maps
+
+To assert that a map is empty, use the `empty` assertion:
+
+```javascript
+assert.that(actual).is.empty();
+```
+
+Alternatively, you may use the `atLeast` assertion to assert that a map contains at least everything another map does:
+
+```javascript
+assert.that(actual).is.atLeast(new Map([
+  [ name, 'the native web' ],
+  [ website, 'https://www.thenativeweb.io' ]
+]));
+```
+
+The same is true for asserting that a map contains at most everything another map does, using the `atMost` assertion:
+
+```javascript
+assert.that(actual).is.atMost(new Map([
+  [ name, 'the native web' ],
+  [ website, 'https://www.thenativeweb.io' ]
+]));
+```
+
+### Asserting for numbers
+
+If you want to verify that a number is `NaN`, use the respective assertion:
+
+```javascript
+assert.that(actual).is.NaN();
+```
+
+Alternatively, you may want to verify the relation between two numbers by comparing them:
+
+```javascript
+// actual > 23
+assert.that(actual).is.greaterThan(23);
+
+// actual < 23
+assert.that(actual).is.lessThan(23);
+
+// actual >= 23
+assert.that(actual).is.atLeast(23);
+
+// actual <= 23
+assert.that(actual).is.atMost(23);
+```
+
+### Asserting for objects
+
+To check that an object is empty, use the `empty` assertion:
+
+```javascript
+assert.that(actual).is.empty();
+```
+
+Alternatively, you may use the `atLeast` assertion to assert that an object contains at least everything another object does:
+
+```javascript
+assert.that(actual).is.atLeast({
+  name: 'the native web',
+  website: 'https://www.thenativeweb.io'
+});
+```
+
+The same is true for asserting that an object contains at most everything another object does, using the `atMost` assertion:
+
+```javascript
+assert.that(actual).is.atMost({
+  name: 'the native web',
+  website: 'https://www.thenativeweb.io'
+});
+```
+
+Finally, to check that an object is an instance of a specific type, use the `instanceOf` assertion, and provide the constructor function or class:
+
+```javascript
+assert.that(actual).is.instanceOf(Person);
+```
+
+### Asserting for results
+
+If you are using the `Result` type from the [defekt](https://www.npmjs.com/package/defekt) module, you may use `assertthat` to verify that a result is either a value or an error. For that, use the respective assertions:
+
+```javascript
+assert.that(actual).is.aValue();
+assert.that(actual).is.anError();
+```
+
+### Asserting for sets
+
+To assert that a set is empty, use the `empty` assertion:
+
+```javascript
+assert.that(actual).is.empty();
+```
+
+Alternatively, you may use the `atLeast` assertion to assert that a set contains at least everything another set does:
+
+```javascript
+assert.that(actual).is.atLeast(new Set([ 23, 42 ]));
+```
+
+The same is true for asserting that a set contains at most everything another set does, using the `atMost` assertion:
+
+```javascript
+assert.that(actual).is.atMost(new Set([ 23, 42 ]));
+```
+
+Finally, you may verify whether one or more elements are contained by using the `containing`, `containingAnyOf`, and `containingAllOf` assertions:
+
+```javascript
+// The given element must be contained.
+assert.that(actual).is.containing(23);
+
+// At least one of the given elements must be contained.
+assert.that(actual).is.containingAnyOf([ 23, 42 ]);
+
+// All of the given elements must be contained.
+assert.that(actual).is.containingAllOf([ 23, 42 ]);
+```
+
+### Asserting for strings
+
+To assert that a string is empty, use the `empty` assertion:
+
+```javascript
+assert.that(actual).is.empty();
+```
+
+If you want to verify that it is starting or ending with another string, use `startingWith` and `endingWith` respectively:
+
+```javascript
+assert.that(actual).is.startingWith('the');
+assert.that(actual).is.endingWith('web');
+```
+
+To verify that a string matches a regular expression, use the `matching` assertion:
+
+```javascript
+assert.that(actual).is.matching(/native/u);
+```
+
+Finally, you may verify whether one or more substrings are contained by using the `containing`, `containingAnyOf`, and `containingAllOf` assertions:
+
+```javascript
+// The given string must be contained.
+assert.that(actual).is.containing('native');
+
+// At least one of the given strings must be contained.
+assert.that(actual).is.containingAnyOf([ 'native', 'web' ]);
+
+// All of the given strings must be contained.
+assert.that(actual).is.containingAllOf([ 'native', 'web' ]);
 ```
 
 ## Running quality assurance
