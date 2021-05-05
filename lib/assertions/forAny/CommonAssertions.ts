@@ -10,6 +10,8 @@ interface CommonAssertions<TAny> {
 
   null: () => void;
   undefined: () => void;
+  true: () => void;
+  false: () => void;
 
   ofType: (expected: Type) => void;
 }

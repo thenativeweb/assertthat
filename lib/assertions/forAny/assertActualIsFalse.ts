@@ -1,21 +1,21 @@
 import { AssertionFailed } from '../../errors';
-import { compareBooleans } from '../../comparisons/forBooleans/compareBooleans';
+import { compare } from '../../comparisons/typeAware/compare';
 import { error, Result, value } from 'defekt';
 
-const assertBooleanIsTrue = function (
-  actual: boolean
+const assertActualIsFalse = function (
+  actual: any
 ): Result<undefined, AssertionFailed> {
-  const diff = compareBooleans(actual, true);
+  const diff = compare(actual, false);
 
   if (diff.cost === 0) {
     return value();
   }
 
   return error(new AssertionFailed({
-    message: 'The boolean is not true.'
+    message: 'The value is not false.'
   }));
 };
 
 export {
-  assertBooleanIsTrue
+  assertActualIsFalse
 };

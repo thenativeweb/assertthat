@@ -1,6 +1,5 @@
 import { AssertThatForAny } from './assertions/forAny/AssertThatForAny';
 import { AssertThatForArray } from './assertions/forArrays/AssertThatForArray';
-import { AssertThatForBoolean } from './assertions/forBooleans/AssertThatForBoolean';
 import { AssertThatForFunction } from './assertions/forFunctions/AssertThatForFunction';
 import { AssertThatForMap } from './assertions/forMaps/AssertThatForMap';
 import { AssertThatForNumber } from './assertions/forNumbers/AssertThatForNumber';
@@ -9,7 +8,6 @@ import { AssertThatForResult } from './assertions/forResults/AssertThatForResult
 import { AssertThatForSet } from './assertions/forSets/AssertThatForSet';
 import { AssertThatForString } from './assertions/forStrings/AssertThatForString';
 import { isArray } from './types/isArray';
-import { isBoolean } from './types/isBoolean';
 import { isFunction } from './types/isFunction';
 import { isMap } from './types/isMap';
 import { isNumber } from './types/isNumber';
@@ -19,7 +17,6 @@ import { isSet } from './types/isSet';
 import { isString } from './types/isString';
 import { getAssertionsForAny, getNegatedAssertionsForAny } from './assertions/forAny/assertions';
 import { getAssertionsForArray, getNegatedAssertionsForArray } from './assertions/forArrays/assertions';
-import { getAssertionsForBoolean, getNegatedAssertionsForBoolean } from './assertions/forBooleans/assertions';
 import { getAssertionsForFunction, getNegatedAssertionsForFunction } from './assertions/forFunctions/assertions';
 import { getAssertionsForMap, getNegatedAssertionsForMap } from './assertions/forMaps/assertions';
 import { getAssertionsForNumber, getNegatedAssertionsForNumber } from './assertions/forNumbers/assertions';
@@ -35,7 +32,6 @@ type AssertThat =
   AssertThatForResult &
   AssertThatForNumber &
   AssertThatForString &
-  AssertThatForBoolean &
   AssertThatForFunction &
   AssertThatForObject &
   AssertThatForAny;
@@ -51,7 +47,6 @@ const that: AssertThat = (actual: any): any => ({
     ...isResult(actual) ? getAssertionsForResult(actual) : {},
     ...isNumber(actual) ? getAssertionsForNumber(actual) : {},
     ...isString(actual) ? getAssertionsForString(actual) : {},
-    ...isBoolean(actual) ? getAssertionsForBoolean(actual) : {},
     ...isFunction(actual) ? getAssertionsForFunction(actual) : {},
     ...isObject(actual) ? getAssertionsForObject(actual) : {},
 
@@ -64,7 +59,6 @@ const that: AssertThat = (actual: any): any => ({
       ...isResult(actual) ? getNegatedAssertionsForResult(actual) : {},
       ...isNumber(actual) ? getNegatedAssertionsForNumber(actual) : {},
       ...isString(actual) ? getNegatedAssertionsForString(actual) : {},
-      ...isBoolean(actual) ? getNegatedAssertionsForBoolean(actual) : {},
       ...isFunction(actual) ? getNegatedAssertionsForFunction(actual) : {},
       ...isObject(actual) ? getNegatedAssertionsForObject(actual) : {}
     }
