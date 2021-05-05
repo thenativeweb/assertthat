@@ -253,6 +253,12 @@ assert.that(actual).is.aValue();
 assert.that(actual).is.anError();
 ```
 
+If you are interested in a specific error, use the `anErrorWithMessage` assertion instead of `anError`:
+
+```javascript
+assert.that(actual).is.anErrorWithMessage('File not found.');
+```
+
 ### Asserting for sets
 
 To assert that a set is empty, use the `empty` assertion:
