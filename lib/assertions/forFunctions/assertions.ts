@@ -5,26 +5,38 @@ import { assertFunctionIsThrowingAsync } from './assertFunctionIsThrowingAsync';
 import { FunctionAssertions } from './FunctionAssertions';
 import { report } from '../../report';
 
+const getAssertionsForFunction = function (
 // eslint-disable-next-line @typescript-eslint/ban-types
-const getAssertionsForFunction = function (actual: Function): FunctionAssertions {
+  actual: Function
+): FunctionAssertions {
   return {
-    throwing (): void {
-      report(assertFunctionIsThrowing(actual));
+    throwing <TError extends Error = Error>(
+      expected?: string | RegExp | ((ex: TError) => boolean)
+    ): void {
+      report(assertFunctionIsThrowing(actual, expected));
     },
-    async throwingAsync (): Promise<void> {
-      report(await assertFunctionIsThrowingAsync(actual));
+    async throwingAsync <TError extends Error = Error>(
+      expected?: string | RegExp | ((ex: TError) => boolean)
+    ): Promise<void> {
+      report(await assertFunctionIsThrowingAsync(actual, expected));
     }
   };
 };
 
+const getNegatedAssertionsForFunction = function (
 // eslint-disable-next-line @typescript-eslint/ban-types
-const getNegatedAssertionsForFunction = function (actual: Function): FunctionAssertions {
+  actual: Function
+): FunctionAssertions {
   return {
-    throwing (): void {
-      report(assertFunctionIsNotThrowing(actual));
+    throwing <TError extends Error = Error>(
+      expected?: string | RegExp | ((ex: TError) => boolean)
+    ): void {
+      report(assertFunctionIsNotThrowing(actual, expected));
     },
-    async throwingAsync (): Promise<void> {
-      report(await assertFunctionIsNotThrowingAsync(actual));
+    async throwingAsync <TError extends Error = Error>(
+      expected?: string | RegExp | ((ex: TError) => boolean)
+    ): Promise<void> {
+      report(await assertFunctionIsNotThrowingAsync(actual, expected));
     }
   };
 };
