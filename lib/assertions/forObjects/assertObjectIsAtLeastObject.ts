@@ -6,6 +6,7 @@ import { ObjectDiff } from '../../diffs/forObjects/ObjectDiff';
 import { prettyPrint } from '../../prettyPrint/typeAware/prettyPrint';
 import { prettyPrintDiff } from '../../prettyPrint/typeAware/prettyPrintDiff';
 import { error, Result, value } from 'defekt';
+import { findObjectDiffOmissions } from '../../diffs/forObjects/findObjectDiffOmissions';
 
 const assertObjectIsAtLeastObject = function (
   actual: object,
@@ -20,24 +21,17 @@ const assertObjectIsAtLeastObject = function (
     return value();
   }
 
-  if (
-    Object.keys(diff.omissions).length === 0 &&
-      Object.keys(diff.changes).length === 0
-  ) {
+  const diffWithOnlyOmissions = findObjectDiffOmissions(diff);
+
+  if (diffWithOnlyOmissions.cost === 0) {
     return value();
   }
-
-  const cleanedDiff: ObjectDiff = {
-    ...diff,
-    additions: {},
-    equal: {}
-  };
 
   return error(new AssertionFailed({
     message: 'The expected object is not entirely contained in the actual object.',
     actual: prettyPrint(actual),
     expected: `To entirely contain:\n${prettyPrint(expected)}`,
-    diff: `The following sub-object shows relevant changes between actual and expected:\n${prettyPrintDiff(cleanedDiff)}`
+    diff: `The following sub-object shows relevant changes between actual and expected:\n${prettyPrintDiff(diffWithOnlyOmissions)}`
   }));
 };
 

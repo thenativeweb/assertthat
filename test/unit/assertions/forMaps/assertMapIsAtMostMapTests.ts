@@ -73,5 +73,27 @@ suite('assertMapIsAtMostMap', (): void => {
         value()
       );
     });
+
+    test(`does not return an error if a nested map on the expected side contains additional properties.`, async (): Promise<void> => {
+      const actual = new Map<any, any>([
+        [ 'foo', 'foo' ],
+        [ 'bar', {
+          foo: 'foo'
+        }]
+      ]);
+      const expected = new Map<any, any>([
+        [ 'foo', 'foo' ],
+        [ 'bar', {
+          foo: 'foo',
+          bar: 'bar'
+        }]
+      ]);
+
+      assert.that(
+        assertMapIsAtMostMap(actual, expected)
+      ).is.equalTo(
+        value()
+      );
+    });
   });
 });

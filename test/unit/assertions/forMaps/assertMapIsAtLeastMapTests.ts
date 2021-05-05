@@ -73,5 +73,27 @@ suite('assertMapIsAtLeastMap', (): void => {
         value()
       );
     });
+
+    test(`does not return an error if a nested map on the actual side contains additional properties.`, async (): Promise<void> => {
+      const actual = new Map<any, any>([
+        [ 'foo', 'foo' ],
+        [ 'bar', {
+          foo: 'foo',
+          bar: 'bar'
+        }]
+      ]);
+      const expected = new Map<any, any>([
+        [ 'foo', 'foo' ],
+        [ 'bar', {
+          foo: 'foo'
+        }]
+      ]);
+
+      assert.that(
+        assertMapIsAtLeastMap(actual, expected)
+      ).is.equalTo(
+        value()
+      );
+    });
   });
 });

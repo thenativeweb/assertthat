@@ -73,5 +73,27 @@ suite('assertObjectIsAtMostObject', (): void => {
         value()
       );
     });
+
+    test(`does not return an error if a nested object on the expected side contains additional properties.`, async (): Promise<void> => {
+      const actual = {
+        foo: 'foo',
+        bar: {
+          foo: 'foo'
+        }
+      };
+      const expected = {
+        foo: 'foo',
+        bar: {
+          foo: 'foo',
+          bar: 'bar'
+        }
+      };
+
+      assert.that(
+        assertObjectIsAtMostObject(actual, expected)
+      ).is.equalTo(
+        value()
+      );
+    });
   });
 });

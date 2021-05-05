@@ -1,8 +1,8 @@
 import { AssertionFailed } from '../../errors';
 import { compareMaps } from '../../comparisons/forMaps/compareMaps';
 import { dispel } from '../../dispel/dispel';
+import { findMapDiffOmissions } from '../../diffs/forMaps/findMapDiffOmissions';
 import { isEqualDiff } from '../../diffs/EqualDiff';
-import { MapDiff } from '../../diffs/forMaps/MapDiff';
 import { prettyPrint } from '../../prettyPrint/typeAware/prettyPrint';
 import { prettyPrintDiff } from '../../prettyPrint/typeAware/prettyPrintDiff';
 import { error, Result, value } from 'defekt';
@@ -20,21 +20,17 @@ const assertMapIsAtLeastMap = function <TKey, TValue>(
     return value();
   }
 
-  if (diff.omissions.size === 0 && diff.changes.size === 0) {
+  const diffWithOnlyOmissions = findMapDiffOmissions(diff);
+
+  if (diffWithOnlyOmissions.cost === 0) {
     return value();
   }
-
-  const cleanedDiff: MapDiff = {
-    ...diff,
-    additions: new Map(),
-    equal: new Map()
-  };
 
   return error(new AssertionFailed({
     message: 'The expected map is not entirely contained in the actual map.',
     actual: prettyPrint(actual),
     expected: `To entirely contain:\n${prettyPrint(expected)}`,
-    diff: `The following sub-map shows relevant changes between actual and expected:\n${prettyPrintDiff(cleanedDiff)}`
+    diff: `The following sub-map shows relevant changes between actual and expected:\n${prettyPrintDiff(diffWithOnlyOmissions)}`
   }));
 };
 

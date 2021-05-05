@@ -73,5 +73,27 @@ suite('assertObjectIsAtLeastObject', (): void => {
         value()
       );
     });
+
+    test(`does not return an error if a nested object on the actual side contains additional properties.`, async (): Promise<void> => {
+      const actual = {
+        foo: 'foo',
+        bar: {
+          foo: 'foo',
+          bar: 'bar'
+        }
+      };
+      const expected = {
+        foo: 'foo',
+        bar: {
+          foo: 'foo'
+        }
+      };
+
+      assert.that(
+        assertObjectIsAtLeastObject(actual, expected)
+      ).is.equalTo(
+        value()
+      );
+    });
   });
 });
