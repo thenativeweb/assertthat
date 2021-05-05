@@ -10,8 +10,6 @@ import {
 } from './ArrayDiffSegment';
 
 const findArrayDiffAdditions = function (diff: ArrayDiff<any>): ArrayDiff<any> {
-  let removedCost = 0;
-
   const filteredSegments = diff.segments.
     map((segment: ArrayDiffSegment<any>): ArrayDiffSegment<any> => {
       if (isChangeDiffSegment(segment)) {
@@ -29,19 +27,14 @@ const findArrayDiffAdditions = function (diff: ArrayDiff<any>): ArrayDiff<any> {
       return segment;
     }).
     filter(
-      (segment): boolean => {
-        if (isEqualDiffSegment(segment) || isOmissionDiffSegment(segment) || segment.cost === 0) {
-          removedCost += segment.cost;
-
-          return false;
-        }
-
-        return true;
-      }
+      (segment): boolean =>
+        !isEqualDiffSegment(segment) &&
+          !isOmissionDiffSegment(segment) &&
+          segment.cost > 0
     );
 
   return arrayDiff({
-    cost: diff.cost - removedCost,
+    cost: sum(filteredSegments.map((segment): number => segment.cost)),
     segments: filteredSegments
   });
 };

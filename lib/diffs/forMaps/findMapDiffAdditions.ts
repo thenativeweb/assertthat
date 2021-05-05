@@ -1,5 +1,6 @@
 import { Diff } from '../Diff';
 import { findAdditions } from '../findAdditions';
+import { mapMissingKeyCost } from '../../constants/costs';
 import { sum } from '../../utils/sum';
 import { mapDiff, MapDiff } from './MapDiff';
 
@@ -14,7 +15,7 @@ const findMapDiffAdditions = function (diff: MapDiff): MapDiff {
 
   const keptAdditionsCost = sum(
     [ ...diff.additions.values() ].
-      map((addition): number => addition.cost)
+      map((): number => mapMissingKeyCost)
   );
   const keptChangesCost = sum(
     [ ...filteredChanges.values() ].

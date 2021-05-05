@@ -2,11 +2,14 @@ import { Diff } from '../Diff';
 import { findOmissions } from '../findOmissions';
 import { sum } from '../../utils/sum';
 import { arrayDiff, ArrayDiff } from './ArrayDiff';
-import { ArrayDiffSegment, isAdditionDiffSegment, isChangeDiffSegment, isEqualDiffSegment } from './ArrayDiffSegment';
+import {
+  ArrayDiffSegment,
+  isChangeDiffSegment,
+  isEqualDiffSegment,
+  isOmissionDiffSegment
+} from './ArrayDiffSegment';
 
 const findArrayDiffOmissions = function (diff: ArrayDiff<any>): ArrayDiff<any> {
-  let removedCost = 0;
-
   const filteredSegments = diff.segments.
     map((segment: ArrayDiffSegment<any>): ArrayDiffSegment<any> => {
       if (isChangeDiffSegment(segment)) {
@@ -24,19 +27,14 @@ const findArrayDiffOmissions = function (diff: ArrayDiff<any>): ArrayDiff<any> {
       return segment;
     }).
     filter(
-      (segment): boolean => {
-        if (isEqualDiffSegment(segment) || isAdditionDiffSegment(segment) || segment.cost === 0) {
-          removedCost += segment.cost;
-
-          return false;
-        }
-
-        return true;
-      }
+      (segment): boolean =>
+        !isEqualDiffSegment(segment) &&
+          !isOmissionDiffSegment(segment) &&
+          segment.cost > 0
     );
 
   return arrayDiff({
-    cost: diff.cost - removedCost,
+    cost: sum(filteredSegments.map((segment): number => segment.cost)),
     segments: filteredSegments
   });
 };

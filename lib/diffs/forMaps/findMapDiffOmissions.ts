@@ -1,5 +1,6 @@
 import { Diff } from '../Diff';
 import { findOmissions } from '../findOmissions';
+import { mapMissingKeyCost } from '../../constants/costs';
 import { sum } from '../../utils/sum';
 import { mapDiff, MapDiff } from './MapDiff';
 
@@ -14,7 +15,7 @@ const findMapDiffOmissions = function (diff: MapDiff): MapDiff {
 
   const keptOmissionsCost = sum(
     [ ...diff.omissions.values() ].
-      map((omission): number => omission.cost)
+      map((): number => mapMissingKeyCost)
   );
   const keptChangesCost = sum(
     [ ...filteredChanges.values() ].
