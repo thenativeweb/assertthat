@@ -89,7 +89,7 @@ assert.that(actual).is.undefined();
 Sometimes you may want to assert that a value is of a given type. For that, use the `ofType` assertion, and specify the expected type. The supported values are `array`, `boolean`, `error`, `function`, `map`, `null`, `number`, `object`, `result`, `set`, `string`, `symbol`, and `undefined`:
 
 ```javascript
-assert.that(actual).is.sameJsonAs('function');
+assert.that(actual).is.ofType('function');
 ```
 
 ## Using special assertions
@@ -325,6 +325,10 @@ assert.that(actual).is.containingAnyOf([ 'native', 'web' ]);
 // All of the given strings must be contained.
 assert.that(actual).is.containingAllOf([ 'native', 'web' ]);
 ```
+
+## Caveats
+
+Most assertions build upon an internal comparison using a diff-algorithm. To avoid infinite recursion, all asserted values are first dispelled (i.e. recursions in them are detected and removed). These recursions can in principle be compared by value across arrays and objects. However, this does not work with `Set`s and `Map`s, since a `Map` can have reference types as keys and the element in `Set` can not be uniquely identified in a reproducible way. So comparisons of `Set`s and `Map`s that contain recursions might not work as expected.
 
 ## Running quality assurance
 
