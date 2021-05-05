@@ -1,6 +1,6 @@
 {
   "name": "assertthat",
-  "version": "6.0.0-internal.6",
+  "version": "6.0.0-internal.7",
   "description": "assertthat provides fluent TDD.",
   "contributors": [
     {
