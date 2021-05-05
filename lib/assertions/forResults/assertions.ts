@@ -1,6 +1,8 @@
 import { assertResultIsAnError } from './assertResultIsAnError';
+import { assertResultIsAnErrorWithMessage } from './assertResultIsAnErrorWithMessage';
 import { assertResultIsAValue } from './assertResultIsAValue';
 import { assertResultIsNotAnError } from './assertResultIsNotAnError';
+import { assertResultIsNotAnErrorWithMessage } from './assertResultIsNotAnErrorWithMessage';
 import { assertResultIsNotAValue } from './assertResultIsNotAValue';
 import { report } from '../../report';
 import { Result } from 'defekt';
@@ -15,6 +17,9 @@ const getAssertionsForResult = function <TValue, TError extends Error>(
     },
     anError (): void {
       report(assertResultIsAnError(actual));
+    },
+    anErrorWithMessage (expected): void {
+      report(assertResultIsAnErrorWithMessage(actual, expected));
     }
   };
 };
@@ -28,6 +33,9 @@ const getNegatedAssertionsForResult = function <TValue, TError extends Error>(
     },
     anError (): void {
       report(assertResultIsNotAnError(actual));
+    },
+    anErrorWithMessage (expected): void {
+      report(assertResultIsNotAnErrorWithMessage(actual, expected));
     }
   };
 };

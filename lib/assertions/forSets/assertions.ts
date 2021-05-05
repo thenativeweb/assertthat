@@ -3,11 +3,13 @@ import { assertSetIsAtMostSet } from './assertSetIsAtMostSet';
 import { assertSetIsContainingAllOfIterable } from './assertSetIsContainingAllOfIterable';
 import { assertSetIsContainingAnyOfIterable } from './assertSetIsContainingAnyOfIterable';
 import { assertSetIsContainingItem } from './assertSetIsContainingItem';
+import { assertSetIsEmpty } from './assertSetIsEmpty';
 import { assertSetIsNotAtLeastSet } from './assertSetIsNotAtLeastSet';
 import { assertSetIsNotAtMostSet } from './assertSetIsNotAtMostSet';
 import { assertSetIsNotContainingAllOfIterable } from './assertSetIsNotContainingAllOfIterable';
 import { assertSetIsNotContainingAnyOfIterable } from './assertSetIsNotContainingAnyOfIterable';
 import { assertSetIsNotContainingItem } from './assertSetIsNotContainingItem';
+import { assertSetIsNotEmpty } from './assertSetIsNotEmpty';
 import { report } from '../../report';
 import { SetAssertions } from './SetAssertions';
 
@@ -27,6 +29,9 @@ const getAssertionsForSet = function <TContent>(actual: Set<TContent>): SetAsser
     },
     atMost (expected): void {
       report(assertSetIsAtMostSet(actual, expected));
+    },
+    empty (): void {
+      report(assertSetIsEmpty(actual));
     }
   };
 };
@@ -47,6 +52,9 @@ const getNegatedAssertionsForSet = function <TContent>(actual: Set<TContent>): S
     },
     atMost (expected): void {
       report(assertSetIsNotAtMostSet(actual, expected));
+    },
+    empty (): void {
+      report(assertSetIsNotEmpty(actual));
     }
   };
 };

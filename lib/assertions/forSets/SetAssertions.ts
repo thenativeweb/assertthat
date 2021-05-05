@@ -4,6 +4,7 @@ interface SetAssertions<TContent> {
   containingAnyOf: (iterable: Iterable<TContent>) => void;
   atLeast: (expected: Set<TContent>) => void;
   atMost: (expected: Set<TContent>) => void;
+  empty: () => void;
 }
 
 export type {
