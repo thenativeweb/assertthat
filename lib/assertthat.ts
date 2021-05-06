@@ -1,148 +1,74 @@
-import { atLeast } from './constraints/atLeast';
-import { atMost } from './constraints/atMost';
-import { between } from './constraints/between';
-import { containing } from './constraints/containing';
-import { containingAllOf } from './constraints/containingAllOf';
-import { containingAnyOf } from './constraints/containingAnyOf';
-import { endingWith } from './constraints/endingWith';
-import { equalTo } from './constraints/equalTo';
-import { falsy } from './constraints/falsy';
-import { greaterThan } from './constraints/greaterThan';
-import { instanceOf } from './constraints/instanceOf';
-import { isFalse } from './constraints/false';
-import { isNan } from './constraints/nan';
-import { isNull } from './constraints/null';
-import { isTrue } from './constraints/true';
-import { isUndefined } from './constraints/undefined';
-import { lessThan } from './constraints/lessThan';
-import { matching } from './constraints/matching';
-import { ofType } from './constraints/ofType';
-import { sameAs } from './constraints/sameAs';
-import { sameJsonAs } from './constraints/sameJsonAs';
-import { startingWith } from './constraints/startingWith';
-import { throwing } from './constraints/throwing';
-import { throwingAsync } from './constraints/throwingAsync';
+import { AssertThatForAny } from './assertions/forAny/AssertThatForAny';
+import { AssertThatForArray } from './assertions/forArrays/AssertThatForArray';
+import { AssertThatForFunction } from './assertions/forFunctions/AssertThatForFunction';
+import { AssertThatForMap } from './assertions/forMaps/AssertThatForMap';
+import { AssertThatForNumber } from './assertions/forNumbers/AssertThatForNumber';
+import { AssertThatForObject } from './assertions/forObjects/AssertThatForObject';
+import { AssertThatForResult } from './assertions/forResults/AssertThatForResult';
+import { AssertThatForSet } from './assertions/forSets/AssertThatForSet';
+import { AssertThatForString } from './assertions/forStrings/AssertThatForString';
+import { isArray } from './types/isArray';
+import { isFunction } from './types/isFunction';
+import { isMap } from './types/isMap';
+import { isNumber } from './types/isNumber';
+import { isObject } from './types/isObject';
+import { isResult } from 'defekt';
+import { isSet } from './types/isSet';
+import { isString } from './types/isString';
+import { getAssertionsForAny, getNegatedAssertionsForAny } from './assertions/forAny/assertions';
+import { getAssertionsForArray, getNegatedAssertionsForArray } from './assertions/forArrays/assertions';
+import { getAssertionsForFunction, getNegatedAssertionsForFunction } from './assertions/forFunctions/assertions';
+import { getAssertionsForMap, getNegatedAssertionsForMap } from './assertions/forMaps/assertions';
+import { getAssertionsForNumber, getNegatedAssertionsForNumber } from './assertions/forNumbers/assertions';
+import { getAssertionsForObject, getNegatedAssertionsForObject } from './assertions/forObjects/assertions';
+import { getAssertionsForResult, getNegatedAssertionsForResult } from './assertions/forResults/assertions';
+import { getAssertionsForSet, getNegatedAssertionsForSet } from './assertions/forSets/assertions';
+import { getAssertionsForString, getNegatedAssertionsForString } from './assertions/forStrings/assertions';
+
+type AssertThat =
+  AssertThatForSet &
+  AssertThatForMap &
+  AssertThatForArray &
+  AssertThatForResult &
+  AssertThatForNumber &
+  AssertThatForString &
+  AssertThatForFunction &
+  AssertThatForObject &
+  AssertThatForAny;
+
+// eslint-disable-next-line consistent-this
+const that: AssertThat = (actual: any): any => ({
+  is: {
+    ...getAssertionsForAny(actual),
+
+    ...isSet(actual) ? getAssertionsForSet(actual) : {},
+    ...isMap(actual) ? getAssertionsForMap(actual) : {},
+    ...isArray(actual) ? getAssertionsForArray(actual) : {},
+    ...isResult(actual) ? getAssertionsForResult(actual) : {},
+    ...isNumber(actual) ? getAssertionsForNumber(actual) : {},
+    ...isString(actual) ? getAssertionsForString(actual) : {},
+    ...isFunction(actual) ? getAssertionsForFunction(actual) : {},
+    ...isObject(actual) ? getAssertionsForObject(actual) : {},
+
+    not: {
+      ...getNegatedAssertionsForAny(actual),
+
+      ...isSet(actual) ? getNegatedAssertionsForSet(actual) : {},
+      ...isMap(actual) ? getNegatedAssertionsForMap(actual) : {},
+      ...isArray(actual) ? getNegatedAssertionsForArray(actual) : {},
+      ...isResult(actual) ? getNegatedAssertionsForResult(actual) : {},
+      ...isNumber(actual) ? getNegatedAssertionsForNumber(actual) : {},
+      ...isString(actual) ? getNegatedAssertionsForString(actual) : {},
+      ...isFunction(actual) ? getNegatedAssertionsForFunction(actual) : {},
+      ...isObject(actual) ? getNegatedAssertionsForObject(actual) : {}
+    }
+  }
+});
 
 const assert = {
-  that (actual: any): {
-    is: {
-      atLeast: (expected: number | [] | Record<string, unknown>) => void;
-      atMost: (expected: number | [] | Record<string, unknown>) => void;
-      between: (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void;
-      containing: (expected: any) => void;
-      containingAnyOf: (expected: any[]) => void;
-      containingAllOf: (expected: any[]) => void;
-      endingWith: (expected: string) => void;
-      equalTo: (expected: any) => void;
-      false: () => void;
-      falsy: () => void;
-      greaterThan: (expected: number | [] | Record<string, unknown>) => void;
-      instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
-      lessThan: (expected: number | [] | Record<string, unknown>) => void;
-      matching: (expected: RegExp) => void;
-      NaN: () => void;
-      null: () => void;
-      ofType: (expected: string) => void;
-      sameAs: (expected: any) => void;
-      sameJsonAs: (expected: any) => void;
-      startingWith: (expected: string) => void;
-      throwing: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => void;
-      throwingAsync: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => Promise<void>;
-      true: () => void;
-      undefined: () => void;
-
-      not: {
-        atLeast: (expected: number | [] | Record<string, unknown>) => void;
-        atMost: (expected: number | [] | Record<string, unknown>) => void;
-        between: (expectedLower: number | [] | Record<string, unknown>, expectedUpper: number | [] | Record<string, unknown>) => void;
-        containing: (expected: any) => void;
-        containingAnyOf: (expected: any[]) => void;
-        containingAllOf: (expected: any[]) => void;
-        endingWith: (expected: string) => void;
-        equalTo: (expected: any) => void;
-        false: () => void;
-        falsy: () => void;
-        greaterThan: (expected: number | [] | Record<string, unknown>) => void;
-        instanceOf: (expected: new(...args: any[]) => Record<string, unknown>) => void;
-        lessThan: (expected: number | [] | Record<string, unknown>) => void;
-        matching: (expected: RegExp) => void;
-        NaN: () => void;
-        null: () => void;
-        ofType: (expected: string) => void;
-        sameAs: (expected: any) => void;
-        sameJsonAs: (expected: any) => void;
-        startingWith: (expected: string) => void;
-        throwing: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => void;
-        throwingAsync: <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)) => Promise<void>;
-        true: () => void;
-        undefined: () => void;
-      };
-    };
-  } {
-    const is = {
-      atLeast: atLeast(actual),
-      atMost: atMost(actual),
-      between: between(actual),
-      containing: containing(actual),
-      containingAnyOf: containingAnyOf(actual),
-      containingAllOf: containingAllOf(actual),
-      endingWith: endingWith(actual),
-      equalTo: equalTo(actual),
-      false: isFalse(actual),
-      falsy: falsy(actual),
-      greaterThan: greaterThan(actual),
-      instanceOf: instanceOf(actual),
-      lessThan: lessThan(actual),
-      matching: matching(actual),
-      NaN: isNan(actual),
-      null: isNull(actual),
-      ofType: ofType(actual),
-      sameAs: sameAs(actual),
-      sameJsonAs: sameJsonAs(actual),
-      startingWith: startingWith(actual),
-      throwing <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): void {
-        throwing<TError>(actual)(expected);
-      },
-      async throwingAsync <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): Promise<void> {
-        await throwingAsync<TError>(actual)(expected);
-      },
-      true: isTrue(actual),
-      undefined: isUndefined(actual),
-
-      not: {
-        atLeast: atLeast.negated(actual),
-        atMost: atMost.negated(actual),
-        between: between.negated(actual),
-        containing: containing.negated(actual),
-        containingAnyOf: containingAnyOf.negated(actual),
-        containingAllOf: containingAllOf.negated(actual),
-        endingWith: endingWith.negated(actual),
-        equalTo: equalTo.negated(actual),
-        false: isFalse.negated(actual),
-        falsy: falsy.negated(actual),
-        greaterThan: greaterThan.negated(actual),
-        instanceOf: instanceOf.negated(actual),
-        lessThan: lessThan.negated(actual),
-        matching: matching.negated(actual),
-        NaN: isNan.negated(actual),
-        null: isNull.negated(actual),
-        ofType: ofType.negated(actual),
-        sameAs: sameAs.negated(actual),
-        sameJsonAs: sameJsonAs.negated(actual),
-        startingWith: startingWith.negated(actual),
-        throwing <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): void {
-          throwing.negated<TError>(actual)(expected);
-        },
-        async throwingAsync <TError extends Error = Error> (expected?: string | RegExp | ((ex: TError) => boolean)): Promise<void> {
-          await throwingAsync.negated<TError>(actual)(expected);
-        },
-        true: isTrue.negated(actual),
-        undefined: isUndefined.negated(actual)
-      }
-    };
-
-    return { is };
-  }
+  that
 };
 
-export { assert };
+export {
+  assert
+};
