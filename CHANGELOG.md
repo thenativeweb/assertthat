@@ -1,3 +1,21 @@
+# [6.0.0](https://github.com/thenativeweb/assertthat/compare/5.2.8...6.0.0) (2021-05-06)
+
+
+### Features
+
+* Rewrite - type-appropriate assertions and better diffs. ([#341](https://github.com/thenativeweb/assertthat/issues/341)) ([f6c430f](https://github.com/thenativeweb/assertthat/commit/f6c430f86fdf2fcbbd3ac949d15910a67303c051))
+
+
+### BREAKING CHANGES
+
+* Many assertions are now only usable with types they make sense for. This should probably not break much code, but also probably will. Not entirely sure about the repercussions these changes will have.
+
+Some rarely used assertions have been removed (e.g. between).
+Some have been added: Support for Results, Maps, Sets and Errors.
+Recursions in asserted values are now recognized and in most cases even correctly compared (excluding maps and sets).
+
+Error messages are now much more informational and dare I say beautiful, since the new implementation is based on an in-depth diffing algorithm based on value equality.
+
 ## [5.2.8](https://github.com/thenativeweb/assertthat/compare/5.2.7...5.2.8) (2021-03-25)
 
 

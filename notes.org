@@ -1,0 +1,168 @@
+#+TITLE: Notes
+
+* todos
+** Pretty printing diffs
+*** TODO Pretty printing diffs: leave out long stretches without changes
+*** TODO Fix type switches: if one is an array and one an object, the object/object case takes effect
+*** TODO Fix type recognition: I forgot ~undefined~
+
+* draft control flow
+
+#+BEGIN_SRC js
+// type-aware assertthat
+const assertthat = function () {
+    return {
+        that (actual) {
+            // based on type of actual
+            if (isArray(actual)) {
+                return assertthatForArray(actual);
+            }
+        }
+    };
+};
+
+// specific assertthat for array
+const assertthatForArray = function (actual) {
+    return {
+        is: {
+            equalTo (expected) {
+                assertArrayIsEqualToArray(actual, expected)
+            },
+
+            not: {
+            }
+        }
+    };
+};
+
+// specific isEqual assertion for array
+const assertArrayIsEqualToArray = function (actual, expected) {
+    if (isArrayEqualToArray(actual, expected)) {
+        return value();
+    }
+
+    return error(new AssertionFailed({
+        // reason why the assertion failed. good message, diff etc.
+    }));
+};
+
+// specific isEqual comparison for array
+const isArrayEqualToArray = function (actual, expected) {
+    // some sanity checks regarding array length...
+
+    for (let i = 0; i < actual.length; i++) {
+        const actualValue = actual[i],
+              expectedValue = expected[i];
+
+        if (!isValueEqualToValue(actualValue, expectedValue)) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
+// type-aware isEqual comparison
+const isValueEqualToValue = function (actual, expected) {
+    // based on type of values
+    if (isNumber(actual) && isNumber(expected)) {
+        return isNumberEqualToNumber(actual, expected);
+    }
+};
+
+// specific isEqual comparison for number
+const isNumberEqualToNumber = function (actual, expected) {
+    // numbers are scalars and thus comparable by identity
+    return isSame(actual, expected);
+};
+
+const isEqual = function (actual, expected) {
+    return actual === expected;
+}
+#+END_SRC
+
+** Assertion
+
+An assertion asserts a property or relation of one or more values. It either does nothing or throws a descriptive error of why the assertion was not fulfilled.
+
+Thus an assertions interface looks like this:
+
+#+BEGIN_SRC typescript
+type Assertion = (...values: any[]): void | Promise<void>;
+#+END_SRC
+
+This is obviously incomplete, since TypeScript's type system can not depict errors. The errors thrown by assertions look like this:
+
+#+BEGIN_SRC typescript
+class AssertionFailed extends defekt({ code: 'AssertionFailed' }) {}
+
+const arrayIsMissingValuesItShouldHaveContained = new AssertionFailed({
+    message: 'The array is not containing all of the expected value.',
+    data: {
+        expected: 'To contain all of these values:\n...',
+        actual: prettyPrintArray(...),
+        diff: 'These values are missing:\n...'
+    }
+});
+#+END_SRC
+
+The properties ~expected~, ~actual~ and ~diff~ are all optional and should be filled as appropriate.
+
+** Comparisons
+
+A comparisons checks one or more values for a property or relation.
+
+- Should a comparison result in true/false?
+- Should a comparison return a differentiated result containing information on what went wrong?
+  - This would make the assertion step basically obsolete, since the comparisons could return a ~Result~ directly.
+  - Does it make sense to let the comparison determine the result message? This seems intuitive, but if many comparisons are nested (e.g. comparing three-times-nested arrays) the error messages have to be assembled somehow. Making a diff on the top level seems easier. But making the diff is the same thing as comparing, isn't it?
+  - One of the use cases of comparisons is negation. If a comparisons decides its own error messages, negation outside of the comparison does not work, since the wording can't be negated programmatically.
+  - What /is/ possible is returning a diff, if possible. This diff can then presented either way. E.g. when checking the arrays ~[ 1, 2, 3 ]~ and ~[ 2, 3, 4 ]~ for equality, the diff ~+[ 1 ], -[ 4 ]~ can be propagated, but when checking them for non-equality the diff can be translated to 👍.
+  - How do different diffs look? How do diffs look for unary operations?
+    - ~isTruthy(something)~ returns either ~value()~ or ~error({})~
+    - ~isEqual(anArray, anotherArray)~ returns either ~value()~ or ~error({ additional: ..., missing: ... })~
+
+** Diffs
+
+What should a diff look like? Is there a universal form? Is there a type-dependent form? Maybe not even that?
+
+*** Unary Operations
+In unary operations there is nothing to diff, so the diff's existence is enough without further information.
+Examples:
+- isArrayEmpty([ 5, 7 ]) => error(new Diff())
+- isArrayContentUnique([ 5, 5 ]) => error(new Diff([ 5 ])) doesn't really work. this one needs additional info
+*** Numbers
+- isNumberGreaterThanNumber => diff should contain how much less the number is
+- isNumberNan => no information needed
+- isNumberEqualToNumber => diff should contain the difference of the numbers
+- isNumberFalsy => no information needed
+*** Strings
+- isStringEqualToString => diff between the strings
+- isStringEmpty => no information needed
+- isStringNotContainingAnyOf => diff should contain which value is wrongly contained
+- isStringMatchingRegExp => no information needed, can't diff a regexp
+*** Booleans
+- isBooleanTrue => no information needed
+- isBooleanSameJsonAsBoolean => string diff, but does not do a lot xD
+*** Arrays
+- isArrayContaining => no information needed
+- isArrayEqualToArray => diff between the arrays
+- isArrayContainingAllOf => diff should contain which values are wrongly missing
+*** Objects
+- isObjectEqualToObject => diff between the objects
+*** Functions
+- isFunctionThrowing
+  - without parameter => no information needed. diff when the function does not throw
+  - with message => diff should contain the diff between the messages
+  - with regexp => no information needed, can't diff a regexp
+  - with predicate => no information needed, can't diff a predicate application
+
+
+** Diff Structure
+*** Diff between Arrays
+- Segment<T> = Equal(T[]) | Omission(T[]) | Addition(T[])
+- actual: [ 1, 2, 5, 6, 8 ] vs expected: [ 1, 2, 3, 4, 5, 6]
+  => [ Equal([ 1, 2 ]), Missing([ 3, 4 ]), Equal([ 5, 6 ]), Additional([ 8 ]) ]
+*** Diff between Strings
+- convert to array of chars, use same algo as for arrays
+- rewrite for presentation
