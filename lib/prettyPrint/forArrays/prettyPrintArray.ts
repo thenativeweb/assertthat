@@ -1,5 +1,5 @@
 import { formatNestedArray } from '../utils/formatNestedArray';
-import { maximumDepth } from '../../constants/maximumDepth';
+import { maximumFormattingDepth } from '../../constants/maximumFormattingDepth';
 import { prepareSimple } from '../utils/prepareSimple';
 import { prettyPrint } from '../typeAware/prettyPrint';
 
@@ -17,7 +17,7 @@ const prettyPrintArray = function (array: any[], depth = 0): string {
     ));
   }
 
-  if (depth >= maximumDepth) {
+  if (depth >= maximumFormattingDepth) {
     return formatNestedArray`[ ${content} ]`;
   }
 

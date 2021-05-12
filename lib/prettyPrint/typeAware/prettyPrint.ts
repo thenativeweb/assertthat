@@ -1,3 +1,4 @@
+import { dispel } from '../../dispel/dispel';
 import { InvalidOperation } from '../../errors';
 import { isArray } from '../../types/isArray';
 import { isBoolean } from '../../types/isBoolean';
@@ -29,47 +30,49 @@ import { prettyPrintSymbol } from '../forSymbols/prettyPrintSymbol';
 import { prettyPrintUndefined } from '../forUndefined/prettyPrintUndefined';
 
 const prettyPrint = function (value: any, depth = 0): string {
+  const dispelledValue = dispel(value);
+
   if (isRecursion(value)) {
-    return prettyPrintRecursion(value);
+    return prettyPrintRecursion(dispelledValue);
   }
   if (isError(value)) {
-    return prettyPrintError(value, depth);
+    return prettyPrintError(dispelledValue, depth);
   }
   if (isSet(value)) {
-    return prettyPrintSet(value, depth);
+    return prettyPrintSet(dispelledValue, depth);
   }
   if (isMap(value)) {
-    return prettyPrintMap(value, depth);
+    return prettyPrintMap(dispelledValue, depth);
   }
   if (isArray(value)) {
-    return prettyPrintArray(value, depth);
+    return prettyPrintArray(dispelledValue, depth);
   }
   if (isResult(value)) {
-    return prettyPrintResult(value, depth);
+    return prettyPrintResult(dispelledValue, depth);
   }
   if (isNumber(value)) {
-    return prettyPrintNumber(value);
+    return prettyPrintNumber(dispelledValue);
   }
   if (isString(value)) {
-    return prettyPrintString(value);
+    return prettyPrintString(dispelledValue);
   }
   if (isBoolean(value)) {
-    return prettyPrintBoolean(value);
+    return prettyPrintBoolean(dispelledValue);
   }
   if (isSymbol(value)) {
-    return prettyPrintSymbol(value);
+    return prettyPrintSymbol(dispelledValue);
   }
   if (isFunction(value)) {
-    return prettyPrintFunction(value);
+    return prettyPrintFunction(dispelledValue);
   }
   if (isObject(value)) {
-    return prettyPrintObject(value, depth);
+    return prettyPrintObject(dispelledValue, depth);
   }
   if (isUndefined(value)) {
-    return prettyPrintUndefined(value);
+    return prettyPrintUndefined(dispelledValue);
   }
   if (isNull(value)) {
-    return prettyPrintNull(value);
+    return prettyPrintNull(dispelledValue);
   }
 
   throw new InvalidOperation('Could not pretty print a value with unknown type.');

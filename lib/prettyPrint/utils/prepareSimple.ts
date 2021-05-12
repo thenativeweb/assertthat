@@ -1,11 +1,11 @@
-import { maximumDepth } from '../../constants/maximumDepth';
+import { maximumFormattingDepth } from '../../constants/maximumFormattingDepth';
 
 const prepareSimple = function (content: string, depth: number): string[] {
   return `${content}`.
     split('\n').
     map(
       (line): string => {
-        if (depth >= maximumDepth) {
+        if (depth >= maximumFormattingDepth) {
           return line;
         }
 

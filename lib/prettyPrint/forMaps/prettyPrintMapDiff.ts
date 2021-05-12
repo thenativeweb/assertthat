@@ -1,6 +1,6 @@
 import { formatNestedArray } from '../utils/formatNestedArray';
 import { MapDiff } from '../../diffs/forMaps/MapDiff';
-import { maximumDepth } from '../../constants/maximumDepth';
+import { maximumFormattingDepth } from '../../constants/maximumFormattingDepth';
 import { prepareAddition } from '../utils/prepareAddition';
 import { prepareChange } from '../utils/prepareChange';
 import { prepareOmission } from '../utils/prepareOmission';
@@ -41,7 +41,7 @@ const prettyPrintMapDiff = function (diff: MapDiff, depth = 0): string {
     return 'Map({})';
   }
 
-  if (depth >= maximumDepth) {
+  if (depth >= maximumFormattingDepth) {
     return formatNestedArray`Map({ ${content} })`;
   }
 
