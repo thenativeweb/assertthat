@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/thenativeweb/assertthat/compare/6.0.0...6.0.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* dispel values before pretty printing. ([#347](https://github.com/thenativeweb/assertthat/issues/347)) ([a5aaa5d](https://github.com/thenativeweb/assertthat/commit/a5aaa5dbec0fa2475553f5ed0e0c7d0ff9a18ab1))
+
 # [6.0.0](https://github.com/thenativeweb/assertthat/compare/5.2.8...6.0.0) (2021-05-06)
 
 
