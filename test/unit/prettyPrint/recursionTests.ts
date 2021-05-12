@@ -2,7 +2,7 @@ import { assert } from '../../../lib';
 import { prettyPrint } from '../../../lib/prettyPrint/typeAware/prettyPrint';
 import { prettyPrintRecursion } from '../../../lib/prettyPrint/forRecursions/prettyPrintRecursion';
 import { recursion } from '../../../lib/types/Recursion';
-import { error, Result, value } from 'defekt';
+import { value } from 'defekt';
 
 suite('prettyPrint', (): void => {
   const recursionSymbol = prettyPrintRecursion(recursion({ recursionPath: '/' }));
