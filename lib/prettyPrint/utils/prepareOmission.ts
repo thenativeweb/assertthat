@@ -1,12 +1,12 @@
 import chalk from 'chalk';
-import { maximumDepth } from '../../constants/maximumDepth';
+import { maximumFormattingDepth } from '../../constants/maximumFormattingDepth';
 
 const prepareOmission = function (content: any, depth: number): string[] {
   return `${content}`.
     split('\n').
     map(
       (line, index): string => {
-        if (depth >= maximumDepth) {
+        if (depth >= maximumFormattingDepth) {
           return chalk.green(line);
         }
         if (index !== 0) {

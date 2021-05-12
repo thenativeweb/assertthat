@@ -1,12 +1,12 @@
 import chalk from 'chalk';
-import { maximumDepth } from '../../constants/maximumDepth';
+import { maximumFormattingDepth } from '../../constants/maximumFormattingDepth';
 
 const prepareAddition = function (content: string, depth: number): string[] {
   return `${content}`.
     split('\n').
     map(
       (line, index): string => {
-        if (depth >= maximumDepth) {
+        if (depth >= maximumFormattingDepth) {
           return chalk.red(line);
         }
         if (index !== 0) {

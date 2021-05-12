@@ -1,5 +1,5 @@
 import { formatNestedArray } from '../utils/formatNestedArray';
-import { maximumDepth } from '../../constants/maximumDepth';
+import { maximumFormattingDepth } from '../../constants/maximumFormattingDepth';
 import { prepareAddition } from '../utils/prepareAddition';
 import { prepareOmission } from '../utils/prepareOmission';
 import { prepareSimple } from '../utils/prepareSimple';
@@ -33,7 +33,7 @@ const prettyPrintSetDiff = function (diff: SetDiff, depth = 0): string {
     return `Set([])`;
   }
 
-  if (depth >= maximumDepth) {
+  if (depth >= maximumFormattingDepth) {
     return formatNestedArray`Set([ ${content} ])`;
   }
 

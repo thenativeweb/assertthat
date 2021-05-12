@@ -1,6 +1,6 @@
 import { ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
 import { formatNestedArray } from '../utils/formatNestedArray';
-import { maximumDepth } from '../../constants/maximumDepth';
+import { maximumFormattingDepth } from '../../constants/maximumFormattingDepth';
 import { prepareAddition } from '../utils/prepareAddition';
 import { prepareChange } from '../utils/prepareChange';
 import { prepareOmission } from '../utils/prepareOmission';
@@ -49,7 +49,7 @@ const prettyPrintArrayDiff = function (diff: ArrayDiff<any>, depth = 0): string 
     }
   }
 
-  if (depth >= maximumDepth) {
+  if (depth >= maximumFormattingDepth) {
     return formatNestedArray`[ ${content} ]`;
   }
 
