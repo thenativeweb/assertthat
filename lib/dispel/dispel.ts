@@ -4,11 +4,8 @@ import { dispelMap } from './dispelMap';
 import { dispelObject } from './dispelObject';
 import { dispelResult } from './dispelResult';
 import { dispelSet } from './dispelSet';
-import { isArray } from '../types/isArray';
-import { isMap } from '../types/isMap';
-import { isObject } from '../types/isObject';
 import { isResult } from 'defekt';
-import { isSet } from '../types/isSet';
+import { isArray, isMap, isObject, isSet } from 'typedescriptor';
 
 const dispel = function (
   value: any,
