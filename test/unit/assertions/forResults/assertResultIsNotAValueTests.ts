@@ -22,7 +22,7 @@ suite('assertResultIsNotAValue', (): void => {
       assertResultIsNotAValue(actual)
     ).is.equalTo(
       error(new AssertionFailed({
-        message: 'The result is an error.',
+        message: 'The result is a value.',
         actual: prettyPrint(actual)
       }))
     );

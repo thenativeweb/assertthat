@@ -9,8 +9,11 @@ const assertArrayIsContainingAllOfIterable = function <TContent>(
   actual: TContent[],
   iterable: Iterable<TContent>
 ): Result<undefined, AssertionFailed> {
-  const setFromActual = new Set(dispel(actual));
-  const setFromExpected = new Set(dispel(iterable));
+  const dispelledActual = dispel(actual);
+  const dispelledExpected = dispel(iterable);
+
+  const setFromActual = new Set(dispelledActual);
+  const setFromExpected = new Set(dispelledExpected);
 
   const diff = compareSets(setFromActual, setFromExpected);
 
@@ -24,8 +27,8 @@ const assertArrayIsContainingAllOfIterable = function <TContent>(
 
   return error(new AssertionFailed({
     message: 'The array does not contain all expected items.',
-    actual: prettyPrint(actual),
-    expected: `To contain all of:\n${prettyPrint(iterable)}`,
+    actual: prettyPrint(dispelledActual),
+    expected: `To contain all of:\n${prettyPrint(dispelledExpected)}`,
     diff: `Missing these items:\n${prettyPrint(diff.omissions)}`
   }));
 };

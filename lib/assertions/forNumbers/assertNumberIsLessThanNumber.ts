@@ -15,7 +15,7 @@ const assertNumberIsLessThanNumber = function (
   }
 
   return error(new AssertionFailed({
-    message: 'The number is less than or equal to the expected number.',
+    message: 'The number is greater than or equal to the expected number.',
     actual: prettyPrint(actual),
     expected: `To be less than:\n${prettyPrint(expected)}`
   }));

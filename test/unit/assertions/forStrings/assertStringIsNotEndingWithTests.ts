@@ -22,7 +22,7 @@ suite('assertStringIsNotEndingWith', (): void => {
       assertStringIsNotEndingWithString(actual, expected)
     ).is.equalTo(
       error(new AssertionFailed({
-        message: 'The string is not end withing the expected sub-string.',
+        message: 'The string is ending with the sub-string.',
         actual: prettyPrint(actual),
         expected: `To not end with:\n"bam"`
       }))

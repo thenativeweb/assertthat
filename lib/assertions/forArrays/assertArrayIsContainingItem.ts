@@ -9,8 +9,11 @@ const assertArrayIsContainingItem = function <TContent>(
   actual: TContent[],
   item: TContent
 ): Result<undefined, AssertionFailed> {
-  for (const actualItem of actual) {
-    const diff = compare(dispel(actualItem), dispel(item));
+  const dispelledActual = dispel(actual);
+  const dispelledItem = dispel(item);
+
+  for (const actualItem of dispelledActual) {
+    const diff = compare(actualItem, dispelledItem);
 
     if (isEqualDiff(diff)) {
       return value();
@@ -19,8 +22,8 @@ const assertArrayIsContainingItem = function <TContent>(
 
   return error(new AssertionFailed({
     message: 'The array does not contain the expected item.',
-    actual: prettyPrint(actual),
-    expected: `To contain:\n${prettyPrint(item)}`
+    actual: prettyPrint(dispelledActual),
+    expected: `To contain:\n${prettyPrint(dispelledItem)}`
   }));
 };
 

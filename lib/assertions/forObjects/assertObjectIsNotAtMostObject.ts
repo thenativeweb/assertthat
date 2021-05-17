@@ -9,9 +9,12 @@ const assertObjectIsNotAtMostObject = function (
   actual: object,
   expected: object
 ): Result<undefined, AssertionFailed> {
+  const dispelledActual = dispel(actual);
+  const dispelledExpected = dispel(expected);
+
   const diff = compareObjects(
-    dispel(actual),
-    dispel(expected)
+    dispelledActual,
+    dispelledExpected
   );
 
   if (
@@ -26,8 +29,8 @@ const assertObjectIsNotAtMostObject = function (
 
   return error(new AssertionFailed({
     message: 'The actual object is entirely contained in the expected object.',
-    actual: prettyPrint(actual),
-    expected: `To not be entirely contained in:\n${prettyPrint(expected)}`
+    actual: prettyPrint(dispelledActual),
+    expected: `To not be entirely contained in:\n${prettyPrint(dispelledExpected)}`
   }));
 };
 

@@ -1,3 +1,4 @@
+import { dispel } from '../../dispel/dispel';
 import { prettyPrint } from '../../prettyPrint/typeAware/prettyPrint';
 import { AssertionFailed, InvalidOperation } from '../../errors';
 import { error, isResult, Result, value } from 'defekt';
@@ -7,12 +8,14 @@ const assertActualIsNotOfType = function (
   actual: any,
   expected: Type | 'result'
 ): Result<undefined, AssertionFailed> {
+  const dispelledActual = dispel(actual);
+
   switch (expected) {
     case 'array': {
       if (isArray(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type array.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -21,7 +24,7 @@ const assertActualIsNotOfType = function (
       if (isBoolean(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type boolean.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -30,7 +33,7 @@ const assertActualIsNotOfType = function (
       if (isError(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type error.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -39,7 +42,7 @@ const assertActualIsNotOfType = function (
       if (isFunction(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type function.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -48,7 +51,7 @@ const assertActualIsNotOfType = function (
       if (isMap(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type map.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -57,7 +60,7 @@ const assertActualIsNotOfType = function (
       if (isNull(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type null.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -66,7 +69,7 @@ const assertActualIsNotOfType = function (
       if (isNumber(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type number.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -75,7 +78,7 @@ const assertActualIsNotOfType = function (
       if (isResult(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type result.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -84,7 +87,7 @@ const assertActualIsNotOfType = function (
       if (isSet(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type set.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -93,7 +96,7 @@ const assertActualIsNotOfType = function (
       if (isString(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type string.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -102,7 +105,7 @@ const assertActualIsNotOfType = function (
       if (isSymbol(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type symbol.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -111,7 +114,7 @@ const assertActualIsNotOfType = function (
       if (isUndefined(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type undefined.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;
@@ -120,7 +123,7 @@ const assertActualIsNotOfType = function (
       if (isObject(actual)) {
         return error(new AssertionFailed({
           message: 'The value is of type object.',
-          actual: prettyPrint(actual)
+          actual: prettyPrint(dispelledActual)
         }));
       }
       break;

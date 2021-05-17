@@ -22,7 +22,7 @@ suite('assertStringIsNotStartingWith', (): void => {
       assertStringIsNotStartingWithString(actual, expected)
     ).is.equalTo(
       error(new AssertionFailed({
-        message: 'The string is not start withing the expected sub-string.',
+        message: 'The string is starting with the sub-string.',
         actual: prettyPrint(actual),
         expected: `To not start with:\n"foo"`
       }))

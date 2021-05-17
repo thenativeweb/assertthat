@@ -9,9 +9,12 @@ const assertObjectIsNotAtLeastObject = function (
   actual: object,
   expected: object
 ): Result<undefined, AssertionFailed> {
+  const dispelledActual = dispel(actual);
+  const dispelledExpected = dispel(expected);
+
   const diff = compareObjects(
-    dispel(actual),
-    dispel(expected)
+    dispelledActual,
+    dispelledExpected
   );
 
   if (
@@ -26,8 +29,8 @@ const assertObjectIsNotAtLeastObject = function (
 
   return error(new AssertionFailed({
     message: 'The expected object is entirely contained in the actual object.',
-    actual: prettyPrint(actual),
-    expected: `To not entirely contain:\n${prettyPrint(expected)}`
+    actual: prettyPrint(dispelledActual),
+    expected: `To not entirely contain:\n${prettyPrint(dispelledExpected)}`
   }));
 };
 

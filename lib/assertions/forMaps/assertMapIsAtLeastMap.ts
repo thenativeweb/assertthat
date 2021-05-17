@@ -11,9 +11,12 @@ const assertMapIsAtLeastMap = function <TKey, TValue>(
   actual: Map<TKey, TValue>,
   expected: Map<TKey, TValue>
 ): Result<undefined, AssertionFailed> {
+  const dispelledActual = dispel(actual);
+  const dispelledExpected = dispel(expected);
+
   const diff = compareMaps(
-    dispel(actual),
-    dispel(expected)
+    dispelledActual,
+    dispelledExpected
   );
 
   if (isEqualDiff(diff)) {
@@ -28,8 +31,8 @@ const assertMapIsAtLeastMap = function <TKey, TValue>(
 
   return error(new AssertionFailed({
     message: 'The expected map is not entirely contained in the actual map.',
-    actual: prettyPrint(actual),
-    expected: `To entirely contain:\n${prettyPrint(expected)}`,
+    actual: prettyPrint(dispelledActual),
+    expected: `To entirely contain:\n${prettyPrint(dispelledExpected)}`,
     diff: `The following sub-map shows relevant changes between actual and expected:\n${prettyPrintDiff(diffWithOnlyOmissions)}`
   }));
 };
