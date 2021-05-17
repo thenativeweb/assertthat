@@ -14,20 +14,9 @@ import { Diff } from '../../diffs/Diff';
 import { equalDiff } from '../../diffs/EqualDiff';
 import { incompatibleTypeDiff } from '../../diffs/IncompatibleTypeDiff';
 import { incompatibleTypesCost } from '../../constants/costs';
-import { isArray } from '../../types/isArray';
-import { isBoolean } from '../../types/isBoolean';
-import { isError } from '../../types/isError';
-import { isFunction } from '../../types/isFunction';
-import { isMap } from '../../types/isMap';
-import { isNull } from '../../types/isNull';
-import { isNumber } from '../../types/isNumber';
-import { isObject } from '../../types/isObject';
 import { isRecursion } from '../../types/Recursion';
 import { isResult } from 'defekt';
-import { isSet } from '../../types/isSet';
-import { isString } from '../../types/isString';
-import { isSymbol } from '../../types/isSymbol';
-import { isUndefined } from '../../types/isUndefined';
+import { isArray, isBoolean, isError, isFunction, isMap, isNull, isNumber, isObject, isSet, isString, isSymbol, isUndefined } from 'typedescriptor';
 
 const compare = function (actual: any, expected: any): Diff {
   if (isUndefined(actual) && isUndefined(expected)) {

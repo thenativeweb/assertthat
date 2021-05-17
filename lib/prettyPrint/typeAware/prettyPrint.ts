@@ -1,19 +1,7 @@
 import { dispel } from '../../dispel/dispel';
 import { InvalidOperation } from '../../errors';
-import { isArray } from '../../types/isArray';
-import { isBoolean } from '../../types/isBoolean';
-import { isError } from '../../types/isError';
-import { isFunction } from '../../types/isFunction';
-import { isMap } from '../../types/isMap';
-import { isNull } from '../../types/isNull';
-import { isNumber } from '../../types/isNumber';
-import { isObject } from '../../types/isObject';
 import { isRecursion } from '../../types/Recursion';
 import { isResult } from 'defekt';
-import { isSet } from '../../types/isSet';
-import { isString } from '../../types/isString';
-import { isSymbol } from '../../types/isSymbol';
-import { isUndefined } from '../../types/isUndefined';
 import { prettyPrintArray } from '../forArrays/prettyPrintArray';
 import { prettyPrintBoolean } from '../forBooleans/prettyPrintBoolean';
 import { prettyPrintError } from '../forErrors/prettyPrintError';
@@ -28,6 +16,7 @@ import { prettyPrintSet } from '../forSets/prettyPrintSet';
 import { prettyPrintString } from '../forStrings/prettyPrintString';
 import { prettyPrintSymbol } from '../forSymbols/prettyPrintSymbol';
 import { prettyPrintUndefined } from '../forUndefined/prettyPrintUndefined';
+import { isArray, isBoolean, isError, isFunction, isMap, isNull, isNumber, isObject, isSet, isString, isSymbol, isUndefined } from 'typedescriptor';
 
 const prettyPrint = function (value: any, depth = 0): string {
   const dispelledValue = dispel(value);
