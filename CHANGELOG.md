@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/thenativeweb/assertthat/compare/6.1.1...6.2.0) (2021-05-17)
+
+
+### Features
+
+* Move dispel out of prettyPrint; Fix some mistakes in error messages. ([#352](https://github.com/thenativeweb/assertthat/issues/352)) ([25e5cf5](https://github.com/thenativeweb/assertthat/commit/25e5cf5533f68f6460e894c6973ba17dc8f9883b))
+
 ## [6.1.1](https://github.com/thenativeweb/assertthat/compare/6.1.0...6.1.1) (2021-05-17)
 
 
