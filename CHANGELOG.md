@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/thenativeweb/assertthat/compare/6.0.1...6.1.0) (2021-05-17)
+
+
+### Features
+
+* Use type-guards from package typedescriptor. ([#351](https://github.com/thenativeweb/assertthat/issues/351)) ([6cb20a5](https://github.com/thenativeweb/assertthat/commit/6cb20a58a91efc7aec45f251f9ecd620922ff7f8))
+
 ## [6.0.1](https://github.com/thenativeweb/assertthat/compare/6.0.0...6.0.1) (2021-05-12)
 
 
