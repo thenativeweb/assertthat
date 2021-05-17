@@ -7,14 +7,7 @@ import { AssertThatForObject } from './assertions/forObjects/AssertThatForObject
 import { AssertThatForResult } from './assertions/forResults/AssertThatForResult';
 import { AssertThatForSet } from './assertions/forSets/AssertThatForSet';
 import { AssertThatForString } from './assertions/forStrings/AssertThatForString';
-import { isArray } from './types/isArray';
-import { isFunction } from './types/isFunction';
-import { isMap } from './types/isMap';
-import { isNumber } from './types/isNumber';
-import { isObject } from './types/isObject';
 import { isResult } from 'defekt';
-import { isSet } from './types/isSet';
-import { isString } from './types/isString';
 import { getAssertionsForAny, getNegatedAssertionsForAny } from './assertions/forAny/assertions';
 import { getAssertionsForArray, getNegatedAssertionsForArray } from './assertions/forArrays/assertions';
 import { getAssertionsForFunction, getNegatedAssertionsForFunction } from './assertions/forFunctions/assertions';
@@ -24,6 +17,7 @@ import { getAssertionsForObject, getNegatedAssertionsForObject } from './asserti
 import { getAssertionsForResult, getNegatedAssertionsForResult } from './assertions/forResults/assertions';
 import { getAssertionsForSet, getNegatedAssertionsForSet } from './assertions/forSets/assertions';
 import { getAssertionsForString, getNegatedAssertionsForString } from './assertions/forStrings/assertions';
+import { isArray, isFunction, isMap, isNumber, isObject, isSet, isString } from 'typedescriptor';
 
 type AssertThat =
   AssertThatForSet &

@@ -1,6 +1,6 @@
 import { Ancestors } from './Ancestors';
 import { dispel } from './dispel';
-import { isScalar } from '../types/isScalar';
+import { isScalar } from 'typedescriptor';
 import { v4 } from 'uuid';
 import { Recursion, recursion } from '../types/Recursion';
 
