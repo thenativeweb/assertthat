@@ -1,22 +1,11 @@
-import { isArray } from '../../types/isArray';
-import { isBoolean } from '../../types/isBoolean';
-import { isFunction } from '../../types/isFunction';
-import { isMap } from '../../types/isMap';
-import { isNull } from '../../types/isNull';
-import { isNumber } from '../../types/isNumber';
-import { isObject } from '../../types/isObject';
-import { isSet } from '../../types/isSet';
-import { isString } from '../../types/isString';
-import { isSymbol } from '../../types/isSymbol';
-import { isUndefined } from '../../types/isUndefined';
 import { prettyPrint } from '../../prettyPrint/typeAware/prettyPrint';
-import { Type } from '../../types/Type';
 import { AssertionFailed, InvalidOperation } from '../../errors';
-import { error, isError, isResult, Result, value } from 'defekt';
+import { error, isResult, Result, value } from 'defekt';
+import { isArray, isBoolean, isError, isFunction, isMap, isNull, isNumber, isObject, isSet, isString, isSymbol, isUndefined, Type } from 'typedescriptor';
 
 const assertActualIsOfType = function (
   actual: any,
-  expected: Type
+  expected: Type | 'result'
 ): Result<undefined, AssertionFailed> {
   switch (expected) {
     case 'array': {

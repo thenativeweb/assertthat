@@ -1,4 +1,4 @@
-import { Type } from '../../types/Type';
+import { Type } from 'typedescriptor';
 
 interface CommonAssertions<TAny> {
   equalTo: (expected: TAny) => void;
@@ -13,7 +13,7 @@ interface CommonAssertions<TAny> {
   true: () => void;
   false: () => void;
 
-  ofType: (expected: Type) => void;
+  ofType: (expected: Type | 'result') => void;
 }
 
 export type {
