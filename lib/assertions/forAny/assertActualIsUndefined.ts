@@ -1,4 +1,5 @@
 import { AssertionFailed } from '../../errors';
+import { dispel } from '../../dispel/dispel';
 import { prettyPrint } from '../../prettyPrint/typeAware/prettyPrint';
 import { error, Result, value } from 'defekt';
 
@@ -11,7 +12,7 @@ const assertActualIsUndefined = function (
 
   return error(new AssertionFailed({
     message: 'The value is not undefined.',
-    actual: prettyPrint(actual)
+    actual: prettyPrint(dispel(actual))
   }));
 };
 

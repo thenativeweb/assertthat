@@ -5,7 +5,7 @@ import { prettyPrint } from '../../../../lib/prettyPrint/typeAware/prettyPrint';
 import { error, value } from 'defekt';
 
 suite('assertNumberIsNaN', (): void => {
-  test('does not return an error if the number is nan.', async (): Promise<void> => {
+  test('does not return an error if the number is NaN.', async (): Promise<void> => {
     const actual = Number.NaN;
 
     assert.that(
@@ -15,14 +15,14 @@ suite('assertNumberIsNaN', (): void => {
     );
   });
 
-  test('returns an error if the number is not nan.', async (): Promise<void> => {
+  test('returns an error if the number is not NaN.', async (): Promise<void> => {
     const actual = 17;
 
     assert.that(
       assertNumberIsNaN(actual)
     ).is.equalTo(
       error(new AssertionFailed({
-        message: 'The number is not nan.',
+        message: 'The number is not NaN.',
         actual: prettyPrint(actual)
       }))
     );

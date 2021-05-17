@@ -20,7 +20,7 @@ suite('assertObjectIsEmpty', (): void => {
       assertObjectIsEmpty(actual)
     ).is.equalTo(
       error(new AssertionFailed({
-        message: 'The object is empty.',
+        message: 'The object is not empty.',
         actual: prettyPrint(actual)
       }))
     );

@@ -22,7 +22,7 @@ const assertStringIsNotContainingAnyOfIterable = function (
   }
 
   return error(new AssertionFailed({
-    message: 'The string does contain one or more of the sub-strings in the iterable.',
+    message: 'The string contains one or more of the sub-strings in the iterable.',
     actual: prettyPrint(actual),
     expected: `To not contain any of:\n${prettyPrint(iterable)}`,
     diff: `These sub-strings are contained, but should not be:\n${prettyPrint(containedItems)}`

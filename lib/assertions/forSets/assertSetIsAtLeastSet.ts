@@ -11,9 +11,12 @@ const assertSetIsAtLeastSet = function <TContent>(
   actual: Set<TContent>,
   expected: Set<TContent>
 ): Result<undefined, AssertionFailed> {
+  const dispelledActual = dispel(actual);
+  const dispelledExpected = dispel(expected);
+
   const diff = compareSets(
-    dispel(actual),
-    dispel(expected)
+    dispelledActual,
+    dispelledExpected
   );
 
   if (isEqualDiff(diff)) {
@@ -28,8 +31,8 @@ const assertSetIsAtLeastSet = function <TContent>(
 
   return error(new AssertionFailed({
     message: 'The expected set is not entirely contained in the actual set.',
-    actual: prettyPrint(actual),
-    expected: `To entirely contain:\n${prettyPrint(expected)}`,
+    actual: prettyPrint(dispelledActual),
+    expected: `To entirely contain:\n${prettyPrint(dispelledExpected)}`,
     diff: `The following sub-set shows relevant changes between actual and expected:\n${prettyPrintDiff(diffWithOnlyOmissions)}`
   }));
 };

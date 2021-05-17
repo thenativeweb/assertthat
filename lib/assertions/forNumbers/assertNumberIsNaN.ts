@@ -10,7 +10,7 @@ const assertNumberIsNaN = function (
   }
 
   return error(new AssertionFailed({
-    message: 'The number is not Nan.',
+    message: 'The number is not NaN.',
     actual: prettyPrint(actual)
   }));
 };

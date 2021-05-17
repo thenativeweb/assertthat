@@ -1,11 +1,12 @@
 import { Ancestors } from './Ancestors';
 import { dispelArray } from './dispelArray';
+import { dispelError } from './dispelError';
 import { dispelMap } from './dispelMap';
 import { dispelObject } from './dispelObject';
 import { dispelResult } from './dispelResult';
 import { dispelSet } from './dispelSet';
 import { isResult } from 'defekt';
-import { isArray, isMap, isObject, isSet } from 'typedescriptor';
+import { isArray, isError, isMap, isObject, isSet } from 'typedescriptor';
 
 const dispel = function (
   value: any,
@@ -23,6 +24,9 @@ const dispel = function (
   }
   if (isResult(value)) {
     return dispelResult(value, path, ancestors);
+  }
+  if (isError(value)) {
+    return dispelError(value, path, ancestors);
   }
   if (isObject(value)) {
     return dispelObject(value, path, ancestors);

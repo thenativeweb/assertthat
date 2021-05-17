@@ -1,4 +1,5 @@
 import { AssertionFailed } from '../../errors';
+import { dispel } from '../../dispel/dispel';
 import { prettyPrint } from '../../prettyPrint/typeAware/prettyPrint';
 import { error, Result, value } from 'defekt';
 
@@ -11,7 +12,7 @@ const assertResultIsNotAnError = function <TValue, TError extends Error>(
 
   return error(new AssertionFailed({
     message: 'The result is an error.',
-    actual: prettyPrint(actual)
+    actual: prettyPrint(dispel(actual))
   }));
 };
 

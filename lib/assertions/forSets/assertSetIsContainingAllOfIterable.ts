@@ -9,9 +9,12 @@ const assertSetIsContainingAllOfIterable = function <TContent>(
   actual: Set<TContent>,
   iterable: Iterable<TContent>
 ): Result<undefined, AssertionFailed> {
-  const setFromExpected = new Set(dispel(iterable));
+  const dispelledActual = dispel(actual);
+  const dispelledExpected = dispel(iterable);
 
-  const diff = compareSets(actual, setFromExpected);
+  const setFromExpected = new Set(dispelledExpected);
+
+  const diff = compareSets(dispelledActual, setFromExpected);
 
   if (isEqualDiff(diff)) {
     return value();
@@ -23,8 +26,8 @@ const assertSetIsContainingAllOfIterable = function <TContent>(
 
   return error(new AssertionFailed({
     message: 'The set does not contain all expected items.',
-    actual: prettyPrint(actual),
-    expected: `To contain all of:\n${prettyPrint(iterable)}`,
+    actual: prettyPrint(dispelledActual),
+    expected: `To contain all of:\n${prettyPrint(dispelledExpected)}`,
     diff: `Missing these items:\n${prettyPrint(diff.omissions)}`
   }));
 };

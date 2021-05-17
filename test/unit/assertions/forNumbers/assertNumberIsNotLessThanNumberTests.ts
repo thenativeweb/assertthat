@@ -35,7 +35,7 @@ suite('assertNumberIsNotLessThanNumber', (): void => {
       assertNumberIsNotLessThanNumber(actual, expected)
     ).is.equalTo(
       error(new AssertionFailed({
-        message: 'The number is greater than the expected number.',
+        message: 'The number is less than the expected number.',
         actual: prettyPrint(actual),
         expected: `To not be less than:\n${prettyPrint(expected)}`
       }))

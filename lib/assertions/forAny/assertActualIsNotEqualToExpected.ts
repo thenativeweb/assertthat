@@ -9,7 +9,10 @@ const assertActualIsNotEqualToExpected = function (
   actual: any,
   expected: any
 ): Result<undefined, AssertionFailed> {
-  const diff = compare(dispel(actual), dispel(expected));
+  const dispelledActual = dispel(actual);
+  const dispelledExpected = dispel(expected);
+
+  const diff = compare(dispelledActual, dispelledExpected);
 
   if (!isEqualDiff(diff)) {
     return value();
@@ -17,7 +20,7 @@ const assertActualIsNotEqualToExpected = function (
 
   return error(new AssertionFailed({
     message: 'The values are equal.',
-    expected: `Not to equal:\n${prettyPrint(expected)}`
+    expected: `Not to equal:\n${prettyPrint(dispelledExpected)}`
   }));
 };
 
