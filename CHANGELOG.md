@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/thenativeweb/assertthat/compare/6.1.0...6.1.1) (2021-05-17)
+
+
+### Bug Fixes
+
+* bump defekt from 7.1.0 to 7.1.1 ([#349](https://github.com/thenativeweb/assertthat/issues/349)) ([6d5370e](https://github.com/thenativeweb/assertthat/commit/6d5370e5aeabb7b6c2f9054c1b67f7470ba89af1))
+
 # [6.1.0](https://github.com/thenativeweb/assertthat/compare/6.0.1...6.1.0) (2021-05-17)
 
 
