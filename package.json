@@ -40,8 +40,10 @@
   },
   "devDependencies": {
     "@types/common-tags": "1.8.0",
-    "roboter": "11.6.49",
-    "semantic-release-configuration": "2.0.1"
+    "common-tags": "1.8.0",
+    "measure-time": "5.0.3",
+    "roboter": "11.6.42",
+    "semantic-release-configuration": "2.0.0"
   },
   "repository": {
     "type": "git",
