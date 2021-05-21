@@ -91,22 +91,4 @@ suite('compareStrings', (): void => {
       })
     );
   });
-
-  test('uses the chunk delimiter to determine word border for diffing.', async (): Promise<void> => {
-    const actual = 'foo\nbar';
-    const expected = 'foo\nfoo';
-
-    const diff = compareStrings(actual, expected, '\n');
-
-    assert.that(diff).is.equalTo(
-      stringDiff({
-        cost: 2,
-        segments: [
-          { equal: 'foo', cost: 0 },
-          { addition: 'bar', cost: 1 },
-          { omission: 'foo', cost: 1 }
-        ]
-      })
-    );
-  });
 });
