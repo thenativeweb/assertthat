@@ -12,8 +12,8 @@ const characters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const getNewTestString = function ({ scale }: { scale: number }): string {
   let testString = '';
 
-  const lineLength = Math.floor(Math.random() * scale / 3);
-  const wordLength = Math.floor(Math.random() * lineLength / 3);
+  const lineLength = Math.ceil(Math.random() * scale / 3) + 20;
+  const wordLength = Math.ceil(Math.random() * lineLength / 3) + 5;
 
   for (let i = 0; i < scale; i++) {
     testString += characters[Math.floor(Math.random() * 26)];
@@ -36,7 +36,15 @@ const benchmark: BenchmarkFunction = async function (): Promise<void> {
   compare(testStringLeft, testStringRight);
 };
 
-const scales = [ 100, 200, 300, 400, 500, 600, 1_000 ];
+const scales = [
+  100,
+  200,
+  300,
+  400,
+  500,
+  600,
+  1_000
+];
 const unit = 'characters';
 
 export {
