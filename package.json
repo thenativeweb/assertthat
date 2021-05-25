@@ -1,6 +1,6 @@
 {
   "name": "assertthat",
-  "version": "6.2.0",
+  "version": "6.2.1",
   "description": "assertthat provides fluent TDD.",
   "contributors": [
     {
@@ -34,7 +34,7 @@
     "@types/uuid": "8.3.0",
     "chalk": "4.1.1",
     "common-tags": "1.8.0",
-    "defekt": "7.1.1",
+    "defekt": "7.1.2",
     "typedescriptor": "4.0.1",
     "uuid": "8.3.2"
   },
