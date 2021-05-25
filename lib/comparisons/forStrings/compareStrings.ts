@@ -1,6 +1,8 @@
 import { ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
 import { compareArrays } from '../forArrays/compareArrays';
+import { intersperse } from '../../utils/intersperse';
 import { InvalidOperation } from '../../errors';
+import { maximumStringLengthForPreciseDiff } from '../../constants/maximumStringLengthForPreciveDiff';
 import { unequalCharCost } from '../../constants/costs';
 import {
   AdditionDiffSegment as AdditionStringDiffSegment,
@@ -65,15 +67,33 @@ const convertArrayDiffToStringDiff = function (arrayDiff: ArrayDiff<string>): St
 
 const compareStrings = function (
   actual: string,
-  expected: string,
-  chunkDelimiter = ''
+  expected: string
 ): StringDiff | EqualDiff {
   if (actual === expected) {
     return equalDiff({
       value: actual
     });
   }
-  if (actual.length === 1 && expected.length === 1) {
+
+  let actualExploded = actual.split('');
+
+  if (actualExploded.length > maximumStringLengthForPreciseDiff) {
+    actualExploded = intersperse(actual.split(' '), ' ');
+  }
+  if (actualExploded.length > maximumStringLengthForPreciseDiff) {
+    actualExploded = intersperse(actual.split('\n'), '\n');
+  }
+
+  let expectedExploded = expected.split('');
+
+  if (expectedExploded.length > maximumStringLengthForPreciseDiff) {
+    expectedExploded = intersperse(expected.split(' '), ' ');
+  }
+  if (expectedExploded.length > maximumStringLengthForPreciseDiff) {
+    expectedExploded = intersperse(expected.split('\n'), '\n');
+  }
+
+  if (actualExploded.length <= 1 && expectedExploded.length <= 1) {
     return stringDiff({
       segments: [
         { addition: actual, cost: unequalCharCost / 2 },
@@ -82,9 +102,6 @@ const compareStrings = function (
       cost: unequalCharCost
     });
   }
-
-  const actualExploded = actual.split(chunkDelimiter);
-  const expectedExploded = expected.split(chunkDelimiter);
 
   const result = compareArrays(actualExploded, expectedExploded);
 

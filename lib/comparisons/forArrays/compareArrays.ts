@@ -1,11 +1,63 @@
 import { compare } from '../typeAware/compare';
+import { isUndefined } from 'typedescriptor';
+import { maximumDiffTableSize } from '../../constants/maximumDiffTableSize';
 import { simplifyDiff } from '../../diffs/forArrays/simplifyDiff';
 import { size } from '../../size/typeAware/size';
 import { AdditionDiffSegment, OmissionDiffSegment } from '../../diffs/forArrays/ArrayDiffSegment';
 import { arrayDiff, ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
-import { EqualDiff, equalDiff } from '../../diffs/EqualDiff';
+import { EqualDiff, equalDiff, isEqualDiff } from '../../diffs/EqualDiff';
 
-const compareArrays = function <TContent>(
+const compareArraysLinearly = function <TContent>(
+  actual: TContent[],
+  expected: TContent[]
+): ArrayDiff<TContent> | EqualDiff {
+  const diff = arrayDiff<TContent>({
+    segments: [],
+    cost: 0
+  });
+
+  for (let i = 0; i < Math.max(actual.length, expected.length); i++) {
+    const actualItem = actual[i];
+    const expectedItem = expected[i];
+
+    if (isUndefined(actualItem)) {
+      diff.segments.push({
+        omission: [ expectedItem ],
+        cost: size(expectedItem)
+      });
+      continue;
+    }
+    if (isUndefined(expectedItem)) {
+      diff.segments.push({
+        addition: [ actualItem ],
+        cost: size(actualItem)
+      });
+      continue;
+    }
+
+    const subDiff = compare(actualItem, expectedItem);
+
+    if (isEqualDiff(subDiff)) {
+      diff.segments.push({
+        equal: [ actualItem ],
+        cost: 0
+      });
+    } else {
+      diff.segments.push({
+        change: [ subDiff ],
+        cost: subDiff.cost
+      });
+    }
+  }
+
+  if (diff.cost === 0) {
+    return equalDiff({ value: actual });
+  }
+
+  return simplifyDiff(diff);
+};
+
+const compareArraysBestMatch = function <TContent>(
   actual: TContent[],
   expected: TContent[]
 ): ArrayDiff<TContent> | EqualDiff {
@@ -121,6 +173,17 @@ const compareArrays = function <TContent>(
   }
 
   return simplifyDiff(results.get(`${actual.length - 1}|${expected.length - 1}`)!);
+};
+
+const compareArrays = function <TContent>(
+  actual: TContent[],
+  expected: TContent[]
+): ArrayDiff<TContent> | EqualDiff {
+  if (actual.length * expected.length > maximumDiffTableSize) {
+    return compareArraysLinearly(actual, expected);
+  }
+
+  return compareArraysBestMatch(actual, expected);
 };
 
 export {
