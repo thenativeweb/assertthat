@@ -8,10 +8,7 @@
     "outDir": "build",
     "resolveJsonModule": true,
     "strict": true,
-    "target": "es2019",
-    "paths": {
-      "zufall": ["./types/zufall.d.ts"]
-    }
+    "target": "es2019"
   },
   "include": [
     "./**/*.ts"
