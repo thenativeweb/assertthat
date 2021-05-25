@@ -1,5 +1,6 @@
 import { ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
 import { compareArrays } from '../forArrays/compareArrays';
+import { intersperse } from '../../utils/intersperse';
 import { InvalidOperation } from '../../errors';
 import { unequalCharCost } from '../../constants/costs';
 import {
@@ -14,7 +15,6 @@ import {
   isOmissionDiffSegment as isOmissionArrayDiffSegment
 } from '../../diffs/forArrays/ArrayDiffSegment';
 import { isStringDiff, stringDiff, StringDiff } from '../../diffs/forStrings/StringDiff';
-import {intersperse} from "../../utils/intersperse";
 
 const convertArrayDiffToStringDiff = function (arrayDiff: ArrayDiff<string>): StringDiff {
   const convertedStringDiff: StringDiff = stringDiff({
