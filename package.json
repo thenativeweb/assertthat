@@ -43,7 +43,8 @@
     "common-tags": "1.8.0",
     "measure-time": "5.0.3",
     "roboter": "11.6.42",
-    "semantic-release-configuration": "2.0.0"
+    "semantic-release-configuration": "2.0.0",
+    "zufall": "1.0.1"
   },
   "repository": {
     "type": "git",

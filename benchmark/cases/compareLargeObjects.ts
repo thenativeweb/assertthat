@@ -1,25 +1,15 @@
 import { BenchmarkFunction } from '../types/BenchmarkFunction';
 import { BenchmarkSetup } from '../types/BenchmarkSetup';
 import { compare } from '../../lib/comparisons/typeAware/compare';
+import { randomObjectWithDepth } from 'zufall';
 
 const name = 'compare large objects';
-
-const characters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 let testObjectLeft: any = {};
 let testObjectRight: any = {};
 
 const getNewTestObject = function ({ scale }: { scale: number }): any {
-  const newTestObject: any = {};
-
-  for (let i = 0; i < scale; i++) {
-    // For each index there is a 33% chance that it occurs in both objects
-    const index = Math.floor(Math.random() * 3) + (i * 3);
-
-    newTestObject[index] = characters[Math.floor(Math.random() * 26)];
-  }
-
-  return newTestObject;
+  return randomObjectWithDepth(3, Math.round(scale ** (1 / 3)));
 };
 
 const setup: BenchmarkSetup = function ({ scale }): void {

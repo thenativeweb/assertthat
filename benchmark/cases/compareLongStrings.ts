@@ -1,26 +1,20 @@
 import { BenchmarkFunction } from '../types/BenchmarkFunction';
 import { BenchmarkSetup } from '../types/BenchmarkSetup';
 import { compare } from '../../lib/comparisons/typeAware/compare';
+import { randomWord } from 'zufall';
 
 const name = 'compare long strings';
 
 let testStringLeft = '';
 let testStringRight = '';
 
-const characters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-
 const getNewTestString = function ({ scale }: { scale: number }): string {
   let testString = '';
 
-  const lineLength = Math.ceil(Math.random() * scale / 3) + 20;
-  const wordLength = Math.ceil(Math.random() * lineLength / 3) + 5;
-
   for (let i = 0; i < scale; i++) {
-    testString += characters[Math.floor(Math.random() * 26)];
-    if (i % lineLength === 0) {
+    testString += randomWord();
+    if (Math.random() > 0.9) {
       testString += '\n';
-    } else if (i % wordLength === 0) {
-      testString += ' ';
     }
   }
 
