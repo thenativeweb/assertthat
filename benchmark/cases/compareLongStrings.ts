@@ -31,13 +31,13 @@ const benchmark: BenchmarkFunction = async function (): Promise<void> {
 };
 
 const scales = [
-  100,
-  200,
-  300,
-  400,
-  500,
-  600,
-  1_000
+  10,
+  20,
+  30,
+  40,
+  50,
+  60,
+  100
 ];
 const unit = 'characters';
 
