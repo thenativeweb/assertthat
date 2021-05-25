@@ -1,3 +1,10 @@
+# [6.3.0](https://github.com/thenativeweb/assertthat/compare/6.2.2...6.3.0) (2021-05-25)
+
+
+### Features
+
+* Benchmark and improve performance. ([#359](https://github.com/thenativeweb/assertthat/issues/359)) ([d94891d](https://github.com/thenativeweb/assertthat/commit/d94891d0f037a60303ca9531595615bc18ef2ffc))
+
 ## [6.2.2](https://github.com/thenativeweb/assertthat/compare/6.2.1...6.2.2) (2021-05-25)
 
 
