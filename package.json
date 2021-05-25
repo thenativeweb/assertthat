@@ -35,7 +35,7 @@
     "chalk": "4.1.1",
     "common-tags": "1.8.0",
     "defekt": "7.1.2",
-    "typedescriptor": "4.0.1",
+    "typedescriptor": "4.0.3",
     "uuid": "8.3.2"
   },
   "devDependencies": {
