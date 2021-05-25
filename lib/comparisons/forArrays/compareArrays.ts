@@ -1,12 +1,11 @@
 import { compare } from '../typeAware/compare';
 import { isUndefined } from 'typedescriptor';
+import { maximumDiffTableSize } from '../../constants/maximumDiffTableSize';
 import { simplifyDiff } from '../../diffs/forArrays/simplifyDiff';
 import { size } from '../../size/typeAware/size';
 import { AdditionDiffSegment, OmissionDiffSegment } from '../../diffs/forArrays/ArrayDiffSegment';
 import { arrayDiff, ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
 import { EqualDiff, equalDiff, isEqualDiff } from '../../diffs/EqualDiff';
-
-const maximumComparisonTableSize = 10_000;
 
 const compareArraysLinearly = function <TContent>(
   actual: TContent[],
@@ -180,7 +179,7 @@ const compareArrays = function <TContent>(
   actual: TContent[],
   expected: TContent[]
 ): ArrayDiff<TContent> | EqualDiff {
-  if (actual.length * expected.length > maximumComparisonTableSize) {
+  if (actual.length * expected.length > maximumDiffTableSize) {
     return compareArraysLinearly(actual, expected);
   }
 

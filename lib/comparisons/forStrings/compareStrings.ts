@@ -2,6 +2,7 @@ import { ArrayDiff } from '../../diffs/forArrays/ArrayDiff';
 import { compareArrays } from '../forArrays/compareArrays';
 import { intersperse } from '../../utils/intersperse';
 import { InvalidOperation } from '../../errors';
+import { maximumStringLengthForPreciseDiff } from '../../constants/maximumStringLengthForPreciveDiff';
 import { unequalCharCost } from '../../constants/costs';
 import {
   AdditionDiffSegment as AdditionStringDiffSegment,
@@ -64,8 +65,6 @@ const convertArrayDiffToStringDiff = function (arrayDiff: ArrayDiff<string>): St
   return convertedStringDiff;
 };
 
-const softMaximumStringLengthForPreciseDiff = 300;
-
 const compareStrings = function (
   actual: string,
   expected: string
@@ -78,19 +77,19 @@ const compareStrings = function (
 
   let actualExploded = actual.split('');
 
-  if (actualExploded.length > softMaximumStringLengthForPreciseDiff) {
+  if (actualExploded.length > maximumStringLengthForPreciseDiff) {
     actualExploded = intersperse(actual.split(' '), ' ');
   }
-  if (actualExploded.length > softMaximumStringLengthForPreciseDiff) {
+  if (actualExploded.length > maximumStringLengthForPreciseDiff) {
     actualExploded = intersperse(actual.split('\n'), '\n');
   }
 
   let expectedExploded = expected.split('');
 
-  if (expectedExploded.length > softMaximumStringLengthForPreciseDiff) {
+  if (expectedExploded.length > maximumStringLengthForPreciseDiff) {
     expectedExploded = intersperse(expected.split(' '), ' ');
   }
-  if (expectedExploded.length > softMaximumStringLengthForPreciseDiff) {
+  if (expectedExploded.length > maximumStringLengthForPreciseDiff) {
     expectedExploded = intersperse(expected.split('\n'), '\n');
   }
 
