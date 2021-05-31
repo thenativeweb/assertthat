@@ -34,7 +34,7 @@
     "@types/uuid": "8.3.0",
     "chalk": "4.1.1",
     "common-tags": "1.8.0",
-    "defekt": "7.1.2",
+    "defekt": "7.2.0",
     "typedescriptor": "4.0.3",
     "uuid": "8.3.2"
   },
