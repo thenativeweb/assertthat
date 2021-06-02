@@ -14,7 +14,7 @@ suite('assertActualIsNotTrue', (): void => {
     const actual = true;
 
     assert.that(assertActualIsNotTrue(actual)).is.equalTo(error(new AssertionFailed({
-      message: 'The value is not false.'
+      message: 'The value is true.'
     })));
   });
 });
