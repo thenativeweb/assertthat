@@ -1,7 +1,7 @@
 import { arrayDiff } from '../../../../lib/diffs/forArrays/ArrayDiff';
 import { assert } from '../../../../lib';
 import { compareArrays } from '../../../../lib/comparisons/forArrays/compareArrays';
-import { compareStrings } from 'lib/comparisons/forStrings/compareStrings';
+import { compareStrings } from '../../../../lib/comparisons/forStrings/compareStrings';
 import { equalDiff } from '../../../../lib/diffs/EqualDiff';
 
 suite('compareArrays', (): void => {
