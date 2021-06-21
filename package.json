@@ -42,7 +42,7 @@
     "@types/common-tags": "1.8.0",
     "common-tags": "1.8.0",
     "measure-time": "5.0.3",
-    "roboter": "11.7.3",
+    "roboter": "11.7.7",
     "semantic-release-configuration": "2.0.1",
     "zufall": "1.1.1"
   },
