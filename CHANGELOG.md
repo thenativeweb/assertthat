@@ -1,3 +1,10 @@
+## [6.3.4](https://github.com/thenativeweb/assertthat/compare/6.3.3...6.3.4) (2021-06-28)
+
+
+### Bug Fixes
+
+* bump typedescriptor from 4.0.4 to 4.0.7 ([#369](https://github.com/thenativeweb/assertthat/issues/369)) ([b8d52cc](https://github.com/thenativeweb/assertthat/commit/b8d52cc24bf3c1e3dc7f342155d5dc023d79d02f))
+
 ## [6.3.3](https://github.com/thenativeweb/assertthat/compare/6.3.2...6.3.3) (2021-06-08)
 
 
