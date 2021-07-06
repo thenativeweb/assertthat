@@ -1,3 +1,12 @@
+## [6.3.6](https://github.com/thenativeweb/assertthat/compare/6.3.5...6.3.6) (2021-07-06)
+
+
+### Bug Fixes
+
+* bump @types/uuid from 8.3.0 to 8.3.1 ([#376](https://github.com/thenativeweb/assertthat/issues/376)) ([1a4a7ba](https://github.com/thenativeweb/assertthat/commit/1a4a7bad860a0b44e2a1c62817e632aa420017a2))
+* bump defekt from 7.2.0 to 7.2.3 ([#370](https://github.com/thenativeweb/assertthat/issues/370)) ([0d65a72](https://github.com/thenativeweb/assertthat/commit/0d65a720355e3db7d3eac5a365f69a50240ad97c))
+* bump defekt from 7.2.3 to 7.3.0 ([#375](https://github.com/thenativeweb/assertthat/issues/375)) ([c4f408b](https://github.com/thenativeweb/assertthat/commit/c4f408bb680e2b366c32fdb615d56ae3dcd599f9))
+
 ## [6.3.5](https://github.com/thenativeweb/assertthat/compare/6.3.4...6.3.5) (2021-06-28)
 
 
