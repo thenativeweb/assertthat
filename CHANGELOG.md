@@ -1,3 +1,10 @@
+## [6.3.9](https://github.com/thenativeweb/assertthat/compare/6.3.8...6.3.9) (2021-07-23)
+
+
+### Bug Fixes
+
+* Update dependencies. ([#381](https://github.com/thenativeweb/assertthat/issues/381)) ([89d5657](https://github.com/thenativeweb/assertthat/commit/89d56571e91d8b63cf7e5e4e0ea825a73908cc75))
+
 ## [6.3.8](https://github.com/thenativeweb/assertthat/compare/6.3.7...6.3.8) (2021-07-21)
 
 
