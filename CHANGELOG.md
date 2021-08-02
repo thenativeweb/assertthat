@@ -1,3 +1,10 @@
+## [6.3.11](https://github.com/thenativeweb/assertthat/compare/6.3.10...6.3.11) (2021-08-02)
+
+
+### Bug Fixes
+
+* bump chalk from 4.1.1 to 4.1.2 ([#383](https://github.com/thenativeweb/assertthat/issues/383)) ([5e36dd3](https://github.com/thenativeweb/assertthat/commit/5e36dd352956566acdd65d3c7ce6f6364adf6ec7))
+
 ## [6.3.10](https://github.com/thenativeweb/assertthat/compare/6.3.9...6.3.10) (2021-08-02)
 
 
