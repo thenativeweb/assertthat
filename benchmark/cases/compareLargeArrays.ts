@@ -7,6 +7,7 @@ const name = 'compare large arrays';
 
 let testArray: any[] = [];
 
+// eslint-disable-next-line no-redeclare
 const setup: BenchmarkSetup = function ({ scale }): void {
   testArray = Array.from({ length: scale });
 

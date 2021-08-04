@@ -34,3 +34,4 @@ suite('compareFunctions', (): void => {
     );
   });
 });
+/* eslint-enable unicorn/consistent-function-scoping */
