@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { runAveragedBenchmark } from './util/runAveragedBenchmark';
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
+// eslint-disable-next-line @typescript-eslint/no-floating-promises, unicorn/prefer-top-level-await
 (async (): Promise<void> => {
   console.log('Running benchmarks.');
 

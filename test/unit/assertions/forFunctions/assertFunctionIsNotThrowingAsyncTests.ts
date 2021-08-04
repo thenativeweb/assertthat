@@ -18,7 +18,6 @@ suite('assertFunctionIsNotThrowingAsync', (): void => {
   });
 
   test('does not return an error if actual is not throwing an asynchronous error.', async (): Promise<void> => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const fun = async (): Promise<void> => {
       // Intentionally left empty.
     };
@@ -27,7 +26,6 @@ suite('assertFunctionIsNotThrowingAsync', (): void => {
   });
 
   test('returns an error if actual is throwing an asynochronous error.', async (): Promise<void> => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const fun = async (): Promise<void> => {
       throw new Error('Foo');
     };
@@ -41,7 +39,6 @@ suite('assertFunctionIsNotThrowingAsync', (): void => {
   });
 
   test('does not return an error if actual is not throwing an asynchronous error that is equal to the given message.', async (): Promise<void> => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const fun = async (): Promise<void> => {
       throw new Error('Foo');
     };
@@ -50,7 +47,6 @@ suite('assertFunctionIsNotThrowingAsync', (): void => {
   });
 
   test('returns an error if actual is throwing an asynchronous error that is equal to the given message.', async (): Promise<void> => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const fun = async (): Promise<void> => {
       throw new Error('Foo');
     };
@@ -65,7 +61,6 @@ suite('assertFunctionIsNotThrowingAsync', (): void => {
   });
 
   test('does not return an error if actual is throwing an asynchronous error that does not match the given RegExp.', async (): Promise<void> => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const fun = async (): Promise<void> => {
       throw new Error('Not foo');
     };
@@ -74,7 +69,6 @@ suite('assertFunctionIsNotThrowingAsync', (): void => {
   });
 
   test('returns an error if actual is throwing an asynchronous error whose message matches the given RegExp.', async (): Promise<void> => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const fun = async (): Promise<void> => {
       throw new Error('Foo bar');
     };
@@ -90,7 +84,6 @@ suite('assertFunctionIsNotThrowingAsync', (): void => {
   });
 
   test('does not return an error if actual is not throwing an asynchronous error that fulfils the predicate.', async (): Promise<void> => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const fun = async (): Promise<void> => {
       throw new Error('Not foo');
     };
@@ -99,7 +92,6 @@ suite('assertFunctionIsNotThrowingAsync', (): void => {
   });
 
   test('returns an error if actual is throwing an asynchronous error that fulfils the predicate.', async (): Promise<void> => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const fun = async (): Promise<void> => {
       throw new Error('Foo');
     };

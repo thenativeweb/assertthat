@@ -16,15 +16,16 @@ const compareResults = function (
         actual
       });
     }
-    const diff = compare(actual.value, expected.value);
 
-    if (diff.cost === 0) {
+    const diffValue = compare(actual.value, expected.value);
+
+    if (diffValue.cost === 0) {
       return equalDiff({
         value: actual
       });
     }
 
-    return unequalValueResultDiff({ diff, cost: diff.cost });
+    return unequalValueResultDiff({ diff: diffValue, cost: diffValue.cost });
   }
 
   if (expected.hasValue()) {
@@ -35,15 +36,15 @@ const compareResults = function (
     });
   }
 
-  const diff = compare(actual.error, expected.error);
+  const diffError = compare(actual.error, expected.error);
 
-  if (diff.cost === 0) {
+  if (diffError.cost === 0) {
     return equalDiff({
       value: actual
     });
   }
 
-  return unequalErrorResultDiff({ diff, cost: diff.cost });
+  return unequalErrorResultDiff({ diff: diffError, cost: diffError.cost });
 };
 
 export {

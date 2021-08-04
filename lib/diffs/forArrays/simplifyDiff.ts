@@ -14,6 +14,7 @@ const simplifyDiff = function <TContent>(
   });
 
   for (const currentSegment of diff.segments.slice(1)) {
+    // eslint-disable-next-line unicorn/prefer-at
     const previousSegment = newDiff.segments.slice(-1)[0];
 
     if (isEqualDiffSegment(currentSegment) && isEqualDiffSegment(previousSegment)) {

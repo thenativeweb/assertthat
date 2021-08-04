@@ -12,7 +12,6 @@ const runAveragedBenchmark = async function ({ benchmark, scale, howManyTimes }:
     // eslint-disable-next-line no-console
     console.log(`    Average run ${i}`);
 
-    // eslint-disable-next-line mocha/no-top-level-hooks
     await benchmark.setup?.({ scale });
 
     const getMeasuredTime = measureTime();
@@ -21,7 +20,6 @@ const runAveragedBenchmark = async function ({ benchmark, scale, howManyTimes }:
 
     const times = getMeasuredTime();
 
-    // eslint-disable-next-line mocha/no-top-level-hooks
     await benchmark.teardown?.({ scale });
 
     results.push(times.millisecondsTotal);
