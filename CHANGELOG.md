@@ -1,3 +1,10 @@
+## [6.3.12](https://github.com/thenativeweb/assertthat/compare/6.3.11...6.3.12) (2021-08-16)
+
+
+### Bug Fixes
+
+* Add missing configuration file. ([#385](https://github.com/thenativeweb/assertthat/issues/385)) ([0ab1fc6](https://github.com/thenativeweb/assertthat/commit/0ab1fc6a2f7eb959b8d77fc566490808f463ab37))
+
 ## [6.3.11](https://github.com/thenativeweb/assertthat/compare/6.3.10...6.3.11) (2021-08-02)
 
 
