@@ -21,7 +21,6 @@ const getNewTestString = function ({ scale }: { scale: number }): string {
   return testString;
 };
 
-// eslint-disable-next-line no-redeclare
 const setup: BenchmarkSetup = function ({ scale }): void {
   testStringLeft = getNewTestString({ scale });
   testStringRight = getNewTestString({ scale });

@@ -12,7 +12,6 @@ const getNewTestObject = function ({ scale }: { scale: number }): any {
   return randomObjectWithDepth(3, Math.round(scale ** (1 / 3)));
 };
 
-// eslint-disable-next-line no-redeclare
 const setup: BenchmarkSetup = function ({ scale }): void {
   testObjectLeft = getNewTestObject({ scale });
   testObjectRight = getNewTestObject({ scale });
