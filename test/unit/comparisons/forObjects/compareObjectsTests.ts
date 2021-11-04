@@ -58,4 +58,21 @@ suite('compareObjects', (): void => {
       equal: { bam: 13 }
     }));
   });
+
+  suite('regression tests', (): void => {
+    test('recognizes a property with an empty object as a difference.', async (): Promise<void> => {
+      const actual = { foo: {}};
+      const expected = {};
+
+      const diff = compareObjects(actual, expected);
+
+      assert.that(diff).is.equalTo(objectDiff({
+        cost: 1,
+        additions: { foo: {}},
+        omissions: {},
+        changes: {},
+        equal: {}
+      }));
+    });
+  });
 });

@@ -61,4 +61,22 @@ suite('assertActualIsEqualToExpected', (): void => {
       }))
     );
   });
+
+  suite('regression tests', (): void => {
+    test('recognizes empty reference types as difference.', async (): Promise<void> => {
+      const actual = { foo: []};
+      const expected = {};
+
+      assert.that(
+        assertActualIsEqualToExpected(actual, expected)
+      ).is.equalTo(
+        error(new AssertionFailed({
+          message: 'The values are not equal.',
+          actual: prettyPrint(actual),
+          expected: prettyPrint(expected),
+          diff: prettyPrintDiff(compare(actual, expected))
+        }))
+      );
+    });
+  });
 });
