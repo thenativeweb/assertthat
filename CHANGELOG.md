@@ -1,3 +1,10 @@
+## [6.3.14](https://github.com/thenativeweb/assertthat/compare/6.3.13...6.3.14) (2021-11-04)
+
+
+### Bug Fixes
+
+* Empty arrays/objects now have size 1. ([#398](https://github.com/thenativeweb/assertthat/issues/398)) ([7f44bd3](https://github.com/thenativeweb/assertthat/commit/7f44bd3d7fb168d94c15a9da359c11e0058cc5c8))
+
 ## [6.3.13](https://github.com/thenativeweb/assertthat/compare/6.3.12...6.3.13) (2021-08-16)
 
 
