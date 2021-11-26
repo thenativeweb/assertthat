@@ -75,7 +75,7 @@ const compareStrings = function (
     });
   }
 
-  let actualExploded = actual.split('');
+  let actualExploded = [ ...actual ];
 
   if (actualExploded.length > maximumStringLengthForPreciseDiff) {
     actualExploded = intersperse(actual.split(' '), ' ');
@@ -84,7 +84,7 @@ const compareStrings = function (
     actualExploded = intersperse(actual.split('\n'), '\n');
   }
 
-  let expectedExploded = expected.split('');
+  let expectedExploded = [ ...expected ];
 
   if (expectedExploded.length > maximumStringLengthForPreciseDiff) {
     expectedExploded = intersperse(expected.split(' '), ' ');
