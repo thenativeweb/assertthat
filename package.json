@@ -33,7 +33,7 @@
   "types": "build/lib/assertthat.d.ts",
   "dependencies": {
     "@types/common-tags": "1.8.1",
-    "@types/uuid": "8.3.3",
+    "@types/uuid": "8.3.4",
     "chalk": "4.1.2",
     "common-tags": "1.8.2",
     "defekt": "8.0.0",
