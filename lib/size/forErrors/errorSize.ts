@@ -1,12 +1,12 @@
+import { makeErrorLessShitty } from '../../types/LessShittyError';
 import { objectSize } from '../forObjects/objectSize';
 
 const errorSize = function <TError extends Error>(value: TError): number {
-  const errorButWithoutTheShittiness = {
-    ...value,
-    message: value.message
-  };
+  const lessShittyError = makeErrorLessShitty({
+    error: value
+  });
 
-  return objectSize(errorButWithoutTheShittiness);
+  return objectSize(lessShittyError);
 };
 
 export {
