@@ -35,26 +35,26 @@ const that: AssertThat = (actual: any): any => ({
   is: {
     ...getAssertionsForAny(actual),
 
-    ...isSet(actual) ? getAssertionsForSet(actual) : {},
-    ...isMap(actual) ? getAssertionsForMap(actual) : {},
-    ...isArray(actual) ? getAssertionsForArray(actual) : {},
-    ...isResult(actual) ? getAssertionsForResult(actual) : {},
     ...isNumber(actual) ? getAssertionsForNumber(actual) : {},
     ...isString(actual) ? getAssertionsForString(actual) : {},
     ...isFunction(actual) ? getAssertionsForFunction(actual) : {},
     ...isObject(actual) ? getAssertionsForObject(actual) : {},
+    ...isSet(actual) ? getAssertionsForSet(actual) : {},
+    ...isMap(actual) ? getAssertionsForMap(actual) : {},
+    ...isArray(actual) ? getAssertionsForArray(actual) : {},
+    ...isResult(actual) ? getAssertionsForResult(actual) : {},
 
     not: {
       ...getNegatedAssertionsForAny(actual),
 
-      ...isSet(actual) ? getNegatedAssertionsForSet(actual) : {},
-      ...isMap(actual) ? getNegatedAssertionsForMap(actual) : {},
-      ...isArray(actual) ? getNegatedAssertionsForArray(actual) : {},
-      ...isResult(actual) ? getNegatedAssertionsForResult(actual) : {},
       ...isNumber(actual) ? getNegatedAssertionsForNumber(actual) : {},
       ...isString(actual) ? getNegatedAssertionsForString(actual) : {},
       ...isFunction(actual) ? getNegatedAssertionsForFunction(actual) : {},
-      ...isObject(actual) ? getNegatedAssertionsForObject(actual) : {}
+      ...isObject(actual) ? getNegatedAssertionsForObject(actual) : {},
+      ...isSet(actual) ? getNegatedAssertionsForSet(actual) : {},
+      ...isMap(actual) ? getNegatedAssertionsForMap(actual) : {},
+      ...isArray(actual) ? getNegatedAssertionsForArray(actual) : {},
+      ...isResult(actual) ? getNegatedAssertionsForResult(actual) : {}
     }
   }
 });
