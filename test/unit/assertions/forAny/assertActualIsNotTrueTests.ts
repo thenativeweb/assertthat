@@ -17,4 +17,10 @@ suite('assertActualIsNotTrue', (): void => {
       message: 'The value is true.'
     })));
   });
+
+  test('does not return an error if actual is something other than false.', async (): Promise<void> => {
+    const actual = 'foo';
+
+    assert.that(assertActualIsNotTrue(actual)).is.equalTo(value());
+  });
 });
