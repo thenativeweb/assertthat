@@ -1,6 +1,6 @@
-import { Result } from 'defekt';
-import { AssertionFailed } from '../../../errors';
 import { assertAnyIsNotIdenticalToExpected } from '../../forAny/assertAnyIsNotIdenticalToExpected';
+import { AssertionFailed } from '../../../errors';
+import { Result } from 'defekt';
 
 const assertActualIsNotIdenticalTo = function (
   actual: any,
