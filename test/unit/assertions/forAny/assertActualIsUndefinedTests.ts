@@ -1,5 +1,5 @@
 import { assert } from '../../../../lib';
-import { assertActualIsUndefined } from '../../../../lib/assertions/forAny/assertActualIsUndefined';
+import { assertAnyIsUndefined } from '../../../../lib/assertions/forAny/assertAnyIsUndefined';
 import { AssertionFailed } from '../../../../lib/errors';
 import { prettyPrint } from '../../../../lib/prettyPrint/typeAware/prettyPrint';
 import { error, value } from 'defekt';
@@ -9,7 +9,7 @@ suite('assertActualIsUndefined', (): void => {
     const actual = undefined;
 
     assert.that(
-      assertActualIsUndefined(actual)
+      assertAnyIsUndefined(actual)
     ).is.equalTo(
       value()
     );
@@ -19,7 +19,7 @@ suite('assertActualIsUndefined', (): void => {
     const actual = 15;
 
     assert.that(
-      assertActualIsUndefined(actual)
+      assertAnyIsUndefined(actual)
     ).is.equalTo(
       error(new AssertionFailed({
         message: 'The value is not undefined.',

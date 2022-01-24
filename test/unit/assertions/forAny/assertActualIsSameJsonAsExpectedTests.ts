@@ -1,5 +1,5 @@
 import { assert } from '../../../../lib';
-import { assertActualIsSameJsonAsExpected } from '../../../../lib/assertions/forAny/assertActualIsSameJsonAsExpected';
+import { assertAnyIsSameJsonAsExpected } from '../../../../lib/assertions/forAny/assertAnyIsSameJsonAsExpected';
 import { AssertionFailed } from '../../../../lib/errors';
 import { compare } from '../../../../lib/comparisons/typeAware/compare';
 import { prettyPrintDiff } from '../../../../lib/prettyPrint/typeAware/prettyPrintDiff';
@@ -21,7 +21,7 @@ suite('assertActualIsSameJsonAsExpected', (): void => {
     };
 
     assert.that(
-      assertActualIsSameJsonAsExpected(actual, expected)
+      assertAnyIsSameJsonAsExpected(actual, expected)
     ).is.equalTo(
       value()
     );
@@ -42,7 +42,7 @@ suite('assertActualIsSameJsonAsExpected', (): void => {
     };
 
     assert.that(
-      assertActualIsSameJsonAsExpected(actual, expected)
+      assertAnyIsSameJsonAsExpected(actual, expected)
     ).is.equalTo(
       error(new AssertionFailed({
         message: 'The values do not have the same JSON representation.',

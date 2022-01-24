@@ -1,5 +1,5 @@
 import { assert } from '../../../../lib';
-import { assertActualIsNotFalsy } from '../../../../lib/assertions/forAny/assertActualIsNotFalsy';
+import { assertAnyIsNotFalsy } from '../../../../lib/assertions/forAny/assertAnyIsNotFalsy';
 import { AssertionFailed } from '../../../../lib/errors';
 import { prettyPrint } from '../../../../lib/prettyPrint/typeAware/prettyPrint';
 import { error, value } from 'defekt';
@@ -9,7 +9,7 @@ suite('assertActualIsNotFalsy', (): void => {
     const actual = 15;
 
     assert.that(
-      assertActualIsNotFalsy(actual)
+      assertAnyIsNotFalsy(actual)
     ).is.equalTo(
       value()
     );
@@ -19,7 +19,7 @@ suite('assertActualIsNotFalsy', (): void => {
     const actual = 0;
 
     assert.that(
-      assertActualIsNotFalsy(actual)
+      assertAnyIsNotFalsy(actual)
     ).is.equalTo(
       error(new AssertionFailed({
         message: 'The value is falsy.',

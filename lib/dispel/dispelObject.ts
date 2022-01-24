@@ -6,7 +6,7 @@ const dispelObject = function (
   value: object,
   path = '/',
   ancestors: Ancestors = []
-): any[] | Recursion {
+): object | Recursion {
   for (const ancestor of ancestors) {
     if (value === ancestor.reference) {
       return recursion({

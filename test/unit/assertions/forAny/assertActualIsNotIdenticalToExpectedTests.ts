@@ -1,5 +1,5 @@
 import { assert } from '../../../../lib/assertthat';
-import { assertActualIsNotIdenticalToExpected } from '../../../../lib/assertions/forAny/assertActualIsNotIdenticalToExpected';
+import { assertAnyIsNotIdenticalToExpected } from '../../../../lib/assertions/forAny/assertAnyIsNotIdenticalToExpected';
 import { AssertionFailed } from '../../../../lib/errors';
 import { error, value } from 'defekt';
 
@@ -9,7 +9,7 @@ suite('assertActualIsNotIdenticalToExpected', (): void => {
     const expected = {};
 
     assert.that(
-      assertActualIsNotIdenticalToExpected(actual, expected)
+      assertAnyIsNotIdenticalToExpected(actual, expected)
     ).is.equalTo(
       value()
     );
@@ -20,7 +20,7 @@ suite('assertActualIsNotIdenticalToExpected', (): void => {
     const expected = actual;
 
     assert.that(
-      assertActualIsNotIdenticalToExpected(actual, expected)
+      assertAnyIsNotIdenticalToExpected(actual, expected)
     ).is.equalTo(
       error(new AssertionFailed({
         message: 'The values are identical.'
