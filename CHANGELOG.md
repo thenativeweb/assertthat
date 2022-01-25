@@ -1,3 +1,10 @@
+# [6.4.0](https://github.com/thenativeweb/assertthat/compare/6.3.14...6.4.0) (2022-01-25)
+
+
+### Features
+
+* Release updated dependencies. ([#410](https://github.com/thenativeweb/assertthat/issues/410)) ([49cc784](https://github.com/thenativeweb/assertthat/commit/49cc784c84556a91d0cb245644e780fbe7a7f011))
+
 ## [6.3.14](https://github.com/thenativeweb/assertthat/compare/6.3.13...6.3.14) (2021-11-04)
 
 
