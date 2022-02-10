@@ -326,9 +326,9 @@ assert.that(actual).is.containingAnyOf([ 'native', 'web' ]);
 assert.that(actual).is.containingAllOf([ 'native', 'web' ]);
 ```
 
-## Asserting on the contents of arrays, sets and saps
+## Asserting on the contents of arrays, sets, and maps
 
-It is possible to run the same assertion on all values in an array, set or map:
+It is possible to run the same assertion on all values in an array, set, or map:
 
 ```javascript
 assert.that(arrayOfStrings).each.is.startingWith('foo');
