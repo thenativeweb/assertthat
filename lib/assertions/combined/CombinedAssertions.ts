@@ -17,8 +17,7 @@ type CombinedAssertions<TValue> =
           TValue extends Result<any, Error> ? ResultAssertions :
             TValue extends number ? NumberAssertions :
               TValue extends string ? StringAssertions :
-              // eslint-disable-next-line @typescript-eslint/ban-types
-                TValue extends Function ? FunctionAssertions :
+                TValue extends (...args: any[]) => any ? FunctionAssertions :
                   TValue extends object ? ObjectAssertions :
                     CommonAssertions<TValue>);
 
