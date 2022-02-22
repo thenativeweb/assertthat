@@ -89,6 +89,8 @@ suite('wrapAssertionForIterable', (): void => {
     });
 
     test('it augments the error message to point to the relevant item of the map.', async (): Promise<void> => {
+      // This seems to be a false positive.
+      // eslint-disable-next-line @typescript-eslint/no-extra-parens
       const aValue = new Map<string, (...args: any[]) => any>([
         [ 'foo', async (): Promise<void> => {
           throw new Error('Foo.');
