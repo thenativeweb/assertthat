@@ -59,8 +59,6 @@ import { report } from '../../report';
 import { Type } from 'typedescriptor';
 import { wrapAssertionForIterable, wrapAsyncAssertionForIterable } from '../../wrapAssertionForIterable';
 
-// This is where type safety goes to die. I hate this file.
-
 const getCombinedAssertions = function <TAny>(actual: TAny): CombinedAssertions<TAny> {
   return {
     anError (): void {
