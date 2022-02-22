@@ -1,9 +1,8 @@
 import { AssertionFailed } from '../../errors';
 import { error, Result, value } from 'defekt';
 
-/* eslint-disable @typescript-eslint/ban-types */
 const assertFunctionIsThrowingAsync = async function <TError extends Error = Error> (
-  actual: Function,
+  actual: (...args: any[]) => any,
   expected?: string | RegExp | ((ex: TError) => boolean)
 ): Promise<Result<undefined, AssertionFailed>> {
   try {
@@ -60,7 +59,6 @@ const assertFunctionIsThrowingAsync = async function <TError extends Error = Err
     message: 'The function did not throw an asynchronous exception.'
   }));
 };
-/* eslint-enable @typescript-eslint/ban-types */
 
 export {
   assertFunctionIsThrowingAsync

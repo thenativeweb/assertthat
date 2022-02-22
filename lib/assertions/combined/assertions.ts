@@ -108,8 +108,7 @@ const getCombinedAssertions = function <TAny>(actual: TAny): CombinedAssertions<
     identicalTo (expected: TAny): void {
       report(assertActualIsIdenticalTo(actual, expected));
     },
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    instanceOf (expected: Function): void {
+    instanceOf (expected: (...args: any[]) => any): void {
       report(assertActualIsInstanceOf(actual as any, expected));
     },
     lessThan (expected: number): void {
@@ -198,8 +197,7 @@ const getNegatedCombinedAssertions = function <TAny>(actual: TAny): CombinedAsse
     identicalTo (expected: TAny): void {
       report(assertActualIsNotIdenticalTo(actual, expected));
     },
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    instanceOf (expected: Function): void {
+    instanceOf (expected: (...args: any[]) => any): void {
       report(assertActualIsNotInstanceOf(actual as any, expected));
     },
     lessThan (expected: number): void {
@@ -288,8 +286,7 @@ const getCombinedAssertionsForEach = function <TAny>(actual: TAny): CombinedAsse
     identicalTo (expected: TAny): void {
       report(wrapAssertionForIterable(assertActualIsIdenticalTo)(actual as any, expected));
     },
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    instanceOf (expected: Function): void {
+    instanceOf (expected: (...args: any[]) => any): void {
       report(wrapAssertionForIterable(assertActualIsInstanceOf)(actual as any, expected));
     },
     lessThan (expected: number): void {
@@ -378,8 +375,7 @@ const getNegatedCombinedAssertionsForEach = function <TAny>(actual: TAny): Combi
     identicalTo (expected: TAny): void {
       report(wrapAssertionForIterable(assertActualIsNotIdenticalTo)(actual as any, expected));
     },
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    instanceOf (expected: Function): void {
+    instanceOf (expected: (...args: any[]) => any): void {
       report(wrapAssertionForIterable(assertActualIsNotInstanceOf)(actual as any, expected));
     },
     lessThan (expected: number): void {

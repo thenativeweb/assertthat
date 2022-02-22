@@ -5,8 +5,7 @@ import { error, Result, value } from 'defekt';
 
 const assertObjectIsNotInstanceOfClass = function (
   actual: object,
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  expected: Function
+  expected: (...args: any[]) => any
 ): Result<undefined, AssertionFailed> {
   if (!(actual instanceof expected)) {
     return value();

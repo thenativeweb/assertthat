@@ -89,8 +89,7 @@ suite('wrapAssertionForIterable', (): void => {
     });
 
     test('it augments the error message to point to the relevant item of the map.', async (): Promise<void> => {
-      // eslint-disable-next-line @typescript-eslint/ban-types
-      const aValue = new Map<string, Function>([
+      const aValue = new Map<string, (...args: any[]) => any>([
         [ 'foo', async (): Promise<void> => {
           throw new Error('Foo.');
         } ],
