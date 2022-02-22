@@ -1,7 +1,8 @@
 interface ObjectAssertions {
   atLeast: (expected: object) => void;
   atMost: (expected: object) => void;
-  instanceOf: (expected: (...args: any[]) => any) => void;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  instanceOf: (expected: Function) => void;
   empty: () => void;
 }
 
