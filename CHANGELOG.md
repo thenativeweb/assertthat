@@ -1,3 +1,10 @@
+# [6.5.0](https://github.com/thenativeweb/assertthat/compare/6.4.0...6.5.0) (2022-03-22)
+
+
+### Features
+
+* Add each-assertions. ([#408](https://github.com/thenativeweb/assertthat/issues/408)) ([0bcaac6](https://github.com/thenativeweb/assertthat/commit/0bcaac68f53d5eee47810682ab868fad666194e3))
+
 # [6.4.0](https://github.com/thenativeweb/assertthat/compare/6.3.14...6.4.0) (2022-01-25)
 
 
