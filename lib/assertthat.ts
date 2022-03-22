@@ -5,11 +5,12 @@ import {
   getNegatedCombinedAssertions, getNegatedCombinedAssertionsForEach
 } from './assertions/combined/assertions';
 
-type AssertThat = <TValue>(value: TValue) => ({
+type AssertThat = (<TValue>(value: TValue) => ({
   is: CombinedAssertions<TValue> & {
     not: CombinedAssertions<TValue>;
   };
-  each: TValue extends Set<infer TContent> ? {
+})) & {
+  eachElementOf: <TValue>(value: TValue) => TValue extends Set<infer TContent> ? {
     is: CombinedAssertions<TContent> & {
       not: CombinedAssertions<TContent>;
     };
@@ -22,23 +23,26 @@ type AssertThat = <TValue>(value: TValue) => ({
       not: CombinedAssertions<TContent>;
     };
   } : never;
-});
+};
 
 // eslint-disable-next-line consistent-this
-const that: AssertThat = (actual: any): any => ({
-  is: {
-    ...getCombinedAssertions(actual),
-    not: {
-      ...getNegatedCombinedAssertions(actual)
-    }
-  },
-  each: {
+const that: AssertThat = function (actual: any): any {
+  return {
     is: {
-      ...getCombinedAssertionsForEach(actual),
-
+      ...getCombinedAssertions(actual),
       not: {
-        ...getNegatedCombinedAssertionsForEach(actual)
+        ...getNegatedCombinedAssertions(actual)
       }
+    }
+  };
+};
+
+that.eachElementOf = (actualCollection: any): any => ({
+  is: {
+    ...getCombinedAssertionsForEach(actualCollection),
+
+    not: {
+      ...getNegatedCombinedAssertionsForEach(actualCollection)
     }
   }
 });

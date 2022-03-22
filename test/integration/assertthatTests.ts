@@ -29,27 +29,27 @@ suite(`assertthat's types allow the required assertions on each type`, (): void 
       assert.that(aValue).is.not.false();
       assert.that(aValue).is.not.ofType('number');
 
-      assert.that([ 'foo', 'foo' ]).each.is.equalTo('foo');
-      assert.that([ 'foo', 'foo' ]).each.is.identicalTo('foo');
-      assert.that([ 'foo', 'foo' ]).each.is.sameJsonAs('foo');
-      assert.that([ '', false, undefined ]).each.is.falsy();
-      assert.that([ true, 'foo', 5 ]).each.is.truthy();
-      assert.that([ null, null ]).each.is.null();
-      assert.that([ undefined, undefined ]).each.is.undefined();
-      assert.that([ true, true ]).each.is.true();
-      assert.that([ false, false ]).each.is.false();
-      assert.that([ 'foo', 'bar' ]).each.is.ofType('string');
+      assert.that.eachElementOf([ 'foo', 'foo' ]).is.equalTo('foo');
+      assert.that.eachElementOf([ 'foo', 'foo' ]).is.identicalTo('foo');
+      assert.that.eachElementOf([ 'foo', 'foo' ]).is.sameJsonAs('foo');
+      assert.that.eachElementOf([ '', false, undefined ]).is.falsy();
+      assert.that.eachElementOf([ true, 'foo', 5 ]).is.truthy();
+      assert.that.eachElementOf([ null, null ]).is.null();
+      assert.that.eachElementOf([ undefined, undefined ]).is.undefined();
+      assert.that.eachElementOf([ true, true ]).is.true();
+      assert.that.eachElementOf([ false, false ]).is.false();
+      assert.that.eachElementOf([ 'foo', 'bar' ]).is.ofType('string');
 
-      assert.that([ 'foo', 'notbar' ]).each.is.not.equalTo('bar');
-      assert.that([ 'foo', 'notbar' ]).each.is.not.identicalTo('bar');
-      assert.that([ 'foo', 'notbar' ]).each.is.not.sameJsonAs('bar');
-      assert.that([ true, 'foo', 5 ]).each.is.not.falsy();
-      assert.that([ '', false, undefined ]).each.is.not.truthy();
-      assert.that([ true, 'foo', 5 ]).each.is.not.null();
-      assert.that([ true, 'foo', 5 ]).each.is.not.undefined();
-      assert.that([ false, null ]).each.is.not.true();
-      assert.that([ true, null ]).each.is.not.false();
-      assert.that([ 'foo', false, {}]).each.is.not.ofType('number');
+      assert.that.eachElementOf([ 'foo', 'notbar' ]).is.not.equalTo('bar');
+      assert.that.eachElementOf([ 'foo', 'notbar' ]).is.not.identicalTo('bar');
+      assert.that.eachElementOf([ 'foo', 'notbar' ]).is.not.sameJsonAs('bar');
+      assert.that.eachElementOf([ true, 'foo', 5 ]).is.not.falsy();
+      assert.that.eachElementOf([ '', false, undefined ]).is.not.truthy();
+      assert.that.eachElementOf([ true, 'foo', 5 ]).is.not.null();
+      assert.that.eachElementOf([ true, 'foo', 5 ]).is.not.undefined();
+      assert.that.eachElementOf([ false, null ]).is.not.true();
+      assert.that.eachElementOf([ true, null ]).is.not.false();
+      assert.that.eachElementOf([ 'foo', false, {}]).is.not.ofType('number');
     });
   });
 
@@ -73,19 +73,19 @@ suite(`assertthat's types allow the required assertions on each type`, (): void 
       assert.that(aValue).is.not.atMost(new Set([]));
       assert.that(aValue).is.not.empty();
 
-      assert.that([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).each.is.containing('foo');
-      assert.that([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).each.is.containingAllOf([ 'foo' ]);
-      assert.that([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).each.is.containingAnyOf([ 'foo' ]);
-      assert.that([ new Set(), new Set() ]).each.is.atLeast(new Set());
-      assert.that([ new Set(), new Set() ]).each.is.atMost(new Set([ 'foo', 'bar' ]));
-      assert.that([ new Set(), new Set() ]).each.is.empty();
+      assert.that.eachElementOf([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).is.containing('foo');
+      assert.that.eachElementOf([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).is.containingAllOf([ 'foo' ]);
+      assert.that.eachElementOf([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).is.containingAnyOf([ 'foo' ]);
+      assert.that.eachElementOf([ new Set(), new Set() ]).is.atLeast(new Set());
+      assert.that.eachElementOf([ new Set(), new Set() ]).is.atMost(new Set([ 'foo', 'bar' ]));
+      assert.that.eachElementOf([ new Set(), new Set() ]).is.empty();
 
-      assert.that([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).each.is.not.containing('bar');
-      assert.that([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).each.is.not.containingAllOf([ 'bar' ]);
-      assert.that([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).each.is.not.containingAnyOf([ 'bar' ]);
-      assert.that([ new Set() ]).each.is.not.atLeast(new Set([ 'bar' ]));
-      assert.that([ new Set([ 'anything' ]) ]).each.is.not.atMost(new Set([]));
-      assert.that([ new Set([ 'foo' ]), new Set([ 'bar' ]) ]).each.is.not.empty();
+      assert.that.eachElementOf([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).is.not.containing('bar');
+      assert.that.eachElementOf([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).is.not.containingAllOf([ 'bar' ]);
+      assert.that.eachElementOf([ new Set([ 'foo' ]), new Set([ 'foo' ]) ]).is.not.containingAnyOf([ 'bar' ]);
+      assert.that.eachElementOf([ new Set() ]).is.not.atLeast(new Set([ 'bar' ]));
+      assert.that.eachElementOf([ new Set([ 'anything' ]) ]).is.not.atMost(new Set([]));
+      assert.that.eachElementOf([ new Set([ 'foo' ]), new Set([ 'bar' ]) ]).is.not.empty();
     });
   });
 
@@ -103,13 +103,13 @@ suite(`assertthat's types allow the required assertions on each type`, (): void 
       assert.that(aValue).is.not.atMost(new Map());
       assert.that(aValue).is.not.empty();
 
-      assert.that([ new Map([[ 'foo', 'bar' ]]), new Map([[ 'bar', 'foo' ]]) ]).each.is.atLeast(new Map());
-      assert.that([ new Map(), new Map([[ 'foo', 'bar' ]]) ]).each.is.atMost(new Map([[ 'foo', 'bar' ]]));
-      assert.that([ new Map(), new Map() ]).each.is.empty();
+      assert.that.eachElementOf([ new Map([[ 'foo', 'bar' ]]), new Map([[ 'bar', 'foo' ]]) ]).is.atLeast(new Map());
+      assert.that.eachElementOf([ new Map(), new Map([[ 'foo', 'bar' ]]) ]).is.atMost(new Map([[ 'foo', 'bar' ]]));
+      assert.that.eachElementOf([ new Map(), new Map() ]).is.empty();
 
-      assert.that([ new Map([[ 'foo', 'bar' ]]), new Map() ]).each.is.not.atLeast(new Map([[ 5, 'bar' ], [ 6, 'foo' ]]));
-      assert.that([ new Map([[ 'foo', 'bar' ]]), new Map([[ 'bar', 'foo' ]]) ]).each.is.not.atMost(new Map());
-      assert.that([ new Map([[ 'foo', 'bar' ]]), new Map([[ 'bar', 'foo' ]]) ]).each.is.not.empty();
+      assert.that.eachElementOf([ new Map([[ 'foo', 'bar' ]]), new Map() ]).is.not.atLeast(new Map([[ 5, 'bar' ], [ 6, 'foo' ]]));
+      assert.that.eachElementOf([ new Map([[ 'foo', 'bar' ]]), new Map([[ 'bar', 'foo' ]]) ]).is.not.atMost(new Map());
+      assert.that.eachElementOf([ new Map([[ 'foo', 'bar' ]]), new Map([[ 'bar', 'foo' ]]) ]).is.not.empty();
     });
   });
 
@@ -127,15 +127,15 @@ suite(`assertthat's types allow the required assertions on each type`, (): void 
       assert.that(aValue).is.not.containingAnyOf([ 'bar' ]);
       assert.that(aValue).is.not.empty();
 
-      assert.that([[ 'foo', 'bar' ], [ 'bar', 'foo' ]]).each.is.containing('foo');
-      assert.that([[ 'foo', 'bar' ], [ 'bar', 'foo' ]]).each.is.containingAllOf([ 'foo' ]);
-      assert.that([[ 'foo' ], [ 'bar' ]]).each.is.containingAnyOf([ 'foo', 'bar' ]);
-      assert.that([[], []]).each.is.empty();
+      assert.that.eachElementOf([[ 'foo', 'bar' ], [ 'bar', 'foo' ]]).is.containing('foo');
+      assert.that.eachElementOf([[ 'foo', 'bar' ], [ 'bar', 'foo' ]]).is.containingAllOf([ 'foo' ]);
+      assert.that.eachElementOf([[ 'foo' ], [ 'bar' ]]).is.containingAnyOf([ 'foo', 'bar' ]);
+      assert.that.eachElementOf([[], []]).is.empty();
 
-      assert.that([[ 'foo' ], []]).each.is.not.containing('bar');
-      assert.that([[ 'foo' ], []]).each.is.not.containingAllOf([ 'bar' ]);
-      assert.that([[ 'foo' ], []]).each.is.not.containingAnyOf([ 'bar' ]);
-      assert.that([[ 'foo' ], [ 'bar' ]]).each.is.not.empty();
+      assert.that.eachElementOf([[ 'foo' ], []]).is.not.containing('bar');
+      assert.that.eachElementOf([[ 'foo' ], []]).is.not.containingAllOf([ 'bar' ]);
+      assert.that.eachElementOf([[ 'foo' ], []]).is.not.containingAnyOf([ 'bar' ]);
+      assert.that.eachElementOf([[ 'foo' ], [ 'bar' ]]).is.not.empty();
     });
   });
 
@@ -152,13 +152,13 @@ suite(`assertthat's types allow the required assertions on each type`, (): void 
       assert.that(aValue).is.not.anError();
       assert.that(aValue).is.not.anErrorWithMessage('Foo.');
 
-      assert.that([ value('foo'), value(5) ]).each.is.aValue();
-      assert.that([ error(new Error('Foo.')), error(new Error('Bar.')) ]).each.is.anError();
-      assert.that([ error(new Error('Foo.')), error(new Error('Foo.')) ]).each.is.anErrorWithMessage('Foo.');
+      assert.that.eachElementOf([ value('foo'), value(5) ]).is.aValue();
+      assert.that.eachElementOf([ error(new Error('Foo.')), error(new Error('Bar.')) ]).is.anError();
+      assert.that.eachElementOf([ error(new Error('Foo.')), error(new Error('Foo.')) ]).is.anErrorWithMessage('Foo.');
 
-      assert.that([ error(new Error('Foo.')), error(new Error('Bar.')) ]).each.is.not.aValue();
-      assert.that([ value(5), value('foo') ]).each.is.not.anError();
-      assert.that([ value(5), error(new Error('Bar.')) ]).each.is.not.anErrorWithMessage('Foo.');
+      assert.that.eachElementOf([ error(new Error('Foo.')), error(new Error('Bar.')) ]).is.not.aValue();
+      assert.that.eachElementOf([ value(5), value('foo') ]).is.not.anError();
+      assert.that.eachElementOf([ value(5), error(new Error('Bar.')) ]).is.not.anErrorWithMessage('Foo.');
     });
   });
 
@@ -180,19 +180,19 @@ suite(`assertthat's types allow the required assertions on each type`, (): void 
       // eslint-disable-next-line new-cap
       assert.that(aValue).is.not.NaN();
 
-      assert.that([ 5, 8 ]).each.is.greaterThan(4);
-      assert.that([ 3, 5 ]).each.is.lessThan(6);
-      assert.that([ 5, 8 ]).each.is.atLeast(5);
-      assert.that([ 3, 5 ]).each.is.atMost(5);
+      assert.that.eachElementOf([ 5, 8 ]).is.greaterThan(4);
+      assert.that.eachElementOf([ 3, 5 ]).is.lessThan(6);
+      assert.that.eachElementOf([ 5, 8 ]).is.atLeast(5);
+      assert.that.eachElementOf([ 3, 5 ]).is.atMost(5);
       // eslint-disable-next-line new-cap
-      assert.that([ Number.NaN, Number.NaN ]).each.is.NaN();
+      assert.that.eachElementOf([ Number.NaN, Number.NaN ]).is.NaN();
 
-      assert.that([ 3, 5 ]).each.is.not.greaterThan(5);
-      assert.that([ 5, 8 ]).each.is.not.lessThan(5);
-      assert.that([ 3, 5 ]).each.is.not.atLeast(6);
-      assert.that([ 5, 8 ]).each.is.not.atMost(4);
+      assert.that.eachElementOf([ 3, 5 ]).is.not.greaterThan(5);
+      assert.that.eachElementOf([ 5, 8 ]).is.not.lessThan(5);
+      assert.that.eachElementOf([ 3, 5 ]).is.not.atLeast(6);
+      assert.that.eachElementOf([ 5, 8 ]).is.not.atMost(4);
       // eslint-disable-next-line new-cap
-      assert.that([ 5, 8 ]).each.is.not.NaN();
+      assert.that.eachElementOf([ 5, 8 ]).is.not.NaN();
     });
   });
 
@@ -216,21 +216,21 @@ suite(`assertthat's types allow the required assertions on each type`, (): void 
       assert.that(aValue).is.not.empty();
       assert.that(aValue).is.not.matching(/bar/u);
 
-      assert.that([ 'foo', 'bafo', 'fob' ]).each.is.containing('fo');
-      assert.that([ 'foo', 'foobar' ]).each.is.startingWith('fo');
-      assert.that([ 'foo', 'boo' ]).each.is.endingWith('oo');
-      assert.that([ 'fo', 'of', 'wow even this contains all relevant letters f' ]).each.is.containingAllOf([ 'f', 'o' ]);
-      assert.that([ 'foo', 'xxx' ]).each.is.containingAnyOf([ 'f', 'x' ]);
-      assert.that([ '', '' ]).each.is.empty();
-      assert.that([ 'foo', 'foobar' ]).each.is.matching(/foo/u);
+      assert.that.eachElementOf([ 'foo', 'bafo', 'fob' ]).is.containing('fo');
+      assert.that.eachElementOf([ 'foo', 'foobar' ]).is.startingWith('fo');
+      assert.that.eachElementOf([ 'foo', 'boo' ]).is.endingWith('oo');
+      assert.that.eachElementOf([ 'fo', 'of', 'wow even this contains all relevant letters f' ]).is.containingAllOf([ 'f', 'o' ]);
+      assert.that.eachElementOf([ 'foo', 'xxx' ]).is.containingAnyOf([ 'f', 'x' ]);
+      assert.that.eachElementOf([ '', '' ]).is.empty();
+      assert.that.eachElementOf([ 'foo', 'foobar' ]).is.matching(/foo/u);
 
-      assert.that([ 'foo', 'bfaoro' ]).each.is.not.containing('bar');
-      assert.that([ 'foo', 'foobar' ]).each.is.not.startingWith('bar');
-      assert.that([ 'foo', 'barfoo' ]).each.is.not.endingWith('bar');
-      assert.that([ 'boo', 'far' ]).each.is.not.containingAllOf([ 'b', 'f' ]);
-      assert.that([ 'foo', 'heck' ]).each.is.not.containingAnyOf([ 'b', 'a' ]);
-      assert.that([ 'not', 'empty' ]).each.is.not.empty();
-      assert.that([ 'foo', 'bam' ]).each.is.not.matching(/bar/u);
+      assert.that.eachElementOf([ 'foo', 'bfaoro' ]).is.not.containing('bar');
+      assert.that.eachElementOf([ 'foo', 'foobar' ]).is.not.startingWith('bar');
+      assert.that.eachElementOf([ 'foo', 'barfoo' ]).is.not.endingWith('bar');
+      assert.that.eachElementOf([ 'boo', 'far' ]).is.not.containingAllOf([ 'b', 'f' ]);
+      assert.that.eachElementOf([ 'foo', 'heck' ]).is.not.containingAnyOf([ 'b', 'a' ]);
+      assert.that.eachElementOf([ 'not', 'empty' ]).is.not.empty();
+      assert.that.eachElementOf([ 'foo', 'bam' ]).is.not.matching(/bar/u);
     });
   });
 
@@ -250,35 +250,35 @@ suite(`assertthat's types allow the required assertions on each type`, (): void 
         // Empty function.
       }).is.not.throwingAsync();
 
-      assert.that([
+      assert.that.eachElementOf([
         (): void => {
           throw new Error('Foo.');
         },
         (): void => {
           throw new Error('Bar.');
         }
-      ]).each.is.throwing();
-      await assert.that([
+      ]).is.throwing();
+      await assert.that.eachElementOf([
         async (): Promise<void> => {
           throw new Error('Foo.');
         },
         async (): Promise<void> => {
           throw new Error('Bar.');
         }
-      ]).each.is.throwingAsync();
+      ]).is.throwingAsync();
 
-      assert.that([
+      assert.that.eachElementOf([
         (): void => {
         // Empty function.
         },
         (): number => 5
-      ]).each.is.not.throwing();
-      await assert.that([
+      ]).is.not.throwing();
+      await assert.that.eachElementOf([
         async (): Promise<void> => {
         // Empty function.
         },
         async (): Promise<number> => 5
-      ]).each.is.not.throwingAsync();
+      ]).is.not.throwingAsync();
     });
   });
 
@@ -303,14 +303,14 @@ suite(`assertthat's types allow the required assertions on each type`, (): void 
     assert.that(aValue).is.not.instanceOf(Array);
     assert.that(aValue).is.not.empty();
 
-    assert.that([{ foo: 'bar' }, { foo: 5 }]).each.is.atLeast({});
-    assert.that([{ foo: 'foo' }, {}]).each.is.atMost({ foo: 'foo', bar: 'bar' });
-    assert.that([ new Foo(), new Foo() ]).each.is.instanceOf(Foo);
-    assert.that([{}, {}]).each.is.empty();
+    assert.that.eachElementOf([{ foo: 'bar' }, { foo: 5 }]).is.atLeast({});
+    assert.that.eachElementOf([{ foo: 'foo' }, {}]).is.atMost({ foo: 'foo', bar: 'bar' });
+    assert.that.eachElementOf([ new Foo(), new Foo() ]).is.instanceOf(Foo);
+    assert.that.eachElementOf([{}, {}]).is.empty();
 
-    assert.that([{ foo: 'foo' }, {}]).each.is.not.atLeast({ bar: 'bar' });
-    assert.that([{ foo: 'foo' }, { bar: 5 }]).each.is.not.atMost({});
-    assert.that([{ foo: 'foo' }, { bar: 'bar' }]).each.is.not.instanceOf(Array);
-    assert.that([{ foo: 'foo' }, { bar: 'bar' }]).each.is.not.empty();
+    assert.that.eachElementOf([{ foo: 'foo' }, {}]).is.not.atLeast({ bar: 'bar' });
+    assert.that.eachElementOf([{ foo: 'foo' }, { bar: 5 }]).is.not.atMost({});
+    assert.that.eachElementOf([{ foo: 'foo' }, { bar: 'bar' }]).is.not.instanceOf(Array);
+    assert.that.eachElementOf([{ foo: 'foo' }, { bar: 'bar' }]).is.not.empty();
   });
 });
