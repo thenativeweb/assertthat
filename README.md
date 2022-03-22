@@ -331,14 +331,14 @@ assert.that(actual).is.containingAllOf([ 'native', 'web' ]);
 It is possible to run the same assertion on all values in an array, set, or map:
 
 ```javascript
-assert.that(arrayOfStrings).each.is.startingWith('foo');
+assert.that.eachElementOf(arrayOfStrings).is.startingWith('foo');
 
-assert.that(setOfObjects).each.is.atLeast({ foo: 'bar' });
+assert.that.eachElementOf(setOfObjects).is.atLeast({ foo: 'bar' });
 
-assert.that(mapOfThings).each.is.not.null();
+assert.that.eachElementOf(mapOfThings).is.not.null();
 ```
 
-While the `.each.is...` assertions run the assertion on each item of arrays and sets, it runs the assertions only on the values of maps.
+While the `.eachElementOf(...).is...` assertions run the assertion on each item of arrays and sets, it runs the assertions only on the values of maps.
 
 ## Caveats
 
