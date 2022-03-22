@@ -36,15 +36,15 @@
     "@types/uuid": "8.3.4",
     "chalk": "4.1.2",
     "common-tags": "1.8.2",
-    "defekt": "8.1.0",
+    "defekt": "8.2.0",
     "typedescriptor": "4.0.12",
     "uuid": "8.3.2"
   },
   "devDependencies": {
     "measure-time": "5.0.7",
-    "roboter": "12.7.0",
+    "roboter": "12.7.1",
     "semantic-release-configuration": "2.0.7",
-    "zufall": "1.1.1"
+    "zufall": "1.1.2"
   },
   "scripts": {},
   "repository": {
