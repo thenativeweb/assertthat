@@ -1,5 +1,5 @@
 import { assert } from '../../../../lib';
-import { assertActualIsNotOfType } from '../../../../lib/assertions/forAny/assertActualIsNotOfType';
+import { assertAnyIsNotOfType } from '../../../../lib/assertions/forAny/assertAnyIsNotOfType';
 import { AssertionFailed } from '../../../../lib/errors';
 import { error } from 'defekt';
 import { prettyPrint } from '../../../../lib/prettyPrint/typeAware/prettyPrint';
@@ -11,7 +11,7 @@ suite('assertActualIsNotOfType', (): void => {
     const type = 'string';
 
     assert.that(
-      assertActualIsNotOfType(actual, type as Type | 'result')
+      assertAnyIsNotOfType(actual, type as Type | 'result')
     ).is.aValue();
   });
 
@@ -32,7 +32,7 @@ suite('assertActualIsNotOfType', (): void => {
   ]) {
     test('returns an error when asserting for a matching type.', async (): Promise<void> => {
       assert.that(
-        assertActualIsNotOfType(value, type as Type | 'result')
+        assertAnyIsNotOfType(value, type as Type | 'result')
       ).is.equalTo(error(new AssertionFailed({
         message: `The value is of type ${type}.`,
         actual: prettyPrint(value)

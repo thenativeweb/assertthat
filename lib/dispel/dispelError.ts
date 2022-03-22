@@ -1,12 +1,13 @@
 import { Ancestors } from './Ancestors';
 import { dispel } from './dispel';
+import { makeErrorLessShitty } from '../types/LessShittyError';
 import { recursion, Recursion } from '../types/Recursion';
 
-const dispelError = function (
-  value: Error,
+const dispelError = function <TError extends Error>(
+  value: TError,
   path = '/',
   ancestors: Ancestors = []
-): Error | Recursion {
+): TError | Recursion {
   for (const ancestor of ancestors) {
     if (value === ancestor.reference) {
       return recursion({
@@ -15,10 +16,9 @@ const dispelError = function (
     }
   }
 
-  const errorButWithoutTheShittiness = {
-    ...value,
-    message: value.message
-  };
+  const lessShittyError = makeErrorLessShitty({
+    error: value
+  });
 
   const newAncestors = [
     ...ancestors,
@@ -30,7 +30,7 @@ const dispelError = function (
 
   const dispelledError = Object.create(value);
 
-  for (const [ key, property ] of Object.entries(errorButWithoutTheShittiness)) {
+  for (const [ key, property ] of Object.entries(lessShittyError)) {
     dispelledError[key] = dispel(property, `${path}${key}/`, newAncestors);
   }
 

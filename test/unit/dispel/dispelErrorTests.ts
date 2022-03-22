@@ -27,6 +27,7 @@ suite('dispelError', (): void => {
     assert.that(dispelledError).is.instanceOf(CustomError);
     assert.that(dispelledError).is.equalTo({
       message: 'Message.',
+      name: 'Error',
       foo: 'Foo.',
       bar: 'Bar.',
       recursion: [ recursion({ recursionPath: '/' }) ]

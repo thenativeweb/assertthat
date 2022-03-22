@@ -1,9 +1,8 @@
 import { AssertionFailed } from '../../errors';
 import { error, Result, value } from 'defekt';
 
-/* eslint-disable @typescript-eslint/ban-types */
 const assertFunctionIsNotThrowing = function <TError extends Error = Error> (
-  actual: Function,
+  actual: (...args: any[]) => any,
   expected?: string | RegExp | ((ex: TError) => boolean)
 ): Result<undefined, AssertionFailed> {
   try {
@@ -43,7 +42,6 @@ const assertFunctionIsNotThrowing = function <TError extends Error = Error> (
 
   return value();
 };
-/* eslint-enable @typescript-eslint/ban-types */
 
 export {
   assertFunctionIsNotThrowing

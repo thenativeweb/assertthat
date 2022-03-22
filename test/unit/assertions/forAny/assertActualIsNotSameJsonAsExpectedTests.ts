@@ -1,5 +1,5 @@
 import { assert } from '../../../../lib';
-import { assertActualIsNotSameJsonAsExpected } from '../../../../lib/assertions/forAny/assertActualIsNotSameJsonAsExpected';
+import { assertAnyIsNotSameJsonAsExpected } from '../../../../lib/assertions/forAny/assertAnyIsNotSameJsonAsExpected';
 import { AssertionFailed } from '../../../../lib/errors';
 import { error, value } from 'defekt';
 
@@ -19,7 +19,7 @@ suite('assertActualIsNotSameJsonAsExpected', (): void => {
     };
 
     assert.that(
-      assertActualIsNotSameJsonAsExpected(actual, expected)
+      assertAnyIsNotSameJsonAsExpected(actual, expected)
     ).is.equalTo(
       value()
     );
@@ -40,7 +40,7 @@ suite('assertActualIsNotSameJsonAsExpected', (): void => {
     };
 
     assert.that(
-      assertActualIsNotSameJsonAsExpected(actual, expected)
+      assertAnyIsNotSameJsonAsExpected(actual, expected)
     ).is.equalTo(
       error(new AssertionFailed({
         message: 'The values have the same JSON representation.',

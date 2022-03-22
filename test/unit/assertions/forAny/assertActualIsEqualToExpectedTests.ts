@@ -1,5 +1,5 @@
 import { assert } from '../../../../lib';
-import { assertActualIsEqualToExpected } from '../../../../lib/assertions/forAny/assertActualIsEqualToExpected';
+import { assertAnyIsEqualToExpected } from '../../../../lib/assertions/forAny/assertAnyIsEqualToExpected';
 import { AssertionFailed } from '../../../../lib/errors';
 import { compare } from '../../../../lib/comparisons/typeAware/compare';
 import { prettyPrint } from '../../../../lib/prettyPrint/typeAware/prettyPrint';
@@ -26,7 +26,7 @@ suite('assertActualIsEqualToExpected', (): void => {
     };
 
     assert.that(
-      assertActualIsEqualToExpected(actual, expected)
+      assertAnyIsEqualToExpected(actual, expected)
     ).is.equalTo(
       value()
     );
@@ -51,7 +51,7 @@ suite('assertActualIsEqualToExpected', (): void => {
     };
 
     assert.that(
-      assertActualIsEqualToExpected(actual, expected)
+      assertAnyIsEqualToExpected(actual, expected)
     ).is.equalTo(
       error(new AssertionFailed({
         message: 'The values are not equal.',
@@ -68,7 +68,7 @@ suite('assertActualIsEqualToExpected', (): void => {
       const expected = {};
 
       assert.that(
-        assertActualIsEqualToExpected(actual, expected)
+        assertAnyIsEqualToExpected(actual, expected)
       ).is.equalTo(
         error(new AssertionFailed({
           message: 'The values are not equal.',

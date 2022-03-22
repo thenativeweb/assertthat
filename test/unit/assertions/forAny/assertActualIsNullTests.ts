@@ -1,5 +1,5 @@
 import { assert } from '../../../../lib';
-import { assertActualIsNull } from '../../../../lib/assertions/forAny/assertActualIsNull';
+import { assertAnyIsNull } from '../../../../lib/assertions/forAny/assertAnyIsNull';
 import { AssertionFailed } from '../../../../lib/errors';
 import { prettyPrint } from '../../../../lib/prettyPrint/typeAware/prettyPrint';
 import { error, value } from 'defekt';
@@ -9,7 +9,7 @@ suite('assertActualIsNull', (): void => {
     const actual = null;
 
     assert.that(
-      assertActualIsNull(actual)
+      assertAnyIsNull(actual)
     ).is.equalTo(
       value()
     );
@@ -19,7 +19,7 @@ suite('assertActualIsNull', (): void => {
     const actual = 15;
 
     assert.that(
-      assertActualIsNull(actual)
+      assertAnyIsNull(actual)
     ).is.equalTo(
       error(new AssertionFailed({
         message: 'The value is not null.',

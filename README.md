@@ -326,6 +326,20 @@ assert.that(actual).is.containingAnyOf([ 'native', 'web' ]);
 assert.that(actual).is.containingAllOf([ 'native', 'web' ]);
 ```
 
+## Asserting on the contents of arrays, sets, and maps
+
+It is possible to run the same assertion on all values in an array, set, or map:
+
+```javascript
+assert.that.eachElementOf(arrayOfStrings).is.startingWith('foo');
+
+assert.that.eachElementOf(setOfObjects).is.atLeast({ foo: 'bar' });
+
+assert.that.eachElementOf(mapOfThings).is.not.null();
+```
+
+While the `.eachElementOf(...).is...` assertions run the assertion on each item of arrays and sets, it runs the assertions only on the values of maps.
+
 ## Caveats
 
 Most assertions build upon an internal comparison using a diff-algorithm. To avoid infinite recursion, all asserted values are first dispelled (i.e. recursions in them are detected and removed). These recursions can in principle be compared by value across arrays and objects. However, this does not work with `Set`s and `Map`s, since a `Map` can have reference types as keys and the element in `Set` can not be uniquely identified in a reproducible way. So comparisons of `Set`s and `Map`s that contain recursions might not work as expected.

@@ -1,5 +1,5 @@
 import { assert } from '../../../../lib';
-import { assertActualIsNotEqualToExpected } from '../../../../lib/assertions/forAny/assertActualIsNotEqualToExpected';
+import { assertAnyIsNotEqualToExpected } from '../../../../lib/assertions/forAny/assertAnyIsNotEqualToExpected';
 import { AssertionFailed } from '../../../../lib/errors';
 import { prettyPrint } from '../../../../lib/prettyPrint/typeAware/prettyPrint';
 import { error, value } from 'defekt';
@@ -24,7 +24,7 @@ suite('assertActualIsNotEqualToExpected', (): void => {
     };
 
     assert.that(
-      assertActualIsNotEqualToExpected(actual, expected)
+      assertAnyIsNotEqualToExpected(actual, expected)
     ).is.equalTo(
       value()
     );
@@ -49,7 +49,7 @@ suite('assertActualIsNotEqualToExpected', (): void => {
     };
 
     assert.that(
-      assertActualIsNotEqualToExpected(actual, expected)
+      assertAnyIsNotEqualToExpected(actual, expected)
     ).is.equalTo(
       error(new AssertionFailed({
         message: 'The values are equal.',

@@ -4,10 +4,8 @@ import { equalDiff, EqualDiff, isEqualDiff } from '../../diffs/EqualDiff';
 import { functionDiff, FunctionDiff } from '../../diffs/forFunctions/FunctionDiff';
 
 const compareFunctions = function (
-/* eslint-disable @typescript-eslint/ban-types */
-  actual: Function,
-  expected: Function
-/* eslint-enable @typescript-eslint/ban-types */
+  actual: (...args: any[]) => any,
+  expected: (...args: any[]) => any
 ): FunctionDiff | EqualDiff {
   const actualStringRepresentation = actual.toString();
   const expectedStringRepresentation = expected.toString();
