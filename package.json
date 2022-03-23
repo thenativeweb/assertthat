@@ -36,13 +36,13 @@
     "@types/uuid": "8.3.4",
     "chalk": "4.1.2",
     "common-tags": "1.8.2",
-    "defekt": "8.2.0",
+    "defekt": "9.0.0",
     "typedescriptor": "4.0.12",
     "uuid": "8.3.2"
   },
   "devDependencies": {
     "measure-time": "5.0.7",
-    "roboter": "12.7.1",
+    "roboter": "13.0.0",
     "semantic-release-configuration": "2.0.7",
     "zufall": "1.1.2"
   },

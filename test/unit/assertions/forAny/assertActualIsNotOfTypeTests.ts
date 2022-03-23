@@ -29,10 +29,10 @@ suite('assertActualIsNotOfType', (): void => {
     [ 'foo', 'string' ],
     [ Symbol('foo'), 'symbol' ],
     [ undefined, 'undefined' ]
-  ]) {
+  ] as const) {
     test('returns an error when asserting for a matching type.', async (): Promise<void> => {
       assert.that(
-        assertAnyIsNotOfType(value, type as Type | 'result')
+        assertAnyIsNotOfType(value, type)
       ).is.equalTo(error(new AssertionFailed({
         message: `The value is of type ${type}.`,
         actual: prettyPrint(value)
