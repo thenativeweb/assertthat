@@ -1,3 +1,10 @@
+## [6.5.2](https://github.com/thenativeweb/assertthat/compare/6.5.1...6.5.2) (2022-03-24)
+
+
+### Bug Fixes
+
+* Update dependencies and remove skipLibCheck. ([#420](https://github.com/thenativeweb/assertthat/issues/420)) ([2120f01](https://github.com/thenativeweb/assertthat/commit/2120f01f1cc8f2edde17cb4472aad2e7d204455c))
+
 ## [6.5.1](https://github.com/thenativeweb/assertthat/compare/6.5.0...6.5.1) (2022-03-24)
 
 
