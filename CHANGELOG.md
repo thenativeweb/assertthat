@@ -1,3 +1,10 @@
+## [6.5.1](https://github.com/thenativeweb/assertthat/compare/6.5.0...6.5.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* Update dependencies (defekt, roboter, typescript). ([#419](https://github.com/thenativeweb/assertthat/issues/419)) ([1a5ac41](https://github.com/thenativeweb/assertthat/commit/1a5ac419cf342aba5c665d26d4b561b7fc5e1020))
+
 # [6.5.0](https://github.com/thenativeweb/assertthat/compare/6.4.0...6.5.0) (2022-03-22)
 
 
