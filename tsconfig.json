@@ -7,7 +7,6 @@
     "module": "commonjs",
     "outDir": "build",
     "resolveJsonModule": true,
-    "skipLibCheck": true,
     "strict": true,
     "target": "es2019"
   },
