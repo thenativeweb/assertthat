@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "measure-time": "5.0.8",
-    "roboter": "13.2.0",
+    "roboter": "13.2.1",
     "semantic-release-configuration": "2.0.7",
     "zufall": "1.1.2"
   },
