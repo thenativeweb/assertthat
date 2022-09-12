@@ -38,7 +38,7 @@
     "common-tags": "1.8.2",
     "defekt": "9.3.1",
     "typedescriptor": "4.0.14",
-    "uuid": "8.3.2"
+    "uuid": "9.0.0"
   },
   "devDependencies": {
     "measure-time": "5.0.8",
