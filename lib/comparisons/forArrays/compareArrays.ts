@@ -50,6 +50,10 @@ const compareArraysLinearly = function <TContent>(
     }
   }
 
+  diff.segments.forEach((segment) => {
+      diff.cost += segment.cost;
+  });
+
   if (diff.cost === 0) {
     return equalDiff({ value: actual });
   }
